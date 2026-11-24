@@ -157,11 +157,6 @@ window.addEventListener('prototype-config',event=>acceptConfig(event.detail));
 // The inline loader can finish before this module loads.
 if(typeof config!=='undefined'&&config)acceptConfig(config);
 $('refresh-requirements').addEventListener('click',refresh);
-for(const [id,show] of [['requirements-view',true],['prototypes-view',false]])$(id).addEventListener('click',()=>{
-  $('requirements-panel').hidden=!show;$('timeline').hidden=show;
-  document.querySelector('.search-box').hidden=show;
-  for(const [button,active] of [['requirements-view',show],['prototypes-view',!show]]) {$(button).classList.toggle('active',active);$(button).setAttribute('aria-pressed',String(active));}
-});
 document.querySelector('.search-box').hidden=false;
 refresh();setInterval(()=>{if(!document.hidden)refresh();},30000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
