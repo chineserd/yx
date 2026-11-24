@@ -33,7 +33,9 @@
   .brand .logo {
     width: 88px; height: 39px; object-fit: contain; flex-shrink: 0;
   }
-  .brand-text { font-size: 16px; line-height: 24px; font-weight: 650; color: #172b4d; white-space: nowrap; padding-left: 18px; margin-left: 18px; border-left: 1px solid #dce2eb; }
+  .brand-copy { display:flex; flex-direction:column; gap:2px; padding-left:18px; margin-left:18px; border-left:1px solid #dce2eb; }
+  .brand-text { font-size:16px; line-height:24px; font-weight:650; color:#172b4d; white-space:nowrap; }
+  .brand-hint { font-size:12px; line-height:16px; font-weight:400; color:#7b8492; white-space:nowrap; }
 
   #sync-local { flex:none; display:inline-flex; align-items:center; justify-content:center; gap:6px; min-width:76px; height:34px; margin-left:0; padding:0 10px; border:1px solid #e4dde0; border-radius:8px; background:#fff; color:#74666b; font-size:13px; font-weight:500; box-shadow:none; transition:background .18s,border-color .18s,color .18s; }
   #sync-local:hover { background:#fff5f6; border-color:#dcabb2; color:#ad2332; }
@@ -302,7 +304,8 @@
 @media (max-width: 700px) {
     .topbar { flex-wrap: wrap; padding: 14px 20px; gap: 10px; }
     .brand { flex-wrap: nowrap; }
-    .brand-text { padding-left: 12px; margin-left: 12px; font-size: 15px; }
+    .brand-copy { padding-left:12px; margin-left:12px; }
+    .brand-text { font-size:15px; }
     #sync-local { min-width:74px; height:34px; padding:0 8px; gap:5px; }
     .brand-text { white-space: nowrap; }
     .topbar-tools { width: 100%; margin-left: 0; }
@@ -389,7 +392,7 @@
 <div class="topbar">
   <div class="brand">
     <a class="brand-link" href="https://www.chineserd.com.hk/" target="_blank" rel="noopener noreferrer" aria-label="在新页面打开中文路官网" title="打开中文路官网"><img class="logo" src="./assets/chineserd-logo.png" alt="中文路" width="88" height="39"></a>
-    <span class="brand-text">中文路需求原型汇总</span>
+    <div class="brand-copy"><span class="brand-text">中文路需求原型汇总</span><span class="brand-hint">查看前请刷新，获取最新原型</span></div>
   </div>
   <div class="topbar-tools">
     <div class="search-box">
