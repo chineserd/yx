@@ -8,7 +8,7 @@
   <title>中文路原型登录</title>
   <script>
     const path = location.pathname.startsWith('/yx/') ? location.pathname.slice(3) : '/';
-    location.replace('https://chineserd-private-prototypes.onrender.com' + (path || '/') + location.search + location.hash);
+    location.replace('https://chineserd-private-prototypes.onrender.com/auth/login?next=' + encodeURIComponent((path || '/') + location.search + location.hash));
   </script>
 </head>
 <body>
