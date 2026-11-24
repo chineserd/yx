@@ -4,7 +4,7 @@
 <head>
 <meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8" />
-<title>产品原型总览</title>
+<title>中文路需求原型汇总</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>if (location.hostname === 'chineserd.github.io' || new URLSearchParams(location.search).has('gate-preview')) document.documentElement.classList.add('auth-locked');</script>
 <style>
@@ -322,9 +322,7 @@
   #home-login .login-intro-foot { color:rgba(255,255,255,.75); font-size:12px; letter-spacing:.06em; }
   #home-login .login-panel { display:flex; flex-direction:column; justify-content:center; min-width:0; padding:44px 64px 34px; }
   #home-login .login-logo { display:block; width:230px; max-width:100%; height:auto; margin:0 0 10px -14px; }
-  #home-login .login-eyebrow { display:block; margin-bottom:7px; color:#b91c2c; font-size:13px; font-weight:700; letter-spacing:.08em; }
-  #home-login h1 { margin:0 0 8px; color:#252029; font-size:28px; line-height:1.35; letter-spacing:.01em; }
-  #home-login .login-description { margin:0 0 25px; color:#77717a; font-size:14px; line-height:1.7; }
+  #home-login h1 { margin:0 0 22px; color:#252029; font-size:28px; line-height:1.35; letter-spacing:.01em; }
   #home-login label { display:block; margin:16px 0 8px; color:#37323a; font-size:14px; font-weight:600; }
   #home-login input { display:block; width:100%; height:48px; border:1px solid #d7d1d5; border-radius:9px; padding:0 14px; background:#fff; color:#26212a; font:15px system-ui; transition:border-color .18s,box-shadow .18s; }
   #home-login input::placeholder { color:#a8a0a6; }
@@ -339,7 +337,7 @@
   #home-login .login-remember::before { content:"✓"; display:grid; place-items:center; width:17px; height:17px; flex:none; border-radius:50%; background:#fce5e8; color:#b91c2c; font-size:11px; font-weight:700; }
   #home-login .login-footer { margin-top:27px; padding-top:18px; border-top:1px solid #eee7e9; color:#8a838b; font-size:12px; line-height:1.6; }
   @media(max-width:760px) { html.auth-locked #home-login { display:block; width:min(470px, 100%); min-height:0; border-top:5px solid #c91f30; border-radius:16px; } #home-login .login-intro { display:none; } #home-login .login-panel { padding:30px 34px; } #home-login .login-logo { width:205px; } }
-  @media(max-width:480px) { html.auth-locked body { padding:14px; } #home-login .login-panel { padding:24px 22px; } #home-login h1 { font-size:25px; } #home-login .login-description { margin-bottom:18px; } }
+  @media(max-width:480px) { html.auth-locked body { padding:14px; } #home-login .login-panel { padding:24px 22px; } #home-login h1 { font-size:25px; } }
   .overview-views { display:flex; gap:8px; margin-bottom:12px; }
   .overview-views button { background:white; color:#52627a; border:1px solid #cbd5e1; border-radius:8px; padding:10px 18px; font:inherit; cursor:pointer; }
   .overview-views button.active { background:#edf3ff; color:#1d4ed8; border-color:#2365f6; font-weight:600; }
@@ -374,18 +372,16 @@
   </div>
   <div class="login-panel">
     <img class="login-logo" src="./assets/chineserd-login-logo.png" alt="中文路 ChineseRd" width="320" height="158">
-    <span class="login-eyebrow">统一账号登录</span>
-    <h1 id="home-login-title">产品原型总览</h1>
-    <p class="login-description">输入账号和密码，查看最新原型</p>
+    <h1 id="home-login-title">中文路需求原型汇总</h1>
     <form id="home-login-form">
       <label for="home-username">用户名</label>
-      <input id="home-username" name="username" autocomplete="username" required autocapitalize="none" spellcheck="false" placeholder="请输入用户名">
+      <input id="home-username" name="username" autocomplete="username" required autocapitalize="none" spellcheck="false">
       <label for="home-password">密码</label>
-      <input id="home-password" name="password" type="password" autocomplete="current-password" required placeholder="请输入密码">
+      <input id="home-password" name="password" type="password" autocomplete="current-password" required>
       <p id="home-login-error" class="login-error" role="alert" hidden>账号或密码不正确</p>
       <button class="login-submit" type="submit">登录</button>
     </form>
-    <p class="login-remember">登录后 30 天内可直接进入</p>
+    <p class="login-remember">30 天内免重复登录</p>
     <div class="login-footer">内部文件，请勿外传</div>
   </div>
 </section>
@@ -393,7 +389,7 @@
 <div class="topbar">
   <div class="brand">
     <img class="logo" src="./assets/chineserd-logo.png" alt="中文路" width="88" height="39">
-    <span class="brand-text">产品原型总览</span>
+    <span class="brand-text">中文路需求原型汇总</span>
     <button id="sync-local" class="tool-btn" type="button" aria-label="刷新原型汇总"><svg class="sync-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg><span class="sync-label">刷新</span></button>
   </div>
   <div class="topbar-tools">
