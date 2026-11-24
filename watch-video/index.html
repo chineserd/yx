@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>观看视频 · 中文路</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="preview-nav" aria-label="原型导航">
+    <div class="project-identity"><span>需求名稱</span><strong>觀看視頻</strong></div>
+    <div class="preview-tabs">
+      <button type="button" data-surface="admin" class="active">後台</button>
+      <button type="button" data-surface="app">App</button>
+      <button type="button" data-surface="flow">流程图</button>
+      <button type="button" data-surface="prd">PRD</button>
+      <button type="button" data-surface="api">接口說明</button>
+    </div>
+    <a class="history-link" href="/">歷史需求彙總頁</a>
+  </nav>
+  <div id="adminSurface" class="surface admin-shell">
+    <aside class="admin-sidebar">
+      <div class="admin-logo"><span class="logo-mark">中</span><span><b>中文路</b><small>运营管理后台</small></span></div>
+      <div class="sidebar-group">内容管理</div>
+      <button type="button" class="side-link active" data-admin-page="list"><span class="side-icon">▣</span>视频 <em class="need-badge">需求</em></button>
+    </aside>
+    <div class="admin-right">
+      <header class="admin-top"><span>内容管理 <span class="crumb-sep">/</span> 视频</span><span class="admin-user">教研管理员 <span class="avatar">研</span></span></header>
+      <main id="adminMain"></main>
+    </div>
+  </div>
+  <div id="appSurface" class="surface app-shell" hidden>
+    <aside class="page-directory" aria-label="App 页面目录">
+      <div class="directory-title">學生 App</div>
+      <div class="directory-group">雙 Tab</div>
+      <button type="button" data-app-page="home">01　首頁</button>
+      <button type="button" data-app-page="mine">02　我的</button>
+      <div class="directory-group">觀看流程</div>
+      <button type="button" data-app-page="player">03　視頻播放</button>
+      <button type="button" data-app-page="complete">04　觀看完成</button>
+      <button type="button" data-app-page="error">05　播放失敗</button>
+    </aside>
+    <main class="app-stage"><div class="phone"><div class="phone-status"><b>9:41</b><span>▂▃▅　◉　▰</span></div><div id="phoneScreen"></div><div class="home-indicator"></div></div></main>
+  </div>
+  <div id="flowSurface" class="surface flow-shell" hidden>
+    <div class="flow-heading"><div><h1>视频上传与观看流程</h1><p>后台配置通用视频路径，学生在独立 App 中观看。</p></div><a href="flow.svg" target="_blank" rel="noopener">查看大图 ↗</a></div>
+    <div class="flow-canvas"><img src="flow.svg" alt="后台上传与配置、发布到学生 App、观看选择和观看记录的横版流程图"></div>
+  </div>
+  <div id="prdSurface" class="surface prd-shell" hidden>
+    <aside class="prd-toc" id="prdToc"><strong>文档目录</strong></aside>
+    <article class="prd-article" id="prdArticle"><p>正在载入需求文档…</p></article>
+  </div>
+  <div id="modalRoot"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

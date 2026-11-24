@@ -1,0 +1,6 @@
+#crmToolbar,#crmToolbar nav,#crmToolbar aside,#crmDialog footer{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+#crmToolbar{justify-content:space-between;gap:12px;margin-bottom:16px}
+#crmToolbar button{padding:8px 12px;border:1px solid #cbd6e0;background:white;border-radius:3px}
+#crmToolbar button[aria-pressed=true],#crmToolbar button.primary{background:var(--blue);color:white}
+#crmPage td{white-space:nowrap}#crmPage .text-btn{margin-right:6px}
+#crmDialog{padding:20px;width:min(440px,90vw)}#crmDialog label{display:grid;gap:6px;margin:14px 0}#crmDialog input,#crmDialog textarea{padding:8px;border:1px solid #aab7c4;border-radius:4px}#crmDialog footer{justify-content:flex-end;margin-top:14px}

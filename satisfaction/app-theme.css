@@ -1,0 +1,67 @@
+/* ChineseRd App / 蓝湖阶段1规范 v0.2。颜色来自原图采样，尺寸为实施建议。 */
+#phone{--app-red:#E80202;--app-success:#15803D;--app-bg:#FAFAFA;--app-card:#FFFFFF;--app-text:#333333;--app-muted:#666666;--app-subtle:#999999;--app-selected:#FFF4F4;background:var(--app-bg);color:var(--app-text);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+#phone .phone-nav{min-height:48px;background:var(--app-card);border:0}
+#phone .phone-nav strong{font-size:18px;line-height:24px;color:var(--app-text)}
+#phone .phone-nav button{color:var(--app-text)}
+#phone .phone-scroll{padding:16px 16px 24px;background:var(--app-bg)}
+#phone .phone-primary{background:var(--app-red);border-color:var(--app-red);color:white;min-height:48px;border-radius:24px;font-size:16px;line-height:24px;font-weight:600}
+#phone .phone-primary:hover{background:#CC0202;border-color:#CC0202}
+#phone .phone-primary:active{background:#B80202;border-color:#B80202}
+#phone .phone-primary:disabled{background:#F2CACA;border-color:#F2CACA;color:#754545;cursor:not-allowed}
+#phone button:focus-visible,#phone input:focus-visible,#phone textarea:focus-visible{outline:2px solid var(--app-red);outline-offset:3px}
+#phone .phone-footer{padding:12px 16px 24px;background:white;border-top:1px solid #f0f0f0}
+#phone .mobile-question{padding:16px;margin-bottom:12px;border-radius:12px;background:white;box-shadow:none}
+#phone .mobile-question legend{color:var(--app-text);font-size:16px;line-height:24px;margin-bottom:12px}
+#phone .mobile-options{gap:8px}
+#phone .mobile-option{min-height:48px;border:1px solid #E5E5E5;border-radius:8px;color:var(--app-text);padding:11px 12px;background:white}
+#phone .mobile-option:has(input:checked){border:2px solid var(--app-red);background:var(--app-selected);padding:10px 11px}
+#phone .mobile-option input{accent-color:var(--app-red)}
+#phone .mobile-question textarea{border:1px solid #DDD;border-radius:8px;background:var(--app-bg);color:var(--app-text);min-height:120px;resize:vertical}
+#phone .mobile-question textarea::placeholder{color:#767676}
+#phone .phone-count,#phone .muted{color:var(--app-muted)}
+#phone .req,#phone .mobile-error{color:var(--app-red)}
+#phone .mobile-question.invalid{outline-color:var(--app-red)}
+#phone #mobileModal{inset:0;background:rgba(0,0,0,.65);padding:24px 0}
+#phone .phone-dialog{width:320px;max-width:calc(100% - 48px);max-height:100%;overflow:auto;border-radius:16px;padding:24px;background:linear-gradient(180deg,#FFF4F4 0,#FFFFFF 96px);color:var(--app-text)}
+#phone .phone-dialog h2{font-size:18px;line-height:26px;margin:12px 8px 16px;color:var(--app-text)}
+#phone .phone-dialog p{font-size:16px;line-height:24px;color:var(--app-muted);margin-bottom:24px;overflow-wrap:anywhere}
+#phone .phone-dialog .phone-primary{min-height:44px;border-radius:22px}
+#phone .phone-dialog .phone-close{width:44px;height:44px;color:var(--app-muted)}
+#phone .phone-dialog .phone-secondary{background:#F5F5F5;color:var(--app-muted);border-radius:22px;margin-top:12px;min-height:44px}
+#phone .phone-success{color:var(--app-success)}
+#phone .question-intro{margin:0 0 12px;padding:12px 14px;border-radius:10px;background:#fff;color:var(--app-muted);font-size:14px;line-height:22px;overflow-wrap:anywhere}
+#phone .popup-logic{padding:16px;background:var(--app-bg)}
+#phone .logic-note{margin:0 0 12px;color:var(--app-subtle);font-size:12px;line-height:18px}
+#phone .logic-intro{margin:0 0 16px;color:var(--app-muted);font-size:13px;line-height:20px}
+#phone .logic-heading{margin:16px 0 10px;color:var(--app-text);font-size:15px;line-height:22px}
+#phone .logic-scene{margin:0 0 10px;padding:13px 14px;border-radius:10px;background:var(--app-card)}
+#phone .logic-scene strong{display:block;margin-bottom:5px;color:var(--app-text);font-size:14px;line-height:20px}
+#phone .logic-scene p{margin:0 0 4px;color:var(--app-muted);font-size:13px;line-height:20px}
+#phone .logic-scene small{display:block;color:var(--app-subtle);font-size:12px;line-height:18px}
+#phone .logic-checklist{margin:0;padding:10px 14px;border-radius:10px;background:var(--app-card);color:var(--app-muted);font-size:13px;line-height:20px;list-style:none}
+#phone .logic-checklist li{position:relative;margin:0;padding:6px 0 6px 14px}
+#phone .logic-checklist li::before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;background:var(--app-red)}
+#phone .popup-logic ol{margin:0;padding:0;list-style:none;counter-reset:logic}
+#phone .popup-logic ol>li{position:relative;counter-increment:logic;margin:0 0 10px;padding:14px 14px 14px 42px;border-radius:10px;background:#fff}
+#phone .popup-logic ol>li::before{content:counter(logic);position:absolute;left:14px;top:14px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--app-selected);color:var(--app-red);font-size:12px;font-weight:600}
+#phone .popup-logic ol>li strong,#phone .popup-logic ol>li span,#phone .logic-pending strong,#phone .logic-pending span{display:block}
+#phone .popup-logic ol>li strong,#phone .logic-pending strong{margin-bottom:5px;font-size:14px;line-height:20px;color:var(--app-text)}
+#phone .popup-logic ol>li span,#phone .logic-pending span{font-size:13px;line-height:20px;color:var(--app-muted)}
+#phone .logic-pending{padding:14px;border:1px solid #F1D9A5;border-radius:10px;background:#FFF9EA}
+#phone .popup-scenarios{padding:16px;background:var(--app-bg)}
+#phone .popup-scenarios article{margin:0 0 10px;padding:13px 14px;border-radius:10px;background:var(--app-card)}
+#phone .popup-scenarios article strong{display:block;margin-bottom:5px;color:var(--app-text);font-size:14px;line-height:20px}
+#phone .popup-scenarios article p{margin:0;color:var(--app-muted);font-size:13px;line-height:20px}
+#phone .push-app-icon{background:var(--app-red)}
+#phone .rd-home{padding-top:0}
+#phone .rd-home-head strong,#phone .rd-course h3{color:var(--app-text)}
+#phone .rd-home-head strong span,#phone .rd-course p,#phone .rd-course>div span{color:var(--app-muted)}
+#phone .rd-home-head i,#phone .rd-section-title{border-color:var(--app-red)}
+#phone .rd-home-head i{background:var(--app-red)}
+#phone .rd-section-title{font-family:"PingFang SC",-apple-system,BlinkMacSystemFont,sans-serif;font-size:18px;font-weight:600;line-height:normal;color:#333333}
+#phone .rd-course{box-shadow:none;border-radius:12px}
+#phone .rd-course-tag{color:var(--app-red);background:var(--app-selected)}
+#phone .rd-bottom>span{font-size:12px;color:var(--app-muted)}
+#phone .rd-bottom .current{color:var(--app-red)}
+
+#phone .mobile-question legend{position:relative;padding-right:14px}#phone .mobile-question legend>.req{position:absolute;right:0;top:0}#phone input:focus,#phone textarea:focus{outline-color:var(--app-red)}

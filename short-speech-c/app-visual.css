@@ -1,0 +1,135 @@
+#app-panel .app{background:#fbfbfd;color:#303033}
+#app-panel .app-head{height:76px;min-height:76px;background:#fbfbfd;padding:14px 18px 8px}
+#app-panel .home-head{justify-content:space-between}
+#app-panel .home-head h2{font-size:27px;line-height:34px;text-align:left;font-weight:800;flex:none}
+#app-panel .service-icon{width:34px;height:34px;color:#7358ca}
+#app-panel svg{width:100%;height:100%}
+#app-panel .app-body{padding:0 18px 20px;background:#fbfbfd}
+#app-panel .hero-banner{height:190px;min-height:190px;margin:10px 0 20px;padding:32px 20px;border-radius:21px;background:radial-gradient(circle at 83% 82%,#377dd8 0,#1d4a9d 32%,#123978 75%);overflow:hidden}
+#app-panel .hero-banner:after{display:none}
+#app-panel .hero-banner small{display:block;position:relative;z-index:1;font-size:13px;color:#e3efff}
+#app-panel .hero-banner strong{position:relative;z-index:1;font-size:34px;line-height:1.18;letter-spacing:1px;margin:9px 0 19px;text-shadow:0 3px 6px #062e66}
+#app-panel .hero-cta{position:relative;z-index:2;font-size:15px;padding:9px 16px;color:#145093;border-radius:22px}
+#app-panel .deer-art{position:absolute;width:166px;height:155px;right:-8px;bottom:-8px;z-index:1}
+#app-panel .quick-grid{gap:5px;margin:0 0 18px}
+#app-panel .quick-grid>div{font-size:13px;color:#616161;gap:8px}
+#app-panel .quick-icon{width:56px;height:56px;border-radius:50%;padding:12px;box-shadow:0 2px 12px #d9cfff5e;background:#f0e7ff;color:#8041df}
+#app-panel .quick-icon.report{background:#fff0df;color:#f59b44;box-shadow:0 2px 12px #f9dba45e}
+#app-panel .quick-icon.pencil{background:#e5f4ff;color:#4c9de0;box-shadow:0 2px 12px #b8e3ff75}
+#app-panel .quick-icon.class{background:#ffe8ec;color:#ed5969;box-shadow:0 2px 12px #ffd4db75}
+#app-panel .section-title{font-size:20px;line-height:28px;margin:24px 0 14px;color:#29292b}
+#app-panel .section-title:before{width:5px;height:23px;background:#f33644}
+#app-panel .section-title small{font-size:13px}
+#app-panel .feature-grid{display:grid;grid-template-columns:1fr 1.28fr;grid-template-rows:88px 88px;gap:10px}
+#app-panel .feature-card{position:relative;min-height:0;overflow:hidden;padding:15px 13px;border-radius:11px}
+#app-panel .feature-card strong{display:block;font-size:19px;line-height:1.2;white-space:nowrap}
+#app-panel .feature-card small{position:relative;z-index:1;margin-top:8px;font-size:12px;line-height:1.45;color:#f4efff}
+#app-panel .feature-card:first-child{grid-row:1/3;background:linear-gradient(135deg,#754fe0,#6b2fb7)}
+#app-panel .feature-card:first-child strong{font-size:20px}
+#app-panel .feature-card:nth-child(2){grid-column:2;grid-row:1;background:#fb3441}
+#app-panel .feature-card:nth-child(3){grid-column:2;grid-row:2;background:#4c55db}
+#app-panel .feature-card:nth-child(3) strong{font-size:17px}
+#app-panel .robot-art{position:absolute;right:-10px;bottom:-13px;width:145px;height:138px;opacity:.95}
+#app-panel .card-go{position:absolute;left:13px;bottom:14px;z-index:2;background:#fff;color:#34333e;font-size:15px;font-weight:700;padding:5px 12px;border-radius:5px}
+#app-panel .course-banner{height:140px;min-height:140px;position:relative;overflow:hidden;margin-bottom:5px;padding:18px;background:linear-gradient(120deg,#89c6ff,#69a9f0)}
+#app-panel .course-banner strong{position:relative;z-index:1;display:block;font-size:20px}
+#app-panel .course-banner small{position:relative;z-index:1;max-width:70%;font-size:12px;line-height:1.5;color:#f7fbff}
+#app-panel .course-banner .deer-art{width:115px;height:115px;right:5px;bottom:-14px}
+#app-panel .bottom-nav{height:82px;min-height:82px;border-top:1px solid #f0f0f0}
+#app-panel .bottom-nav button{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:12px 0 0;gap:4px;font-size:12px;line-height:16px;color:#909090}
+#app-panel .bottom-nav button.active{color:#ed454f}
+#app-panel .bottom-nav .nav-icon{position:relative;width:24px;height:24px;display:block;color:#3b3b3b}
+#app-panel .bottom-nav button.active .nav-icon{color:#ed454f}
+#app-panel .bottom-nav .nav-icon svg{width:24px;height:24px;stroke-width:1.8}
+#app-panel .bottom-nav .home-shape{fill:none}
+#app-panel .bottom-nav .home-door{stroke:currentColor}
+#app-panel .bottom-nav button.active .home-shape{fill:currentColor;stroke:currentColor}
+#app-panel .bottom-nav button.active .home-door{stroke:#fff}
+#app-panel .center-head{position:relative;justify-content:center;background:#f4f3ff}
+#app-panel .center-head h2{font-size:22px;text-align:center}
+#app-panel .center-head>span{position:absolute;right:19px;top:31px;color:#31313a;font-size:15px}
+#app-panel .calendar-body{display:flex;flex-direction:column;background:#f4f3ff;padding:0 18px 16px}
+#app-panel .month-head{margin:18px 0 10px}
+#app-panel .month-head strong{font-size:25px;color:#292b35}
+#app-panel .month-head>div{display:flex;gap:7px}
+#app-panel .month-head button{background:transparent;color:#8585a3;font-size:22px;padding:4px 8px}
+#app-panel .weekdays{font-size:15px;color:#65667a;margin:12px 0 6px}
+#app-panel .calendar{gap:1px 2px}
+#app-panel .calendar button,#app-panel .calendar span{font-size:18px;aspect-ratio:1/1;background:transparent}
+#app-panel .calendar button.selected{background:#d47576;color:#fff}
+#app-panel .calendar button.has-course:after{content:"";position:absolute;bottom:4px;width:4px;height:4px;border-radius:50%;background:#d66b70}
+#app-panel .calendar button.selected.has-course:after{background:#fff}
+#app-panel .schedule-list{margin-top:auto;padding-top:24px;min-height:160px}
+#app-panel .schedule-card{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 12px;border:0;background:transparent;text-align:left;color:#242432}
+#app-panel .schedule-card>span:first-child{min-width:0}
+#app-panel .schedule-card strong{display:block;margin:12px 0 10px;font-size:16px;line-height:1.45;font-weight:500}
+#app-panel .schedule-card small{display:block;font-size:23px;font-weight:600;color:#2d2d35}
+#app-panel .schedule-card .label{padding:5px 9px;border-radius:5px;background:#b13a43;color:#fff;font-size:13px}
+#app-panel .schedule-next{display:grid;place-items:center;flex:none;width:29px;height:29px;border-radius:50%;background:#bd4c54;color:#fff;font-size:26px;line-height:1}
+#app-panel .lesson-page{background:#f2f1ff}
+#app-panel .lesson-page .lesson-hero{flex:none;position:relative;height:205px;margin:0;padding:16px 20px 28px;border-radius:0;background:linear-gradient(150deg,#9e3341,#a12b3b);color:#fff}
+#app-panel .lesson-top{position:relative;display:flex;justify-content:center;align-items:center;height:52px;font-size:18px}
+#app-panel .lesson-top button{position:absolute;left:0;top:1px;width:38px;height:44px;border:0;background:transparent;color:#fff;font-size:37px;line-height:1}
+#app-panel .lesson-hero h1{margin:15px 0 0;font-size:26px;line-height:1.4;color:#e7c35b;text-align:center}
+#app-panel .lesson-content{padding:20px 18px 32px;background:#f2f1ff}
+#app-panel .lesson-section{margin:0 0 34px}
+#app-panel .lesson-section h2{display:flex;align-items:center;gap:13px;margin:0 0 26px;font-size:22px;line-height:29px;font-weight:700}
+#app-panel .section-ring{width:17px;height:17px;border:5px solid #b83745;border-radius:50%;flex:none}
+#app-panel .live-details{padding-left:34px}
+#app-panel .live-details .course-status{display:inline-block;padding:6px 12px;border-radius:5px;background:#a93442;color:#fff;font-size:13px}
+#app-panel .live-details strong{display:block;margin:12px 0;font-size:24px;color:#292938}
+#app-panel .live-details small{font-size:13px;color:#78798e}
+#app-panel .practice-section{margin-top:46px}
+#app-panel .practice-section h2{margin-bottom:17px}
+#app-panel .exercise-list{gap:0}
+#app-panel .exercise-item{min-height:86px;display:flex;align-items:center;gap:15px;padding:9px 1px 9px 32px;border:0;border-radius:0;background:transparent;color:#292936}
+#app-panel .exercise-icon{width:52px;height:52px;padding:12px;flex:none;border-radius:50%;background:#b63847;color:#fff}
+#app-panel .exercise-item strong{font-size:16px;line-height:1.45;font-weight:600}
+#app-panel .app-requirement-badge{display:inline-block;vertical-align:middle;margin-left:8px;padding:0 5px;border:1px solid #e53935;border-radius:4px;background:#e53935;color:#fff;font-size:11px;font-weight:600;line-height:16px;white-space:nowrap}
+#app-panel .bottom-nav .nav-label{white-space:nowrap}
+#app-panel .exercise-item .chevron{font-size:25px;color:#a4a3b4}
+#app-panel .exercise-item.new-entry strong{white-space:nowrap;flex:none}
+#app-panel .speech-done-badge{flex:none;margin-left:auto;padding:3px 6px;border-radius:4px;font-size:11px;line-height:16px;font-weight:700;white-space:nowrap}
+#app-panel .speech-done-badge.pending{background:#fff0e9;color:#bd4b35}
+#app-panel .speech-done-badge.done{background:#e6f6ec;color:#23844a}
+#app-panel .report-page{background:#f2f6ff}
+#app-panel .report-head{position:relative;display:flex;align-items:center;justify-content:center;flex:none;height:64px;padding:0 16px;background:#f2f6ff}
+#app-panel .report-head button{position:absolute;left:14px;top:8px;width:40px;height:46px;border:0;background:transparent;color:#25354c;font-size:34px;line-height:1}
+#app-panel .report-head h2{margin:0;font-size:18px;color:#25354c}
+#app-panel .report-head .app-requirement-badge{position:absolute;right:14px;top:22px;margin:0}
+#app-panel .report-body{padding:0 16px 22px;background:#f2f6ff}
+#app-panel .report-summary{position:relative;display:flex;align-items:center;justify-content:space-between;min-height:174px;padding:16px 16px 18px;border-radius:18px;background:linear-gradient(120deg,#d9eaff,#f8fbff);overflow:hidden}
+#app-panel .report-summary>div{position:relative;z-index:1;max-width:55%}
+#app-panel .report-eyebrow{display:block;font-size:13px;color:#59779d}
+#app-panel .report-summary strong{display:block;margin:4px 0 2px;color:#2268c2;font-size:63px;line-height:1;font-weight:800}
+#app-panel .report-summary strong small{margin-left:4px;font-size:19px}
+#app-panel .report-summary p{margin:11px 0 0;font-size:13px;line-height:1.4;color:#385374}
+#app-panel .report-summary img{position:absolute;right:7px;bottom:3px;width:162px;height:162px;object-fit:contain}
+#app-panel .report-card{margin-top:14px;padding:16px;border:1px solid #e2ebfa;border-radius:16px;background:#fff;box-shadow:0 3px 12px #234d8410}
+#app-panel .report-card h3{margin:0 0 14px;font-size:17px;line-height:1.4;color:#263d5b}
+#app-panel .report-card h3:before{content:'✓';display:inline-grid;place-items:center;width:20px;height:20px;margin-right:8px;border-radius:50%;background:#33b786;color:#fff;font-size:13px}
+#app-panel .report-scores{display:grid;gap:12px}
+#app-panel .report-score>div{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;font-size:13px;color:#4d6077}
+#app-panel .report-score strong{color:#2368c4;font-size:16px}
+#app-panel .report-score strong small{color:#8a9cb4;font-size:11px;font-weight:400}
+#app-panel .report-bar{display:block;height:7px;border-radius:8px;background:#e9eff8;overflow:hidden}
+#app-panel .report-bar i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#5bb8ee,#3679d9)}
+#app-panel .report-card p{margin:0;color:#52647a;font-size:13px;line-height:1.7}
+#app-panel .report-feedback{padding:9px 0;border-top:1px solid #eef2f8}
+#app-panel .report-feedback strong{display:block;margin-bottom:3px;font-size:13px;color:#344f72}
+#app-panel .center-head{background:#fff}
+#app-panel .calendar-body{padding:0;background:#f8f8f9}
+#app-panel .calendar-body .month-head{height:74px;min-height:74px;margin:0;padding:11px 22px 3px;background:#fff}
+#app-panel .calendar-body .month-head strong{font-size:26px;color:#292929}
+#app-panel .calendar-body .month-head>span{font-size:17px;color:#303030}
+#app-panel .calendar-sheet{padding:0 8px 16px;border-radius:0 0 24px 24px;background:#fff}
+#app-panel .calendar-sheet .weekdays{margin:0 0 8px;padding:8px 0 4px;font-size:16px;color:#9b9b9b}
+#app-panel .calendar-sheet .calendar{gap:2px 1px}
+#app-panel .calendar-sheet .calendar button,#app-panel .calendar-sheet .calendar span{font-size:18px;color:#333}
+#app-panel .calendar-sheet .calendar button.selected{background:#e8000a;color:#fff;font-weight:700}
+#app-panel .calendar-sheet .calendar button.today:not(.selected){color:#e8000a}
+#app-panel .calendar-body .schedule-list{flex:1;min-height:0;margin:0;padding:18px 18px 20px;background:#f8f8f9}
+#app-panel .calendar-body .schedule-card{padding:16px;border-radius:14px;background:#f3f2ff}
+#app-panel .calendar-body .schedule-card strong{margin:12px 0 8px}
+@media(max-width:700px){#app-panel .app-head{height:70px;min-height:70px}#app-panel .hero-banner{height:181px;min-height:181px}}
+

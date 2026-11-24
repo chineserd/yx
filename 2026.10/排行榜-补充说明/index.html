@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>學生 App 任務排行榜</title>
+    <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./review-nav.css">
+<link rel="stylesheet" href="flat-rank.css?v=20261014">
+<style>.requirement-identity.requirement-identity{position:relative;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;flex-shrink:0;gap:0;margin:0;padding:0 0 0 11px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#334155;font:700 12px/18px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;white-space:nowrap;cursor:default;text-decoration:none}.requirement-identity::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:28px;border-radius:2px;background:#5478e8}.requirement-identity>.requirement-label{font:400 10px/14px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;letter-spacing:1px;color:#8793a5;cursor:default}.requirement-identity>.requirement-name{font:inherit;color:#334155;cursor:default}</style></head>
+  <body class="app-prototype-page">
+    <main class="prototype-shell">
+      <nav class="review-top" aria-label="原型頂部導航"><span class="requirement-identity "><span class="requirement-label">需求名稱</span><span class="requirement-name">學生排名&amp;升級</span></span><a href="./admin.html">後台</a><a href="./index.html" aria-current="page">學生端（App）</a><a href="./学生排名&升级-PRD.html">PRD</a><a class="review-history" href="../../index.html">歷史需求彙總頁</a></nav>
+
+      <section class="mode-view active" id="mode-app" aria-label="學生 App 原型">
+        <div class="phone-stage">
+          <div class="phone-shell">
+            <header class="phone-status"><span>22:35</span><span>5G 66</span></header>
+            <section class="app-screen active" id="app-learning">
+              <div class="learning-home">
+                <section class="learning-hero" aria-label="學生資訊">
+                  <div class="learning-student">
+                    <span class="learning-avatar" aria-hidden="true"></span>
+                    <div>
+                      <strong>測試學生1</strong>
+                      <span>S1 A班</span>
+                    </div>
+                  </div>
+                  <div class="learning-hero-award" aria-hidden="true"></div>
+                </section>
+                <section class="learning-summary-card rank-entry-off" aria-label="學習概覽">
+                  <button class="learning-stat" type="button" data-app-page="tasks">
+                    <strong>132</strong>
+                    <span>待完成任務 <i>›</i></span>
+                  </button>
+                  <span class="learning-summary-divider" aria-hidden="true"></span>
+                  <button class="learning-stat learning-record-stat" type="button">
+                    <strong>399</strong>
+                    <span>練習記錄 <i>›</i></span>
+                  </button>
+                  <span class="learning-summary-divider" aria-hidden="true" hidden></span>
+                  <button class="learning-stat stat-rank" type="button" data-app-page="practice-ranking" aria-label="查看排行榜" hidden>
+                    <span class="ranking-entry-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+                    <b>排行榜</b>
+                  </button>
+                </section>
+                <section class="learning-menu-card">
+                  <h2>口語</h2>
+                  <button class="learning-menu-row" type="button"><span class="menu-art voice"></span><strong>發音評測</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art dialog"></span><strong>場景對話</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art speech"></span><strong>個人短講</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art picture"></span><strong>看圖說話</strong><i>›</i></button>
+                </section>
+                <section class="learning-menu-card practice">
+                  <h2>練習</h2>
+                  <button class="learning-menu-row" type="button"><span class="menu-art video"></span><strong>HSK視頻學習</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art listen"></span><strong>聆聽練習</strong><i>›</i></button>
+                </section>
+              </div>
+            </section>
+
+            <section class="app-screen" id="app-tasks">
+              <header class="task-page-head">
+                <span></span>
+                <h2>任務</h2>
+                <div class="task-head-actions">
+                  <button class="task-rank-entry task-report-entry" aria-label="查看學習報告">
+                    <span></span>
+                  </button>
+                </div>
+              </header>
+              <div class="task-tabs" aria-label="任務狀態">
+                <button class="active">未完成</button>
+                <button>已完成</button>
+                <button>已過期</button>
+              </div>
+              <div class="task-card-stack">
+                <article class="student-task-card">
+                  <div class="task-card-type"><span class="task-type-icon voice"></span>發音評測</div>
+                  <h3>《春曉》</h3>
+                  <div class="task-card-foot"><span>admin</span><span>2026-07-21</span><b>日常</b></div>
+                </article>
+                <article class="student-task-card">
+                  <div class="task-card-type"><span class="task-type-icon dialog"></span>場景對話</div>
+                  <h3>到遊樂場去</h3>
+                  <div class="task-card-foot"><span>admin</span><span>2026-07-21</span><b>日常</b></div>
+                </article>
+                <article class="student-task-card">
+                  <div class="task-card-type"><span class="task-type-icon voice"></span>發音評測</div>
+                  <h3>《風》</h3>
+                  <div class="task-card-foot"><span>admin</span><span>2026-07-21</span><b>日常</b></div>
+                </article>
+              </div>
+            </section>
+
+            <section class="app-screen" id="app-me">
+              <div class="app-hero">
+                <button class="back-btn">‹</button>
+                <div class="profile-card">
+                  <div class="cartoon-avatar">學</div>
+                  <div>
+                    <h2>張曉剛</h2>
+                    <p>學生編號</p>
+                  </div>
+                  <strong>1111</strong>
+                </div>
+              </div>
+              <div class="app-content pull-up">
+                <button class="menu-row"><span class="menu-icon">指</span><strong>操作指引</strong><i>›</i></button>
+                <button class="menu-row" data-app-page="certs"><span class="menu-icon">證</span><strong>我的證書</strong><em>已獲得 3 張</em><i>›</i></button>
+                <div class="info-card">
+                  <p><span>所在班級</span><strong>S1 A班</strong></p>
+                  <p><span>所屬學校</span><strong>鳳溪第一小學</strong></p>
+                  <p><span>學校ID</span><strong>666667</strong></p>
+                </div>
+              </div>
+            </section>
+
+            <section class="app-screen" id="app-ranking"><div class="flat-rank" data-flat-board="ranking"></div></section>
+
+            <section class="app-screen" id="app-practice-ranking"><div class="flat-rank" data-flat-board="practice-ranking"></div></section>
+
+            <section class="app-screen" id="app-certs">
+              <header class="app-page-head cert-head">
+                <button data-app-page="me">‹</button>
+                <h2>我的證書</h2>
+                <button class="share-btn">分享</button>
+              </header>
+              <div class="app-content cert-content">
+                <div class="cert-stat">
+                  <div><span>累計證書</span><strong>3</strong></div>
+                  <div><span>本學期</span><strong>2</strong></div>
+                </div>
+              </div>
+            </section>
+
+            <nav class="app-bottom-nav" aria-label="學生 App 底部導覽">
+              <button class="active" data-app-page="learning" aria-current="page"><img src="assets/book-open.svg" alt=""><b>學習</b></button>
+              <button data-app-page="tasks"><img src="assets/clipboard-list.svg" alt=""><b>任務</b></button>
+              <button data-app-page="practice-ranking"><img src="assets/trophy.svg" alt=""><b>排行榜</b></button>
+              <button disabled aria-label="課程" title="課程頁面尚未接入"><img src="assets/presentation.svg" alt=""><b>課程</b></button>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <nav class="review-pages" aria-label="App頁面目錄"><button class="review-home" type="button" data-dev-app-page="learning">首頁</button><section class="review-group"><h2>學生排名</h2><div><button type="button" data-dev-app-page="tasks" ><span>01</span>任務列表</button><button type="button" data-dev-app-page="ranking" ><span>02</span>任務排行榜</button><button type="button" data-dev-app-page="practice-ranking" ><span>03</span>練習排行榜</button></div></section><section class="review-group"><h2>個人頁面</h2><div><button type="button" data-dev-app-page="me" ><span>01</span>我的</button></div></section></nav>
+    </main>
+
+    <script src="./app.js"></script>
+<script src="./review-nav.js"></script>
+<script src="./flat-rank.js?v=20261014"></script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+/* 靜態恢復版補丁：本校藍線在上，全體灰線在下，邊緣相距 2px。 */
+.chart-plot[data-v-ea4a85ec] .scale-track[data-v-ea4a85ec],
+.chart-plot[data-v-ea4a85ec] .overall-range[data-v-ea4a85ec] {
+  top: 39px;
+  height: 6px;
+}
+
+.chart-plot[data-v-ea4a85ec] .local-range[data-v-ea4a85ec] {
+  top: 31px;
+  height: 6px;
+}
+
+.chart-plot[data-v-ea4a85ec] .overall-cap[data-v-ea4a85ec] {
+  top: 34px;
+  height: 16px;
+}
+
+.chart-plot[data-v-ea4a85ec] .local-cap[data-v-ea4a85ec] {
+  top: 26px;
+  height: 16px;
+}
+
+.chart-plot[data-v-ea4a85ec] .overall-marker[data-v-ea4a85ec] {
+  top: 33px;
+}
+
+.chart-plot[data-v-ea4a85ec] .local-marker[data-v-ea4a85ec] {
+  top: 25px;
+}
+
+.chart-plot[data-v-ea4a85ec] .mean-guide[data-v-ea4a85ec] {
+  top: 52px;
+  height: 16px;
+}
+
+.chart-plot[data-v-ea4a85ec] .overall-min-label[data-v-ea4a85ec],
+.chart-plot[data-v-ea4a85ec] .overall-max-label[data-v-ea4a85ec] {
+  top: 55px;
+}
+
+.chart-plot[data-v-ea4a85ec] .range-label:is(.overall-min-label, .overall-max-label, .local-min-label, .local-max-label, .local-single-label)[data-v-ea4a85ec] {
+  color: #8291a3;
+}
+
+.chart-plot[data-v-ea4a85ec] .local-average-label[data-v-ea4a85ec] {
+  top: 7px;
+  transform: translateX(-50%);
+  color: #2365f6;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+}
+
+.chart-plot[data-v-ea4a85ec]:has(.local-single-label) .local-average-label[data-v-ea4a85ec] {
+  top: 50px;
+}

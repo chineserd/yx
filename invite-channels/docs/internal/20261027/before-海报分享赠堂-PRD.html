@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海报分享赠课 PRD</title>
+  <style>
+    :root {
+      --ink: #1b2430;
+      --muted: #65758b;
+      --line: #d9e2ec;
+      --panel: #ffffff;
+      --page: #f4f7fb;
+      --accent: #1268c3;
+      --accent-soft: #e8f2ff;
+      --code: #eef4f8;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.78;
+    }
+
+    .layout {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 28px 28px 56px;
+      display: grid;
+      grid-template-columns: 286px minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 24px;
+      max-height: calc(100vh - 48px);
+      overflow: auto;
+      align-self: start;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(25, 45, 70, .08);
+    }
+
+    .toc-title {
+      margin: 0 0 12px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #25364b;
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 8px;
+      border-radius: 6px;
+      color: #39536f;
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .toc .level-3 {
+      padding-left: 22px;
+      color: #63748a;
+      font-size: 12px;
+    }
+
+    .toc .level-4 {
+      padding-left: 36px;
+      color: #7a8797;
+      font-size: 12px;
+    }
+
+    .doc {
+      min-width: 0;
+      padding: 38px 46px 52px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(25, 45, 70, .08);
+    }
+
+    h1, h2, h3, h4 {
+      color: #162235;
+      letter-spacing: 0;
+      scroll-margin-top: 28px;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      font-size: 34px;
+      line-height: 1.25;
+    }
+
+    h2 {
+      margin: 38px 0 16px;
+      padding-top: 18px;
+      border-top: 1px solid #e8eef5;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    h3 {
+      margin: 28px 0 12px;
+      font-size: 19px;
+      line-height: 1.4;
+    }
+
+    h4 {
+      margin: 20px 0 10px;
+      font-size: 16px;
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul, ol {
+      margin: 0 0 16px 22px;
+      padding: 0;
+    }
+
+    li { margin: 5px 0; }
+
+    blockquote {
+      margin: 12px 0 18px;
+      padding: 12px 16px;
+      border-left: 4px solid var(--accent);
+      background: #f5f9fd;
+      color: #31455e;
+    }
+
+    hr {
+      margin: 30px 0;
+      border: 0;
+      border-top: 1px solid #e8eef5;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 12px 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 13px;
+      line-height: 1.62;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th:last-child, td:last-child { border-right: 0; }
+    tr:last-child td { border-bottom: 0; }
+
+    th {
+      background: #eef4fa;
+      color: #243b55;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: var(--code);
+      color: #0d5ca7;
+      font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+      font-size: .92em;
+    }
+
+    .code-block {
+      margin: 14px 0 22px;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #d6e2ed;
+      background: #f7fafc;
+      color: #213145;
+    }
+
+    .code-block code {
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      white-space: pre;
+    }
+
+    .prd-image {
+      margin: 14px 0 24px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .prd-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .inline-prd-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        display: block;
+        padding: 16px;
+      }
+
+      .toc {
+        position: static;
+        max-height: none;
+        margin-bottom: 16px;
+      }
+
+      .doc {
+        padding: 26px 18px 36px;
+      }
+
+      h1 { font-size: 28px; }
+      h2 { font-size: 21px; }
+      table { min-width: 680px; }
+    }
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="toc">
+      <p class="toc-title">目录</p>
+        <a class="level-2" href="#版本更新日志">版本更新日志</a>
+        <a class="level-2" href="#一需求背景">一、需求背景</a>
+        <a class="level-2" href="#二需求目标">二、需求目标</a>
+        <a class="level-2" href="#三功能蓝图">三、功能蓝图</a>
+        <a class="level-2" href="#四需求核心业务流程图">四、需求核心业务流程图</a>
+        <a class="level-2" href="#五全局状态与权限定义">五、全局状态与权限定义</a>
+        <a class="level-3" href="#5.1-状态定义">5.1 状态定义</a>
+        <a class="level-3" href="#5.2-权限定义">5.2 权限定义</a>
+        <a class="level-2" href="#六需求功能清单">六、需求功能清单</a>
+        <a class="level-2" href="#七需求功能详述">七、需求功能详述</a>
+        <a class="level-3" href="#7.1-学生app分享赠课">7.1 学生App——分享赠课</a>
+        <a class="level-4" href="#7.1.1-选择海报">7.1.1 选择海报</a>
+        <a class="level-4" href="#7.1.2-分享社交平台">7.1.2 分享社交平台</a>
+        <a class="level-3" href="#7.2-订单管理-分享赠课-赠课审核">7.2 订单管理-分享赠课-赠课审核</a>
+        <a class="level-4" href="#7.2.1-赠课审核列表">7.2.1 赠课审核列表</a>
+        <a class="level-4" href="#7.2.2-自动赠课">7.2.2 自动赠课</a>
+        <a class="level-4" href="#7.2.3-查看订单">7.2.3 查看订单</a>
+        <a class="level-4" href="#7.2.4-赠课海报配置">7.2.4 赠课海报配置</a>
+        <a class="level-2" href="#8-非功能要求">8 非功能要求</a>
+        <a class="level-3" href="#8.1-消息通知">8.1 消息通知</a>
+        <a class="level-3" href="#8.2-性能要求">8.2 性能要求</a>
+        <a class="level-3" href="#8.3-安全要求">8.3 安全要求</a>
+        <a class="level-3" href="#8.4-兼容性要求">8.4 兼容性要求</a>
+        <a class="level-2" href="#十原型交付说明">十、原型交付说明</a>
+    </aside>
+    <main class="content">
+      <h1 id="海报分享赠课-prd">海报分享赠课 PRD</h1>
+      <h2 id="版本更新日志">版本更新日志</h2>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>序号</th>
+      <th>版本号</th>
+      <th>更新日期</th>
+      <th>变更摘要</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>1</td>
+      <td>V1.0</td>
+      <td>2026-08-17</td>
+      <td>1. 初始化海报分享赠课 PRD。&lt;br&gt;2. 学生 App「账号 / 分享赠课」去除本地图片上传，改为选择后台配置海报并分享到社交平台。&lt;br&gt;3. 后台「订单管理 / 分享赠课」新增「海报配置」Tab，支持新增、编辑、显示/隐藏、删除和拖拽排序。</td>
+      </tr>
+      <tr>
+      <td>2</td>
+      <td>V1.1</td>
+      <td>2026-08-17</td>
+      <td>1. 海报配置入口调整为「订单管理 / 分享赠课 / 赠课审核」右上角「赠课海报配置」。&lt;br&gt;2. 点击入口后以弹窗展示海报配置列表，列表左上角提供「新增海报」。&lt;br&gt;3. 列表默认显示状态海报在前、隐藏状态海报在后。&lt;br&gt;4. 明确删除海报不影响已有分享记录、赠课记录及海报快照。</td>
+      </tr>
+      <tr>
+      <td>3</td>
+      <td>V1.2</td>
+      <td>2026-08-17</td>
+      <td>1. 移动端改为大图预览加底部缩略图选择。&lt;br&gt;2. 底部固定展示 Facebook、Instagram、朋友圈、WhatsApp、保存，平台按钮进入对应发布页并携带当前海报。&lt;br&gt;3. 海报配置弹窗删除统计标签和排序说明，关闭按钮移至右下角，序号前使用三横拖拽图标。&lt;br&gt;4. 新增/编辑海报移除状态字段，新增默认显示，编辑保留原状态。</td>
+      </tr>
+      <tr>
+      <td>4</td>
+      <td>V1.3</td>
+      <td>2026-08-17</td>
+      <td>1. 分享赠课页恢复「剩余赠课数」「已获得赠课数」两张紧凑数据卡。&lt;br&gt;2. 「本月分享海报」右侧展示累计分享次数。&lt;br&gt;3. 删除海报区右上角当前海报标题文案。</td>
+      </tr>
+      <tr>
+      <td>5</td>
+      <td>V1.4</td>
+      <td>2026-08-19</td>
+      <td>1. 重排「七、需求功能详述」为学生端分享赠课与后台赠课审核两大模块。&lt;br&gt;2. 删除独立的账号入口详述章节。&lt;br&gt;3. 将自动审核通过归入「7.2.1 赠课审核列表」，并将海报新增/编辑、显示/隐藏、排序、删除统一归入「7.2.4 赠课海报配置」。</td>
+      </tr>
+      <tr>
+      <td>6</td>
+      <td>V1.5</td>
+      <td>2026-08-19</td>
+      <td>1. 学员端「本月分享海报」标题右侧不再展示分享次数标签。</td>
+      </tr>
+      <tr>
+      <td>7</td>
+      <td>V1.6</td>
+      <td>2026-08-20</td>
+      <td>1. 新增/编辑海报图片上限调整为单张不超过 500KB，并同步校验文案。&lt;br&gt;2. 赠课选择产品按剩余课次数从少到多排序，默认选择剩余次数最少的可赠产品。&lt;br&gt;3. 学生端分享入口统一展示为「朋友圈」并更新朋友圈图标。&lt;br&gt;4. 同步更新原型、PRD 和 Dev 导航数据。</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <hr>
+      <h2 id="一需求背景">一、需求背景</h2>
+      <p>原流程中，学生在普通话 App 通过选择本地图片进行分享，分享凭证还需学管人工审核。该方式存在以下问题：</p>
+      <ul>
+      <li>学员需要自行准备或选择本地图片，操作门槛较高。</li>
+      <li>学管需要逐条审核分享图片，耗时耗力。</li>
+      <li>分享内容不统一，销售部无法稳定控制对外传播素材质量。</li>
+      <li>活动海报更换依赖人工通知，缺少可配置、可排序、可下架的统一管理入口。</li>
+      </ul>
+      <p>销售部期望由后台统一配置分享海报，学生自主选择海报后直接分享到社交平台，从而减少人工审核成本并提升分享素材一致性。</p>
+      <hr>
+      <h2 id="二需求目标">二、需求目标</h2>
+      <ul>
+      <li>学生端：在「账号 / 分享赠课」中提供可选海报列表，学生选择海报后发起系统分享。</li>
+      <li>后台端：在「订单管理 / 分享赠课 / 赠课审核」右上角提供「赠课海报配置」入口，统一管理学生端可见海报。</li>
+      <li>运营端：支持活动海报按需新增、编辑、隐藏、删除和拖拽排序，最多添加 20 张，最多展示 10 张。</li>
+      <li>审核侧：新海报分享流程不再要求学生上传本地图片，降低学管逐图审核压力。</li>
+      <li>历史数据侧：保留已有分享凭证、赠课记录和海报快照追溯能力，不影响历史记录查看。</li>
+      </ul>
+      <hr>
+      <h2 id="三功能蓝图">三、功能蓝图</h2>
+      <p><img class="inline-prd-image" src="功能图.png" alt="海报分享赠课功能蓝图"></p>
+      <hr>
+      <h2 id="四需求核心业务流程图">四、需求核心业务流程图</h2>
+      <p><img class="inline-prd-image" src="PosterShare-Flow2.png" alt="海报分享赠课核心业务流程图"></p>
+      <hr>
+      <h2 id="五全局状态与权限定义">五、全局状态与权限定义</h2>
+      <blockquote>状态、权限与审计在此集中定义，功能详述中不重复展开。</blockquote>
+      <h3 id="5.1-状态定义">5.1 状态定义</h3>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>状态名称</th>
+      <th>前端表现</th>
+      <th>后台操作限制</th>
+      <th>触发条件</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>显示</td>
+      <td>学生端海报候选列表可见，按排序展示；最多展示前 10 张</td>
+      <td>可编辑、可隐藏、可删除、可在显示分组内排序</td>
+      <td>新增海报默认显示；后台从隐藏切换为显示</td>
+      </tr>
+      <tr>
+      <td>隐藏</td>
+      <td>学生端不可见；后台列表中位于显示海报之后</td>
+      <td>可编辑、可显示、可删除、可在隐藏分组内排序</td>
+      <td>后台从显示切换为隐藏</td>
+      </tr>
+      <tr>
+      <td>已删除</td>
+      <td>学生端不可见；后台有效配置列表移除</td>
+      <td>不可再编辑、显示或排序；历史记录保留快照</td>
+      <td>后台二次确认删除后逻辑删除</td>
+      </tr>
+      <tr>
+      <td>待审核</td>
+      <td>后台审核列表可见，等待人工审核</td>
+      <td>历史人工审核数据保留；新海报分享默认不再停留该状态</td>
+      <td>历史上传凭证或旧流程进入</td>
+      </tr>
+      <tr>
+      <td>待赠课</td>
+      <td>后台审核列表可见，操作列展示「去赠课」</td>
+      <td>系统校验未过期产品和剩余赠课数，满足条件后自动创建赠送订单</td>
+      <td>每月首条海报分享记录生成后默认进入</td>
+      </tr>
+      <tr>
+      <td>已赠课</td>
+      <td>后台审核列表展示赠课结果</td>
+      <td>仅可查看记录与订单结果</td>
+      <td>赠送订单创建并付款确认成功</td>
+      </tr>
+      <tr>
+      <td>不可赠</td>
+      <td>后台审核列表展示不可赠原因</td>
+      <td>不再创建赠送订单，仅可查看原因</td>
+      <td>不存在未过期产品或所有产品剩余赠课数均为 0</td>
+      </tr>
+      <tr>
+      <td>分享成功</td>
+      <td>生成成功分享记录，可参与赠课统计</td>
+      <td>记录关联海报 ID、海报标题快照、平台和学生 ID</td>
+      <td>平台发布结果回传成功</td>
+      </tr>
+      <tr>
+      <td>分享取消</td>
+      <td>不发放赠课，可记录取消结果</td>
+      <td>不生成成功记录</td>
+      <td>用户在平台发布前取消</td>
+      </tr>
+      <tr>
+      <td>分享失败</td>
+      <td>不发放赠课，前端提示可重试</td>
+      <td>不生成成功记录或记录失败结果</td>
+      <td>平台回传失败、网络失败或系统异常</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <h3 id="5.2-权限定义">5.2 权限定义</h3>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>权限项</th>
+      <th>适用角色</th>
+      <th>可执行操作</th>
+      <th>限制说明</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>学生端读取海报</td>
+      <td>学生、家长</td>
+      <td>查看显示状态海报、切换海报、分享、保存</td>
+      <td>仅可读取 <code>status=show</code> 且未删除的海报，不可访问隐藏或删除海报</td>
+      </tr>
+      <tr>
+      <td>赠课海报配置</td>
+      <td>销售/运营、后台管理员</td>
+      <td>新增、编辑、显示/隐藏、删除、同状态排序</td>
+      <td>需具备「订单管理 / 分享赠课 / 赠课海报配置」权限</td>
+      </tr>
+      <tr>
+      <td>分享赠课记录查看</td>
+      <td>学管、后台管理员</td>
+      <td>查看分享记录、赠课结果与历史快照</td>
+      <td>删除海报不影响已有记录追溯</td>
+      </tr>
+      <tr>
+      <td>操作审计</td>
+      <td>后台管理员、系统</td>
+      <td>记录配置操作日志</td>
+      <td>新增、编辑、显示/隐藏、删除、排序均需记录操作人、时间和变更内容</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <hr>
+      <h2 id="六需求功能清单">六、需求功能清单</h2>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>序号</th>
+      <th>终端</th>
+      <th>角色</th>
+      <th>主模块</th>
+      <th>子模块</th>
+      <th>功能点</th>
+      <th>功能说明</th>
+      <th>优先级</th>
+      <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>1</td>
+      <td>学生App</td>
+      <td>学生/家长</td>
+      <td>账号</td>
+      <td>分享赠课入口</td>
+      <td>进入分享赠课</td>
+      <td>保留账号页原「分享赠课」入口，点击后进入分享赠课页</td>
+      <td>高</td>
+      <td>入口文案与原页面保持一致</td>
+      </tr>
+      <tr>
+      <td>2</td>
+      <td>学生App</td>
+      <td>学生/家长</td>
+      <td>分享赠课</td>
+      <td>赠课数据</td>
+      <td>展示赠课数据卡</td>
+      <td>展示「剩余赠课数」「已获得赠课数」两张紧凑数据卡</td>
+      <td>高</td>
+      <td>V1.3 恢复</td>
+      </tr>
+      <tr>
+      <td>3</td>
+      <td>学生App</td>
+      <td>学生/家长</td>
+      <td>分享赠课</td>
+      <td>本月分享海报</td>
+      <td>海报选择与预览</td>
+      <td>展示后台显示状态海报，大图预览当前选中项，底部缩略图横向切换</td>
+      <td>高</td>
+      <td>最多展示 10 张</td>
+      </tr>
+      <tr>
+      <td>4</td>
+      <td>学生App</td>
+      <td>学生/家长</td>
+      <td>分享赠课</td>
+      <td>社交分享</td>
+      <td>平台发布</td>
+      <td>点击 Facebook、Instagram、朋友圈、WhatsApp 进入对应发布前确认页并携带当前海报</td>
+      <td>高</td>
+      <td>平台页图片必须来自当前选择</td>
+      </tr>
+      <tr>
+      <td>5</td>
+      <td>学生App</td>
+      <td>学生/家长</td>
+      <td>分享赠课</td>
+      <td>本地保存</td>
+      <td>保存海报</td>
+      <td>点击保存将当前选中海报保存到本地</td>
+      <td>中</td>
+      <td>不生成平台分享记录</td>
+      </tr>
+      <tr>
+      <td>6</td>
+      <td>中文路Web后端</td>
+      <td>学管、后台管理员</td>
+      <td>订单管理</td>
+      <td>赠课审核</td>
+      <td>筛选与审核列表</td>
+      <td>增加分享渠道筛选；列表在所属顾问后展示分享渠道，分享凭证为学生选择的海报</td>
+      <td>高</td>
+      <td>渠道包含 Facebook、Instagram、朋友圈、WhatsApp</td>
+      </tr>
+      <tr>
+      <td>7</td>
+      <td>中文路Web后端</td>
+      <td>销售/运营、后台管理员</td>
+      <td>赠课海报配置</td>
+      <td>海报列表</td>
+      <td>查看配置列表</td>
+      <td>弹窗展示海报列表，显示海报在前、隐藏海报在后</td>
+      <td>高</td>
+      <td>弹窗左上角新增，右下角关闭</td>
+      </tr>
+      <tr>
+      <td>8</td>
+      <td>中文路Web后端</td>
+      <td>销售/运营、后台管理员</td>
+      <td>赠课海报配置</td>
+      <td>新增/编辑</td>
+      <td>保存海报配置</td>
+      <td>支持标题、海报图片、备注；新增默认显示，编辑保留原状态</td>
+      <td>高</td>
+      <td>标题 30 字内，图片 500KB 内</td>
+      </tr>
+      <tr>
+      <td>9</td>
+      <td>中文路Web后端</td>
+      <td>销售/运营、后台管理员</td>
+      <td>赠课海报配置</td>
+      <td>状态管理</td>
+      <td>显示/隐藏</td>
+      <td>在列表操作列切换海报状态，切换后移动到对应状态分组</td>
+      <td>高</td>
+      <td>显示状态最多 10 张</td>
+      </tr>
+      <tr>
+      <td>10</td>
+      <td>中文路Web后端</td>
+      <td>销售/运营、后台管理员</td>
+      <td>赠课海报配置</td>
+      <td>排序</td>
+      <td>拖拽排序</td>
+      <td>支持同一状态分组内拖拽排序，影响学生端展示顺序</td>
+      <td>高</td>
+      <td>禁止跨状态分组拖拽</td>
+      </tr>
+      <tr>
+      <td>11</td>
+      <td>中文路Web后端</td>
+      <td>销售/运营、后台管理员</td>
+      <td>赠课海报配置</td>
+      <td>删除</td>
+      <td>删除海报</td>
+      <td>二次确认后逻辑删除，不影响已有分享记录、赠课记录和海报快照</td>
+      <td>高</td>
+      <td>历史记录继续可查</td>
+      </tr>
+      <tr>
+      <td>12</td>
+      <td>中文路Web后端</td>
+      <td>系统</td>
+      <td>数据接口</td>
+      <td>海报与分享记录</td>
+      <td>数据扩展</td>
+      <td>提供学生端海报列表、后台配置列表，并扩展分享记录字段</td>
+      <td>高</td>
+      <td>需记录海报 ID、标题快照、平台、时间、结果</td>
+      </tr>
+      <tr>
+      <td>13</td>
+      <td>中文路Web后端</td>
+      <td>系统</td>
+      <td>订单管理</td>
+      <td>待赠课</td>
+      <td>自动创建赠送订单</td>
+      <td>待赠课记录满足产品与剩余赠课数条件时，自动进入选择产品、订单确认、付款确认流程</td>
+      <td>高</td>
+      <td>不满足条件时状态改为不可赠</td>
+      </tr>
+      <tr>
+      <td>14</td>
+      <td>中文路Web后端</td>
+      <td>学管、后台管理员</td>
+      <td>订单管理</td>
+      <td>订单列表</td>
+      <td>查看赠送订单</td>
+      <td>已赠课记录可查看订单；订单列表新增支付成功的赠送订单，隐藏编辑按钮</td>
+      <td>高</td>
+      <td>菜单路径：订单管理 / 订单列表</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <hr>
+      <h2 id="七需求功能详述">七、需求功能详述</h2>
+      <h3 id="7.1-学生app分享赠课">7.1 学生App——分享赠课</h3>
+      <p><strong>对应页面</strong>：</p>
+      <ul>
+      <li>前端：<code>index.html</code>，分享赠课页。</li>
+      <li>进入路径：账号页保留原「分享赠课」入口，点击后进入分享赠课页；账号入口不再作为本章独立功能节点。</li>
+      </ul>
+      <p><strong>用户故事</strong>：</p>
+      <blockquote>作为一个学生或家长，我想要从后台配置的海报中选择一张并分享到社交平台，以便完成分享动作并获得赠课机会。</blockquote>
+      <p><strong>前置条件</strong>：</p>
+      <ul>
+      <li>用户已登录学生 App。</li>
+      <li>用户可通过账号页原「分享赠课」入口进入分享赠课页。</li>
+      <li>后台存在未删除海报配置，学生端仅展示显示状态海报。</li>
+      </ul>
+      <h4 id="7.1.1-选择海报">7.1.1 选择海报</h4>
+      <p><strong>核心逻辑</strong>：</p>
+      <ul>
+      <li>页面以一张大图展示当前选中海报，下方横向展示后台显示状态海报缩略图。</li>
+      <li>默认选中后台排序第一张显示状态海报；点击缩略图后，大图和后续平台携带图片同步更新。</li>
+      <li>学生端最多展示 10 张显示状态海报，按后台配置排序展示。</li>
+      <li>切换海报仅改变当前选中项，不生成分享记录，不消耗赠课机会。</li>
+      <li>点击保存时保存当前选中海报原图，保存动作不生成平台分享记录。</li>
+      </ul>
+      <p><strong>后置条件</strong>：</p>
+      <ul>
+      <li>当前选中海报作为 7.1.2 分享社交平台的图片来源。</li>
+      <li>若用户离开平台发布页再返回分享赠课页，保留原海报选中状态。</li>
+      </ul>
+      <p><strong>字段说明</strong>：</p>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>序号</th>
+      <th>字段名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>字段长度</th>
+      <th>数据来源</th>
+      <th>数据区间</th>
+      <th>提示文案</th>
+      <th>其他</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>1</td>
+      <td>poster_id</td>
+      <td>短文本/整数</td>
+      <td>是</td>
+      <td>-</td>
+      <td>海报列表接口</td>
+      <td>未删除且显示状态</td>
+      <td>-</td>
+      <td>当前选择海报 ID</td>
+      </tr>
+      <tr>
+      <td>2</td>
+      <td>title</td>
+      <td>短文本</td>
+      <td>是</td>
+      <td>≤ 30 字</td>
+      <td>后台配置</td>
+      <td>-</td>
+      <td>-</td>
+      <td>学生端不在海报区右上角展示</td>
+      </tr>
+      <tr>
+      <td>3</td>
+      <td>image_url</td>
+      <td>附件（图片）</td>
+      <td>是</td>
+      <td>单张≤500KB</td>
+      <td>后台配置</td>
+      <td>JPEG/JPG/PNG</td>
+      <td>暂无可分享海报，请稍后再试</td>
+      <td>用于大图与缩略图</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p><strong>边界条件与异常处理</strong>：</p>
+      <ul>
+      <li>无显示状态海报时，展示空状态「暂无可分享海报，请稍后再试」，不展示分享按钮或置灰。</li>
+      <li>海报图片加载失败时，当前海报展示加载失败占位，允许切换其他海报。</li>
+      <li>学生端接口返回超过 10 张时，仅展示前 10 张，仍按后台排序。</li>
+      <li>保存时浏览器或系统阻止下载，提示保存失败并允许重新点击保存。</li>
+      </ul>
+      <h4 id="7.1.2-分享社交平台">7.1.2 分享社交平台</h4>
+      <p><strong>对应页面</strong>：</p>
+      <ul>
+      <li>前端：<code>index.html</code>，分享赠课页底部操作栏。</li>
+      <li>前端参考页：Facebook 新帖子页、Instagram 新帖子页、微信朋友圈发表页、WhatsApp 动态页、本地保存。</li>
+      </ul>
+      <p><strong>核心逻辑</strong>：</p>
+      <ul>
+      <li>底部固定展示 Facebook、Instagram、朋友圈、WhatsApp、保存五个操作，按该顺序排列；每项图标在上、文字在下。</li>
+      <li>点击 Facebook、Instagram、朋友圈、WhatsApp 后，进入对应发布前确认页并携带当前选中海报。</li>
+      <li>分享成功判定。以用户点击社交分享按钮，且成功调起社交平台的分享面板为准,即 Facebook 进入帖子发布页，Instagram 进入新帖子发布页，朋友圈进入微信朋友圈发布页，WhatsApp 进入动态发布页。比如用户未安装 Facebook，提示：未检测到 Facebook，可复制海报或保存后手动分享。</li>
+      <li>每月第一条分享海报生成一条赠课审核记录；每月第 2 条及以后分享海报不生成赠课审核记录。由海报分享生成的赠课审核记录，其分享凭证为学生当前选择的海报快照，分享渠道为学生点击的平台渠道。</li>
+      <li>点击保存后触发系统文件保存/下载能力，文件名优先使用海报标题并保留原图片扩展名。</li>
+      </ul>
+      <p><strong>平台发布页与保存规则</strong>：</p>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>操作</th>
+      <th>目标页</th>
+      <th>携带内容</th>
+      <th>参考图</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>Facebook</td>
+      <td>Facebook「新帖子」页</td>
+      <td>当前选中海报图</td>
+      <td><code>assets/facebook-帖子分享.jpg</code></td>
+      </tr>
+      <tr>
+      <td>Instagram</td>
+      <td>Instagram「新帖子」页</td>
+      <td>当前选中海报图</td>
+      <td><code>assets/instagram-帖子分享.jpg</code></td>
+      </tr>
+      <tr>
+      <td>朋友圈</td>
+      <td>用户微信朋友圈发表页</td>
+      <td>当前选中海报图</td>
+      <td><code>assets/微信-朋友圈分享.jpg</code></td>
+      </tr>
+      <tr>
+      <td>WhatsApp</td>
+      <td>用户 WhatsApp 动态页</td>
+      <td>当前选中海报图</td>
+      <td><code>assets/Whatsapp-动态分享.png</code></td>
+      </tr>
+      <tr>
+      <td>保存</td>
+      <td>系统本地保存</td>
+      <td>当前选中海报原图</td>
+      <td>无</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p><strong>字段说明</strong>：</p>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>序号</th>
+      <th>字段名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>字段长度</th>
+      <th>数据来源</th>
+      <th>数据区间</th>
+      <th>提示文案</th>
+      <th>其他</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>1</td>
+      <td>分享渠道</td>
+      <td>单选</td>
+      <td>是</td>
+      <td>-</td>
+      <td>前端操作</td>
+      <td>Facebook/Instagram/朋友圈/WhatsApp</td>
+      <td>-</td>
+      <td>保存不写入该字段</td>
+      </tr>
+      <tr>
+      <td>2</td>
+      <td>poster_id</td>
+      <td>短文本/整数</td>
+      <td>是</td>
+      <td>-</td>
+      <td>当前选中海报</td>
+      <td>-</td>
+      <td>-</td>
+      <td>分享记录关联</td>
+      </tr>
+      <tr>
+      <td>3</td>
+      <td>海报标题</td>
+      <td>短文本</td>
+      <td>是</td>
+      <td>≤ 30 字</td>
+      <td>当前选中海报</td>
+      <td>-</td>
+      <td>-</td>
+      <td>分享时标题快照</td>
+      </tr>
+      <tr>
+      <td>4</td>
+      <td>分享时间</td>
+      <td>日期时间</td>
+      <td>是</td>
+      <td>-</td>
+      <td>系统生成</td>
+      <td><code>yyyy-mm-dd hh:mm:ss</code></td>
+      <td>-</td>
+      <td>分享发生时间</td>
+      </tr>
+      <tr>
+      <td>5</td>
+      <td>分享结果</td>
+      <td>单选</td>
+      <td>是</td>
+      <td>-</td>
+      <td>系统判断</td>
+      <td>已成功/未成功</td>
+      <td>分享失败，请重试</td>
+      <td>影响赠课统计</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p><strong>边界条件与异常处理</strong>：</p>
+      <ul>
+      <li>社交平台打开失败时，停留在分享赠课页并提示稍后重试。</li>
+      </ul>
+      <hr>
+      <h3 id="7.2-订单管理-分享赠课-赠课审核">7.2 订单管理-分享赠课-赠课审核</h3>
+      <p><strong>对应页面</strong>：</p>
+      <ul>
+      <li>后台：<code>admin.html</code>，订单管理 / 分享赠课 / 赠课审核。</li>
+      </ul>
+      <p><strong>用户故事</strong>：</p>
+      <blockquote>作为学管或后台管理员，我想要查看学生分享海报记录并自动完成符合条件的赠课订单，以便减少人工审核和手动下单成本。</blockquote>
+      <p><strong>前置条件</strong>：</p>
+      <ul>
+      <li>后台用户已登录。</li>
+      <li>用户具备「订单管理 / 分享赠课 / 赠课审核」的菜单权限。</li>
+      <li>每月第一条海报分享已生成赠课审核记录。</li>
+      </ul>
+      <h4 id="7.2.1-赠课审核列表">7.2.1 赠课审核列表</h4>
+      <p><strong>筛选项</strong>：</p>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>筛选项</th>
+      <th>控件类型</th>
+      <th>选项/范围</th>
+      <th>说明</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>分享渠道</td>
+      <td>多选</td>
+      <td>Facebook、Instagram、朋友圈、WhatsApp</td>
+      <td>新增筛选项，用于筛选不同平台分享记录</td>
+      </tr>
+      <tr>
+      <td>审核状态</td>
+      <td>单选</td>
+      <td>待审核、待赠课、已赠课、不可赠</td>
+      <td>1.新海报分享自动通过审核后进入待赠课 2.增加不可赠状态</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p><strong>列表更新</strong>：</p>
+      <ul>
+      <li>审核列表在「所属顾问」后增加「分享渠道」列。</li>
+      <li>由分享海报提交生成的记录，分享凭证为学生当前选择的海报快照，分享渠道为学生点击的平台渠道。</li>
+      <li>点击审核列表中的分享凭证缩略图，应弹窗打开对应凭证大图，图片来源仍为该记录保存的海报快照。</li>
+      <li>待赠课、已赠课、不可赠记录均支持点击「查看」打开赠课详情；赠课详情以右侧边栏弹窗展示，不使用全屏弹窗。</li>
+      <li>赠课详情需展示分享凭证、学员、所属学管、月份、上传时间、审核状态、赠课次数、审核备注、审核人和审核通过时间，审核状态需与点击行状态一致。</li>
+      <li>赠课审核页面右上角展示「赠课海报配置」按钮；点击后打开 7.2.4 赠课海报配置弹窗。</li>
+      </ul>
+      <p><strong>自动审核通过</strong>：</p>
+      <ul>
+      <li>新海报分享流程不再要求学管逐图人工审核。</li>
+      <li>每月第一条成功海报分享生成赠课审核记录后，系统自动将记录由「待审核」流转为「待赠课」。</li>
+      <li>自动审核通过的审核人展示为「中文路后台」，审核通过时间取系统背景时间；格式为yyyy-mm-dd hh:mm:ss,比如「2026-08-17 16:11:06」。</li>
+      <li>每月第 2 条及以后成功海报分享仅生成分享记录，不生成赠课审核记录，不触发自动审核通过。</li>
+      <li>历史上传凭证或旧流程进入的待审核数据继续保留原人工审核能力，不受新海报分享流程影响。</li>
+      </ul>
+      <p><strong>字段说明</strong>：</p>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>序号</th>
+      <th>字段名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>字段长度</th>
+      <th>数据来源</th>
+      <th>数据区间</th>
+      <th>提示文案</th>
+      <th>其他</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>1</td>
+      <td>分享渠道</td>
+      <td>单选</td>
+      <td>是</td>
+      <td>-</td>
+      <td>学生端点击渠道</td>
+      <td>Facebook/Instagram/朋友圈/WhatsApp</td>
+      <td>-</td>
+      <td>筛选项与列表列均展示</td>
+      </tr>
+      <tr>
+      <td>2</td>
+      <td>分享凭证</td>
+      <td>附件（图片）</td>
+      <td>是</td>
+      <td>-</td>
+      <td>学生当前选择海报</td>
+      <td>后台显示状态海报快照</td>
+      <td>-</td>
+      <td>列表展示缩略图</td>
+      </tr>
+      <tr>
+      <td>3</td>
+      <td>审核状态</td>
+      <td>单选</td>
+      <td>是</td>
+      <td>-</td>
+      <td>系统流转/人工审核</td>
+      <td>待审核/待赠课/已赠课/不可赠</td>
+      <td>-</td>
+      <td>新海报分享自动通过审核后进入待赠课</td>
+      </tr>
+      <tr>
+      <td>4</td>
+      <td>审核人</td>
+      <td>短文本</td>
+      <td>是</td>
+      <td>-</td>
+      <td>系统/人工审核</td>
+      <td>中文路后台/后台用户姓名</td>
+      <td>-</td>
+      <td>系统审核时固定为「中文路后台」</td>
+      </tr>
+      <tr>
+      <td>5</td>
+      <td>审核通过时间</td>
+      <td>日期时间</td>
+      <td>是</td>
+      <td>-</td>
+      <td>系统背景时间</td>
+      <td><code>yyyy-mm-dd hh:mm:ss</code></td>
+      <td>-</td>
+      <td>原型示例为 2026-08-17 16:11:06</td>
+      </tr>
+      <tr>
+      <td>6</td>
+      <td>审核备注</td>
+      <td>长文本</td>
+      <td>否</td>
+      <td>-</td>
+      <td>系统状态/后台处理</td>
+      <td>待赠课/已赠/不可赠原因</td>
+      <td>-</td>
+      <td>赠课详情展示</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p><strong>边界条件与异常处理</strong>：</p>
+      <ul>
+      <li>分享凭证原图加载失败时，大图弹窗展示加载失败状态，并允许关闭后返回列表。</li>
+      <li>点击「查看」时，赠课详情的审核状态必须读取当前行状态；待赠课、已赠课、不可赠之间不得串状态或沿用上一次打开的状态。</li>
+      <li>用户无赠课审核查看权限时，不展示审核列表或提示无权限。</li>
+      </ul>
+      <h4 id="7.2.2-自动赠课">7.2.2 自动赠课</h4>
+      <p><strong>待赠课前置条件（均需满足）</strong>：</p>
+      <ul>
+      <li>当前学生存在未过期产品。</li>
+      <li>任一未过期产品的剩余赠课数 ≥ 1。</li>
+      </ul>
+      <p><strong>核心逻辑</strong>：</p>
+      <ul>
+      <li>待赠课记录满足全部前置条件时，系统自动进入赠送订单创建流程；若不满足全部前置条件，则将审核状态修改为「不可赠」，并备注说明理由，比如产品剩余课次数不足，或者暂无有效期内产品可赠 或无可赠产品；</li>
+      <li>自动创建赠送订单时，系统自动读取该申请的学生编号并代入订单流程。</li>
+      <li>选择产品页的产品选项范围：<br>1）系统收集该学生所有未过期产品，2）剩余赠课数≥ 1<br>3）上课时长对等：例子1：已购45min的产品，只能选择45min的赠堂产品。比例2：已购30min、45min的产品，可选对应的30min、45min的赠堂产品</li>
+      <li>优先选择：优先选择所购产品剩余课次数最少的对应赠堂产品。单选。</li>
+      <li>示例：张三已购产品 A（25min）、产品 B（25min）、产品 C（30min）、产品 D（45min），对应剩余赠课数为 2、1、0、3；对应的剩余课次数为5,3,2,1。 则产品 C 不予计算，选择产品页可展示45min、25min的赠堂产品，默认选择剩余课次数为最少的45min赠堂产品</li>
+      <li>产品名称按「分享贈堂-{课时分钟}」展示；适用校区取学生购买产品的校区。选择产品页严格参考 新增赠送订单-选择产品。</li>
+      <li>可选的分享赠堂产品见<img class="inline-prd-image" src="分享赠堂产品.png" alt="分享赠堂产品">，当前就5个。</li>
+      <li>订单确认页字段默认值：订单类型为「赠送」、交易类型为「常规」、订单归属为学生购买产品的所属顾问、订单来源为「系统下单」、赠送课次数默认代入 1，然后自动提交订单。订单确认页严格参考 新增赠送订单-订单确认。</li>
+      <li>付款确认页字段默认值：付款链接为「后台自选」、付款类型为「全款」、支付方式为「线下汇款」、收款账户为「赠送账户」、实际支付时间取当前系统背景时间、备注默认取产品名称。付款确认页样式与字段布局严格参考 新增赠送订单-付款。</li>
+      </ul>
+      <p><strong>后置条件</strong>：</p>
+      <ul>
+      <li>自动创建赠送订单并完成付款确认后，审核状态更新为已赠课，赠课数展示 +1 课。学生购买的指定产品已获赠课数+1，剩余赠课数-1。比如张三海报购买A产品：普通话25min的课程，通过海报分享，获得1节25min的赠课，这个A产品已获赠课数+1，剩余赠课数-1。</li>
+      <li>已赠课后，需要在「订单管理 / 订单列表」新增一条赠送订单；订单状态为「支付成功」，订单类型为「赠送」，支付方式为「线下汇款」，支付金额为 0。已赠课订单操作列的编辑按钮隐藏。</li>
+      <li>不满足待赠课前置条件时，审核状态更新为不可赠，并保留不可赠原因。</li>
+      <li>审核记录保留分享凭证海报快照、分享渠道、学生编号、所属顾问、处理时间和订单结果。</li>
+      </ul>
+      <p><strong>边界条件与异常处理</strong>：</p>
+      <ul>
+      <li>学生均为已过期产品时，待赠课记录自动更新为不可赠，原因：已过期产品不可赠。</li>
+      <li>学生所有未过期产品剩余赠课数均为 0 时，待赠课记录自动更新为不可赠，原因：剩余赠课数不足。</li>
+      <li>学生购买90min等产品，无对等上课时长的赠堂产品，待赠课记录自动更新为不可赠，原因：无可赠堂产品。</li>
+      <li>选择产品时剩余剩余赠课数为 0 的产品不展示为可选项。</li>
+      <li>选择产品时若用户切换产品，应取消原产品选中状态，确保页面始终只有一个产品被选中。</li>
+      <li>自动创建订单、提交订单或付款确认失败时，保留待赠课状态并提示后台重试。</li>
+      </ul>
+      <h4 id="7.2.3-查看订单">7.2.3 查看订单</h4>
+      <p><strong>核心逻辑</strong>：</p>
+      <ul>
+      <li>已赠课记录的操作列增加「查看订单」，点击后打开订单详情；订单详情严格参考 <code>订单管理-订单详情</code>。</li>
+      <li>赠送订单在「订单管理 / 订单列表」中可查看，订单列表新增支付成功的赠送订单记录。</li>
+      <li>赠送订单在订单列表中隐藏「编辑」按钮，仅保留订单查看能力。</li>
+      <li>分享赠课生成的赠送订单详情中，购买产品表的「课次数」展示为 0，「赠送课次」展示为 1。</li>
+      <li>订单详情需展示订单状态、订单类型、支付方式、支付金额、产品名称、学员信息、订单归属和关联赠课审核记录。</li>
+      </ul>
+      <p><strong>边界条件与异常处理</strong>：</p>
+      <ul>
+      <li>已赠课记录缺少关联订单时，「查看订单」提示订单异常并允许后台重试查询。</li>
+      <li>订单详情加载失败时，保留当前审核列表筛选状态并提示重试。</li>
+      </ul>
+      <h4 id="7.2.4-赠课海报配置">7.2.4 赠课海报配置</h4>
+      <p><strong>对应页面</strong>：</p>
+      <ul>
+      <li>后台：<code>admin.html</code>，订单管理 / 分享赠课 / 赠课审核 / 赠课海报配置弹窗。</li>
+      <li>后台：赠课海报配置弹窗 / 新增海报弹窗 / 编辑海报弹窗 / 删除确认弹窗。</li>
+      </ul>
+      <p><strong>前置条件</strong>：</p>
+      <ul>
+      <li>用户具备订单管理 -分享赠课的菜单权限</li>
+      <li>用户具备海报配置的操作权限</li>
+      </ul>
+      <p><strong>配置列表</strong>：</p>
+      <ul>
+      <li>赠课审核页面右上角展示「赠课海报配置」按钮；点击后以弹窗展示海报配置列表。</li>
+      <li>配置弹窗内展示未删除海报，显示状态海报在前、隐藏状态海报在后。</li>
+      <li>「新增海报」位于配置列表左上角，「关闭」按钮位于弹窗右下角。</li>
+      <li>配置列表展示序号、海报图片、标题、状态、备注、更新时间和操作。</li>
+      <li>序号左侧展示三横拖拽图标；按住图标可拖拽调整。</li>
+      </ul>
+      <p><strong>新增/编辑海报</strong>：</p>
+      <ul>
+      <li>新增入口为赠课海报配置弹窗左上角「新增海报」按钮；编辑入口为列表操作「编辑」。</li>
+      <li>表单包含标题、海报图片、备注，不提供状态字段。</li>
+      <li>标题必填，不超过 30 个字。</li>
+      <li>海报图片新增必填，编辑时可不重新上传；支持 JPEG、JPG、PNG 格式，单张图片不超过 500KB；推荐尺寸宽 750px、高 1800px。</li>
+      <li>新增海报默认状态为「显示」；编辑海报保留原状态。</li>
+      <li>前端即时校验，后端必须二次校验。</li>
+      <li>保存成功后返回海报配置列表；显示状态海报会进入学生端候选列表。</li>
+      <li>最多新增20张海报，若总数超过20张，弹窗提示“当前最多可创建20张海报”</li>
+      </ul>
+      <p><strong>显示/隐藏海报</strong>：</p>
+      <ul>
+      <li>操作列支持「显示 / 隐藏」切换。</li>
+      <li>状态由隐藏改为显示后，自动移动至显示分组；状态由显示改为隐藏后，自动移动至隐藏分组。</li>
+      <li>显示状态海报最多 10 张，超过上限时弹窗提示“当前最多显示10张海报，你可隐藏部分海报再试”</li>
+      <li>隐藏状态海报保留后台记录，但不在学生端展示。</li>
+      </ul>
+      <p><strong>排序</strong>：</p>
+      <ul>
+      <li>支持在同一状态分组内拖拽表格行排序。</li>
+      <li>拖拽完成后即时更新页面序号并保存排序值。</li>
+      <li>显示状态固定排在隐藏状态之前，禁止将隐藏海报拖入显示分组前方。</li>
+      <li>显示状态和排序变化会同步影响学生端海报展示顺序。</li>
+      </ul>
+      <p><strong>删除海报</strong>：</p>
+      <ul>
+      <li>删除操作需二次确认。</li>
+      <li>删除确认文案需明确：删除不影响已有分享记录、赠课记录及海报快照。</li>
+      <li>后端执行逻辑删除，保留历史记录关联、海报标题及图片快照和审计信息。</li>
+      <li>删除后仅从后台有效配置列表和学生端候选列表移除，不再用于新的分享。</li>
+      <li>已生成的分享记录、赠课结果和历史审核详情继续正常展示与追溯。</li>
+      </ul>
+      <p><strong>海报配置字段说明</strong>：</p>
+      <div class="table-wrap">
+      <table>
+      <thead>
+      <tr>
+      <th>序号</th>
+      <th>字段名称</th>
+      <th>类型</th>
+      <th>是否必填</th>
+      <th>字段长度</th>
+      <th>数据来源</th>
+      <th>数据区间</th>
+      <th>提示文案</th>
+      <th>其他</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>1</td>
+      <td>海报id</td>
+      <td>短文本</td>
+      <td>是</td>
+      <td>-</td>
+      <td>系统生成</td>
+      <td>-</td>
+      <td>-</td>
+      <td>海报 ID</td>
+      </tr>
+      <tr>
+      <td>2</td>
+      <td>标题</td>
+      <td>短文本</td>
+      <td>是</td>
+      <td>≤ 30 字</td>
+      <td>用户输入</td>
+      <td>-</td>
+      <td>请输入海报标题</td>
+      <td>超过 30 字保存失败</td>
+      </tr>
+      <tr>
+      <td>3</td>
+      <td>海报图片</td>
+      <td>附件（图片）</td>
+      <td>新增是；编辑否</td>
+      <td>单张≤500KB</td>
+      <td>用户上传</td>
+      <td>JPEG/JPG/PNG；推荐 750px × 1800px</td>
+      <td>请上传海报图片</td>
+      <td>编辑为空时保留原图</td>
+      </tr>
+      <tr>
+      <td>4</td>
+      <td>备注</td>
+      <td>段文本</td>
+      <td>否</td>
+      <td>不超过100字</td>
+      <td>用户输入</td>
+      <td>-</td>
+      <td>-</td>
+      <td>仅用于运营说明，不展示给学生</td>
+      </tr>
+      <tr>
+      <td>5</td>
+      <td>显示状态</td>
+      <td>单选</td>
+      <td>是</td>
+      <td>-</td>
+      <td>系统默认/后台操作</td>
+      <td>显示/隐藏</td>
+      <td>显示海报已达上限</td>
+      <td>至少一个显示</td>
+      </tr>
+      <tr>
+      <td>6</td>
+      <td>排序</td>
+      <td>整数</td>
+      <td>是</td>
+      <td>-</td>
+      <td>拖拽排序/系统计算</td>
+      <td>同状态内从 1 开始</td>
+      <td>仅支持同状态内排序</td>
+      <td>同状态分组内升序</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p><strong>边界条件与异常处理</strong>：</p>
+      <ul>
+      <li>图片格式错误时，提示仅支持 JPEG/JPG/PNG。</li>
+      <li>图片超过 500KB 时，提示图片大小不能超过 500KB。</li>
+      <li>将隐藏海报拖至显示分组时，不改变分组顺序，并提示仅支持同状态内排序。</li>
+      <li>排序保存失败时，前端回滚到操作前顺序或提示刷新重试。</li>
+      <li>删除已有分享记录的海报时，历史分享、赠课记录及海报快照仍可追溯。</li>
+      <li>后台列表接口需过滤已删除海报，但历史记录查询可通过快照继续展示。</li>
+      </ul>
+      <hr>
+      <h2 id="8-非功能要求">8 非功能要求</h2>
+      <h3 id="8.1-消息通知">8.1 消息通知</h3>
+      <p>本期不新增强制性的 App 推送、短信、邮箱或会员中心通知。页面内轻提示按以下规则处理：</p>
+      <p>暂无</p>
+      <h3 id="8.2-性能要求">8.2 性能要求</h3>
+      <ul>
+      <li>学生端海报列表首屏加载不超过 3 秒。</li>
+      <li>后台海报配置列表首屏加载不超过 3 秒。</li>
+      <li>图片需使用 CDN 或对象存储，支持压缩缩略图，避免直接加载后台原图私有路径。</li>
+      <li>缩略图与大图应分别使用适合尺寸的资源，降低移动端加载压力。</li>
+      <li>后台配置操作需防重复提交，避免短时间重复保存或重复排序。</li>
+      </ul>
+      <h3 id="8.3-安全要求">8.3 安全要求</h3>
+      <ul>
+      <li><strong>文件安全</strong>：上传接口需校验 MIME、扩展名和文件大小；仅支持 JPEG、JPG、PNG，单张图片不超过 500KB。</li>
+      <li><strong>访问控制</strong>：仅具备「订单管理 / 分享赠课 / 赠课海报配置」权限的后台用户可新增、编辑、删除、排序海报。</li>
+      <li><strong>数据隔离</strong>：学生端仅可读取显示状态且未删除海报，不可访问隐藏或删除海报。</li>
+      <li><strong>路径保护</strong>：学生端分享行为不得暴露后台原图存储私有路径。</li>
+      <li><strong>审计追溯</strong>：显示/隐藏、删除、排序、新增、编辑均需记录操作日志，至少包含操作人、操作时间、操作类型、海报 ID、变更前后关键字段。</li>
+      <li><strong>接口幂等</strong>：新增、删除、排序和状态切换接口需防重复提交，避免重复记录和排序错乱。</li>
+      </ul>
+      <h3 id="8.4-兼容性要求">8.4 兼容性要求</h3>
+      <ul>
+      <li>与历史分享凭证记录兼容：不删除历史分享凭证记录，历史记录仍可追溯。</li>
+      <li>与历史赠课记录兼容：删除海报不影响已有分享记录、赠课记录及海报快照。</li>
+      <li>与订单赠课数规则兼容：本期不改造订单赠课数计算规则。</li>
+      <li>与现有账号页兼容：账号页「分享赠课」入口保留，底部导航和账号页其他功能保持不变。</li>
+      <li>与既有审核流程兼容：学管仍可查看学生分享赠课记录和赠课结果，但新海报分享流程减少本地图片人工审核压力。</li>
+      </ul>
+      <hr>
+      <h2 id="十原型交付说明">十、原型交付说明</h2>
+      <ul>
+      <li>原型目录：<code>10-海报分享赠堂/outputs/海报分享赠堂原型及PRD</code></li>
+      <li>学生端入口：<code>index.html</code></li>
+      <li>后台端入口：<code>admin.html</code></li>
+      <li>PRD Markdown：<code>海报分享赠堂-PRD.md</code></li>
+      <li>PRD HTML：<code>海报分享赠堂-PRD.html</code></li>
+      <li>覆盖页面：学生 App 账号页、分享赠课大图与缩略图选择、Facebook 新帖子页、Instagram 新帖子页、微信朋友圈发表页、WhatsApp 动态页、本地保存。</li>
+      <li>覆盖页面：后台 Web 订单管理 / 分享赠课 / 赠课审核、赠课海报配置列表弹窗、新增/编辑海报弹窗、删除确认弹窗、拖拽排序。</li>
+      <li>核心交互：学生端账号页跳转分享赠课页。</li>
+      <li>核心交互：学生端切换海报大图、进入四个平台发布页并携带当前海报、保存当前海报到本地。</li>
+      <li>核心交互：后台从赠课审核页打开海报配置，完成新增、编辑、显示/隐藏、删除、同状态分组内拖拽排序。</li>
+      </ul>
+    </main>
+  </div>
+</body>
+</html>

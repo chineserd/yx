@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>分享邀请与渠道统计</title>
+  <style>
+    :root { --nav:#062538; --nav-deep:#041b2a; --nav-active:#0b3a55; --blue:#1688ff; --blue-dark:#086fd6; --bg:#eef4f8; --line:#d6e0ea; --muted:#6a7890; --ink:#0d2340; --table-head:#fff8dd; --success:#18a05e; --warning:#e49219; --danger:#e84040; --shadow:0 10px 26px rgba(13,35,64,.08); }
+    * { box-sizing:border-box; }
+    body { margin:0; min-width:1180px; min-height:100vh; color:var(--ink); background:var(--bg); font:13px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; }
+    button,input,select,textarea { font:inherit; }
+    button { cursor:pointer; }
+    .sidebar { position:fixed; inset:0 auto 0 0; width:144px; overflow-y:auto; z-index:8; color:#fff; background:var(--nav); }
+    .brand { height:43px; display:flex; align-items:center; padding:0 12px; border-bottom:1px solid rgba(255,255,255,.08); font-weight:800; }
+    .profile-card { padding:18px 10px 17px; display:grid; place-items:center; gap:8px; }
+    .profile-avatar { width:56px; height:56px; border:2px solid rgba(255,255,255,.65); border-radius:50%; display:grid; place-items:center; color:#04548d; background:#cde4ff; font-size:22px; font-weight:900; }
+    .profile-card strong { font-size:12px; }
+    .profile-card span { color:rgba(255,255,255,.82); font-size:11px; }
+    .side-nav button { width:100%; min-height:29px; padding:0 8px; border:0; color:#fff; background:transparent; text-align:left; font-size:12px; font-weight:700; }
+    .side-nav button.open { background:var(--nav-active); }
+    .subnav { padding:7px 0 8px; background:var(--nav-deep); }
+    .subnav button { min-height:26px; padding-left:37px; color:rgba(255,255,255,.9); }
+    .subnav button.active { color:#fff; background:var(--blue); box-shadow:inset 4px 0 0 #ff6548; }
+    .workspace { margin-left:144px; min-height:100vh; }
+    .topbar { height:43px; display:flex; align-items:center; justify-content:space-between; padding:0 20px 0 17px; border-bottom:1px solid #d4dbe4; background:#fff; }
+    .browser-controls { display:flex; gap:14px; }
+    .browser-controls span { width:16px; height:16px; border:1px solid #aeb8c5; border-radius:50%; }
+    .account { color:#43566f; font-size:12px; }
+    .page-tabs { height:35px; display:flex; align-items:center; gap:2px; padding:0 12px; overflow:hidden; border-bottom:1px solid #d3dde7; background:#f7fafc; }
+    .page-tabs button { height:24px; padding:0 11px; border:1px solid #cbd7e5; color:#24415f; background:#fff; font-size:12px; }
+    .page-tabs button.active { border-color:var(--blue); color:#fff; background:var(--blue); }
+    .page { padding:18px 18px 42px; }
+    .page-header { display:flex; align-items:end; justify-content:space-between; margin:3px 0 12px; }
+    .breadcrumb { margin:0 0 8px; color:#60738b; font-size:12px; }
+    .page-header h1 { margin:0 0 6px; color:#082650; font-size:25px; line-height:1.1; }
+    .page-header p { margin:0; color:#4f6278; }
+    .card { overflow:hidden; border:1px solid #cad8e6; border-radius:6px; background:#fff; box-shadow:var(--shadow); }
+    .order-tabs { min-height:37px; display:flex; padding-left:13px; border-bottom:1px solid #d7e0ea; }
+    .order-tabs button { position:relative; min-width:88px; padding:0 12px; border:0; color:#40566f; background:transparent; font-weight:800; }
+    .order-tabs button.active { color:var(--blue); }
+    .order-tabs button.active::after { content:""; position:absolute; right:10px; bottom:0; left:10px; height:3px; border-radius:3px 3px 0 0; background:var(--blue); }
+    .panel { display:none; padding:16px 14px 8px; }
+    .panel.active { display:block; }
+    .filters { display:grid; grid-template-columns:1.05fr .9fr .95fr 1fr .95fr 1.5fr; gap:12px; padding:14px; border:1px solid #efe2bb; background:#fffaf0; }
+    .filter-field { display:grid; gap:6px; color:#364c67; font-weight:800; }
+    .filter-field input,.filter-field select { width:100%; }
+    .filter-date-range { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px; }
+    .filter-date-range span { color:#97a3b3; font-weight:700; }
+    .filter-actions { grid-column:5 / -1; align-self:end; display:flex; justify-content:flex-end; gap:10px; }
+    input,select,textarea { min-height:34px; padding:0 10px; border:1px solid #c8d7e8; border-radius:5px; outline:none; color:#102d4a; background:#fff; }
+    textarea { min-height:72px; padding-top:9px; resize:vertical; }
+    input:focus,select:focus,textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(22,136,255,.12); }
+    .primary,.secondary,.text-btn,.danger-btn { min-height:32px; padding:0 13px; border:1px solid transparent; border-radius:5px; font-weight:800; }
+    .primary { border-color:var(--blue); color:#fff; background:var(--blue); }
+    .primary:hover { background:var(--blue-dark); }
+    .primary:disabled { cursor:not-allowed; border-color:#aebdcd; background:#aebdcd; }
+    .secondary { border-color:#bcd1e6; color:#24567f; background:#fff; }
+    .text-btn { border-color:#acd3ff; color:#1378ff; background:#eef6ff; }
+    .danger-btn { border-color:#ffc7c7; color:var(--danger); background:#fff2f2; }
+    .table-wrap { overflow:auto; border:1px solid #d8e2ed; border-radius:6px; }
+    .audit-table-wrap { border-top:0; border-radius:0 0 6px 6px; }
+    table { width:100%; min-width:1180px; border-collapse:collapse; background:#fff; }
+    th,td { padding:11px 12px; border-bottom:1px solid #e3eaf2; text-align:left; vertical-align:middle; white-space:nowrap; }
+    th { color:#7a520e; background:var(--table-head); font-weight:800; }
+    tbody tr:nth-child(odd) { background:#f5f8fc; }
+    tbody tr.dragging { opacity:.55; background:#eaf4ff; }
+    .voucher-thumb { width:38px; height:46px; object-fit:cover; border:1px solid #d4dce8; border-radius:3px; cursor:pointer; transition:.16s ease; }
+    .voucher-thumb:hover { border-color:var(--blue); box-shadow:0 4px 12px rgba(22,136,255,.18); transform:translateY(-1px); }
+    .poster-thumb { width:52px; height:66px; display:block; object-fit:cover; border:1px solid #d4dce8; border-radius:5px; box-shadow:0 4px 10px rgba(18,43,68,.12); }
+    .status { min-width:50px; height:24px; display:inline-flex; align-items:center; justify-content:center; border-radius:12px; font-size:12px; font-weight:800; }
+    .status.show,.status.done { color:var(--success); background:#ddf8ed; }
+    .status.hide { color:#6d7684; background:#f0f2f6; }
+    .status.pending { color:var(--warning); background:#fff1cf; }
+    .status.todo { color:var(--blue); background:#e8f3ff; }
+    .status.blocked { color:#9b3d16; background:#ffe8d8; }
+    .lesson { color:#00a44f; font-weight:800; }
+    .channel-tag { min-width:84px; height:24px; display:inline-flex; align-items:center; justify-content:center; padding:0 10px; border-radius:12px; color:#1960a8; background:#e8f3ff; font-size:12px; font-weight:800; }
+    .actions { display:flex; flex-wrap:wrap; gap:8px; }
+    .drag-handle { display:inline-flex; align-items:center; gap:9px; color:#677b91; cursor:grab; font-weight:800; }
+    .drag-handle img { width:18px; height:18px; display:block; opacity:.72; }
+    .pagination { height:40px; display:flex; align-items:center; gap:8px; color:#60748b; }
+    .pagination button { min-width:24px; height:24px; border:1px solid #bfd2e4; border-radius:4px; color:#2a5f95; background:#fff; }
+    .pagination button.active { border-color:var(--blue); color:#fff; background:var(--blue); }
+    .empty-panel { min-height:320px; display:grid; place-items:center; border:1px dashed #cbd9e8; border-radius:6px; color:#7b8898; background:#f8fbfe; }
+    .modal-backdrop { position:fixed; inset:0; z-index:30; display:none; place-items:center; padding:24px; background:rgba(9,24,42,.42); }
+    .modal-backdrop.open { display:grid; }
+    #posterModal { z-index:40; background:rgba(9,24,42,.55); }
+    #deleteModal { z-index:50; background:rgba(9,24,42,.6); }
+    #giftOrderModal { z-index:45; background:rgba(9,24,42,.55); }
+    #orderDetailModal { z-index:46; background:rgba(9,24,42,.55); }
+    #voucherPreviewModal { z-index:56; background:rgba(9,24,42,.66); }
+    #grantDetailModal { z-index:47; place-items:stretch end; padding:0; background:rgba(9,24,42,.34); }
+    .modal { width:640px; max-width:100%; overflow:hidden; border-radius:8px; background:#fff; box-shadow:0 24px 80px rgba(3,18,34,.28); }
+    .modal > header,.modal > footer { min-height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 20px; border-bottom:1px solid #e0e7ef; }
+    .modal > footer { justify-content:flex-end; gap:10px; border-top:1px solid #e0e7ef; border-bottom:0; }
+    .modal h2 { margin:0; font-size:18px; }
+    .close-btn { min-height:32px; padding:0 12px; border:1px solid #cbd8e6; border-radius:5px; color:#40556d; background:#f7f9fb; font-weight:800; }
+    .icon-close-btn { width:34px; height:34px; min-height:34px; display:grid; place-items:center; padding:0; border:1px solid #cbd8e6; border-radius:50%; color:#41536b; background:#f7f9fb; font-size:24px; line-height:1; font-weight:500; }
+    .config-dialog { width:min(1160px,calc(100vw - 56px)); }
+    .config-body { max-height:calc(100vh - 150px); overflow:auto; padding:18px 20px 20px; }
+    .config-toolbar { display:flex; align-items:center; justify-content:flex-start; margin-bottom:14px; }
+    .form-body { padding:18px 20px 20px; display:grid; grid-template-columns:1fr 160px; gap:18px; }
+    .form-grid { display:grid; gap:15px; }
+    label { display:grid; gap:7px; color:#344964; font-weight:800; }
+    label em { margin-right:3px; color:var(--danger); font-style:normal; }
+    .field-help { color:#7a8899; font-size:12px; font-weight:500; line-height:1.45; }
+    .field-help-list { margin:0; padding-left:16px; }
+    .field-help-list li + li { margin-top:2px; }
+    .field-error { min-height:16px; color:var(--danger); font-size:12px; font-weight:700; }
+    .poster-upload-field { align-content:start; }
+    .poster-upload-input { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+    .poster-upload-tile { width:68px; height:68px; display:grid; place-items:center; align-content:center; gap:4px; border:1px dashed #d7dce3; border-radius:2px; color:#8a94a3; background:#fafafa; font-size:11px; font-weight:500; cursor:pointer; }
+    .poster-upload-tile::before { content:"+"; color:#1f2933; font-size:18px; line-height:1; font-weight:300; }
+    .poster-upload-field:hover .poster-upload-tile,
+    .poster-upload-input:focus + .poster-upload-tile { border-color:var(--blue); color:#4e6f96; background:#f7fbff; }
+    .preview-box { display:grid; align-content:start; gap:10px; color:#60748c; font-size:12px; }
+    .preview-box img { width:150px; height:190px; object-fit:cover; border:1px solid #d2dee9; border-radius:7px; box-shadow:0 10px 18px rgba(22,48,80,.12); }
+    .confirm-dialog { width:440px; }
+    .confirm-body { padding:22px 20px; }
+    .confirm-body strong { display:block; margin-bottom:8px; font-size:16px; }
+    .confirm-body p { margin:0; color:#607087; line-height:1.7; }
+    .history-note { margin-top:12px; padding:10px 12px; border-left:3px solid var(--blue); color:#24567f; background:#f3f8ff; }
+    .gift-dialog { width:min(1088px,calc(100vw - 40px)); max-height:calc(100vh - 40px); display:flex; flex-direction:column; }
+    .gift-dialog > header { justify-content:flex-end; border-bottom:0; }
+    .gift-body { overflow:auto; padding:0 22px 22px; }
+    .gift-steps { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; align-items:center; width:72%; margin:0 auto 26px; }
+    .gift-step { position:relative; display:flex; align-items:center; gap:10px; color:#7b8796; font-size:14px; }
+    .gift-step::after { content:""; flex:1; height:1px; background:#d8e1ec; }
+    .gift-step:last-child::after { display:none; }
+    .gift-step span { width:24px; height:24px; display:grid; place-items:center; border:1px solid #c8d3df; border-radius:50%; color:#8994a2; background:#fff; font-weight:800; }
+    .gift-step.active { color:#1d2f45; font-weight:800; }
+    .gift-step.active span,.gift-step.done span { border-color:var(--blue); color:#fff; background:var(--blue); }
+    .gift-step.done span { font-size:0; }
+    .gift-step.done span::before { content:"✓"; font-size:14px; }
+    .student-strip { display:flex; gap:28px; margin-bottom:18px; padding:14px 18px; border:1px solid #7cc7ff; border-radius:3px; background:#e8f7ff; color:#2d4a66; font-size:14px; }
+    .gift-section-title { margin:18px 0 12px; padding-left:9px; border-left:5px solid var(--blue); font-size:14px; font-weight:900; }
+    .gift-filter-row { display:grid; grid-template-columns:1fr 1fr 1fr 1fr auto auto; gap:12px; align-items:end; margin-bottom:12px; }
+    .gift-filter-row label { font-size:12px; }
+    .gift-panel { display:none; }
+    .gift-panel.active { display:block; }
+    .product-table { min-width:860px; }
+    .product-table tr.selected { background:#e1f5ff; }
+    .product-radio { width:14px; height:14px; accent-color:var(--blue); }
+    .gift-priority-note { margin:-3px 0 10px; color:#657286; font-size:12px; font-weight:700; }
+    .order-fields { display:grid; grid-template-columns:repeat(3,1fr); gap:20px 52px; margin-bottom:22px; }
+    .gift-product-card { width:240px; min-height:96px; display:grid; grid-template-columns:1fr auto; gap:8px; padding:12px 14px; border-radius:5px; color:#2d4d68; background:#e5f6ff; }
+    .gift-product-card b { color:#1688ff; }
+    .gift-product-card strong { align-self:center; font-size:20px; color:#28313d; }
+    .confirm-price { min-width:1020px; }
+    .price-summary { margin-top:10px; color:#4b5c70; }
+    .price-summary b { color:#f04b4b; }
+    .pay-methods { display:flex; gap:8px; align-items:center; }
+    .pay-label { color:#263a52; white-space:nowrap; }
+    .pay-pill { min-width:70px; min-height:26px; display:inline-flex; align-items:center; justify-content:center; border:1px solid #d1d7df; background:#f4f5f7; color:#9aa3af; }
+    .pay-pill.active { border-color:var(--blue); color:#fff; background:var(--blue); font-weight:800; }
+    .payment-top-grid { display:grid; grid-template-columns:240px 1fr; gap:18px 42px; align-items:center; width:600px; margin-bottom:22px; }
+    .payment-top-grid label,.payment-info-grid label { display:flex; align-items:center; gap:10px; font-weight:500; }
+    .payment-top-grid input { width:160px; background:#f5f5f5; color:#9aa3af; }
+    .payment-info-grid { display:grid; grid-template-columns:300px 300px 1fr; gap:28px 50px; align-items:start; }
+    .payment-info-grid select,.payment-info-grid input { width:160px; }
+    .payment-info-grid textarea { width:200px; min-height:34px; padding-top:7px; }
+    .upload-box { width:84px; height:84px; display:grid; place-items:center; border:1px dashed #cfd8e4; color:#5d6c7d; background:#fff; }
+    .gift-dialog footer { border-top:0; justify-content:center; }
+    .order-list-filters { display:grid; grid-template-columns:repeat(4,1fr); gap:14px 64px; padding:24px 16px; border-bottom:1px solid #e0e6ed; background:#fff; }
+    .order-list-actions { grid-column:1 / -1; display:flex; gap:10px; }
+    .order-list-toolbar { display:flex; align-items:center; gap:8px; padding:12px 16px; border-bottom:1px solid #e3eaf2; background:#fff; }
+    .order-status-tabs { display:flex; gap:0; margin-left:12px; }
+    .order-status-tabs button { min-height:28px; padding:0 12px; border:1px solid #d1d9e4; background:#fff; color:#66758a; }
+    .order-status-tabs button.active { border-color:var(--blue); color:#fff; background:var(--blue); }
+    .merge-pay { margin-left:auto; }
+    .order-list-table { min-width:1580px; }
+    .order-detail-dialog { width:790px; max-width:calc(100vw - 48px); }
+    .order-detail-dialog > header { border-bottom:0; min-height:42px; }
+    .order-detail-body { padding:0 16px 10px; }
+    .detail-section-title { margin:12px 0 10px; padding-left:8px; border-left:3px solid var(--blue); color:#374b63; font-weight:900; }
+    .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px 120px; padding:0 10px 10px; color:#40546a; font-size:12px; }
+    .detail-grid span { color:#1b2f45; }
+    .order-detail-table { min-width:730px; }
+    .detail-summary { margin-top:8px; text-align:right; color:#4d5d70; }
+    .detail-summary b:nth-child(1),.detail-summary b:nth-child(2){ color:#f04b4b; }
+    .detail-summary b:nth-child(3){ color:#00a44f; }
+    .grant-detail-dialog { width:718px; max-width:calc(100vw - 32px); height:100vh; min-height:0; margin-left:auto; border-radius:0; box-shadow:-18px 0 48px rgba(5,20,36,.22); transform:translateX(0); }
+    .grant-detail-dialog > header { min-height:53px; display:flex; align-items:flex-start; border-bottom:1px solid #eadcc0; padding:12px 14px 8px; }
+    .grant-title-block small { display:block; color:#9b6b1a; font-size:11px; line-height:1.2; }
+    .grant-title-block h2 { margin:4px 0 0; font-size:15px; }
+    .grant-detail-body { height:calc(100vh - 106px); overflow:auto; display:grid; grid-template-columns:286px 1fr; gap:18px; align-content:start; padding:14px 14px 0; border-bottom:1px solid #eadcc0; background:#fff; }
+    .grant-voucher-card,.grant-info-card { border:1px solid #ead39c; border-radius:5px; background:#fffdf9; }
+    .grant-voucher-card { display:grid; justify-items:center; align-content:start; gap:8px; padding:10px 12px; height:360px; }
+    .grant-voucher-card img { width:158px; height:300px; object-fit:cover; border:0; box-shadow:none; cursor:pointer; }
+    .grant-voucher-card span { color:#b89960; font-size:12px; }
+    .grant-side { display:grid; gap:14px; align-content:start; }
+    .grant-info-card { padding:14px 30px 14px 32px; }
+    .grant-info-grid { display:grid; grid-template-columns:minmax(0,1fr) 150px; gap:16px 52px; }
+    .grant-field label { display:block; gap:0; margin:0 0 4px; color:#657286; font-size:11px; font-weight:500; }
+    .grant-field b { color:#041f44; font-size:14px; }
+    .grant-upload-time { white-space:nowrap; }
+    .grant-status-text { color:#041f44; font-weight:900; }
+    .grant-audit-grid { display:grid; grid-template-columns:72px 1fr; gap:12px 14px; align-items:start; }
+    .grant-audit-grid label { display:block; color:#4d5d70; font-size:12px; font-weight:700; }
+    .grant-audit-grid input { width:100%; background:#f4f4f4; color:#8791a1; }
+    .grant-audit-grid textarea { width:100%; min-height:110px; background:#f4f4f4; color:#8791a1; resize:none; }
+    #grantDetailModal.hide-lessons .grant-lessons-label,
+    #grantDetailModal.hide-lessons .grant-lessons-input { display:none; }
+    .grant-audit-meta { grid-column:2; color:#607087; font-size:11px; line-height:1.7; }
+    .grant-audit-meta span { display:block; }
+    .voucher-preview-dialog { width:min(720px,calc(100vw - 48px)); max-height:calc(100vh - 48px); display:flex; flex-direction:column; }
+    .voucher-preview-body { display:grid; place-items:center; overflow:auto; padding:18px; background:#f8fafc; }
+    .voucher-preview-body img { max-width:100%; max-height:calc(100vh - 150px); object-fit:contain; border:1px solid #d8e2ed; border-radius:6px; background:#fff; }
+    .toast { position:fixed; top:74px; left:50%; z-index:70; padding:10px 16px; border-radius:20px; color:#fff; background:rgba(13,35,64,.92); box-shadow:0 8px 20px rgba(13,35,64,.2); opacity:0; pointer-events:none; transform:translateX(-50%) translateY(-18px); transition:.18s ease; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .dev-tools { position:fixed; right:18px; bottom:18px; z-index:100; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; }
+    .dev-toggle { width:52px; height:38px; border:0; border-radius:8px; color:#fff; background:#151b28; box-shadow:0 10px 24px rgba(20,26,38,.22); font-size:12px; font-weight:900; letter-spacing:0; }
+    .dev-panel { position:absolute; right:0; bottom:48px; width:322px; max-height:min(72vh,580px); overflow:auto; padding:12px; border:1px solid #d8e1ec; border-radius:8px; color:#172033; background:rgba(255,255,255,.98); box-shadow:0 18px 54px rgba(16,31,54,.2); }
+    .dev-panel[hidden] { display:none; }
+    .dev-panel-head { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-bottom:9px; border-bottom:1px solid #e3eaf2; font-size:13px; font-weight:900; }
+    .dev-panel-head span { color:#697589; font-size:11px; font-weight:700; }
+    .dev-section { margin-top:12px; padding-top:12px; border-top:1px solid #e3eaf2; }
+    .dev-panel-head + .dev-section { padding-top:0; border-top:0; }
+    .dev-section-title { margin-bottom:8px; color:#172033; font-size:12px; font-weight:900; }
+    .dev-group { display:grid; gap:7px; margin-top:11px; }
+    .dev-group-title { color:#697589; font-size:11px; font-weight:900; }
+    .dev-links { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+    .dev-link { min-height:32px; display:flex; align-items:center; justify-content:center; padding:0 9px; border:1px solid #d9e3ee; border-radius:6px; color:#1e3d63; background:#f7fbff; text-decoration:none; font-size:12px; font-weight:800; }
+    .dev-link:hover { border-color:var(--blue); color:#0b63c7; background:#eef7ff; }
+    .dev-note { margin:0; color:#697589; font-size:12px; line-height:1.5; }
+  </style>
+  <link rel="stylesheet" href="assets/invitations.css">
+<link rel="stylesheet" href="assets/gift-stats.css?v=20261030-period">
+<link rel="stylesheet" href="assets/review-nav.css?v=20261029-red"><style>#posterModal .modal{max-height:calc(100vh - 80px);display:flex;flex-direction:column}#posterModal .form-body{overflow-y:auto;min-height:0}#posterModal .modal>header,#posterModal .modal>footer{flex-shrink:0}</style><style>[data-panel="stats"] > .stats-cards{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}</style><style>
+#posterModal .form-body{align-items:start;gap:20px;padding:20px}
+#posterForm{gap:18px;align-content:start}
+#posterForm>label{gap:6px;align-content:start;margin:0}
+#posterForm .field-error:empty{display:none}
+#posterForm .field-error{min-height:0;margin:0}
+#posterForm .field-help{line-height:1.5;margin:0}
+#posterForm>label:first-child>.field-help{text-align:right;margin-top:-2px}
+#posterForm .field-help-list{padding-left:17px}
+#posterForm .field-help-list li+li{margin-top:3px}
+#posterForm #posterShareCopy{min-height:88px;line-height:1.6}
+#posterForm #generatePosterCopy{min-height:30px;padding:4px 12px}
+#posterForm #posterRemarkInput{min-height:64px}
+</style><style>.stats-req-badge{display:inline-block;vertical-align:middle;margin-left:8px;color:#fff;background:#E53935;border:1px solid #E53935;font-size:11px;font-weight:600;line-height:16px;padding:0 5px;border-radius:4px;white-space:nowrap;flex-shrink:0}</style><style>
+
+</style></head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">中文路后台</div>
+    <nav class="side-nav" aria-label="后台导航">
+      <div class="profile-card"><div class="profile-avatar">钟</div><strong>钟文</strong><span>管理员</span></div>
+      <button class="open">学员管理<span class="stats-req-badge">需求</span></button>
+      <div class="subnav"><button>学员中心</button><button>学员列表</button><button>主账户用户</button><button>充值列表</button><button>报班记录</button><button>交易记录</button><button>学生上课记录</button><button>课程券消费记录</button><button>学员评价</button><button id="navShareGift" class="active" type="button">分享邀请<span class="stats-req-badge">需求</span></button></div>
+      <button>个人页</button><button>数据图表</button><button>积分商城</button><button class="open">课程顾问<span class="stats-req-badge">需求</span></button><div class="subnav"><button data-crm="leads">线索管理<span class="stats-req-badge">需求</span></button><button data-crm="follow">线索跟进<span class="stats-req-badge">需求</span></button></div><button>复购管理</button>
+      <button class="open">订单管理</button>
+      <div class="subnav"><button id="navOrderList" type="button">订单列表</button></div>
+      <button>学习管理师</button><button>产品管理</button><button>教务系统</button><button>教研管理</button><button>我的学员</button>
+      <button>教师管理</button>
+    </nav>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar"><div class="browser-controls"><span></span><span></span></div><div class="account">中国香港/CN HK　退出</div></header>
+    <section class="page-tabs" aria-label="打开页面">
+      <button>课程券消费记录 ×</button><button>学生上课记录 ×</button><button id="tabOrderList" type="button">订单列表 ×</button><button>课程券 ×</button><button>学员中心 ×</button><button>学员列表 ×</button><button>机构部门 ×</button><button>地区管理 ×</button><button>员工管理 ×</button><button>发票列表 ×</button><button id="tabShareGift" class="active" type="button">分享邀请 ×</button><button>订单类型 ×</button><button>订单审核 ×</button>
+    </section>
+    <section class="page" id="shareGiftPage">
+      <header class="page-header">
+        <div><p class="breadcrumb">学员管理 / 分享邀请 / 赠课审核</p><h1>赠课审核</h1><p>审核学员分享凭证，并查看赠课结果与处理记录。</p></div>
+        <button class="primary" id="openConfigModal" type="button">赠课海报配置</button>
+      </header>
+      <section class="card">
+        <nav class="order-tabs" aria-label="分享邀请标签"><button type="button" data-tab="invitations">邀请明细<span class="stats-req-badge">需求</span></button><button type="button" data-tab="invite-stats">邀请统计<span class="stats-req-badge">需求</span></button><button type="button" data-tab="registrations">登记列表<span class="stats-req-badge">需求</span></button><button type="button" data-tab="channels">渠道统计<span class="stats-req-badge">需求</span></button></nav>
+        <section class="panel active" data-panel="audit">
+          <div class="filters">
+            <label class="filter-field">学员<input placeholder="姓名 / 编号"></label>
+            <label class="filter-field">月份<input type="month" value="2026-08"></label>
+            <label class="filter-field">审核状态<select><option>全部状态</option><option>待审核</option><option>待赠课</option><option>已赠课</option><option>不可赠</option></select></label>
+            <label class="filter-field">分享渠道<select><option>全部渠道</option><option>Facebook</option><option>Instagram</option><option>朋友圈</option><option>WhatsApp</option></select></label>
+            <label class="filter-field">所属学管<select><option>请选择</option><option>牛圆圆</option><option>彭芬兰</option></select></label>
+            <label class="filter-field">上传时间<span class="filter-date-range"><input type="date" value="2026-08-01"><span>~</span><input type="date" value="2026-08-18"></span></label>
+            <label class="filter-field">所属顾问<select><option>请选择</option><option>黄俊</option><option>陈晓晴</option><option>卢行飞</option></select></label>
+            <div class="filter-actions"><button class="primary" type="button">查询</button><button class="secondary" type="button">重置</button></div>
+          </div>
+          <div class="table-wrap audit-table-wrap">
+            <table aria-label="赠课审核表格">
+              <thead><tr><th>学员</th><th>学员编号</th><th>所属学管</th><th>所属顾问</th><th>分享渠道</th><th>月份</th><th>分享凭证</th><th>上传时间</th><th>状态</th><th>赠课数</th><th>审核信息</th><th>操作</th></tr></thead>
+              <tbody>
+                <tr data-status="待赠课" data-student="黄钰莹" data-code="HKC107276" data-manager="牛圆圆" data-month="2026-08" data-upload-time="2026-08-17 10:37" data-lessons="" data-audit-note="待赠课" data-auditor="中文路后台" data-audit-time="2026-08-17 16:11:06"><td>黄钰莹</td><td>HKC107276</td><td>牛圆圆</td><td>黄俊</td><td><span class="channel-tag">Facebook</span></td><td>2026-08</td><td><img class="voucher-thumb" src="assets/可分享海报/暑假中文陪学.png" alt="分享凭证" tabindex="0"></td><td>2026-08-17 10:37</td><td><span class="status todo">待赠课</span></td><td>--</td><td>中文路后台<br><small>审核通过时间：2026-08-17 16:11:06</small></td><td><div class="actions"><button class="text-btn grant-detail-btn" type="button">查看</button><button class="text-btn gift-btn" type="button">去赠课</button></div></td></tr>
+                <tr data-status="待赠课" data-student="张曦琳" data-code="HKC15330" data-manager="彭芬兰" data-month="2026-08" data-upload-time="2026-08-16 07:51" data-lessons="" data-audit-note="待赠课" data-auditor="中文路后台" data-audit-time="2026-08-17 16:11:06"><td>张曦琳</td><td>HKC15330</td><td>彭芬兰</td><td>黄俊</td><td><span class="channel-tag">朋友圈</span></td><td>2026-08</td><td><img class="voucher-thumb" src="assets/可分享海报/暑假二十五分钟png.png" alt="分享凭证" tabindex="0"></td><td>2026-08-16 07:51</td><td><span class="status todo">待赠课</span></td><td>--</td><td>中文路后台<br><small>审核通过时间：2026-08-17 16:11:06</small></td><td><div class="actions"><button class="text-btn grant-detail-btn" type="button">查看</button><button class="text-btn gift-btn" type="button">去赠课</button></div></td></tr>
+                <tr data-status="已赠课" data-student="林吉律" data-code="HKC107055" data-manager="牛圆圆" data-month="2026-08" data-upload-time="2026-08-15 12:06" data-lessons="1" data-audit-note="已赠" data-auditor="黄俊" data-audit-time="2026-08-15 09:28"><td>林吉律</td><td>HKC107055</td><td>牛圆圆</td><td>陈晓晴</td><td><span class="channel-tag">Instagram</span></td><td>2026-08</td><td><img class="voucher-thumb" src="assets/instagram-帖子分享.jpg" alt="分享凭证" tabindex="0"></td><td>2026-08-15 12:06</td><td><span class="status done">已赠课</span></td><td><span class="lesson">+1课</span></td><td>黄俊<br><small>2026-08-15 09:28</small></td><td><div class="actions"><button class="text-btn grant-detail-btn" type="button">查看</button><button class="text-btn order-detail-btn" type="button">查看订单</button></div></td></tr>
+                <tr data-status="不可赠" data-student="陈璟莹" data-code="HKC19535" data-manager="彭芬兰" data-month="2026-08" data-upload-time="2026-08-14 22:17" data-lessons="" data-audit-note="剩余课次数不足" data-auditor="中文路后台" data-audit-time="2026-08-17 16:11:06"><td>陈璟莹</td><td>HKC19535</td><td>彭芬兰</td><td>卢行飞</td><td><span class="channel-tag">WhatsApp</span></td><td>2026-08</td><td><img class="voucher-thumb" src="assets/Whatsapp-动态分享.png" alt="分享凭证" tabindex="0"></td><td>2026-08-14 22:17</td><td><span class="status blocked">不可赠</span></td><td>--</td><td>中文路后台<br><small>审核通过时间：2026-08-17 16:11:06</small></td><td><button class="text-btn grant-detail-btn" type="button">查看</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <footer class="pagination"><span>总记录数: 4</span><button type="button">上一页</button><button class="active" type="button">1</button><button type="button">下一页</button><select aria-label="每页条数"><option>10 条/页</option></select></footer>
+        </section>
+        <section class="panel invite-admin" data-panel="invitations">
+          <div class="invite-admin-title"><h2>邀请明细</h2><p>查看邀请关系、内容来源与邀请时间</p></div>
+          <form id="inviteFilters" class="invite-filters"><label>邀请人<input name="inviter" placeholder="姓名 / 用户编号"></label><label>被邀请人<input name="invitee" placeholder="姓名 / 用户编号"></label><label>内容来源<select name="source"><option value="">全部海报</option><option>暑假中文陪学</option><option>趣味中文启蒙</option></select></label><label>分享渠道<select name="channel"><option value="">全部渠道</option><option>WhatsApp</option><option>Facebook</option><option>朋友圈</option><option>Instagram</option><option>未知</option></select></label><label>邀请开始日期<input name="start" type="date"></label><label>邀请结束日期<input name="end" type="date"></label><button class="primary" type="submit">查询</button><button class="secondary" type="reset">重置</button></form>
+          <p id="inviteFilterError" role="alert"></p><div id="adminInviteSummary" class="invite-admin-summary"></div>
+          <div class="invite-table-wrap"><table aria-label="邀请明细表格"><thead><tr><th>邀请人</th><th>被邀请人</th><th>内容来源</th><th>分享渠道</th><th>邀请时间</th><th>操作</th></tr></thead><tbody id="adminInviteList"></tbody></table></div><p id="inviteCount"></p>
+        </section>
+        <section class="panel gift-stats" data-panel="channels">
+<div id="channelCards" class="stats-cards" style="grid-template-columns:repeat(6,minmax(0,1fr));gap:10px"></div>
+<form id="channelFilters" class="stats-filters" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:18px 0">
+<label>开始日期<input type="date" name="start" required></label><label>结束日期<input type="date" name="end" required></label><label>分享渠道<select name="channel"><option value="">全部渠道</option><option>Facebook</option><option>Instagram</option><option>朋友圈</option><option>WhatsApp</option><option>保存</option></select></label>
+<label>海报<select name="poster"><option value="">全部海报</option></select></label><label>邀请人<input name="inviter" placeholder="姓名 / 用户编号"></label><div class="stats-actions" style="grid-column:auto"><button type="submit" class="primary">查询</button><button type="reset" class="secondary">重置为当周</button></div></form>
+<p id="channelError" role="alert" style="color:#d92d20"></p><p class="stats-scope">按统计区间内访客标识去重；扫码进入指扫码后成功打开落地页。跨渠道访客汇总去重，分渠道人数不可直接相加。转发沿用原始渠道归属。“保存”统计保存海报后扫码进入的访问及登记，不代表点击保存的次数。</p>
+<div class="stats-table-wrap"><table aria-label="渠道统计"><thead><tr><th>分享渠道</th><th>访问次数</th><th>访问人数</th><th>扫码进入人数</th><th>链接进入人数</th><th>登记人数</th><th>登记转化率</th><th>操作</th></tr></thead><tbody id="channelRows"></tbody></table></div></section><section class="panel gift-stats" data-panel="registrations"><form id="leadFilters" class="stats-filters" style="grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0 0 16px"><label>登记人<input name="person" placeholder="姓名 / 联系号码"></label><label>邀请人<input name="inviter" placeholder="姓名 / 用户编号"></label><label>线索管理状态<select name="status" aria-label="线索管理状态"><option value="">全部</option><option>新线索</option><option>跟进中</option><option>释放线索</option><option>无效</option><option>已报名</option><option>已试堂</option><option>静默</option></select></label><div class="stats-actions" style="grid-column:auto;align-items:center"><button class="primary" type="submit">查询</button><button class="secondary" type="reset">重置</button></div></form><p id="leadListCount" class="stats-scope"></p><div class="stats-table-wrap"><table aria-label="扫码登记列表"><thead><tr><th>登记人</th><th>联系号码</th><th>孩子年龄</th><th>学习需求</th><th>邀请人</th><th>海报来源</th><th>登记时间</th><th>线索管理状态</th><th>备注</th><th>操作</th></tr></thead><tbody id="leadRows"></tbody></table></div></section>
+<section class="panel gift-stats" data-panel="invite-stats">
+<div class="stats-cards" id="invStatsCards" style="grid-template-columns:repeat(2,minmax(0,1fr))"></div>
+<form id="invStatsFilters" class="stats-filters">
+<label>统计时间<select name="period"><option value="month">本月</option><option value="week">本周</option><option value="custom">自定义</option></select></label><label>开始日期<input name="start" type="date" required value="2026-10-01"></label><label>结束日期<input name="end" type="date" required value="2026-10-29"></label>
+<label>邀请人<input name="owner" placeholder="姓名 / 用户编号"></label><label>所属学管<select name="manager"><option value="">全部学管</option><option>彭芬兰</option><option>牛圆圆</option></select></label><label>所属顾问<select name="advisor"><option value="">全部顾问</option><option>卢行飞</option><option>黄俊</option></select></label>
+<label>内容来源<select name="source"><option value="">全部海报</option><option>暑假中文陪学</option><option>趣味中文启蒙</option></select></label><label>分享渠道<select name="channel"><option value="">全部渠道</option><option>WhatsApp</option><option>Facebook</option><option>朋友圈</option><option>Instagram</option><option>未知</option></select></label>
+<div class="stats-actions"><button class="primary" type="submit">查询</button><button class="secondary" type="reset">重置</button><button class="secondary" type="button" id="invStatsExport">导出</button></div></form>
+<p id="invStatsError" role="alert" style="color:#d23b36"></p><p id="invStatsScope" class="stats-scope"></p>
+<div class="inv-results-heading"><h2 style="font-size:16px">邀请人成果</h2><label>排序 <select id="invStatsSort"><option value="count">邀请新用户数：从多到少</option><option value="recent">最近邀请时间：从新到旧</option></select></label></div>
+<div class="stats-table-wrap"><table aria-label="邀请统计表格"><thead><tr><th>邀请人</th><th>所属学管</th><th>所属顾问</th><th>邀请新用户数</th><th>最近邀请时间</th><th>操作</th></tr></thead><tbody id="invStatsRows"></tbody></table></div><p id="invStatsCount" class="stats-scope" style="margin-top:20px"></p></section>
+<section class="panel gift-stats" data-panel="stats">
+<div class="stats-help-heading"><p class="stats-scope">学员赠课汇总 · 累计额度不随筛选变化，当期获赠按筛选区间统计</p><button type="button" class="stats-help-link" data-stats-help="summary" aria-haspopup="dialog">ⓘ 统计说明</button></div><div class="stats-cards">
+<article><h3>剩余赠课数</h3><strong>261</strong><p>可继续通过分享获得的课次数</p></article><article id="lifetimeGiftCard"><h3>累计已获赠堂数<span class="stats-req-badge">需求</span></h3><strong>36</strong><p>历史所有已赠堂数累加，跨月不归零</p></article><article><h3>当期已获赠课数</h3><strong>36</strong><p>筛选区间内实际赠出的课次数</p></article><article><h3>已过期赠课数</h3><strong>2</strong><p>产品过期后未获赠课次数</p></article><article><h3>可获赠课总数</h3><strong>299</strong><p>已购所有产品上限累加</p></article></div>
+<form id="statsFilters" class="stats-filters"><label style="grid-column:1/-1;justify-content:flex-start"><span>统计时间<span class="stats-req-badge">需求</span></span><select name="period" aria-label="赠课统计时间" style="width:180px;flex:none"><option value="week" selected>当周</option><option value="month">当月</option><option value="custom">自定义</option></select><span id="statsCustomDates" hidden style="align-items:center;gap:10px;flex-wrap:wrap"><input name="dateStart" type="date" aria-label="赠课统计开始日期" required style="width:170px;flex:none"><span>至</span><input name="dateEnd" type="date" aria-label="赠课统计结束日期" required style="width:170px;flex:none"></span></label><label>学员姓名<input name="name" placeholder="请输入学员姓名"></label><label>学员编号<input name="code" placeholder="请输入学员编号"></label><label>所属学管<select name="manager"><option value="">全部学管</option><option>熊二老师</option><option>香港澳门老师</option><option>徐老师</option></select></label><label>所属顾问<select name="advisor"><option value="">全部顾问</option><option>超级管理员</option><option>刘鹏昌</option><option>陈锦辉</option><option value="none">未分配</option></select></label><div class="share-status-field"><span>当月分享状态<span class="stats-req-badge">需求</span></span><div class="share-status-radios" role="radiogroup" aria-label="当月分享状态"><label><input type="radio" name="unshared" value="" data-share-status="">全部</label><label><input type="radio" name="unshared" value="no" data-share-status="no">已分享</label><label><input type="radio" name="unshared" value="yes" data-share-status="yes" checked>未分享</label></div></div><label>剩余赠课数 &gt;<input name="remaining" type="number" min="0" step="1" placeholder="请输入课次数"></label><div class="stats-actions"><button class="primary" type="submit">查询</button><button class="secondary" type="reset">重置</button><button class="secondary" id="exportStats" type="button">导出</button></div></form>
+<p id="statsDateError" role="alert" style="color:#d23b36"></p><div class="stats-help-toolbar"><button type="button" class="stats-help-link" data-stats-help="list" aria-haspopup="dialog">ⓘ 统计说明</button></div><div class="stats-table-wrap"><table aria-label="学员赠课统计"><thead><tr><th>学员姓名</th><th>学员编号</th><th>所属学管</th><th>所属顾问</th><th>剩余赠课数</th><th>累计已获赠堂数<span class="stats-req-badge">需求</span></th><th><div class="period-field-heading"><button type="button" class="period-field-help" data-stats-help="period" aria-label="当期已获赠课数说明" aria-haspopup="dialog">ⓘ</button><span>当期已获赠课数<span class="stats-req-badge">需求</span></span></div></th><th>最近分享月份</th><th>已过期赠课数</th><th>可获赠课总数</th><th>操作</th></tr></thead><tbody id="statsRows"></tbody></table></div><footer class="stats-pagination"><span id="statsCount"></span><button id="statsPrev" class="secondary" type="button">上一页</button><span id="statsPage"></span><button id="statsNext" class="secondary" type="button">下一页</button><label>每页 <select id="statsPageSize"><option>10</option><option>5</option></select> 条</label></footer>
+</section>
+      </section>
+    </section>
+
+    <section class="page" id="orderListPage" hidden>
+      <header class="page-header">
+        <div><p class="breadcrumb">订单管理 / 订单列表</p><h1>订单列表</h1><p>查看系统生成的赠送订单，支付成功后不可编辑。</p></div>
+      </header>
+      <section class="card order-list-card">
+        <div class="order-list-filters">
+          <label class="filter-field">订单编号<input placeholder="请输入订单编号"></label>
+          <label class="filter-field">学生姓名/ID<input placeholder="请输入学生姓名/ID"></label>
+          <label class="filter-field">所属校区<select><option>请选择</option><option>香港/HK</option></select></label>
+          <label class="filter-field">订单类型<select><option>赠送</option></select></label>
+          <label class="filter-field">付款类型<select><option>请选择</option><option>全款</option></select></label>
+          <label class="filter-field">审核状态<select><option>请选择</option><option>支付成功</option></select></label>
+          <label class="filter-field">支付方式<select><option>请选择</option><option>线下汇款</option></select></label>
+          <label class="filter-field">创建时间<span class="filter-date-range"><input type="date"><span>~</span><input type="date"></span></label>
+          <label class="filter-field">支付时间<span class="filter-date-range"><input type="date"><span>~</span><input type="date"></span></label>
+          <label class="filter-field">购买课次<input placeholder="请输入"></label>
+          <label class="filter-field">订单归属<input placeholder="请输入"></label>
+          <label class="filter-field">是否报班<select><option>请选择</option></select></label>
+          <div class="order-list-actions"><button class="primary" type="button">查询</button><button class="secondary" type="button">重置</button></div>
+        </div>
+        <div class="order-list-toolbar"><button class="primary" type="button">+ 新建</button><button class="primary" type="button">+ 仅付费</button><button class="secondary" type="button">历史课点兑换</button><button class="secondary" type="button">赠送</button><div class="order-status-tabs"><button class="active" type="button">全部</button><button type="button">待支付</button><button type="button">已完成</button><button type="button">已取消</button><button type="button">退费</button></div><button class="primary merge-pay" type="button">合并支付</button><button class="primary" type="button">导出</button></div>
+        <div class="table-wrap">
+          <table class="order-list-table" aria-label="订单列表">
+            <thead><tr><th>学生姓名</th><th>学员ID</th><th>订单编号</th><th>审核状态</th><th>订单类型</th><th>确认状态</th><th>交易类型</th><th>订单状态</th><th>购买产品</th><th>订单金额(人民币)</th><th>订单金额</th><th>到账金额</th><th>客户来源</th><th>付款类型</th><th>支付方式</th><th>操作</th></tr></thead>
+            <tbody>
+              <tr><td><a href="#">林吉律</a></td><td>HKC107055</td><td>20260815120630000001</td><td>--</td><td>赠送</td><td>常规</td><td>常规</td><td>支付成功</td><td>分享贈堂-25min</td><td>--</td><td>HK$0</td><td>HK$0</td><td>Instagram</td><td>全款</td><td>线下汇款</td><td><button class="text-btn order-detail-btn" type="button">详情</button></td></tr>
+              <tr><td><a href="#">梁梓轩</a></td><td>HKC6005</td><td>20260817161616000002</td><td>--</td><td>赠送</td><td>常规</td><td>常规</td><td>支付成功</td><td>分享贈堂-25min</td><td>--</td><td>HK$0</td><td>HK$0</td><td>WhatsApp</td><td>全款</td><td>线下汇款</td><td><button class="text-btn order-detail-btn" type="button">详情</button></td></tr>
+              <tr><td><a href="#">刘鹏昌</a></td><td>HKC106471</td><td>20260818160837545208234655</td><td>--</td><td>赠送</td><td>常规</td><td>常规</td><td>待支付</td><td>分享贈堂-25min</td><td>--</td><td>HK$0</td><td>HK$0</td><td>海外校园平台</td><td>全款</td><td>线下汇款</td><td><button class="text-btn" type="button">详情</button><button class="text-btn" type="button">编辑</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <footer class="pagination"><span>总记录数: 1555</span><button type="button">上一页</button><button class="active" type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">下一页</button><select><option>10 条/页</option></select></footer>
+      </section>
+    </section>
+    <section class="page" id="crmPage" hidden>
+      <header class="page-header"><div><p class="breadcrumb" id="crmPath"></p><h1 id="crmTitle"></h1></div></header>
+      <section class="card" style="padding:20px"><div id="crmToolbar"></div><div class="stats-table-wrap"><table><thead id="crmHead"></thead><tbody id="crmRows"></tbody></table></div><p id="crmCount"></p></section>
+    </section>
+  </main>
+  <dialog class="invite-dialog" id="crmDialog"><form id="crmForm"><header><h2 id="crmDialogTitle"></h2></header><div id="crmFields"></div><footer><button class="secondary" type="button" id="crmClose">关闭</button><button class="primary" type="submit" id="crmSave">保存</button></footer></form></dialog><dialog class="invite-dialog" id="leadFollowDialog" aria-labelledby="leadFollowTitle"><div class="invite-dialog-title"><h2 id="leadFollowTitle">登记详情与跟进</h2><button id="leadFollowClose" type="button" aria-label="关闭跟进详情">×</button></div><div id="leadFollowInfo"></div><form id="leadFollowForm"><label style="display:block;margin:16px 0">线索管理状态 <select id="leadFollowStatus" aria-label="编辑线索管理状态" required style="padding:8px"><option value="" disabled>请选择线索管理状态</option><option>新线索</option><option>跟进中</option><option>释放线索</option><option>无效</option><option>已报名</option><option>已试堂</option><option>静默</option></select></label><label style="display:block">跟进备注<textarea id="leadFollowNote" maxlength="500" rows="4" style="display:block;width:100%;box-sizing:border-box;padding:10px;margin:8px 0" placeholder="记录沟通情况、后续安排，最多500字"></textarea></label><p id="leadFollowError" role="alert" style="color:#c33"></p><button type="submit" class="primary">保存跟进</button></form></dialog><dialog id="statsDetail" class="invite-dialog" aria-labelledby="statsDetailTitle"><div class="invite-dialog-title"><h2 id="statsDetailTitle">已赠课明细</h2><button id="closeStatsDetail" aria-label="关闭已赠课明细">×</button></div><div id="statsDetailBody"></div></dialog><dialog id="inviteDialog" class="invite-dialog"><div class="invite-dialog-title"><h2>邀请详情</h2><button id="closeInviteDialog" aria-label="关闭邀请详情">×</button></div><div id="adminInviteDetail"></div></dialog>
+
+  <section class="modal-backdrop" id="configModal" aria-hidden="true">
+    <div class="modal config-dialog" role="dialog" aria-modal="true" aria-labelledby="configModalTitle">
+      <header><h2 id="configModalTitle">赠课海报配置</h2></header>
+      <div class="config-body">
+        <div class="config-toolbar"><button class="primary" id="openAddModal" type="button">新增海报</button></div>
+        <div class="table-wrap">
+          <table aria-label="赠课海报配置表格"><thead><tr><th style="width:86px">序号</th><th>标题</th><th style="width:110px">海报图</th><th style="width:100px">赠堂数</th><th style="width:90px">状态</th><th style="width:100px">创建人</th><th style="width:165px">创建时间</th><th style="width:260px">操作</th></tr></thead><tbody id="posterBody"></tbody></table>
+        </div>
+        <footer class="pagination"><span id="recordText">总记录数: 6</span><button type="button">上一页</button><button class="active" type="button">1</button><button type="button">下一页</button><select aria-label="每页条数"><option>10 条/页</option></select></footer>
+      </div>
+      <footer><button class="secondary" id="closeConfigModal" type="button">关闭</button></footer>
+    </div>
+  </section>
+
+  <section class="modal-backdrop" id="posterModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="posterModalTitle">
+      <header><h2 id="posterModalTitle">新增海报</h2><button class="icon-close-btn" id="closePosterModal" type="button" aria-label="关闭">×</button></header>
+      <div class="form-body">
+        <form class="form-grid" id="posterForm">
+          <label><span><em>*</em>标题</span><input id="posterTitleInput" maxlength="30" placeholder="请输入海报标题，最多30个字"><span class="field-help"><b id="titleCount">0</b>/30</span><span class="field-error" id="titleError"></span></label>
+          <label class="poster-upload-field"><span><em>*</em>海报图片</span><input class="poster-upload-input" id="posterFileInput" type="file" accept=".jpeg,.jpg,.png,image/jpeg,image/png"><span class="poster-upload-tile" aria-hidden="true">添加图片</span><span class="field-help"><ul class="field-help-list"><li>支持 JPEG、JPG、PNG 格式，超过 1MB 将自动压缩；不超过 1MB 保留原图。</li><li>推荐尺寸 750 × 1800px，压缩保持原始比例，不裁剪、不拉伸。</li><li><span class="stats-req-badge">需求</span>自动压缩至 1MB 以内，完成后展示预览和文件大小；需保证文字清晰、二维码可识别。</li><li>处理过程中禁止提交，失败时提示重新上传。</li></ul></span><span class="field-error" id="fileError"></span></label>
+          <label><span>分享文案 <span class="stats-req-badge">需求</span></span><textarea id="posterShareCopy" maxlength="300" placeholder="输入分享文案，最多300字" style="min-height:88px"></textarea><span style="display:flex;justify-content:space-between;align-items:center"><button type="button" class="secondary" id="generatePosterCopy">自动配文</button><span class="field-help" id="posterCopyCount">0/300</span></span><span class="field-help">可自动配文后编辑；保存后在学员端对应海报下展示。</span></label><label><span><em>*</em>赠堂数 <span class="stats-req-badge">需求</span></span><select id="posterGiftLessonsInput" required aria-label="赠堂数" style="width:100%;height:38px;padding:0 12px;border:1px solid #c5d8ef;border-radius:6px;box-sizing:border-box"><option value="" disabled>请选择赠堂数</option><option value="1">1 节</option><option value="2">2 节</option><option value="3">3 节</option></select><span class="field-help">按当前海报配置分享赠堂数，可选 1–3 节，最多赠送 3 节。</span></label><label>备注<textarea id="posterRemarkInput" placeholder="可填写活动或投放说明"></textarea></label>
+        </form>
+        <aside class="preview-box"><img id="modalPreview" src="assets/分享海报1.png" alt="海报预览"><span>预览图将用于配置列表缩略图与学生端选择。</span></aside>
+      </div>
+      <footer><button class="secondary" id="cancelPosterModal" type="button">取消</button><button class="primary" type="submit" form="posterForm">保存</button></footer>
+    </div>
+  </section>
+
+  <section class="modal-backdrop" id="deleteModal" aria-hidden="true">
+    <div class="modal confirm-dialog" role="alertdialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+      <header><h2 id="deleteModalTitle">确认删除海报</h2><button class="close-btn" id="closeDeleteModal" type="button">关闭</button></header>
+      <div class="confirm-body"><strong id="deletePosterName">确定删除该海报？</strong><p>删除后，该海报不再出现在学生端，也不可用于新的分享。</p><div class="history-note">不会影响已生成的分享记录、赠课记录及其海报快照，历史数据仍可正常查看和追溯。</div></div>
+      <footer><button class="secondary" id="cancelDelete" type="button">取消</button><button class="danger-btn" id="confirmDelete" type="button">确认删除</button></footer>
+    </div>
+  </section>
+
+  <section class="modal-backdrop" id="giftOrderModal" aria-hidden="true">
+    <div class="modal gift-dialog" role="dialog" aria-modal="true" aria-labelledby="giftOrderTitle">
+      <header><button class="icon-close-btn" id="closeGiftOrderModal" type="button" aria-label="关闭">×</button></header>
+      <div class="gift-body">
+        <div class="gift-steps" aria-label="赠课订单步骤">
+          <div class="gift-step active" data-gift-step-label="product"><span>1</span>选择产品</div>
+          <div class="gift-step" data-gift-step-label="order"><span>2</span>订单确认</div>
+          <div class="gift-step" data-gift-step-label="pay"><span>3</span>付款</div>
+        </div>
+        <div class="student-strip"><span>学生姓名: <b>张曦琳</b></span><span>学生编号: <b>HKC15330</b></span></div>
+
+        <section class="gift-panel active" data-gift-panel="product" aria-labelledby="giftOrderTitle">
+          <h2 id="giftOrderTitle" class="gift-section-title">选择产品</h2>
+          <div class="gift-filter-row">
+            <label>产品名称<input value="分享贈堂" readonly></label>
+            <label>适用校区<select><option>香港/HK</option></select></label>
+            <label>班型<select><option>请选择</option><option>1V1</option></select></label>
+            <label>上课时长<select><option>请选择</option><option>25分钟</option><option>45分钟</option></select></label>
+            <button class="primary" type="button">查询</button>
+            <button class="secondary" type="button">重置</button>
+          </div>
+          <div class="table-wrap">
+            <table class="product-table" aria-label="待赠课选择产品">
+              <thead><tr><th></th><th>产品名称</th><th>适用校区</th><th>剩余课次数</th><th>人民币标准价</th><th>标准价格</th><th>人民币底价</th><th>底价</th><th>班型</th><th>上课时长</th><th>适用课程</th></tr></thead>
+              <tbody>
+                <tr class="selected" data-remaining-lessons="1" data-product-name="分享贈堂-25min" data-campus="澳门/Macau" data-class-type="1V1" data-duration="25分钟"><td><input class="product-radio" type="radio" name="giftProduct" checked aria-label="选择分享贈堂-25min 澳门产品"></td><td>分享贈堂-25min</td><td>澳门/Macau</td><td>1</td><td>￥120</td><td>HK$137</td><td>￥120</td><td>HK$137</td><td>1V1</td><td>25分钟</td><td><a href="#">港澳启蒙...</a></td></tr>
+                <tr data-remaining-lessons="2" data-product-name="分享贈堂-25min" data-campus="香港/HK" data-class-type="1V1" data-duration="25分钟"><td><input class="product-radio" type="radio" name="giftProduct" aria-label="选择分享贈堂-25min 香港产品"></td><td>分享贈堂-25min</td><td>香港/HK</td><td>2</td><td>￥120</td><td>HK$137</td><td>￥120</td><td>HK$137</td><td>1V1</td><td>25分钟</td><td><a href="#">港澳启蒙...</a></td></tr>
+                <tr data-remaining-lessons="3" data-product-name="分享贈堂-45min" data-campus="香港/HK" data-class-type="1V1" data-duration="45分钟"><td><input class="product-radio" type="radio" name="giftProduct" aria-label="选择分享贈堂-45min 香港产品"></td><td>分享贈堂-45min</td><td>香港/HK</td><td>3</td><td>￥210</td><td>HK$241</td><td>￥210</td><td>HK$241</td><td>1V1</td><td>45分钟</td><td><a href="#">港澳高阶汉语...</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="gift-priority-note">已按学生有效产品的剩余课次数从少到多排序，默认优先选择剩余次数最少的产品。</p>
+          <footer class="pagination"><span>总记录数: 3</span><button type="button">上一页</button><button class="active" type="button">1</button><button type="button">下一页</button><select><option>10 条/页</option></select></footer>
+        </section>
+
+        <section class="gift-panel" data-gift-panel="order">
+          <div class="gift-section-title">确认订单</div>
+          <div class="order-fields">
+            <label><span><em>*</em>订单类型</span><select><option>赠送</option></select></label>
+            <label><span><em>*</em>交易类型</span><select><option>常规</option></select></label>
+            <label><span><em>*</em>订单归属</span><select><option>黄俊</option></select></label>
+            <label><span><em>*</em>订单来源</span><select><option>系统下单</option></select></label>
+          </div>
+          <div class="gift-section-title">确认购买产品</div>
+          <div class="gift-product-card"><div><b id="giftProductSummaryName">分享贈堂-25min</b><p id="giftProductSummaryCampus">适用校区：澳门/Macau</p><p id="giftProductSummaryClassType">班型：1V1</p><p id="giftProductSummaryDuration">授课时长：25分钟</p></div><strong>0课次</strong><b>HK$0</b></div>
+          <div class="gift-section-title">确认购买价格 <small style="color:#ff4d4f">（默认港币价格，切换货币符号，出来实付价格）</small></div>
+          <div class="table-wrap">
+            <table class="confirm-price" aria-label="赠课订单确认">
+              <thead><tr><th>产品名称</th><th>人民币标准价</th><th>标准价格</th><th>课次数</th><th>赠送课次数</th><th>优惠金额</th><th>实付价格</th><th>赠送课程券</th><th>课程券类型</th></tr></thead>
+              <tbody><tr><td><a id="confirmProductName" href="#">分享贈堂-25min</a></td><td>--</td><td>HK$0</td><td>0</td><td>1</td><td>0.00</td><td>港币 0.00</td><td>0</td><td>通用</td></tr></tbody>
+            </table>
+          </div>
+          <div class="price-summary">订单总额：<b>￥0</b><br>已减优惠：<b>-HK$0</b><br>实付金额：<b>HK$0</b></div>
+        </section>
+
+        <section class="gift-panel" data-gift-panel="pay">
+          <div class="gift-section-title">确认付款信息</div>
+          <div class="payment-top-grid">
+            <label><span class="pay-label">实付金额:</span><input value="HK$0" readonly></label>
+            <label><span class="pay-label">付款链接:</span><span class="pay-methods"><span class="pay-pill">用户选择</span><span class="pay-pill active">后台自选</span></span></label>
+            <label><span class="pay-label">付款类型:</span><span class="pay-methods"><span class="pay-pill active">全款</span><span class="pay-pill">分期</span></span></label>
+            <label><span class="pay-label">支付方式:</span><span class="pay-methods"><span class="pay-pill active">线下汇款</span><span class="pay-pill">Payssion</span><span class="pay-pill">Stripe</span><span class="pay-pill">PaymentAsia</span></span></label>
+          </div>
+          <div class="gift-section-title">付款信息</div>
+          <div class="payment-info-grid">
+            <label><span><em>*</em>收款账户:</span><select><option>赠送账户</option></select></label>
+            <label><span><em>*</em>实际支付时间:</span><input value="2026-08-18 15:47" readonly></label>
+            <label><span><em>*</em>备注:</span><textarea>分享贈堂-25min</textarea></label>
+            <label>转账凭证:<div class="upload-box">＋<br>上传凭证</div></label>
+          </div>
+        </section>
+      </div>
+      <footer>
+        <button class="secondary" id="giftPrev" type="button">上一步</button>
+        <button class="primary" id="giftNext" type="button">下一步</button>
+      </footer>
+    </div>
+  </section>
+
+  <section class="modal-backdrop" id="orderDetailModal" aria-hidden="true">
+    <div class="modal order-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="orderDetailTitle">
+      <header><h2 id="orderDetailTitle">订单详情</h2><button class="icon-close-btn" id="closeOrderDetailModal" type="button" aria-label="关闭">×</button></header>
+      <div class="order-detail-body">
+        <div class="student-strip"><span>学生姓名: <b>梁梓轩</b></span><span>学生ID: <b>HKC6005</b></span></div>
+        <div class="detail-section-title">订单</div>
+        <div class="detail-grid">
+          <div>订单类型：<span>赠送</span></div><div>订单归属：<span>黄俊</span></div>
+          <div>订单来源：<span>系统下单</span></div><div>订单金额：<span>HK$0</span></div>
+          <div>到账金额：<span>HK$0</span></div><div>创建时间：<span>2026-08-17 16:16:16</span></div>
+          <div>订单编号：<span>2026081716161614012756074</span></div>
+        </div>
+        <div class="detail-section-title">支付信息</div>
+        <div class="detail-grid">
+          <div>实付金额：<span>HK$0</span></div><div>付款类型：<span>全款</span></div>
+          <div>支付方式：<span>线下</span></div><div>收款账户：<span>赠送账户</span></div>
+          <div>实际支付时间：<span>2026-08-17 16:16:20</span></div>
+          <div>备注：<span>分享贈堂</span></div>
+        </div>
+        <div class="detail-section-title">购买产品</div>
+        <div class="table-wrap">
+          <table class="order-detail-table" aria-label="赠送订单购买产品">
+            <thead><tr><th>产品名称</th><th>标准价格</th><th>课次数</th><th>赠送课次</th><th>折扣</th><th>优惠金额</th><th>实付价格</th><th>赠送课程券</th><th>课程券类型</th></tr></thead>
+            <tbody><tr><td>分享贈堂-25min</td><td>HK$0</td><td>0</td><td>1</td><td>10</td><td>HK$0</td><td>HK$0</td><td>0</td><td>通用</td></tr></tbody>
+          </table>
+        </div>
+        <div class="detail-summary">订单总额：<b>HK$0</b><br>已减优惠：<b>-HK$0</b><br>实付金额：<b>HK$0</b></div>
+      </div>
+      <footer><button class="secondary" id="closeOrderDetailFooter" type="button">关闭</button></footer>
+    </div>
+  </section>
+
+  <section class="modal-backdrop" id="grantDetailModal" aria-hidden="true">
+    <div class="modal grant-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="grantDetailTitle">
+      <header>
+        <div class="grant-title-block"><small>分享赠课</small><h2 id="grantDetailTitle">赠课详情</h2></div>
+        <button class="icon-close-btn" id="closeGrantDetailModal" type="button" aria-label="关闭">×</button>
+      </header>
+      <div class="grant-detail-body">
+        <section class="grant-voucher-card">
+          <img id="grantDetailVoucher" src="assets/instagram-帖子分享.jpg" alt="分享凭证">
+          <span>点击图片可放大查看</span>
+        </section>
+        <section class="grant-side">
+          <div class="grant-info-card">
+            <div class="grant-info-grid">
+              <div class="grant-field"><label>学员</label><b id="grantStudent">林吉律 · HKC107055</b></div>
+              <div class="grant-field"><label>所属学管</label><b id="grantManager">牛圆圆</b></div>
+              <div class="grant-field"><label>月份</label><b id="grantMonth">2026-08</b></div>
+              <div class="grant-field"><label>上传时间</label><b class="grant-upload-time" id="grantUploadTime">2026-08-15 12:06</b></div>
+              <div class="grant-field"><label>审核状态</label><b class="grant-status-text" id="grantStatus">已赠课</b></div>
+            </div>
+          </div>
+          <div class="grant-info-card">
+            <div class="grant-audit-grid">
+              <label class="grant-lessons-label"><em>*</em>赠课次数:</label><input class="grant-lessons-input" id="grantLessons" value="1" readonly>
+              <label>审核备注:</label><textarea id="grantAuditNote" readonly>已赠</textarea>
+              <div class="grant-audit-meta">
+                <span>审核人：<b id="grantAuditor">黄俊</b></span>
+                <span>审核通过时间：<b id="grantAuditTime">2026-08-15 09:28</b></span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer><button class="secondary" id="closeGrantDetailFooter" type="button">取消</button></footer>
+    </div>
+  </section>
+
+  <section class="modal-backdrop" id="voucherPreviewModal" aria-hidden="true">
+    <div class="modal voucher-preview-dialog" role="dialog" aria-modal="true" aria-labelledby="voucherPreviewTitle">
+      <header><h2 id="voucherPreviewTitle">分享凭证</h2><button class="icon-close-btn" id="closeVoucherPreviewModal" type="button" aria-label="关闭">×</button></header>
+      <div class="voucher-preview-body"><img id="voucherPreviewImage" src="assets/instagram-帖子分享.jpg" alt="分享凭证大图"></div>
+      <footer><button class="secondary" id="closeVoucherPreviewFooter" type="button">关闭</button></footer>
+    </div>
+  </section>
+
+  <div class="toast" id="toast">已保存</div>
+
+  <aside class="dev-tools" aria-label="开发导航">
+    <div class="dev-panel" id="adminDevPanel" hidden>
+      <div class="dev-panel-head">
+        <strong>前后端 Dev 导航</strong>
+        <span>开发查看</span>
+      </div>
+      <section class="dev-section">
+        <div class="dev-section-title">前端：学生端</div>
+        <div class="dev-group">
+          <div class="dev-group-title">页面 / 状态</div>
+          <div class="dev-links">
+            <a class="dev-link" href="index.html?screen=account&dev=1">账户页</a>
+            <a class="dev-link" href="index.html?screen=share&dev=1">分享页</a>
+            <a class="dev-link" href="index.html?screen=facebook&poster=1&dev=1">Facebook</a>
+            <a class="dev-link" href="index.html?screen=instagram&poster=1&dev=1">Instagram</a>
+            <a class="dev-link" href="index.html?screen=wechat&poster=1&dev=1">朋友圈</a>
+            <a class="dev-link" href="index.html?screen=whatsapp&poster=1&dev=1">WhatsApp</a>
+            <a class="dev-link" href="index.html?screen=share&poster=1&dev=1">海报选择</a>
+            <a class="dev-link" href="index.html?screen=share&toast=saved&dev=1">保存 Toast</a>
+          </div>
+        </div>
+      </section>
+      <section class="dev-section">
+        <div class="dev-section-title">后端：管理后台</div>
+        <div class="dev-group">
+          <div class="dev-group-title">页面</div>
+          <div class="dev-links">
+            
+            <a class="dev-link" href="admin.html?page=orders&dev=1">订单列表</a>
+          </div>
+        </div>
+        <div class="dev-group">
+          <div class="dev-group-title">弹窗 / 状态</div>
+          <div class="dev-links">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+        <p class="dev-note">审核列表包含分享渠道、待赠课、已赠课、不可赠；待赠课操作进入自动赠送订单三步流程。</p>
+      </section>
+    </div>
+    <button class="dev-toggle" id="adminDevToggle" type="button" aria-expanded="false" aria-controls="adminDevPanel">DEV</button>
+  </aside>
+
+  <script src="assets/poster-content.js"></script>
+  <script>
+    const MAX_POSTER_FILE_SIZE=1024*1024;
+    const POSTER_FILE_SIZE_TEXT="1MB";
+    const posterBody=document.getElementById("posterBody");
+    const recordText=document.getElementById("recordText");
+    const tabs=document.querySelectorAll("[data-tab]");
+    const panels=document.querySelectorAll("[data-panel]");
+    const configModal=document.getElementById("configModal");
+    const posterModal=document.getElementById("posterModal");
+    const deleteModal=document.getElementById("deleteModal");
+    const giftOrderModal=document.getElementById("giftOrderModal");
+    const orderDetailModal=document.getElementById("orderDetailModal");
+    const grantDetailModal=document.getElementById("grantDetailModal");
+    const voucherPreviewModal=document.getElementById("voucherPreviewModal");
+    const shareGiftPage=document.getElementById("shareGiftPage");
+    const orderListPage=document.getElementById("orderListPage");
+    const navShareGift=document.getElementById("navShareGift");
+    const navOrderList=document.getElementById("navOrderList");
+    const tabShareGift=document.getElementById("tabShareGift");
+    const tabOrderList=document.getElementById("tabOrderList");
+    const openConfigModal=document.getElementById("openConfigModal");
+    const closeConfigModal=document.getElementById("closeConfigModal");
+    const openAddModal=document.getElementById("openAddModal");
+    const closePosterModal=document.getElementById("closePosterModal");
+    const cancelPosterModal=document.getElementById("cancelPosterModal");
+    const closeDeleteModal=document.getElementById("closeDeleteModal");
+    const closeGiftOrderModal=document.getElementById("closeGiftOrderModal");
+    const closeOrderDetailModal=document.getElementById("closeOrderDetailModal");
+    const closeOrderDetailFooter=document.getElementById("closeOrderDetailFooter");
+    const closeGrantDetailModal=document.getElementById("closeGrantDetailModal");
+    const closeGrantDetailFooter=document.getElementById("closeGrantDetailFooter");
+    const closeVoucherPreviewModal=document.getElementById("closeVoucherPreviewModal");
+    const closeVoucherPreviewFooter=document.getElementById("closeVoucherPreviewFooter");
+    const grantDetailVoucher=document.getElementById("grantDetailVoucher");
+    const grantStudent=document.getElementById("grantStudent");
+    const grantManager=document.getElementById("grantManager");
+    const grantMonth=document.getElementById("grantMonth");
+    const grantUploadTime=document.getElementById("grantUploadTime");
+    const grantStatus=document.getElementById("grantStatus");
+    const grantLessons=document.getElementById("grantLessons");
+    const grantAuditNote=document.getElementById("grantAuditNote");
+    const grantAuditor=document.getElementById("grantAuditor");
+    const grantAuditTime=document.getElementById("grantAuditTime");
+    const voucherPreviewTitle=document.getElementById("voucherPreviewTitle");
+    const voucherPreviewImage=document.getElementById("voucherPreviewImage");
+    const cancelDelete=document.getElementById("cancelDelete");
+    const confirmDelete=document.getElementById("confirmDelete");
+    const deletePosterName=document.getElementById("deletePosterName");
+    const posterForm=document.getElementById("posterForm");
+    const posterModalTitle=document.getElementById("posterModalTitle");
+    const posterTitleInput=document.getElementById("posterTitleInput");
+    const posterFileInput=document.getElementById("posterFileInput");
+    const posterRemarkInput=document.getElementById("posterRemarkInput");
+    const modalPreview=document.getElementById("modalPreview");
+    const titleCount=document.getElementById("titleCount");
+    const titleError=document.getElementById("titleError");
+    const fileError=document.getElementById("fileError");
+    const toast=document.getElementById("toast");
+    const adminDevToggle=document.getElementById("adminDevToggle");
+    const adminDevPanel=document.getElementById("adminDevPanel");
+    const giftPanels=document.querySelectorAll("[data-gift-panel]");
+    const giftStepLabels=document.querySelectorAll("[data-gift-step-label]");
+    const giftPrev=document.getElementById("giftPrev");
+    const giftNext=document.getElementById("giftNext");
+    const productRows=Array.from(document.querySelectorAll(".product-table tbody tr"));
+    const giftProductSummaryName=document.getElementById("giftProductSummaryName");
+    const giftProductSummaryCampus=document.getElementById("giftProductSummaryCampus");
+    const giftProductSummaryClassType=document.getElementById("giftProductSummaryClassType");
+    const giftProductSummaryDuration=document.getElementById("giftProductSummaryDuration");
+    const confirmProductName=document.getElementById("confirmProductName");
+    const giftStepOrder=["product","order","pay"];
+    let currentGiftStep="product";
+    let editingId=null;
+    let deletingId=null;
+    let draggedId=null;
+    let posters=PosterContent.read();
+
+    function normalizePosters(){ posters=[...posters.filter(poster=>poster.status==="显示"),...posters.filter(poster=>poster.status==="隐藏")]; }
+    function renderTable(){
+      normalizePosters();
+      posterBody.innerHTML="";
+      posters.forEach((poster,index)=>{
+        const row=document.createElement("tr");
+        row.draggable=true;
+        row.dataset.id=poster.id;
+        row.innerHTML=`<td><span class="drag-handle" title="按住拖拽排序"><img src="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/icons/menu.svg" alt="">${index+1}</span></td><td>${poster.title}</td><td><img class="poster-thumb" src="${poster.image}" alt="${poster.title}预览图"></td><td>${poster.giftLessons??1} 节</td><td><span class="status ${poster.status==="显示"?"show":"hide"}">${poster.status}</span></td><td>${poster.creator}</td><td>${poster.time}</td><td><div class="actions"><button class="text-btn" type="button" data-action="edit">编辑</button><button class="secondary" type="button" data-action="toggle">${poster.status==="显示"?"隐藏":"显示"}</button><button class="danger-btn" type="button" data-action="delete">删除</button></div></td>`;
+        posterBody.appendChild(row);
+      });
+      recordText.textContent=`总记录数: ${posters.length}`;
+      openAddModal.disabled=posters.length>=20;
+      openAddModal.textContent=posters.length>=20?"已达20张上限":"新增海报";
+      bindRowEvents();
+    }
+
+    function bindRowEvents(){
+      posterBody.querySelectorAll("tr").forEach(row=>{
+        row.addEventListener("dragstart",()=>{ draggedId=Number(row.dataset.id); row.classList.add("dragging"); });
+        row.addEventListener("dragend",()=>{ row.classList.remove("dragging"); draggedId=null; });
+        row.addEventListener("dragover",event=>event.preventDefault());
+        row.addEventListener("drop",()=>{
+          const targetId=Number(row.dataset.id);
+          if(!draggedId||draggedId===targetId)return;
+          const draggedPoster=posters.find(poster=>poster.id===draggedId);
+          const targetPoster=posters.find(poster=>poster.id===targetId);
+          if(draggedPoster.status!==targetPoster.status){ showToast("显示海报固定排在隐藏海报之前，仅支持同状态内排序"); return; }
+          const draggedIndex=posters.findIndex(poster=>poster.id===draggedId);
+          const targetIndex=posters.findIndex(poster=>poster.id===targetId);
+          const [movedPoster]=posters.splice(draggedIndex,1);
+          posters.splice(targetIndex,0,movedPoster);
+          renderTable();
+          showToast("排序已更新");
+        });
+        row.querySelectorAll("[data-action]").forEach(button=>button.addEventListener("click",()=>handleAction(row.dataset.id,button.dataset.action)));
+      });
+    }
+
+    function handleAction(idValue,action){
+      const id=Number(idValue);
+      const poster=posters.find(item=>item.id===id);
+      if(!poster)return;
+      if(action==="edit"){ openPosterForm(poster); return; }
+      if(action==="toggle"){
+        if(poster.status==="隐藏"){
+          const visibleCount=posters.filter(item=>item.status==="显示").length;
+          if(visibleCount>=10){ showToast("显示海报最多10张，请先隐藏其他海报"); return; }
+          poster.status="显示";
+        }else poster.status="隐藏";
+        renderTable();
+        showToast("状态已更新，显示海报已自动排在前面");
+        return;
+      }
+      if(action==="delete")openDeleteConfirm(poster);
+    }
+
+    function setModalState(element,open){ element.classList.toggle("open",open); element.setAttribute("aria-hidden",String(!open)); }
+    function setGiftStep(step){
+      currentGiftStep=giftStepOrder.includes(step)?step:"product";
+      const activeIndex=giftStepOrder.indexOf(currentGiftStep);
+      giftPanels.forEach(panel=>panel.classList.toggle("active",panel.dataset.giftPanel===currentGiftStep));
+      giftStepLabels.forEach((label,index)=>{
+        label.classList.toggle("active",index===activeIndex);
+        label.classList.toggle("done",index<activeIndex);
+      });
+      giftPrev.style.visibility=activeIndex===0?"hidden":"visible";
+      giftNext.textContent=activeIndex===giftStepOrder.length-1?"提交付款":"下一步";
+    }
+    function openGiftOrder(step="product"){
+      setGiftStep(step);
+      setModalState(giftOrderModal,true);
+    }
+    function selectGiftProduct(row){
+      if(!row)return;
+      productRows.forEach(item=>item.classList.remove("selected"));
+      row.classList.add("selected");
+      const radio=row.querySelector(".product-radio");
+      if(radio)radio.checked=true;
+      const name=row.dataset.productName||row.children[1]?.textContent||"分享贈堂";
+      giftProductSummaryName.textContent=name;
+      giftProductSummaryCampus.textContent=`适用校区：${row.dataset.campus||row.children[2]?.textContent||"--"}`;
+      giftProductSummaryClassType.textContent=`班型：${row.dataset.classType||row.children[8]?.textContent||"--"}`;
+      giftProductSummaryDuration.textContent=`授课时长：${row.dataset.duration||row.children[9]?.textContent||"--"}`;
+      confirmProductName.textContent=name;
+    }
+    function sortGiftProductRowsByRemaining(){
+      const tbody=document.querySelector(".product-table tbody");
+      if(!tbody)return;
+      productRows
+        .sort((first,second)=>Number(first.dataset.remainingLessons||0)-Number(second.dataset.remainingLessons||0))
+        .forEach(row=>tbody.appendChild(row));
+      selectGiftProduct(productRows[0]);
+    }
+    function openVoucherPreview(src,title="分享凭证"){
+      voucherPreviewImage.src=src;
+      voucherPreviewImage.alt=title;
+      voucherPreviewTitle.textContent=title;
+      setModalState(voucherPreviewModal,true);
+    }
+    function openGrantDetailFromRow(row){
+      if(!row)return;
+      const voucher=row.querySelector(".voucher-thumb");
+      const status=row.dataset.status||row.querySelector(".status")?.textContent.trim()||"--";
+      grantDetailVoucher.src=voucher?.getAttribute("src")||"assets/instagram-帖子分享.jpg";
+      grantDetailVoucher.alt=`${row.dataset.student||"学员"}分享凭证`;
+      grantStudent.textContent=`${row.dataset.student||"--"} · ${row.dataset.code||"--"}`;
+      grantManager.textContent=row.dataset.manager||"--";
+      grantMonth.textContent=row.dataset.month||"--";
+      grantUploadTime.textContent=row.dataset.uploadTime||"--";
+      grantStatus.textContent=status;
+      grantDetailModal.classList.toggle("hide-lessons",status!=="已赠课");
+      grantLessons.value=row.dataset.lessons||"";
+      grantAuditNote.value=row.dataset.auditNote||status;
+      grantAuditor.textContent=row.dataset.auditor||"--";
+      grantAuditTime.textContent=row.dataset.auditTime||"--";
+      setModalState(grantDetailModal,true);
+    }
+    function openPosterForm(poster){
+      editingId=poster?poster.id:null;
+      posterModalTitle.textContent=poster?"编辑海报":"新增海报";
+      posterTitleInput.value=poster?poster.title:"";
+      posterRemarkInput.value="";
+      document.getElementById("posterShareCopy").value=poster?.shareCopy||"";
+      document.getElementById("posterCopyCount").textContent=document.getElementById("posterShareCopy").value.length+"/300";
+      document.getElementById("posterGiftLessonsInput").value=String(poster?.giftLessons??1);
+      modalPreview.src=poster?poster.image:"assets/分享海报1.png";
+      posterFileInput.value="";
+      titleError.textContent="";
+      fileError.textContent="";
+      updateTitleCount();
+      setModalState(posterModal,true);
+      posterTitleInput.focus();
+    }
+    function openDeleteConfirm(poster){ deletingId=poster.id; deletePosterName.textContent=`确定删除“${poster.title}”？`; setModalState(deleteModal,true); }
+    function updateTitleCount(){ titleCount.textContent=posterTitleInput.value.trim().length; }
+    function validateForm(){
+      const title=posterTitleInput.value.trim();
+      const file=posterFileInput.files[0];
+      let valid=true;
+      titleError.textContent="";
+      fileError.textContent="";
+      if(!title){ titleError.textContent="请输入海报标题"; valid=false; }
+      if(title.length>30){ titleError.textContent="标题不能超过30个字"; valid=false; }
+      if(!editingId&&!file){ fileError.textContent="请上传海报图片"; valid=false; }
+      if(file){
+        const extAllowed=/\.(jpe?g|png)$/i.test(file.name);
+        if(!["image/jpeg","image/png"].includes(file.type)&&!extAllowed){ fileError.textContent="仅支持JPEG、JPG、PNG图片"; valid=false; }
+        if(file.size>MAX_POSTER_FILE_SIZE){ fileError.textContent=`图片大小不能超过${POSTER_FILE_SIZE_TEXT}`; valid=false; }
+      }
+      if(!editingId&&posters.filter(poster=>poster.status==="显示").length>=10){ fileError.textContent="当前显示海报已达10张，请先隐藏其他海报"; valid=false; }
+      if(!editingId&&posters.length>=20){ fileError.textContent="海报总数已达20张上限"; valid=false; }
+      return valid;
+    }
+
+    document.getElementById("posterGiftLessonsInput").addEventListener("input",event=>event.target.setCustomValidity(""));
+    function savePoster(event){
+      event.preventDefault();
+      const giftInput=document.getElementById("posterGiftLessonsInput");
+      const giftValue=Number(giftInput.value);
+      giftInput.setCustomValidity(Number.isSafeInteger(giftValue)&&giftValue>=1&&giftValue<=3?"":"请选择 1–3 节赠堂数");
+      if(!giftInput.reportValidity())return;
+      if(!validateForm())return;
+      const file=posterFileInput.files[0];
+      const currentPoster=posters.find(poster=>poster.id===editingId);
+      const payload={shareCopy:document.getElementById("posterShareCopy").value.trim(),giftLessons:Number(document.getElementById("posterGiftLessonsInput").value),title:posterTitleInput.value.trim(),image:file?modalPreview.src:modalPreview.getAttribute("src"),status:currentPoster?currentPoster.status:"显示",creator:"张三",time:"2026-08-17 16:16"};
+      if(editingId){ posters=posters.map(poster=>poster.id===editingId?{...poster,...payload}:poster); showToast("海报已更新"); }
+      else{
+        const nextId=Math.max(0,...posters.map(poster=>poster.id))+1;
+        if(payload.status==="显示")posters.unshift({id:nextId,...payload}); else posters.push({id:nextId,...payload});
+        showToast("海报已新增");
+      }
+      PosterContent.save(posters.find(p=>p.id===(editingId||Math.max(...posters.map(p=>p.id)))));
+      setModalState(posterModal,false);
+      renderTable();
+    }
+
+    function showToast(message,duration=1800){ toast.textContent=message; toast.classList.add("show"); window.setTimeout(()=>toast.classList.remove("show"),duration); }
+    function showPanel(name){
+      if(!["invitations","invite-stats","registrations","channels"].includes(name))name="invitations";
+      const targetPanel=Array.from(panels).find(panel=>panel.dataset.panel===name);
+      if(!targetPanel)return;
+      tabs.forEach(item=>item.classList.toggle("active",item.dataset.tab===name));
+      panels.forEach(panel=>panel.classList.toggle("active",panel.dataset.panel===name));
+    }
+    function showAdminPage(name){
+      const isOrders=name==="orders";
+      const crm=["leads","follow"].includes(name);
+      document.querySelector("#crmPage").hidden=!crm;
+      document.querySelectorAll("[data-crm]").forEach(button=>button.classList.toggle("active",button.dataset.crm===name));
+      if(crm)document.dispatchEvent(new CustomEvent("crm-page",{detail:name}));
+      orderListPage.hidden=!isOrders;
+      shareGiftPage.hidden=isOrders||crm;
+      navOrderList.classList.toggle("active",isOrders);
+      navShareGift.classList.toggle("active",!isOrders&&!crm);
+      tabOrderList.classList.toggle("active",isOrders);
+      tabShareGift.classList.toggle("active",!isOrders&&!crm);
+    }
+    function applyDevStateFromUrl(){
+      const params=new URLSearchParams(window.location.search);
+      const requestedPage=params.get("page");
+      if(requestedPage==="orders")showAdminPage("orders");
+      const requestedTab=params.get("tab");
+      showPanel(requestedTab||"invitations");
+
+      const posterId=Number(params.get("poster"));
+      const targetPoster=posters.find(poster=>poster.id===posterId)||posters[0];
+      const requestedModal=params.get("modal");
+      if(requestedModal==="config")setModalState(configModal,true);
+      if(requestedModal==="add"){
+        setModalState(configModal,true);
+        openPosterForm();
+      }
+      if(requestedModal==="edit"&&targetPoster){
+        setModalState(configModal,true);
+        openPosterForm(targetPoster);
+      }
+      if(requestedModal==="delete"&&targetPoster){
+        setModalState(configModal,true);
+        openDeleteConfirm(targetPoster);
+      }
+      if(requestedModal==="gift")openGiftOrder(params.get("step")||"product");
+      if(requestedModal==="orderDetail")setModalState(orderDetailModal,true);
+      if(requestedModal==="grantDetail"){
+        const status=params.get("status")||"已赠课";
+        const button=Array.from(document.querySelectorAll(".grant-detail-btn")).find(item=>item.closest("tr")?.dataset.status===status)||document.querySelector(".grant-detail-btn");
+        openGrantDetailFromRow(button?.closest("tr"));
+      }
+      if(requestedModal==="voucher"){
+        const image=document.querySelector(".voucher-thumb");
+        if(image)openVoucherPreview(image.getAttribute("src"),"分享凭证");
+      }
+
+      if(params.get("toast")==="saved")showToast("已保存",6000);
+      if(params.get("toast")==="deleted")showToast("海报已删除，历史分享与赠课记录不受影响",6000);
+    }
+    tabs.forEach(tab=>tab.addEventListener("click",()=>showPanel(tab.dataset.tab)));
+    openConfigModal.addEventListener("click",()=>setModalState(configModal,true));
+    closeConfigModal.addEventListener("click",()=>setModalState(configModal,false));
+    openAddModal.addEventListener("click",()=>openPosterForm());
+    closePosterModal.addEventListener("click",()=>setModalState(posterModal,false));
+    cancelPosterModal.addEventListener("click",()=>setModalState(posterModal,false));
+    closeDeleteModal.addEventListener("click",()=>setModalState(deleteModal,false));
+    closeGiftOrderModal.addEventListener("click",()=>setModalState(giftOrderModal,false));
+    closeOrderDetailModal.addEventListener("click",()=>setModalState(orderDetailModal,false));
+    closeOrderDetailFooter.addEventListener("click",()=>setModalState(orderDetailModal,false));
+    closeGrantDetailModal.addEventListener("click",()=>setModalState(grantDetailModal,false));
+    closeGrantDetailFooter.addEventListener("click",()=>setModalState(grantDetailModal,false));
+    closeVoucherPreviewModal.addEventListener("click",()=>setModalState(voucherPreviewModal,false));
+    closeVoucherPreviewFooter.addEventListener("click",()=>setModalState(voucherPreviewModal,false));
+    cancelDelete.addEventListener("click",()=>setModalState(deleteModal,false));
+    confirmDelete.addEventListener("click",()=>{ posters=posters.filter(poster=>poster.id!==deletingId); deletingId=null; setModalState(deleteModal,false); renderTable(); showToast("海报已删除，历史分享与赠课记录不受影响"); });
+    [configModal,posterModal,deleteModal,giftOrderModal,orderDetailModal,grantDetailModal,voucherPreviewModal].forEach(modal=>modal.addEventListener("click",event=>{ if(event.target===modal)setModalState(modal,false); }));
+    [navShareGift,tabShareGift].forEach(button=>button.addEventListener("click",()=>showAdminPage("shareGift")));
+    [navOrderList,tabOrderList].forEach(button=>button.addEventListener("click",()=>showAdminPage("orders")));
+    document.querySelectorAll(".gift-btn").forEach(button=>button.addEventListener("click",()=>openGiftOrder("product")));
+    document.querySelectorAll(".grant-detail-btn").forEach(button=>button.addEventListener("click",()=>openGrantDetailFromRow(button.closest("tr"))));
+    document.querySelectorAll(".order-detail-btn").forEach(button=>button.addEventListener("click",()=>setModalState(orderDetailModal,true)));
+    document.querySelectorAll(".voucher-thumb").forEach(image=>{
+      image.addEventListener("click",()=>openVoucherPreview(image.getAttribute("src"),"分享凭证"));
+      image.addEventListener("keydown",event=>{ if(event.key==="Enter"||event.key===" "){ event.preventDefault(); openVoucherPreview(image.getAttribute("src"),"分享凭证"); } });
+    });
+    grantDetailVoucher.addEventListener("click",()=>openVoucherPreview(grantDetailVoucher.getAttribute("src"),"分享凭证"));
+    productRows.forEach(row=>row.addEventListener("click",()=>selectGiftProduct(row)));
+    giftPrev.addEventListener("click",()=>{
+      const index=giftStepOrder.indexOf(currentGiftStep);
+      if(index>0)setGiftStep(giftStepOrder[index-1]);
+    });
+    giftNext.addEventListener("click",()=>{
+      const index=giftStepOrder.indexOf(currentGiftStep);
+      if(index<giftStepOrder.length-1){ setGiftStep(giftStepOrder[index+1]); return; }
+      setModalState(giftOrderModal,false);
+      showToast("赠送订单已创建并完成付款确认，审核状态更新为已赠课");
+    });
+    posterTitleInput.addEventListener("input",updateTitleCount);
+    posterForm.addEventListener("submit",savePoster);
+    adminDevToggle.addEventListener("click",()=>{
+      const willOpen=adminDevPanel.hidden;
+      adminDevPanel.hidden=!willOpen;
+      adminDevToggle.setAttribute("aria-expanded",String(willOpen));
+    });
+    posterFileInput.addEventListener("change",()=>{
+      const file=posterFileInput.files[0];
+      fileError.textContent="";
+      if(!file)return;
+      if(file.size>MAX_POSTER_FILE_SIZE){ fileError.textContent=`图片大小不能超过${POSTER_FILE_SIZE_TEXT}`; return; }
+      if(!["image/jpeg","image/png"].includes(file.type)&&!/\.(jpe?g|png)$/i.test(file.name)){ fileError.textContent="仅支持JPEG、JPG、PNG图片"; return; }
+      const reader=new FileReader();
+      reader.onload=()=>{ modalPreview.src=reader.result; };
+      reader.readAsDataURL(file);
+    });
+    sortGiftProductRowsByRemaining();
+    renderTable();
+    applyDevStateFromUrl();
+  </script>
+  <script src="assets/invitations.js"></script>
+
+<script src="assets/invite-stats.js?v=20261029-3"></script>
+<script src="assets/review-nav.js"></script><script src="assets/poster-copy-admin.js"></script><script src="assets/lead-store.js?v=20261030-lead-status"></script><script src="assets/lead-admin.js?v=20261030-lead-status"></script>
+<style>[data-panel="registrations"] td{font-size:13px;max-width:190px;overflow-wrap:anywhere;color:#263d57!important}[data-panel="registrations"] th{white-space:nowrap}#leadFollowInfo dl{display:grid;grid-template-columns:90px 1fr;gap:10px;font-size:14px}#leadFollowInfo dd{margin:0;overflow-wrap:anywhere}#leadFollowDialog{max-height:85vh;overflow:auto;width:620px}#leadFollowDialog::backdrop{background:#12223888}</style><dialog id="channelDetails" class="invite-dialog" style="width:850px;max-width:90vw"><header><h2 id="channelDetailsTitle">渠道登记明细</h2><button id="closeChannelDetails" type="button" aria-label="关闭渠道登记明细">×</button></header><div id="channelDetailsBody" style="padding:20px;max-height:65vh;overflow:auto"></div></dialog><script src="assets/channel-stats.js?v=20261030-lead-status"></script><link rel="stylesheet" href="assets/crm.css"><script src="assets/crm.js"></script></body>
+</html>

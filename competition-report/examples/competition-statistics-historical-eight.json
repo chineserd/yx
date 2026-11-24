@@ -1,0 +1,154 @@
+{
+  "example_kind": "historical_8_essay_statistics_only",
+  "formal_batch": false,
+  "stage_03_ready": false,
+  "source_scope": {
+    "topic_title": "《國家就像_______________》",
+    "school_id": "4",
+    "formal_inclusion_list_confirmed": false,
+    "full_topic_cohort_available": false,
+    "source_record_count": 8
+  },
+  "contract_refs": {
+    "01": "../prompt-data/framework-genre-input-contract.json",
+    "02": "../prompt-data/single-review-input-contract.json",
+    "03": "../prompt-data/competition-report-prompt-input.json"
+  },
+  "grade_setting_snapshot": {
+    "source": "prototype_PRD_4.5_not_live_teaching_setting",
+    "bands": [
+      {
+        "grade": "5**",
+        "lower_inclusive": 95,
+        "upper_exclusive": null,
+        "includes_100": true
+      },
+      {
+        "grade": "5*",
+        "lower_inclusive": 80,
+        "upper_exclusive": 95,
+        "includes_100": false
+      },
+      {
+        "grade": "5",
+        "lower_inclusive": 65,
+        "upper_exclusive": 80,
+        "includes_100": false
+      },
+      {
+        "grade": "4",
+        "lower_inclusive": 41,
+        "upper_exclusive": 65,
+        "includes_100": false
+      },
+      {
+        "grade": "3",
+        "lower_inclusive": 35,
+        "upper_exclusive": 41,
+        "includes_100": false
+      },
+      {
+        "grade": "2",
+        "lower_inclusive": 26,
+        "upper_exclusive": 35,
+        "includes_100": false
+      },
+      {
+        "grade": "1",
+        "lower_inclusive": 0,
+        "upper_exclusive": 26,
+        "includes_100": false
+      }
+    ]
+  },
+  "calculated_from_real_source": {
+    "valid_total_count": 8,
+    "grade_distribution_display": [
+      {
+        "grade": "4",
+        "count": 8
+      }
+    ],
+    "grade_distribution_internal": [
+      {
+        "grade": "5**",
+        "count": 0
+      },
+      {
+        "grade": "5*",
+        "count": 0
+      },
+      {
+        "grade": "5",
+        "count": 0
+      },
+      {
+        "grade": "4",
+        "count": 8
+      },
+      {
+        "grade": "3",
+        "count": 0
+      },
+      {
+        "grade": "2",
+        "count": 0
+      },
+      {
+        "grade": "1",
+        "count": 0
+      }
+    ],
+    "school_metric_internal_sample": {
+      "total": {
+        "valid_count": 8,
+        "internal_min": 48,
+        "internal_max": 59,
+        "internal_mean": 52.625
+      },
+      "content": {
+        "valid_count": 8,
+        "internal_min": 19,
+        "internal_max": 23,
+        "internal_mean": 21.25
+      },
+      "expression": {
+        "valid_count": 8,
+        "internal_min": 11,
+        "internal_max": 18,
+        "internal_mean": 14.0
+      },
+      "structure": {
+        "valid_count": 8,
+        "internal_min": 10,
+        "internal_max": 11,
+        "internal_mean": 10.375
+      },
+      "punctuationHandwriting": {
+        "valid_count": 8,
+        "internal_min": 7,
+        "internal_max": 7,
+        "internal_mean": 7.0
+      }
+    }
+  },
+  "school_all_comparison": {
+    "status": "empty",
+    "reason_code": "FULL_TOPIC_COHORT_NOT_PROVIDED",
+    "school_included_count_for_formal_report": null,
+    "all_included_count": null,
+    "total_and_four_dimension_charts": {
+      "total": null,
+      "content": null,
+      "expression": null,
+      "structure": null,
+      "punctuationHandwriting": null
+    }
+  },
+  "limits": [
+    "此檔僅供歷史作文統計測試，不作正式參賽批次資料。",
+    "等級計算使用原型 PRD 的區間快照，未驗證教學設定實時配置。",
+    "缺少經程序核對的同題全體資料，不能生成 1.2.2 正式對比圖。",
+    "內部原分與均值只供程序核對，不在比賽報告正文展示。"
+  ]
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 760" role="img" aria-labelledby="title desc">
+<title id="title">视频上传与学生观看横版流程图</title>
+<desc id="desc">上方为后台上传和发布，下方为学生 App 首页、观看分支与我的观看，右侧统计观看记录。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#8c9bab"/></marker><style>text{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;fill:#263341}.title{font-size:29px;font-weight:700}.sub{font-size:14px;fill:#718194}.lane{font-size:17px;font-weight:700}.head{font-size:17px;font-weight:700}.body{font-size:12px;fill:#647487}.small{font-size:12px;fill:#58718c}.line{stroke:#8c9bab;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.loop{stroke:#e39d60;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style></defs>
+<rect width="1800" height="760" fill="#f7f9fc"/>
+<text x="48" y="57" class="title">视频上传与观看流程</text><text x="48" y="83" class="sub">通用节点配置 · 学生 App 双 Tab · 观看 UV/PV 与记录</text>
+<rect x="35" y="112" width="1730" height="260" rx="18" fill="#fff" stroke="#dfe7f0"/><rect x="35" y="392" width="1730" height="333" rx="18" fill="#fff" stroke="#dfe7f0"/>
+<rect x="52" y="130" width="104" height="32" rx="16" fill="#e7f1ff"/><text x="74" y="152" class="lane" fill="#1677ff">后台</text>
+<rect x="52" y="410" width="104" height="32" rx="16" fill="#fff0ed"/><text x="74" y="432" class="lane" fill="#e33832">学生 App</text>
+<g><rect x="70" y="193" width="185" height="112" rx="13" fill="#f7fbff" stroke="#b7d4f5"/><text x="92" y="226" class="head">视频列表</text><text x="92" y="250" class="body">点击“上传视频”</text><text x="92" y="271" class="body">已有视频可查看数据</text></g>
+<g><rect x="328" y="193" width="190" height="112" rx="13" fill="#f7fbff" stroke="#b7d4f5"/><text x="350" y="226" class="head">1 基本信息</text><text x="350" y="250" class="body">填写名称、备注</text><text x="350" y="271" class="body">名称必填</text></g>
+<g><rect x="592" y="174" width="255" height="150" rx="13" fill="#f7fbff" stroke="#b7d4f5"/><text x="614" y="209" class="head">2 上传与配置路径</text><text x="614" y="236" class="body">逐节点选视频文件</text><text x="614" y="259" class="body">设置开场、自动后续／选择／结尾</text><text x="614" y="282" class="body">选择题可配置选项与目标节点</text></g>
+<g><rect x="929" y="193" width="190" height="112" rx="13" fill="#fffaf4" stroke="#efce9b"/><text x="951" y="226" class="head">校验配置</text><text x="951" y="250" class="body">文件、去向、选项完整？</text><text x="951" y="271" class="body">不完整时返回修改</text></g>
+<g><rect x="1200" y="193" width="185" height="112" rx="13" fill="#f7fbff" stroke="#b7d4f5"/><text x="1222" y="226" class="head">3 预览发布</text><text x="1222" y="250" class="body">核对节点与路径</text><text x="1222" y="271" class="body">确认后发布</text></g>
+<g><rect x="1465" y="193" width="225" height="112" rx="13" fill="#edfaf5" stroke="#a6d7bd"/><text x="1487" y="226" class="head">发布成功</text><text x="1487" y="250" class="body">进入后台视频列表</text><text x="1487" y="271" class="body">同步展示于 App 首页</text></g>
+<path class="line" d="M255 249 H323"/><path class="line" d="M518 249 H587"/><path class="line" d="M847 249 H924"/><path class="line" d="M1119 249 H1195"/><path class="line" d="M1385 249 H1460"/><path class="loop" d="M1024 305 V345 H720 V329"/><text x="858" y="339" class="small">不完整</text><text x="1140" y="237" class="small">完整</text>
+<g><rect x="70" y="492" width="185" height="115" rx="13" fill="#fff8f7" stroke="#f4b9b3"/><text x="92" y="525" class="head">首页</text><text x="92" y="551" class="body">浏览全部视频和观看状态</text><text x="92" y="573" class="body">点击开始／继续观看</text></g>
+<g><rect x="328" y="492" width="190" height="115" rx="13" fill="#fff8f7" stroke="#f4b9b3"/><text x="350" y="525" class="head">视频播放</text><text x="350" y="551" class="body">实际点击播放计 1 次 PV</text><text x="350" y="573" class="body">记录学生与开始时间</text></g>
+<g><rect x="592" y="480" width="255" height="140" rx="13" fill="#fff8f7" stroke="#f4b9b3"/><text x="614" y="515" class="head">节点播放结束</text><text x="614" y="541" class="body">自动后续：直接进入下一节点</text><text x="614" y="564" class="body">选择分支：展示问题与选项</text><text x="614" y="587" class="body">结尾：进入观看完成</text></g>
+<g><rect x="929" y="492" width="190" height="115" rx="13" fill="#fff8f7" stroke="#f4b9b3"/><text x="951" y="525" class="head">学生选择</text><text x="951" y="551" class="body">点击选项后进入目标节点</text><text x="951" y="573" class="body">继续播放至结尾</text></g>
+<g><rect x="1200" y="492" width="185" height="115" rx="13" fill="#fff8f7" stroke="#f4b9b3"/><text x="1222" y="525" class="head">观看完成</text><text x="1222" y="551" class="body">显示结尾标题与说明</text><text x="1222" y="573" class="body">可再次观看</text></g>
+<g><rect x="1465" y="492" width="225" height="115" rx="13" fill="#fff8f7" stroke="#f4b9b3"/><text x="1487" y="525" class="head">我的</text><text x="1487" y="551" class="body">查看观看状态与最近记录</text><text x="1487" y="573" class="body">底部仅“首页、我的”双 Tab</text></g>
+<path class="line" d="M255 550 H323"/><path class="line" d="M518 550 H587"/><path class="line" d="M847 550 H924"/><path class="line" d="M1119 550 H1195"/><path class="line" d="M1385 550 H1460"/><path class="loop" d="M1024 607 V663 H720 V625"/><text x="864" y="652" class="small">继续节点</text>
+<path class="line" d="M1578 305 V387 H1645 V487"/><text x="1458" y="383" class="small">发布后可观看</text>
+
+<text x="74" y="693" class="body">后台按视频统计 UV/PV，并记录学生、学生编号、视频内容、观看时长与开始时间；节点选择不单独计次。</text>
+</svg>

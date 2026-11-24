@@ -1,0 +1,4 @@
+// Only the in-app invitation channel is available in this prototype.
+function popupEditor(d){return `<div class="sending-heading"><h4 class="notification-settings-title">通知设置</h4></div><div class="notification-channels"><section class="notification-channel"><div class="channel-head"><label><input type="checkbox" aria-label="App 内弹窗" ${d.popupEnabled!==false?'checked':''} onchange="editing.data.popupEnabled=this.checked"><strong>App 内弹窗</strong></label><span class="channel-tag">默认开启</span></div><p class="channel-desc">按提醒规则在家长端／成人端展示邀请弹窗，点击「开始评价」进入问卷填写页；学生端不展示。</p></section></div>`}
+function validatePopupConfig(d){return d.popupEnabled===false?'请开启 App 内弹窗，以提供问卷邀请入口':''}
+function popupReadOnly(v){return `<h3 class="block-title">通知设置</h3><div class="read-grid"><div><small>App 内弹窗</small><p>${v.popupEnabled!==false?'开启':'关闭'}</p></div></div>`}

@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DSE 中文作文四步寫前指導工具" />
+    <title>文舟｜DSE 作文導航</title>
+    <script src="./backend-entry-compat.js?v=20261109-unified-backend"></script>
+    <link rel="stylesheet" href="styles.css?v=872febc01f" />
+    <link rel="stylesheet" href="flow.css?v=20261118-output-stance-red" />
+    <link rel="stylesheet" href="backend.css?v=f11ed27764" />
+    <link rel="stylesheet" href="practice-records.css?v=b2821b7dae" />
+    <link rel="stylesheet" href="student-home.css?v=65076d3cc5" />
+    <link rel="stylesheet" href="student-density.css?v=8b4e2a1d7f" />
+    <link rel="stylesheet" href="student-workbench.css?v=9c1f3a2e6b" />
+    <link rel="stylesheet" href="student-compact.css?v=20261109-tablet-fit" />
+    <link rel="stylesheet" href="student-improved.css?v=e4409d0d9d" />
+    <link rel="stylesheet" href="student-modules.css?v=3a7c1e5d9b" />
+    <link rel="stylesheet" href="student-score-report.css?v=6e2b9c4a1d" />
+    <link rel="stylesheet" href="qida-web.css?v=20261108-qida" />
+  <style>.requirement-identity.requirement-identity{position:relative;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;flex-shrink:0;gap:0;margin:0 12px 0 0;padding:0 0 0 11px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#334155;font:700 12px/18px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;white-space:nowrap;cursor:default;text-decoration:none}.requirement-identity::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:28px;border-radius:2px;background:#5478e8}.requirement-identity>.requirement-label{font:400 10px/14px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;letter-spacing:1px;color:#8793a5;cursor:default}.requirement-identity>.requirement-name{font:inherit;color:#334155;cursor:default}</style><style>.requirement-feature-badge{display:inline-block;margin-left:8px;color:#fff;background:#e53935;border:1px solid #e53935;font:600 11px/16px sans-serif;padding:0 5px;border-radius:4px;white-space:nowrap;vertical-align:middle;cursor:inherit}</style></head>
+  <body>
+<nav class="preview-nav" aria-label="需求預覽導航"><span class="requirement-identity "><span class="requirement-label">需求名稱</span><span class="requirement-name">作文寫前指導</span></span><a href="中文作文.html#/backend/publish-essay" data-view-link="backend">後台</a><a href="#/student-flow" data-view-link="student-flow">学生端流程</a><a href="#/prd" data-view-link="prd">PRD</a><a href="simple-prd.html" data-view-link="development">功能清单</a><a href="#/prompt-guide" data-view-link="prompt-guide">提示詞</a><a href="updates.html" data-view-link="updates">更新記錄</a><a href="#/student-empty-tablet" data-view-link="student-tablet">學生-啟達平板端</a><a class="history-link" href="/">歷史需求彙總頁</a></nav>
+<main data-view="student-flow" class="student-flow-view" hidden aria-label="学生端流程"><iframe title="作文写前指导-前端流程" src="/__local/external-essay-prewriting-guide/#/" loading="lazy"></iframe><a class="student-flow-open" href="https://www.chineserd.com/essay-prewriting-guide/#/" target="_blank" rel="noopener noreferrer">在新页面打开学生端流程 ↗</a></main>
+<main data-view="student-empty" class="student-empty-view" hidden aria-label="學生端預覽"><p class="student-empty-copy">待補充</p></main>
+<nav class="student-version-nav" aria-label="學生端版本" hidden><a href="#/student-learning">‹ 返回自主學習</a><a href="#/student" data-student-version="student">現有版（PC端）</a><a href="#/student-improved" data-student-version="student-improved">平板端</a></nav>
+<main class="learning-home legacy-learning-home" data-view="legacy-student-learning" hidden>
+<header class="learning-header"><div class="learning-profile"><span class="learning-avatar learning-initial" id="learningStudentAvatar" aria-hidden="true"></span><div><strong id="learningStudentName"></strong><span id="learningStudentId"></span></div></div><h1>自主學習</h1><a class="learning-records" href="#/student-records">▱ 練習記錄 <span aria-hidden="true">›</span></a></header>
+<div class="learning-columns"><article class="learning-module"><div class="learning-banner reading" role="img" aria-label="閱讀：從文言文到白話文，涵蓋指定與課外篇章，全面提升對文章的理解與賞析能力。"><img src="assets/student-home-reference.png" alt=""></div><div class="learning-module-body"><section><h2>文言文</h2><div class="learning-tiles"><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v19l-6-5-6 5Z"/></svg></span><span>指定篇章</span><span class="learning-arrow" aria-hidden="true">›</span></button><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6Z"/></svg></span><span>課外篇章</span><span class="learning-arrow" aria-hidden="true">›</span></button><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13" r="8"/><circle cx="11" cy="13" r="4"/><path d="m11 13 9-10m-1 0h3v3"/></svg></span><span>專項練習</span><span class="learning-arrow" aria-hidden="true">›</span></button></div></section><section><h2>白話文</h2><div class="learning-tiles"><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="m15 15 7 7"/></svg></span><span>閱讀理解</span><span class="learning-arrow" aria-hidden="true">›</span></button><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13" r="8"/><circle cx="11" cy="13" r="4"/><path d="m11 13 9-10m-1 0h3v3"/></svg></span><span>專項練習</span><span class="learning-arrow" aria-hidden="true">›</span></button></div></section></div></article>
+<article class="learning-module"><div class="learning-banner writing" role="img" aria-label="寫作：針對命題與實用文，提供AI智能批改與即時寫前指導。"><img src="assets/student-home-reference.png" alt=""></div><div class="learning-module-body"><section><h2>命題作文</h2><div class="learning-tiles"><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M8 13l3 3 5-6"/></svg></span><span>AI作文批改</span><span class="learning-arrow" aria-hidden="true">›</span></button><a class="learning-tile" href="#/student"><span class="learning-icon " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 3H9c0-1 0-2-1-3Z"/><path d="M12 1v1M2 9H1m22 0h-1M4 3l1 1m15-1-1 1"/></svg></span><span>AI作文指導 <span class="requirement-feature-badge">需求</span></span><span class="learning-arrow" aria-hidden="true">›</span></a></div></section><section><h2>實用文</h2><div class="learning-tiles"><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M8 13l3 3 5-6"/></svg></span><span>AI作文批改</span><span class="learning-arrow" aria-hidden="true">›</span></button><button class="learning-tile" disabled title="此功能暫未開放"><span class="learning-icon " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6m-5 3h4M8 14a6 6 0 1 1 8 0c-1 1-1 2-1 3H9c0-1 0-2-1-3Z"/><path d="M12 1v1M2 9H1m22 0h-1M4 3l1 1m15-1-1 1"/></svg></span><span>作文指導</span><span class="learning-arrow" aria-hidden="true">›</span></button></div></section></div></article></div>
+<nav class="learning-bottom" aria-label="學生主導航"><button disabled title="此功能暫未開放"><span aria-hidden="true">▣</span>每日一練</button><a href="#/student-learning" aria-current="page"><span aria-hidden="true">▰</span>自主學習</a><button disabled title="此功能暫未開放"><span aria-hidden="true">☷</span>老師任務</button></nav></main>
+<nav class="student-page-menu" aria-label="學生端頁面目錄" hidden>
+  <button class="student-menu-toggle" type="button" aria-expanded="true">收起 ‹</button>
+  <div id="studentMenuContent">
+    <section id="studentTabletMenuContent">
+      <h2>學生-啟達平板端</h2>
+      <a class="student-page-home" data-student-page="home" href="#/student-learning"><span>01</span>首頁</a>
+      <a data-student-page="records" href="#/student-records/essay/guidance"><span>02</span>練習記錄</a>
+      <a data-student-page="score-report" href="#/student-score-report/W001"><span>03</span>作文評分報告</a>
+    </section>
+    <section id="studentWebMenuContent" hidden>
+      <h2>學生-啟達網頁端</h2>
+      <a class="student-page-home" data-web-page="home" href="#/student"><span>01</span>首頁</a>
+      <a data-web-page="guide-list" href="#/student-pending?surface=web"><span>02</span>待寫作文</a>
+      <a data-web-page="guide-start" href="#/student-improved?surface=web"><span>03</span>寫前指導</a>
+      <div class="student-page-subnav"><strong>寫前指導功能</strong><a data-preview-stage="reading" href="#/student-improved/1?surface=web"><span>01</span>審題立意</a><a data-preview-stage="material" href="#/student-improved/3?surface=web"><span>02</span>素材選擇</a><a data-preview-stage="outline" href="#/student-improved/2?surface=web"><span>03</span>結構表達</a><a data-preview-stage="complete" href="#/student-improved/4?surface=web"><span>04</span>完整指導</a></div>
+      <a data-web-page="records" href="#/student-records/essay/guidance?surface=web"><span>04</span>寫前指導記錄</a>
+    </section>
+  </div>
+</nav>
+<main class="learning-home student-tablet-frame" data-view="student-learning" hidden>
+  <div class="tablet-home-rebuild">
+    <header class="tablet-home-header"><div class="tablet-profile"><span class="learning-avatar learning-initial" id="learningStudentAvatar" aria-hidden="true"></span><div><strong id="learningStudentName">陳曉晴</strong><span id="learningStudentId">學生編號：S01</span></div></div><h1 class="tablet-home-title">自主學習</h1><a class="tablet-records-button" href="#/student-records/essay/guidance"><span aria-hidden="true">▱</span>練習記錄</a></header>
+    <div class="tablet-feature-grid">
+      <article class="tablet-daily-card"><div class="tablet-card-heading"><span aria-hidden="true">☀</span><h2>每日一練</h2><strong>4<small>天</small></strong></div><div class="tablet-streak"><span>一<b>✓</b></span><span>二<b>✓</b></span><span>三<b>✓</b></span><span class="is-today">四<b>今日</b></span><span>五<b>—</b></span><span>六<b>—</b></span><span>日<b>—</b></span></div><a class="tablet-practice-button" href="#/student-module/daily">開始練習 <span aria-hidden="true">→</span></a></article>
+      <a class="tablet-feature-card green" href="#/student-module/classical"><span class="feature-symbol" aria-hidden="true">文</span><h2>試題操練</h2><p>按專項鞏固能力</p></a>
+      <a class="tablet-feature-card blue" href="#/student-module/essay-correction"><span class="feature-symbol" aria-hidden="true">批</span><h2>AI作文批改</h2><p>查看作文評分報告</p></a>
+      <a class="tablet-feature-card yellow" href="#/student-module/mistakes"><span class="feature-symbol" aria-hidden="true">錯</span><h2>錯題複習</h2><p>回看薄弱知識點</p></a>
+    </div>
+    <div class="tablet-home-grid"><section class="tablet-task-card"><header><span aria-hidden="true">☷</span><h2>教師任務</h2><p>共 <b>0</b> 項待完成</p></header><div class="tablet-task-tabs" role="tablist" aria-label="教師任務狀態"><button type="button" data-home-task-state="pending" aria-selected="true">待完成 <b>0</b></button><button type="button" data-home-task-state="completed" aria-selected="false">已完成 <b>1</b></button><button type="button" data-home-task-state="expired" aria-selected="false">已過期 <b>0</b></button></div><div class="tablet-task-panel" data-home-task-panel="pending"><div class="tablet-task-empty"><span>✓</span><h3>暫無待完成任務</h3><p>老師發布新任務後，會顯示在這裡。</p></div></div><div class="tablet-task-panel" data-home-task-panel="completed" hidden><div class="tablet-completed-grid"><a class="tablet-completed-item" href="#/student-score-report/W001"><span class="task-label">已完成</span><strong>命題作文：這一道風景</strong><b>78分</b><small>已完成 · 2026-11-06</small><span class="task-report-button">查看報告 <i>›</i></span></a></div></div><div class="tablet-task-panel" data-home-task-panel="expired" hidden><div class="tablet-task-empty"><span>—</span><h3>暫無已過期任務</h3><p>逾期任務會在這裡顯示。</p></div></div></section><section class="tablet-ability-card"><header><span aria-hidden="true">◈</span><h2>能力圖</h2><div class="tablet-ability-tabs"><button class="is-active" type="button">作文</button><button type="button">閱讀</button></div></header><div class="ability-placeholder"><svg viewBox="0 0 360 240" aria-hidden="true"><path d="M180 26 322 118 180 210 38 118Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M180 67 258 118 180 169 102 118Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M180 108 196 118 180 128 164 118Z" fill="none" stroke="currentColor" stroke-width="2"/></svg><div><span>內容</span><span>表達</span><span>結構</span><span>字詞</span><span>思維</span></div><strong>完成作文練習後，這裡會生成能力分析</strong></div></section></div>
+  </div>
+</main>
+<main class="student-web-home web-learning-home" data-view="student-web" hidden>
+  <div class="web-home-shell"><header class="web-home-header"><div class="web-home-brand"><span class="web-home-mark">啟</span><div><strong>啟達網頁端</strong><span>中文科 · 作文寫前指導</span></div></div><div class="web-home-student"><span class="learning-avatar learning-initial">陳</span><span><b>陳曉晴</b><small>S01 · 學生</small></span></div></header><section class="web-home-hero"><div><span class="web-eyebrow">WRITING BEFORE WRITING</span><h1>先想清楚，再寫精彩。</h1><p>從題目理解、立意、選材到結構表達，完成一份屬於自己的寫前藍圖。</p><a class="web-primary-action" href="#/student-improved?surface=web">開始寫前指導 <span>→</span></a></div><div class="web-hero-steps"><span class="is-active">01 審題立意</span><span>02 素材選擇</span><span>03 結構表達</span><span>04 完整指導</span></div></section><section class="web-home-cards"><a href="#/student-pending?surface=web"><span>待</span><div><b>待寫作文</b><small>查看老師發布的作文題目</small></div><i>›</i></a><a href="#/student-improved?surface=web"><span>寫</span><div><b>寫前指導</b><small>完成四步寫作準備</small></div><i>›</i></a><a href="#/student-records/essay/guidance?surface=web"><span>記</span><div><b>寫前指導記錄</b><small>回看已保存的寫前藍圖</small></div><i>›</i></a></section></div>
+</main>
+<main class="practice-view student-tablet-frame" data-view="student-records" hidden><div id="practiceApp"></div></main>
+<main class="pending-writing-view student-tablet-frame" data-view="student-pending" hidden><div id="pendingWritingApp"></div></main>
+<main class="student-module-view student-tablet-frame" data-view="student-module" hidden><div id="studentModuleApp"></div></main>
+<main class="student-score-report-view student-tablet-frame" data-view="student-score-report" hidden><div id="studentScoreReportApp"></div></main>
+    <div class="site-shell" data-view="legacy-student-guide">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="文舟 DSE 作文導航首頁">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 42 42" role="img">
+              <path d="M9 13.2 21 7l12 6.2-12 6.2L9 13.2Z" />
+              <path d="M12.5 17.8V26c0 2.8 3.8 5.2 8.5 5.2s8.5-2.4 8.5-5.2v-8.2" />
+              <path d="M33 13.4v10" />
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>文舟</strong>
+            <small>DSE 作文導航</small>
+          </span>
+        </a>
+
+        <div class="topbar-actions">
+          <span class="save-state" id="saveState">
+            <span class="save-dot"></span>
+            已自動儲存
+          </span>
+          <button class="icon-button" id="resetButton" type="button" aria-label="重新開始" title="重新開始">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 11a8 8 0 1 0-2.34 5.66M20 4v7h-7" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="sidebar" aria-label="寫作步驟">
+          <div class="sidebar-heading">
+            <span class="eyebrow">WRITING JOURNEY</span>
+            <h1>寫作導航</h1>
+            <p>把想法一步步，變成有力的文章。</p>
+          </div>
+
+          <nav class="step-nav" id="stepNav">
+            <button class="step-nav-item is-active" type="button" data-go-step="1" aria-current="step">
+              <span class="step-number">01</span>
+              <span class="step-nav-copy">
+                <strong>審題立意</strong>
+                <small>讀懂題意，找準方向</small>
+              </span>
+              <span class="step-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M8 13l3 3 5-6"/></svg></span>
+            </button>
+            <button class="step-nav-item" type="button" data-go-step="2">
+              <span class="step-number">02</span>
+              <span class="step-nav-copy">
+                <strong>選取材料</strong>
+                <small>以事例承托觀點</small>
+              </span>
+              <span class="step-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M8 13l3 3 5-6"/></svg></span>
+            </button>
+            <button class="step-nav-item" type="button" data-go-step="3">
+              <span class="step-number">03</span>
+              <span class="step-nav-copy">
+                <strong>結構與表達</strong>
+                <small>搭好骨架，潤色語言</small>
+              </span>
+              <span class="step-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M8 13l3 3 5-6"/></svg></span>
+            </button>
+            <button class="step-nav-item" type="button" data-go-step="4">
+              <span class="step-number">04</span>
+              <span class="step-nav-copy">
+                <strong>完整指導</strong>
+                <small>整合你的寫前藍圖</small>
+              </span>
+              <span class="step-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M8 13l3 3 5-6"/></svg></span>
+            </button>
+          </nav>
+
+          <div class="coach-note">
+            <span class="coach-icon" aria-hidden="true">✦</span>
+            <div>
+              <strong>寫作提示</strong>
+              <p id="coachTip">先圈出限制範圍的詞，再判斷題目真正要求。</p>
+            </div>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="mobile-progress" aria-label="目前進度">
+            <div class="mobile-progress-row">
+              <span id="mobileStepLabel">步驟 1／4</span>
+              <strong id="mobileStepName">審題立意</strong>
+            </div>
+            <div class="progress-track"><span id="progressBar"></span></div>
+          </div>
+
+          <section class="step-panel is-active" data-step-panel="1" aria-labelledby="step1Title">
+            <div class="panel-intro">
+              <div>
+                <span class="section-kicker">STEP 01 · THINK</span>
+                <h2 id="step1Title">審題立意</h2>
+                <p>由題目出發，鎖定文章的文體、立場與中心思想。</p>
+              </div>
+            </div>
+
+            <div class="topic-card">
+              <div class="topic-card-head">
+                <span>本次作文題目</span>
+              </div>
+              <textarea id="topicInput" rows="3" aria-label="本次作文題目">「有人認為，經歷挫折能使人成長。」試就這個看法，寫作一篇文章，談談你的看法。</textarea>
+            </div>
+
+            <div class="question-block" data-question="keywords">
+              <div class="question-heading">
+                <span class="question-index">1</span>
+                <div>
+                  <h3>題目的關鍵詞是哪些？</h3>
+                  <p>可多選。先找核心概念，再留意限制語與任務詞。</p>
+                </div>
+              </div>
+              <div class="choice-grid keyword-grid">
+                <label class="choice-pill">
+                  <input type="checkbox" name="keywords" value="經歷挫折" checked />
+                  <span class="choice-letter">A</span><span>經歷挫折</span><span class="choice-tick">✓</span>
+                </label>
+                <label class="choice-pill">
+                  <input type="checkbox" name="keywords" value="成長" checked />
+                  <span class="choice-letter">B</span><span>成長</span><span class="choice-tick">✓</span>
+                </label>
+                <label class="choice-pill">
+                  <input type="checkbox" name="keywords" value="能使" />
+                  <span class="choice-letter">C</span><span>能使</span><span class="choice-tick">✓</span>
+                </label>
+                <label class="choice-pill">
+                  <input type="checkbox" name="keywords" value="有人認為" />
+                  <span class="choice-letter">D</span><span>有人認為</span><span class="choice-tick">✓</span>
+                </label>
+                <label class="choice-pill">
+                  <input type="checkbox" name="keywords" value="談談看法" />
+                  <span class="choice-letter">E</span><span>談談看法</span><span class="choice-tick">✓</span>
+                </label>
+              </div>
+              <div class="examiner-note">
+                <strong>DSE 報告提示</strong>
+                <span>「能使」並不等於「必然使」；回應兩者的因果關係，論證會更準確。</span>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <div class="question-heading">
+                <span class="question-index">2</span>
+                <div>
+                  <h3>從關鍵詞判斷，這篇文章適合哪種文體？</h3>
+                  <p>選擇主要文體；仍可在文中加入其他表達元素。</p>
+                </div>
+              </div>
+              <div class="choice-grid two-columns">
+                <label class="choice-card">
+                  <input type="radio" name="genre" value="narrative" />
+                  <span class="choice-letter">A</span>
+                  <span class="choice-card-copy"><strong>記敍抒情</strong><small>以事件、人物與感受推進</small></span>
+                  <span class="radio-mark"></span>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="genre" value="argumentative" checked />
+                  <span class="choice-letter">B</span>
+                  <span class="choice-card-copy"><strong>論說文</strong><small>以觀點、理據與例證說服</small></span>
+                  <span class="radio-mark"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <div class="question-heading">
+                <span class="question-index">3</span>
+                <div>
+                  <h3>你對題目中的看法持甚麼立場？</h3>
+                  <p>立場要清晰，也要為後續選材留下足夠空間。</p>
+                </div>
+              </div>
+              <div class="choice-grid three-columns">
+                <label class="stance-card stance-agree">
+                  <input type="radio" name="stance" value="agree" />
+                  <span class="stance-symbol">✓</span><strong>同意</strong><small>挫折能推動人成長</small>
+                </label>
+                <label class="stance-card stance-disagree">
+                  <input type="radio" name="stance" value="disagree" />
+                  <span class="stance-symbol">×</span><strong>反對</strong><small>挫折未必帶來成長</small>
+                </label>
+                <label class="stance-card stance-balanced">
+                  <input type="radio" name="stance" value="conditional" checked />
+                  <span class="stance-symbol">◐</span><strong>視乎情況而論</strong><small>關鍵在回應與轉化</small>
+                </label>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <div class="question-heading">
+                <span class="question-index">4</span>
+                <div>
+                  <h3>你想文章帶出甚麼中心思想？</h3>
+                  <p>可多選，建議選 1–2 項，讓立意集中而有層次。</p>
+                </div>
+              </div>
+
+              <div class="star-principles">
+                <div class="star-badge"><span>5</span><small>STAR</small></div>
+                <div class="principle-copy">
+                  <strong>五星立意的三大原則</strong>
+                  <div class="principle-list">
+                    <span><b>準</b> 緊扣題目概念及限制</span>
+                    <span><b>深</b> 由現象推進至成因或價值</span>
+                    <span><b>新</b> 有個人觀察，不流於口號</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="idea-list">
+                <label class="idea-option">
+                  <input type="checkbox" name="ideas" value="a" checked />
+                  <span class="choice-letter">A</span>
+                  <span><strong>挫折本身不是成長的保證</strong><small>真正的成長來自反思、調整與再次行動。</small></span>
+                  <span class="checkbox-mark">✓</span>
+                </label>
+                <label class="idea-option">
+                  <input type="checkbox" name="ideas" value="b" checked />
+                  <span class="choice-letter">B</span>
+                  <span><strong>人的回應決定挫折的意義</strong><small>同一困境，可以成為絆腳石，也可以成為踏腳石。</small></span>
+                  <span class="checkbox-mark">✓</span>
+                </label>
+                <label class="idea-option">
+                  <input type="checkbox" name="ideas" value="c" />
+                  <span class="choice-letter">C</span>
+                  <span><strong>適度挫折有助建立韌性</strong><small>在可承受的壓力中，人能認識限制並突破自己。</small></span>
+                  <span class="checkbox-mark">✓</span>
+                </label>
+                <label class="idea-option">
+                  <input type="checkbox" name="ideas" value="d" />
+                  <span class="choice-letter">D</span>
+                  <span><strong>成長也需要支持與選擇</strong><small>社會不應美化苦難，而應給人重新出發的條件。</small></span>
+                  <span class="checkbox-mark">✓</span>
+                </label>
+                <label class="idea-option">
+                  <input type="checkbox" name="ideas" value="e" />
+                  <span class="choice-letter">E</span>
+                  <span><strong>順境與逆境都能成為養分</strong><small>保持自省，才是持續成長的核心能力。</small></span>
+                  <span class="checkbox-mark">✓</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="thesis-output" aria-live="polite">
+              <div class="output-label"><span>5</span> 你的作文立意</div>
+              <blockquote id="thesisText"></blockquote>
+              <div class="thesis-tags" id="thesisTags"></div>
+            </div>
+          </section>
+
+          <section class="step-panel" data-step-panel="2" aria-labelledby="step2Title" hidden>
+            <div class="panel-intro">
+              <div>
+                <span class="section-kicker">STEP 02 · GATHER</span>
+                <h2 id="step2Title">選取材料</h2>
+                <p>材料不是愈多愈好。選擇能證明立意、彼此角度不同的例子。</p>
+              </div>
+              <div class="selection-counter"><strong id="materialCount">0</strong><span>已選材料</span></div>
+            </div>
+
+            <div class="context-strip">
+              <span>目前立意</span>
+              <p id="materialThesis"></p>
+            </div>
+
+            <div class="filter-row" id="materialFilters" aria-label="材料分類">
+              <button type="button" class="filter-chip is-active" data-filter="all">全部 <span>10</span></button>
+              <button type="button" class="filter-chip" data-filter="personal">個人成長</button>
+              <button type="button" class="filter-chip" data-filter="people">人物事例</button>
+              <button type="button" class="filter-chip" data-filter="society">社會觀察</button>
+              <button type="button" class="filter-chip" data-filter="classic">文化典故</button>
+            </div>
+
+            <div class="material-grid" id="materialGrid"></div>
+
+            <div class="selection-summary" id="selectionSummary">
+              <div>
+                <strong>選材建議</strong>
+                <p id="selectionAdvice">建議選 3–4 項，兼顧個人經驗與社會視野。</p>
+              </div>
+              <div class="selected-mini-list" id="selectedMiniList"></div>
+            </div>
+          </section>
+
+          <section class="step-panel" data-step-panel="3" aria-labelledby="step3Title" hidden>
+            <div class="panel-intro">
+              <div>
+                <span class="section-kicker">STEP 03 · SHAPE</span>
+                <h2 id="step3Title">結構與表達</h2>
+                <p>安排論點的推進次序，再選擇最能放大內容力量的表達手法。</p>
+              </div>
+            </div>
+
+            <div class="section-heading-row">
+              <div>
+                <span class="subsection-number">01</span>
+                <h3>建議寫作大綱</h3>
+              </div>
+              <button type="button" class="text-button" id="refreshOutline">依已選材料更新</button>
+            </div>
+
+            <div class="outline-list" id="outlineList"></div>
+
+            <div class="section-heading-row expression-heading">
+              <div>
+                <span class="subsection-number">02</span>
+                <h3>建議表達手法</h3>
+              </div>
+              <p>選 2–3 種即可，避免為技巧而技巧。</p>
+            </div>
+
+            <div class="technique-grid" id="techniqueGrid"></div>
+
+            <div class="language-note">
+              <span class="language-note-icon">“</span>
+              <div>
+                <strong>一句話表達升級</strong>
+                <p><del>挫折令人變得更好。</del></p>
+                <p class="improved">挫折只是一道裂縫；願意凝視裂縫的人，才看得見光從何處進來。</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="step-panel" data-step-panel="4" aria-labelledby="step4Title" hidden>
+            <div class="panel-intro final-intro">
+              <div>
+                <span class="section-kicker">STEP 04 · READY</span>
+                <h2 id="step4Title">寫前指導完成</h2>
+                <p>你的立意、材料與結構已經整合。現在，可以開始落筆。</p>
+              </div>
+              <div class="ready-seal" aria-hidden="true"><span>READY</span><strong>寫</strong></div>
+            </div>
+
+            <article class="guidance-sheet" id="guidanceSheet">
+              <div class="sheet-header">
+                <div>
+                  <span>DSE CHINESE WRITING · PRE-WRITING GUIDE</span>
+                  <h3>作文寫前藍圖</h3>
+                </div>
+                <span class="sheet-date" id="sheetDate"></span>
+              </div>
+
+              <section class="sheet-section sheet-topic">
+                <span class="sheet-label">作文題目</span>
+                <p id="finalTopic"></p>
+              </section>
+
+              <div class="sheet-grid">
+                <section class="sheet-section">
+                  <span class="sheet-label">審題結論</span>
+                  <dl class="analysis-list">
+                    <div><dt>關鍵詞</dt><dd id="finalKeywords"></dd></div>
+                    <div><dt>文體</dt><dd id="finalGenre"></dd></div>
+                    <div><dt>立場</dt><dd id="finalStance"></dd></div>
+                  </dl>
+                </section>
+                <section class="sheet-section sheet-thesis">
+                  <span class="sheet-label">中心立意</span>
+                  <p id="finalThesis"></p>
+                </section>
+              </div>
+
+              <section class="sheet-section">
+                <div class="sheet-section-head">
+                  <span class="sheet-label">核心材料</span>
+                  <small id="finalMaterialCount"></small>
+                </div>
+                <div class="final-materials" id="finalMaterials"></div>
+              </section>
+
+              <section class="sheet-section">
+                <span class="sheet-label">文章結構</span>
+                <div class="final-outline" id="finalOutline"></div>
+              </section>
+
+              <section class="sheet-section expression-sheet-section">
+                <span class="sheet-label">表達策略</span>
+                <div class="final-techniques" id="finalTechniques"></div>
+              </section>
+
+              <footer class="sheet-footer">
+                <div class="final-checks">
+                  <span>□ 每段緊扣立意</span>
+                  <span>□ 事例後有分析</span>
+                  <span>□ 結尾回應題目</span>
+                </div>
+                <p>「先想清楚，再寫精彩。」</p>
+              </footer>
+            </article>
+
+            <div class="record-save-box"><button class="primary-action" type="button" id="savePCBlueprint">保存至練習記錄</button><a href="#/student-records/essay/guidance">查看練習記錄</a><p id="pcRecordStatus" role="status" aria-live="polite"></p></div>
+            <div class="final-actions">
+              <a class="secondary-action" href="#" data-guide-download download="writing-guide.txt">下載指導文字</a>
+              <button class="secondary-action" type="button" id="copyGuideButton">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="10" height="11" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2" /></svg>
+                複製指導
+              </button>
+              <button class="primary-action" type="button" id="printGuideButton">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V4h10v4M7 17H5a2 2 0 0 1-2-2v-4a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v4a2 2 0 0 1-2 2h-2" /><path d="M7 14h10v6H7z" /></svg>
+                列印／儲存 PDF
+              </button>
+            </div>
+          </section>
+
+          <footer class="bottom-nav">
+            <button class="back-button" id="backButton" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+              上一步
+            </button>
+            <div class="step-dots" id="stepDots" aria-hidden="true">
+              <span class="is-active"></span><span></span><span></span><span></span>
+            </div>
+            <button class="next-button" id="nextButton" type="button">
+              <span>下一步：選取材料</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+            </button>
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    
+<main class="pad-guide" data-view="student-improved" hidden><div id="padApp"></div></main>
+<main class="document-view prompt-guide-view" data-title="提示詞" data-view="prompt-guide" hidden><header class="doc-heading"><h1>寫前指導提示詞</h1><p>以《写前指导-提示词-1116.docx》為基礎展示模型調用、輸入輸出與提示詞；文體分類按現行規則更新，看圖寫作仍暫不實施。</p></header><nav class="doc-index" aria-label="提示詞目錄" id="promptGuideIndex"></nav><div id="promptGuideContent"></div></main>
+<main class="document-view" data-title="研發文檔" data-view="development" hidden=""><header class="doc-heading"><h1>研發文檔</h1><p>寫前指導的前端實作、學生提交記錄接入、資料契約與聯調。</p></header><nav aria-label="頁內目錄" class="doc-index"><a href="#/development/implementation">現有實作</a><a href="#/development/integration">接入順序</a><a href="#/development/ai-flow">AI串聯設計</a><a href="#/development/gaps">能力差距</a><a href="#/development/api">接口與資料</a><a href="#/development/constraints">權限與異常</a><a href="#/development/json-files">JSON資料</a></nav><section class="flow-section" id="implementation"><h2>一、現有前端讀取鏈路</h2><div class="table-scroll"><table><thead><tr><th>環節</th><th>實際來源／處理</th><th>結果</th></tr></thead><tbody>
+<tr><td>載入</td><td>app.js 的 defaults 與 loadState；讀取 dseWritingGuideState。</td><td>恢復選擇；currentStep回到1。</td></tr>
+<tr><td>審題</td><td>handleChoiceChange → updateThesis → getThesis；使用ideaText與labels。</td><td>立意文字、材料頁立意及標籤。</td></tr>
+<tr><td>選材</td><td>materials → selectedMaterials → renderMaterials。</td><td>分類列表、數量、已選清單與選材建議。</td></tr>
+<tr><td>大綱與手法</td><td>buildOutline、renderTechniques；按所選材料和techniques ID取內容。</td><td>當前題目的建議大綱及所選手法。</td></tr>
+<tr><td>完整藍圖</td><td>renderFinal／buildGuideText。</td><td>頁面、複製文字及平板端圖片保存。</td></tr>
+<tr><td>預覽入口</td><td>flow.js按hash切換；docs.js讀取學生端state與藍圖組裝函數；teacher-progress.js讀取學生與提交快照。</td><td>資料頁讀取學生當前選擇；學生寫作記錄讀取獨立提交資料。</td></tr>
+</tbody></table></div></section><section class="flow-section" id="backend-implementation"><h2>後台交互實作</h2><p>backend.css依中文科共用後台規範維護藍色頂欄、224／64px側欄與查詢表格。teacher-progress.js區分輸入條件與已套用查詢；查詢或Enter生效、重置清空。backend/student/:studentId/result/:submissionId按學生和提交ID共同定位快照；返回在當前頁面會話恢復篩選、滾動與焦點，刷新後查詢條件重設。</p><p>目前三名學生的列表不足一頁，顯示總數；正式資料接入時由研發確認分頁契約。無提交分支保留0與「—」，查詢失敗及權限拒絕依正式服務狀態處理。</p></section><section class="flow-section" id="integration"><h2>學生寫作記錄接入</h2><p>原型以practice-records.js的writingGuideSubmissionsV1本地儲存承接新增提交，與teacher-progress.js的六條初始記錄合併後由兩端讀取。當前學生固定為S01；學生端按studentId過濾並校驗詳情歸屬。這是原型路由範圍控制，非正式權限驗證；無跨裝置同步，清除瀏覽器資料會移除新增記錄。未接正式API及Dify。</p><p>兩端保存共用saveWritingSnapshot：校驗題目及選材→建立六部分內容快照→本地儲存成功→更新列表及次數。同一端同一學生相同內容重複保存返回原記錄；改動內容後保存新增快照，不覆寫舊記錄。PC端及平板端草稿獨立，跨端保存視為各自一次提交。正式接口應用draftId／requestId實現冪等，不能以原型內容比對代替。</p><p>保存失敗保留草稿且不增次；本地資料損壞時拒絕覆寫並提示失敗；同源其他頁籤透過storage事件刷新。原型不承諾跨頁籤同時寫入的原子性，正式服務端需處理併發與權限。</p><ol><li>按有權查看的學生範圍讀取學生名單。</li><li>學生提交時保存唯一提交ID、學生ID、題目、提交時間及本次結果快照；重試按同一提交ID去重。</li><li>按學生查詢提交記錄並統計次數，按提交時間倒序顯示歷史。</li><li>按提交ID查詢對應結果；不得用當前學生端選擇替換歷史結果。</li></ol></section><section class="flow-section" id="ai-flow"><h2>AI串聯設計 · Dify</h2><p>採用「題目 → AI審題 → 學生選立意與材料 → AI生成藍圖」。前端保留四步；學生選擇間隔由業務後端保存草稿，分段調用Dify，不讓一次工作流等待學生一直操作。</p><div class="table-scroll"><table><thead><tr><th>階段</th><th>輸入</th><th>提示詞職責與輸出</th></tr></thead><tbody><tr><td>01 審題與立意</td><td>完整題目；由產品上下文提供年級／考試體系；可選補充要求</td><td>提取題眼、限制條件、適合文體與候選立意；缺少必要題幹時返回補充問題。記敍題不強套同意／反對。</td></tr><tr><td>02 選材建議</td><td>同版審題結果、學生已選文體／立意、學生自述或可靠素材來源</td><td>提供與立意相符的材料及用法；個人經驗用引導問題，不編造學生親歷；史實與引文附來源，無依據不作事實呈現。</td></tr><tr><td>03 結構與表達</td><td>同版題目、立意、學生所選材料與手法</td><td>生成符合文體的大綱及表達建議；保留學生選擇，不自行替換立意，不將所有題目套為固定五段。</td></tr></tbody></table></div><p>每階段使用固定System規則＋帶變量的User模板，返回結構化JSON。不同作文更換輸入，不另建一份提示詞；文體差異以規則分支處理。最終六部分藍圖由程序組裝通過校驗的結果，不再讓模型重寫已選材料。</p><p>後端管理draftId、topicVersion、requestId及生成版本。改題後下游結果失效；只接收當前題目版本的回應，舊請求晚到不覆蓋新題。失敗保留輸入並重試；草稿生成不增加寫作次數，只有提交保存成功才計次，同次重試去重。密鑰保存在後端。</p><p>現階段先完成交互原型與接入設計；按用戶要求暫不測試Dify，也未導入或發佈工作流。三階段提示詞、輸出Schema及正式後端接線留待下一階段落實。</p></section><section class="flow-section" id="improved-implementation"><p>學生端預覽預設路由為 <code>#/student-learning</code>，首頁不包含登入及外站跳轉；命題作文的AI作文指導連至 <code>#/student</code>，兩版寫前指導可返回首頁。首頁身份以studentId=S01從teacher-progress.js的writingStudents讀取姓名及編號，頭像使用姓氏；首頁樣式由student-home.css維護；圖片取自用戶提供的參考截圖，首頁練習記錄已連通當前學生的提交快照；其他業務入口本輪停用。原有學生路由與草稿key保持不變。</p><h2>平板端實作與邊界</h2><p>student-improved.js、student-improved.css讀取現有materials、techniques、ideaText、labels；getThesis(draft)、buildOutline(draft)支援傳入隔離草稿，原版仍默認讀取原state。平板端使用writingGuideImprovedV1儲存鍵，原版dseWritingGuideState不變。</p><p>平板端目前只呈現既有挫折題的本地內容；「開始審題」展開既有審題，不調用模型。其他題目展示未取得結果的失敗分支並保留輸入，不套用挫折題答案。固定匹配百分比、文體未切專用大綱、立意取所選前兩項等既有內容限制仍在，尚未因改版解決。保存图片／複製為當前草稿，不建立後台提交記錄；只有「保存至練習記錄」成功才建立快照並計次。</p></section><section class="flow-section" id="gaps"><h2>現有能力與接入差距</h2><ul><li>學生四步仍使用本機內容與瀏覽器保存；尚未接入正式帳號、提交保存及歷史記錄服務。</li><li>教師後台使用teacher-progress.js中三名學生、六次自主提交的本地原型資料；次數直接由記錄計算，每次結果為獨立快照，不是已驗證的真實學習記錄。</li><li>學生修改題目不會重新生成固定素材，文體選擇未切換專用大綱；材料匹配百分比為固定展示值，中心思想整理採用已選前兩項。</li><li>正式模型提示詞、HTTP方法、路徑、學生身份與資料權限尚未接入；提交失敗及重試須由服務端確認，不能以進入第4步代替保存成功。</li></ul></section><section class="flow-section" id="api"><h2>接口與主要資料</h2><div class="table-scroll"><table><thead><tr><th>能力</th><th>主要輸入</th><th>結果與邊界</th></tr></thead><tbody><tr><td>學生寫作次數</td><td>授權學生範圍、姓名搜尋條件</td><td>學生ID、姓名、提交次數、最近提交時間與題目；次數按唯一提交記錄計算。</td></tr><tr><td>學生歷史記錄</td><td>學生ID</td><td>按時間倒序返回每次提交ID、題目、時間及結果摘要。</td></tr><tr><td>單次寫作結果</td><td>學生ID、提交ID</td><td>該次保存的題目、審題、立意、材料、大綱與表達策略；不返回其他學生資料。</td></tr><tr><td>提交保存</td><td>學生身份、本次題目與結果、冪等鍵</td><td>成功後保存提交記錄；同次重試不增加次數。正式方法、路徑與字段待研發確認。</td></tr></tbody></table></div></section><section class="flow-section" id="progress-contract"><h2>自主提交記錄資料</h2><p>建議字段：studentId、submissionId、submittedAt、topic、resultSnapshot（analysis、thesis、materials、outline、techniques）。以學生和唯一提交ID關聯結果；不需要教師布置ID、任務截止時間、完成狀態或步驟進度。</p><p>本地初始資料為三名學生、六次提交，初始次數分別為3、2、1；新增保存成功後S01次數隨本地記錄增加。初始與新增記錄的題目、時間及結果快照均獨立。正式接入後按實際資料返回，有效0保留，無提交時間顯示「—」。</p></section><section class="flow-section" id="fields"><h2>當前前端資料</h2><p>儲存鍵為 <code>dseWritingGuideState</code>。現有字段：</p><div class="table-scroll"><table><thead><tr><th>字段</th><th>類型</th><th>用途</th></tr></thead><tbody>
+<tr><td>currentStep</td><td>number</td><td>1–4；載入時回到1。</td></tr><tr><td>topic</td><td>string</td><td>當前題目。</td></tr><tr><td>keywords</td><td>string[]</td><td>所選關鍵詞原文。</td></tr><tr><td>genre / stance</td><td>string</td><td>文體及立場代碼，對應labels。</td></tr><tr><td>ideas / selectedMaterials / techniques</td><td>string[]</td><td>所選中心思想、材料、手法ID。</td></tr><tr><td>filter</td><td>string</td><td>材料列表分類，不代表已選材料。</td></tr>
+</tbody></table></div><p class="rule-note">這些是草稿狀態字段；提交身份與快照另存writingGuideSubmissionsV1：根version=1、records陣列，記錄含id、studentId、submittedAt、category=essay、activity=guidance、source、signature及六部分內容。原型id對應正式契約的submissionId；草稿不是提交快照，當前儲存結構不能直接當作正式後端契約。</p></section><section class="flow-section" id="constraints"><h2>權限、保存及歷史版本</h2><ul><li>學生只讀寫本人記錄；後台僅查詢有權管理的學生及其結果。</li><li>保存成功才建立提交記錄並增加次數；失敗保留輸入、提示重試，同次重試不重複計數。</li><li>每次結果保留當時題目及內容快照；後續修改或再次提交不覆蓋歷史記錄。</li><li>記錄未返回與0次分開處理；查詢失敗提示重試，不把失敗顯示成0次。</li></ul></section><section class="flow-section" id="integration-checks"><h2>聯調驗收 · 待驗收</h2><p>核對授權學生範圍、提交保存、重試去重、次數與明細一致、按時間倒序、單次結果快照、空資料與查詢失敗。正式服務未接入，尚未執行服務端聯調。</p></section><section class="flow-section" id="json-files"><h2>JSON 資料與下載</h2><section class="flow-section"><h2>資料範圍</h2><p>以下資料由當前學生端選擇及本地內容直接整理。構思狀態沿用app.js原字段；藍圖展示資料是頁面結果的JSON表示，並非已確認的模型輸出或後端契約。切換到本頁時更新內容。</p></section><section class="flow-section"><h2>01 當前構思狀態</h2><p>對應dseWritingGuideState；包括步驟、題目、關鍵詞、文體、立場及所選ID。</p><div class="doc-actions"><button data-copy-document="state" type="button">複製構思JSON</button><a data-download-document="state" download="writing-guide-state.json">下載構思JSON</a></div><details><summary>查看JSON內容</summary><pre data-json-document="state"></pre></details></section><section class="flow-section"><h2>02 既有選項資料</h2><p>材料、表達手法、中心思想及顯示名稱，沿用學生端本地資料；材料匹配百分比保留原展示值。</p><div class="doc-actions"><button data-copy-document="catalog" type="button">複製選項JSON</button><a data-download-document="catalog" download="writing-guide-catalog.json">下載選項JSON</a></div><details><summary>查看選項資料</summary><pre data-json-document="catalog"></pre></details></section><section class="flow-section"><h2>03 寫前藍圖展示資料</h2><p>題目、審題、立意、已選材料、大綱及手法，與當前藍圖同源。沒有作文原稿、評分或班級統計字段。</p><div class="doc-actions"><button data-copy-document="guide" type="button">複製藍圖JSON</button><a data-download-document="guide" download="writing-guide-display.json">下載藍圖JSON</a></div><details><summary>查看JSON內容</summary><pre data-json-document="guide"></pre></details></section><p data-document-status="" role="status"></p></section></main>
+<main class="document-view" data-title="PRD" data-view="prd" hidden=""><header class="doc-heading"><h1>作文寫前指導</h1><span>PRD · V1.4 · 更新日期 2026-11-18</span><p>學生自主完成審題、選材與結構安排，形成寫前藍圖；後台查看學生寫作次數與每次結果。</p></header><section class="flow-section" id="ports"><h2>涉及端口 · 菜單 · 功能點</h2><ol><li><b>教師後台｜中文科 → 發佈任務</b><p>自主輸入題目或從作文庫選題，設定寫前指導與提交要求。</p></li><li><b>教師後台｜中文科 → 任務管理 → 任務詳情</b><p>按任務是否開啟寫前指導，顯示或隱藏完成卡片及學生答題情況中的寫前指導欄。</p></li><li><b>教師後台｜中文科 → 學生管理 → 學生寫作記錄</b><p>按學生查看自主寫作次數、歷次題目及提交結果。</p></li><li><b>學生端（iPad平板端）｜老師任務 → 已過期</b><p>作文成績公布後，仍未完成寫前指導的學生可從已過期任務繼續提交。</p></li><li><b>學生端（iPad平板端）｜寫作導航</b><p>審題立意 → 選取材料 → 結構與表達 → 完整指導。</p></li></ol></section><nav aria-label="頁內目錄" class="doc-index"><a href="#/prd/roles">角色與任務</a><a href="#/prd/publish-config">寫前指導配置與查看</a><a href="#/prd/teacher-statistics">學生寫作記錄</a><a href="#/prd/steps">四步交互</a><a href="#/prd/practice-records">練習記錄與資料關聯</a><a href="#/prd/tablet-improved">平板端</a><a href="#/prd/flow">提交與查閱流程</a><a href="#/prd/blueprint">藍圖結構</a><a href="#/prd/scope">需求範圍</a><a href="#/prd/acceptance">驗收與評審</a></nav><section class="flow-section" id="roles"><h2>使用角色與資料範圍</h2><p>學生自主選擇題目並完成審題立意、選材及結構表達，提交後保存本次寫前藍圖。教師後台按學生查看提交次數與每次結果。</p><p>每次提交結果獨立保存；學生查看歷史結果不改變原記錄。</p></section><section class="flow-section" id="publish-config"><h2>寫前指導配置與查看</h2><p>教師發佈作文任務時，可選擇是否開啟「寫前指導」。開啟後可設定「學生須提交寫前指導」，該提交開關預設關閉；關閉提交要求時，學生仍可收到作文任務，該設定隨任務保存。</p><p>教師完成作文批改並在後台公布成績後，作文任務狀態為「已完成」。若任務已開啟寫前指導，而學生尚未完成該指導，學生端將該任務列入「老師任務 → 已過期」，保留進入原任務完成並提交寫前指導的入口。提交成功後，該學生的寫前指導狀態改為「已完成」，任務在學生端歸入「已完成」；提交失敗時保留原內容與「已過期」歸類，可重試。後台已公布的作文成績及任務「已完成」狀態不因遲交寫前指導而回退。</p><p>任務開啟寫前指導時，任務詳情的「成績概覽」顯示「寫前指導完成」卡片，展示已完成人數與班級總人數；「學生答題情況」顯示帶「需求」標識的「寫前指導」欄，逐人展示「已完成」或「未開始」。任務未開啟寫前指導時，卡片與整欄均不顯示，其餘成績指標和學生資料保持可見。</p><p>「學生答題情況」顯示「提交日期」與「作文批改状态」欄，不顯示「用時」。已提交作文按該次提交記錄顯示日期及時分（YYYY-MM-DD HH:mm），未提交顯示「—」；批改状态按學生顯示「已批改／批改中／未提交」。寫前指導是否開啟不影響這兩欄。</p><div class="prd-guidance-figures"><figure><img src="assets/prd/guidance-completion-card-20261116.png" width="193" height="173" alt="成績概覽中的寫前指導完成卡片，顯示18／30及已完成18人"><figcaption>成績概覽：寫前指導完成</figcaption></figure><figure><img src="assets/prd/guidance-student-column-20261116.png" width="197" height="150" alt="學生答題情況中的需求寫前指導欄，單名學生顯示已完成"><figcaption>學生答題情況：寫前指導欄</figcaption></figure></div><p>任務開啟寫前指導時，學習作文報告的「寫前指導」頁籤展示當次提交的藍圖；任務未開啟時不顯示該頁籤。</p></section><section class="flow-section" id="teacher-statistics"><h2>學生自主寫作記錄</h2><p>中文科 → 學生管理 → 學生寫作記錄。按學生查看自主寫作次數；點選學生後，按提交時間倒序展示每次的題目、提交時間與寫作結果入口。可繼續查看該次保存的審題結論、中心立意、材料、大綱及表達策略。</p><p>以唯一提交記錄計次；查看、複製、下載或重試同一次提交不增加次數。不同提交分別保存結果，不以當前學生端內容覆蓋歷史結果。列表輸入姓名後點選「查詢」或按Enter套用條件；重置清空條件。無匹配時顯示空態及清除篩選入口。姓名與「查看記錄」均可進入詳情；返回保留查詢條件、表格滾動位置及觸發入口焦點。</p><p>每次寫作結果展示該次提交的寫前藍圖。</p></section><section class="flow-section" id="backend-interaction"><h2>教師查閱寫前指導</h2><p>教師從學生管理進入學生寫作記錄，查詢學生的寫前指導提交結果。</p><p>學生列表 → 個人提交記錄 → 本次寫作結果使用獨立頁面。個人頁展示學生姓名、寫作次數和最近提交時間；結果頁展示當次題目及六部分內容。頁首返回、麵包屑與瀏覽器前進後退保持同一層級；失效記錄顯示明確提示及返回入口。寬表格局部橫向滾動，姓名與操作列保持可達。</p></section><section class="flow-section" id="steps"><h2>四步操作與結果</h2><div class="table-scroll"><table><thead><tr><th>步驟</th><th>學生操作</th><th>提示與結果</th><th>下一步條件</th></tr></thead><tbody>
+<tr><td>01 審題立意</td><td>選關鍵詞，按文體要求確認或選擇文體，再選立場與中心思想。</td><td>審題提示、準／深／新原則；整理作文立意及標籤。</td><td>題目非空、至少一個關鍵詞、文體已確定、至少一項中心思想。</td></tr>
+<tr><td>02 選取材料</td><td>按分類查看材料，選擇或取消；保留已選清單。</td><td>材料摘要、用法、匹配提示；選材建議3–4項。</td><td>至少兩項材料。3–4項是建議，不是上限。</td></tr>
+<tr><td>03 結構與表達</td><td>查看大綱，點擊「依已選材料更新」，選擇表達手法。</td><td>大綱及手法說明、一句話表達升級；建議2–3種手法。</td><td>目前無手法數量硬性限制。</td></tr>
+<tr><td>04 完整指導</td><td>查看藍圖、修改內容並保存至練習記錄。</td><td>題目、審題結論、中心立意、核心材料、文章結構、表達策略。</td><td>完成後開始寫作；藍圖不是作文正文。</td></tr>
+</tbody></table></div><h3>文體要求與學生選擇</h3><p>文體分類：<span class="genre-revision">記敍抒情、論說文；題幹使用「記敍文」「議論文」時分別對應這兩類</span>。未指定文體時，AI 根據完整作文題幹判斷。作文庫只有篩選分類、沒有明確要求時，也按未指定處理。</p><h4>教師自主輸入題目</h4><ol><li>已寫明<span class="genre-revision">記敍抒情</span>或<span class="genre-revision">論說文</span>：展示指定文體。</li><li>未寫明：<ul><li>AI 識別為<span class="genre-revision">記敍抒情</span>：展示<span class="genre-revision">記敍抒情</span>。</li><li>AI 識別為<span class="genre-revision">論說文</span>：展示<span class="genre-revision">論說文</span>。</li><li>無法識別或識別失敗：展示兩項。</li></ul></li></ol><h4>作文庫題目</h4><ol><li>題目有明確文體要求：展示指定文體。</li><li>題目標示「不限」或沒有明確要求：<ul><li>AI 識別為<span class="genre-revision">記敍抒情</span>：展示<span class="genre-revision">記敍抒情</span>。</li><li>AI 識別為<span class="genre-revision">論說文</span>：展示<span class="genre-revision">論說文</span>。</li><li>無法識別或識別失敗：展示兩項。</li></ul></li></ol><p>展示一種文體時，學生確認即可；展示兩項時，學生選一項後繼續。審題結論顯示確認或選定的文體。</p><p>選擇「論說文」時，立場選項固定為「同意」「反對」「視乎情況而論」，順序不變；每項附一句針對本題觀點的說明。選擇「記敍抒情」時不展示立場選項。</p></section><section class="flow-section" id="tablet-improved"><p>學生從自主學習首頁的「AI作文指導」進入四步寫前指導，可返回首頁，並從「練習記錄」查看已保存的寫前藍圖。學生端與後台按同一提交記錄查看當次結果。</p><h2>學生端 · 平板端</h2><p>學生端預覽提供「現有版（PC端）／平板端」切換。兩版保留相同內容範圍與四步結構，各自保存選擇。題目輸入併入審題立意，不新增獨立的空白輸入步驟。</p><ol><li><b>審題立意：</b>先輸入完整題目，開始審題後在同一步展開關鍵詞、按文體要求進行文體確認或選擇，再選立場與中心思想；題目收為可修改摘要。修改題目前確認影響，取消保留全部內容；確認後重新選擇立意、材料與手法。</li><li><b>選取材料：</b>保留分類、摘要、用法及匹配值；橫屏右側顯示已選材料，窄屏移到列表上方。分類切換保留選擇，可就地移除；至少2項，建議3–4項。</li><li><b>結構與表達：</b>先查看大綱，依已選材料更新；表達手法預設展開，右側顯示「收起 −」；收起後顯示「展開 ＋」，切換保留已選手法，重新載入頁面恢復預設展開，保留一句話表達升級與未選手法的自然表達提示。大綱調整仍由選材驅動，不新增拖曳或逐段編輯。</li><li><b>完整指導：</b>保留題目、審題、立意、材料、結構、策略六部分；各部分以灰色「修改」返回所屬步驟；底部「更多」提供保存为图片及複製藍圖，主按鈕保存至練習記錄。保存成功後顯示已保存狀態及查看記錄入口。</li></ol><p>四步導航向下捲動時吸頂於版本切換列下方，保持目前步驟與返回入口可見；選材側欄避開吸頂導航。步驟按完成條件開放，返回保留內容；少於2項材料不能跳到結構或藍圖。按鈕和選項至少44px觸控高度，底部主要操作保留安全間距；長內容正常滾動。草稿保存在當前裝置，保存失敗顯示提示。</p><p>空題目提示補填；未能取得審題結果時保留題目並提示重試，不顯示其他題目的舊結果。</p></section><section class="flow-section" id="practice-records"><h2>練習記錄與寫作結果關聯</h2><ol><li>自主學習首頁點擊「練習記錄」，進入命題作文的「AI作文指導」記錄；沒有寫前指導記錄時顯示空態。</li><li>AI作文指導的PC端與平板端在完整藍圖提供「保存至練習記錄」。只有保存成功才新增記錄及後台寫作次數；瀏覽、返回、保存图片、複製及現有版下載或列印不計次。同一端相同內容重複保存不新增，調整後保存為新記錄。</li><li>寫前指導記錄按保存時間倒序，顯示題目、保存時間及「已保存」狀態。</li><li>點擊記錄打開本次寫作結果，按當次快照顯示題目、審題結論、立意、材料、結構及表達策略；與後台同一提交的六部分一致。詳情返回保留分類，歷史結果不隨後續草稿變動。</li><li>當前學生不能由學生端地址查看其他學生結果，無效記錄提供返回入口。保存失敗保留內容並允許重試，不新增成功記錄。</li></ol></section><section class="flow-section" id="state-rules"><h2>返回、保存與內容更新</h2><ul><li>上一步保留選擇；切換預覽入口保留當前學生狀態；刷新後回到第一步並恢復已保存選擇。</li><li>關鍵詞、文體、立場、中心思想與材料、手法選擇影響對應展示。中心思想建議1–2項，當前立意整理採用所選前兩項。</li><li>材料分類只改變可見列表，不清空已選項；未選材料顯示返回選材提示，未選手法顯示以準確、自然的語言完成文章。</li><li>重新開始需確認；取消保留當前內容，確認恢復初始內容。</li><li>學生自行修改觀點、材料與結構；推薦立場、材料、段數及技巧不作全班評價門檻。</li></ul><p>生成藍圖後可修改內容，再次進入完整指導查看更新結果；平板端的保存图片及複製內容與頁面六部分一致，列印／儲存PDF不在平板端提供。</p></section><section class="flow-section" id="flow"><h2>自主寫作與結果查看流程</h2><div class="horizontal-scroll"><div class="horizontal-track four"><article class="branch"><h3>01 學生自主寫作</h3><p>自主學習首頁 → 命題作文的AI作文指導 → 輸入題目，依四步形成寫前藍圖。</p></article><article class="branch"><h3>02 提交並保存</h3><p>完整藍圖點擊「保存至練習記錄」，成功後建立提交快照，可從首頁練習記錄回看。</p></article><article class="branch"><h3>03 按學生統計</h3><p>按提交記錄計算寫作次數，查看最近提交時間及題目。</p></article><article class="branch"><h3>04 查看每次結果</h3><p>進入學生歷史記錄，查看每次提交保存的結果。</p></article></div></div><p class="rule-note">同次提交重試須去重；保存失敗保留學生輸入並提示重試，成功保存後才加入寫作次數。歷史結果保持各自版本。</p></section><section class="flow-section" id="blueprint"><h2>寫前藍圖結構</h2><div class="table-scroll"><table><thead><tr><th>目錄</th><th>內容</th><th>來源步驟</th><th>查看</th></tr></thead><tbody>
+<tr><td>01 作文題目</td><td>本次作文題目全文。</td><td>審題立意</td><td><a data-preview-step="1" href="#/student">查看題目</a></td></tr>
+<tr><td>02 審題結論</td><td>關鍵詞、文體、立場。</td><td>審題立意</td><td><a data-preview-step="1" href="#/student">查看審題</a></td></tr>
+<tr><td>03 中心立意</td><td>根據立場與所選中心思想整理的作文立意。</td><td>審題立意</td><td><a data-preview-step="1" href="#/student">查看立意</a></td></tr>
+<tr><td>04 核心材料</td><td>已選材料的名稱、用法及數量。</td><td>選取材料</td><td><a data-preview-step="2" href="#/student">查看選材</a></td></tr>
+<tr><td>05 文章結構</td><td>大綱各段的名稱、用途與建議內容。</td><td>結構與表達</td><td><a data-preview-step="3" href="#/student">查看大綱</a></td></tr>
+<tr><td>06 表達策略</td><td>已選手法及說明；未選時使用準確、自然的語言提示。</td><td>結構與表達</td><td><a data-preview-step="3" href="#/student">查看手法</a></td></tr>
+</tbody></table></div><div class="doc-actions"><a data-preview-step="4" href="#/student">查看完整藍圖</a></div><p class="rule-note">基本寫作要求與可選提升分開；學生立場、材料、段數及技巧不作全班必達門檻。現有五段建議大綱不作所有文體的固定要求。</p></section><section class="flow-section" id="prompts"><h2>學生引導文案</h2><details><summary>查看各步提問、提示與自查項</summary><div data-existing-prompts=""></div></details></section><section class="flow-section" id="scope"><h2>本期範圍</h2><p>教師設定寫前指導與提交要求；學生完成四步構思、查看並保存寫前藍圖；作文成績公布後，未完成寫前指導的學生可從已過期任務繼續提交；學生與教師按當次提交記錄查看結果，後台統計每名學生的提交次數。</p></section><section class="flow-section" id="usage-example"><h2>既有題目與操作例子</h2><p data-current-topic=""></p><p>先選「經歷挫折」「成長」，文體選<span class="genre-revision">論說文</span>、立場選「視乎情況而論」，再選與立意相關的材料。以材料數量檢查下一步：1項時提示至少兩項，2項可繼續；3–4項屬選材建議。手法未選時仍可查看完整藍圖。</p></section><section class="flow-section" id="acceptance"><h2>功能需求與驗收</h2><div class="table-scroll"><table><thead><tr><th>事項</th><th>可觀察結果</th><th>狀態</th></tr></thead><tbody><tr><td>學生四步</td><td>審題、選材、結構及完整藍圖保持現有交互；返回保留選擇。</td><td>待驗收</td></tr><tr><td>文體判定</td><td>兩種題目來源均覆蓋指定文體、AI 單一識別及雙選項情況；學生可確認或選定後繼續。</td><td>待驗收</td></tr><tr><td>論說文立場選項</td><td>選擇論說文時，依序顯示「同意」「反對」「視乎情況而論」，各有一句對應題目的說明；記敍抒情不顯示立場選項。</td><td>待驗收</td></tr><tr><td>學生寫作次數</td><td>每名學生次數等於其唯一提交記錄數；搜尋及返回不改變次數。</td><td>待驗收</td></tr><tr><td>提交明細</td><td>點選學生查看其每次題目、提交時間及結果入口，時間倒序，序號按當前列表從1起連續顯示。</td><td>待驗收</td></tr><tr><td>單次結果</td><td>不同提交對應各自保存的結果，切換學生或記錄不串內容；返回保留搜尋。</td><td>待驗收</td></tr><tr><td>空結果</td><td>搜尋無匹配時顯示空態；沒有提交的學生顯示0次和「—」時間。</td><td>待驗收</td></tr><tr><td>練習記錄聯動</td><td>首頁進入、分類/類型篩選、詳情返回、兩端保存、重複保存去重、後台計次、快照一致、刷新保留、保存失敗及跨學生地址拒絕。</td><td>待驗收</td></tr><tr><td>保存與查詢邊界</td><td>保存成功才計次；同次重試不重複計次；學生不能查看他人結果；查詢失敗可重試，各次結果保留當時內容。</td><td>待驗收</td></tr><tr><td>平板端</td><td>版本切換、四步前進返回、改題取消與清空、材料不足攔截、分類保留、手法展開、六部分藍圖、保存图片與複製內容一致，保存成功後切換已保存狀態；草稿與現有版（PC端）隔離。</td><td>待驗收</td></tr><tr><td>後台交互</td><td>查詢及Enter生效、重置、菜單收合、姓名及操作入口、麵包屑返回、前進後退、失效記錄提示均可用；返回恢復篩選、滾動與焦點。</td><td>待驗收</td></tr><tr><td>寫前指導提交要求</td><td>未開啟寫前指導時開關不可選；開啟後可選須提交，關閉時任務仍發送給學生；發佈後任務保存此設定。</td><td>待驗收</td></tr><tr><td>成績公布後的寫前指導</td><td>教師完成作文批改並公布成績後，後台任務顯示「已完成」；未完成寫前指導的學生在「已過期」看到原任務並可繼續提交。提交成功後指導狀態及學生端歸類變為「已完成」，已公布成績不回退；提交失敗時保留草稿與重試入口。</td><td>待驗收</td></tr><tr><td>任務管理寫前指導展示</td><td>開啟寫前指導的任務顯示完成卡片與學生寫前指導欄，欄內按學生顯示「已完成／未開始」；未開啟的任務兩處均不顯示，其餘指標與學生列保留。</td><td>待驗收</td></tr><tr><td>提交日期與批改状态</td><td>學生答題情況不顯示用時；已提交顯示對應作文的提交日期及時分（YYYY-MM-DD HH:mm），未提交顯示「—」；批改状态按學生顯示「已批改／批改中／未提交」；開啟或關閉寫前指導時均保留兩欄。</td><td>待驗收</td></tr><tr><td>寫前指導結果</td><td>任務開啟寫前指導時，報告頁籤顯示當次藍圖；未開啟時不顯示該頁籤，切換學生後內容對應當次提交。</td><td>待驗收</td></tr></tbody></table></div></section><section class="flow-section" id="review"><h2>待評審事項</h2><div class="table-scroll"><table><thead><tr><th>項目</th><th>待決事項</th><th>影響</th><th>狀態</th></tr></thead><tbody>
+
+<tr><td>不同題目與文體</td><td>審題問題、材料和大綱如何隨已確定文體調整。</td><td>不能將現有挫折題的<span class="genre-revision">論說文</span>大綱套用所有題目。</td><td>待評審</td></tr>
+<tr><td>中心思想</td><td>勾選超過兩項時，整理全部或限制選擇。</td><td>現有立意整理採用所選前兩項。</td><td>待評審</td></tr>
+
+</tbody></table></div></section></main>
+
+
+
+
+
+
+
+
+    <script src="app.js?v=20261117-genre"></script>
+    <script src="docs.js?v=3fc0ac992a"></script>
+    <script src="teacher-progress.js?v=20261117-genre"></script>
+    <script src="practice-records.js?v=20261117-genre"></script>
+    <script src="student-improved.js?v=20261117-genre"></script>
+    <script src="student-modules.js?v=7b1a5c3d9e"></script>
+    <script src="pending-writing.js?v=20261112-guidance-name"></script>
+    <script src="writing-report-essay-data.js?v=9a2d5f7c1b"></script>
+    <script src="writing-report-score-data.js?v=5c7e1a9d2b"></script>
+    <script src="student-score-report.js?v=6e2b9c4a1d"></script>
+    <script src="prompt-guide.js?v=20261118-output-stance-red"></script>
+    <script src="flow.js?v=20261112-prd-scope"></script>
+  </body>
+</html>

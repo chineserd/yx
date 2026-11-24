@@ -1,0 +1,68 @@
+/* Generated from design-tokens.json colors; scoped to .cn-admin. */
+.cn-admin {
+  --cn-sidebar: #071B2E;
+  --cn-sidebar-text: #BDCAD8;
+  --cn-sidebar-hover: #122D46;
+  --cn-primary: #1967D2;
+  --cn-primary-hover: #1558B6;
+  --cn-primary-pressed: #10478F;
+  --cn-primary-soft: #EBF3FF;
+  --cn-page: #F3F5F8;
+  --cn-surface: #FFFFFF;
+  --cn-text: #243247;
+  --cn-secondary: #526176;
+  --cn-muted: #66758A;
+  --cn-border: #E2E7EE;
+  --cn-control-border: #8593A6;
+  --cn-subtle: #F7F9FC;
+  --cn-success: #167544;
+  --cn-success-soft: #EDF8F1;
+  --cn-warning: #995B0A;
+  --cn-warning-soft: #FFF7E8;
+  --cn-danger: #C52D35;
+  --cn-danger-soft: #FFF1F2;
+}
+
+/* 管理后台主题；预览外壳与App保留各自主题 */
+body.cn-admin{background:var(--cn-page)}
+#admin{color:var(--cn-text)}
+#admin .brand{background:var(--cn-surface);color:var(--cn-secondary);border-bottom:1px solid var(--cn-border);padding:0 20px 0 0;gap:24px;box-shadow:0 2px 6px #071b2e05}
+#admin .brand>b{height:56px;width:208px;flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--cn-sidebar);color:white;font-size:20px}
+#admin .brand>b span{margin:0;font-size:11px}
+#admin aside{background:var(--cn-sidebar);color:var(--cn-sidebar-text);padding-top:20px}
+#admin .section-label{color:var(--cn-sidebar-text);padding:0 18px 14px}
+#admin .menu{background:var(--cn-primary);color:white;border-left:0;height:44px;padding:0 18px;font-weight:600}
+#admin .menu:hover{background:var(--cn-primary-hover);color:white}
+#admin .breadcrumb,#admin .page-title span{color:var(--cn-muted)}
+#admin .workspace{border-color:var(--cn-border);background:var(--cn-surface)}
+#admin .tabs{gap:4px;height:54px;border-bottom:1px solid var(--cn-border)}
+#admin .tabs>button:not(.add){height:34px;padding:0 16px;border:1px solid transparent;border-radius:4px;background:transparent;color:var(--cn-secondary)}
+#admin .tabs>button.selected{background:var(--cn-primary);color:white;border-color:var(--cn-primary);font-weight:600}
+#admin .tabs>button:not(.selected):not(.add):hover{background:var(--cn-primary-soft);color:var(--cn-primary)}
+#admin button,#layer button,#confirmLayer button{border-color:var(--cn-control-border)}
+#admin .primary,#layer .primary,#confirmLayer .primary{background:var(--cn-primary);border-color:var(--cn-primary);color:white}
+#admin .primary:hover,#layer .primary:hover,#confirmLayer .primary:hover{background:var(--cn-primary-hover);border-color:var(--cn-primary-hover)}
+#admin .link,#layer .link{color:var(--cn-primary);border:0}
+#admin .link:hover,#layer .link:hover{background:var(--cn-primary-soft);color:var(--cn-primary-hover)}
+#admin .danger,#layer .danger{color:var(--cn-danger)}
+#admin input,#admin select,#layer input,#layer select,#layer textarea{border:1px solid var(--cn-control-border);border-radius:4px;color:var(--cn-text);background:white}
+#admin input:focus,#admin select:focus,#admin button:focus-visible,#layer input:focus,#layer textarea:focus,#layer button:focus-visible{outline-color:var(--cn-primary)}
+#admin .filter-row{border-bottom:1px solid var(--cn-border);margin-bottom:16px}
+#admin .stats-overview>div{background:var(--cn-subtle);border-color:var(--cn-border);border-radius:6px}
+#admin .stats-overview strong{color:var(--cn-primary);font-variant-numeric:tabular-nums}
+#admin th{background:white;color:var(--cn-text);font-weight:600;border-bottom:1px solid var(--cn-border)}
+#admin tbody tr{--row-bg:white}
+#admin tbody tr:nth-child(odd){--row-bg:#F5F7FA}
+#admin tbody tr:hover{--row-bg:var(--cn-primary-soft)}
+#admin tbody td,#admin .answer-records tbody td:nth-child(2),#admin .answer-records tbody td:nth-child(3),#admin tbody td:last-child{background:var(--row-bg);color:var(--cn-secondary);border-color:var(--cn-border)}
+#admin .answer-records thead th:nth-child(2),#admin .answer-records thead th:nth-child(3),#admin thead th:last-child{background:white}
+#admin .answer-records .answer-negative{color:var(--cn-danger)}
+#admin .pagination{color:var(--cn-secondary)}
+#admin .pagination button{border:1px solid var(--cn-border)}
+#admin .pagination button:hover:not(:disabled){border-color:var(--cn-primary);color:var(--cn-primary);background:var(--cn-primary-soft)}
+#admin .badge.on{background:var(--cn-success-soft);color:var(--cn-success)}
+#admin .badge.off{background:#F0F2F5;color:var(--cn-muted)}
+#layer .drawer,#confirmLayer .confirm{color:var(--cn-text)}
+#layer .block-title{border-color:var(--cn-primary)}
+@media(max-width:1200px){#admin .brand>b{width:176px}}
+@media(max-width:960px){#admin .brand>b{width:auto;background:white;color:var(--cn-text);padding-left:16px}#admin .brand>b span{display:inline}}

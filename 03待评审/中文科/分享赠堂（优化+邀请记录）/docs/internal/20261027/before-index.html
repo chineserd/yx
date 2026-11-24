@@ -1,0 +1,1690 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学生 App - 海报分享赠课原型</title>
+  <style>
+    :root {
+      --bg: #fff7f2;
+      --panel: #fffdf9;
+      --ink: #1f2633;
+      --muted: #7c8494;
+      --line: #f1dfc9;
+      --gold: #f8bc31;
+      --gold-soft: #fff0ba;
+      --red: #ff5a47;
+      --red-dark: #eb3d36;
+      --brown: #a56b25;
+      --blue: #1378ff;
+      --shadow: 0 22px 60px rgba(125, 83, 47, .16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 237, 190, .75), transparent 28%),
+        radial-gradient(circle at 78% 12%, rgba(255, 215, 205, .72), transparent 24%),
+        linear-gradient(140deg, #fffaf5 0%, #fff2ee 46%, #f7fbff 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+    }
+
+    .phone {
+      width: min(100vw, 432px);
+      min-height: 100vh;
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    @media (min-width: 680px) {
+      body {
+        padding: 28px;
+      }
+
+      .phone {
+        width: 390px;
+        min-height: 844px;
+        max-height: 844px;
+        border-radius: 34px;
+        border: 10px solid #11141a;
+      }
+    }
+
+    .screen {
+      min-height: inherit;
+      max-height: inherit;
+      display: none;
+      overflow-y: auto;
+      scrollbar-width: none;
+      padding-bottom: 80px;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .screen::-webkit-scrollbar,
+    .poster-row::-webkit-scrollbar,
+    .share-previews::-webkit-scrollbar {
+      display: none;
+    }
+
+    .statusbar {
+      height: 36px;
+      padding: 14px 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: #05080f;
+    }
+
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .signal {
+      display: flex;
+      align-items: end;
+      gap: 2px;
+      height: 14px;
+    }
+
+    .signal i {
+      display: block;
+      width: 3px;
+      border-radius: 3px;
+      background: #05080f;
+    }
+
+    .signal i:nth-child(1) { height: 5px; }
+    .signal i:nth-child(2) { height: 8px; }
+    .signal i:nth-child(3) { height: 11px; }
+    .signal i:nth-child(4) { height: 14px; }
+
+    .battery {
+      min-width: 27px;
+      padding: 2px 5px;
+      border-radius: 7px;
+      background: #05080f;
+      color: white;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .account-page {
+      background:
+        linear-gradient(180deg, #fffdf8 0, #fff6ee 52%, #fdf0e8 100%);
+    }
+
+    .account-top {
+      padding: 24px 16px 8px;
+      position: relative;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 76px 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 4px solid #ffd447;
+      background: linear-gradient(180deg, #8fd1ff, #fff);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #21507f;
+      position: relative;
+    }
+
+    .avatar::after {
+      content: "★";
+      position: absolute;
+      right: -4px;
+      bottom: -3px;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #ffd43d;
+      color: white;
+      font-size: 14px;
+      border: 2px solid white;
+    }
+
+    .profile h1 {
+      margin: 0 0 7px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      height: 24px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #d5a064, #9c5d24);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .badge.light {
+      background: linear-gradient(180deg, #f1c996, #a86e34);
+    }
+
+    .top-action {
+      border: 1px solid #e8b35a;
+      border-radius: 999px;
+      color: #a66b18;
+      background: white;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .vip-card {
+      margin: 22px 12px 14px;
+      min-height: 94px;
+      border-radius: 15px;
+      border: 2px solid #f2cf00;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, .55), transparent 62%),
+        linear-gradient(135deg, #ffe560 0%, #fff4a6 54%, #ffd64d 100%);
+      box-shadow: 0 10px 24px rgba(214, 166, 28, .22);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 18px;
+    }
+
+    .vip-card strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .vip-card span {
+      color: #b58326;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .vip-card b {
+      color: #ff6e1e;
+    }
+
+    .vip-card button,
+    .share-entry button,
+    .primary-cta {
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .vip-card button {
+      min-width: 92px;
+      height: 36px;
+      background: white;
+      color: #b67817;
+      box-shadow: 0 8px 16px rgba(155, 101, 28, .16);
+    }
+
+    .checkin-card,
+    .menu-card {
+      margin: 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 12px 30px rgba(151, 100, 70, .1);
+    }
+
+    .checkin-card {
+      padding: 14px;
+    }
+
+    .checkin-head {
+      height: 44px;
+      padding: 0 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #ff5149, #ef333f);
+      color: white;
+      font-weight: 800;
+    }
+
+    .reward-dots {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 7px;
+      text-align: center;
+      font-size: 11px;
+      color: #7d7d86;
+    }
+
+    .dot {
+      height: 38px;
+      border-radius: 10px;
+      background: #f8f8f4;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 1px #f2ead6;
+    }
+
+    .dot.done {
+      background: linear-gradient(180deg, #ffe981, #ffbd28);
+    }
+
+    .dot.missed {
+      background: linear-gradient(180deg, #e4e4e4, #c9c9c9);
+      position: relative;
+    }
+
+    .dot.missed::after {
+      content: "×";
+      position: absolute;
+      top: -6px;
+      right: -5px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: #f2483e;
+      font-size: 10px;
+    }
+
+    .share-entry {
+      margin: 24px 12px 0;
+      padding: 12px;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 12px 24px rgba(146, 103, 82, .09);
+    }
+
+    .share-entry-row,
+    .menu-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 47px;
+      border-bottom: 1px solid #f0e4d7;
+      color: #3d4048;
+    }
+
+    .share-entry-row:last-child,
+    .menu-row:last-child {
+      border-bottom: 0;
+    }
+
+    .share-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: #fff2c9;
+      color: #c98512;
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    .share-entry-row span,
+    .menu-row span {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .share-entry button {
+      height: 28px;
+      padding: 0 12px;
+      background: #ffe7a3;
+      color: #b97816;
+      font-size: 12px;
+    }
+
+    .menu-card {
+      padding: 0 13px;
+    }
+
+    .menu-row {
+      color: #495061;
+    }
+
+    .menu-row small {
+      color: #b4a191;
+      font-size: 18px;
+    }
+
+    .app-tabbar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 69px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      background: rgba(255, 255, 255, .95);
+      border-top: 1px solid rgba(236, 221, 206, .8);
+      backdrop-filter: blur(12px);
+      z-index: 8;
+    }
+
+    .app-tabbar button {
+      border: 0;
+      background: transparent;
+      color: #333b4a;
+      font-size: 11px;
+      cursor: pointer;
+      display: grid;
+      gap: 4px;
+      place-items: center;
+      font-weight: 700;
+    }
+
+    .tab-ico {
+      width: 22px;
+      height: 22px;
+      border: 2px solid currentColor;
+      border-radius: 6px;
+      display: block;
+      position: relative;
+    }
+
+    .tab-ico.home {
+      border-radius: 4px 4px 8px 8px;
+      transform: rotate(45deg) scale(.85);
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+    .tab-ico.note::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      top: 5px;
+      height: 2px;
+      background: currentColor;
+      box-shadow: 0 5px 0 currentColor;
+    }
+
+    .tab-ico.course::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 3px;
+      bottom: 3px;
+      border-left: 2px solid currentColor;
+    }
+
+    .tab-ico.mine {
+      border-radius: 50%;
+      border-color: #ffb035;
+      color: #ffb035;
+    }
+
+    .app-tabbar button.active {
+      color: #f35b45;
+    }
+
+    .page-header {
+      padding: 28px 21px 16px;
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
+      align-items: center;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .back-btn,
+    .ghost-icon {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 14px;
+      background: white;
+      color: #2f3541;
+      font-size: 25px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(136, 98, 72, .08);
+    }
+
+    .ghost-icon {
+      visibility: hidden;
+    }
+
+    .share-page {
+      background:
+        linear-gradient(165deg, rgba(255, 255, 255, .75) 0 22%, transparent 40%),
+        linear-gradient(180deg, #fffaf5 0, #fff6f1 100%);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      padding: 8px 21px 18px;
+    }
+
+    .metric-card {
+      min-height: 92px;
+      padding: 17px 15px;
+      border: 1px solid #ecd7bb;
+      border-radius: 17px;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 12px 24px rgba(157, 111, 72, .08);
+    }
+
+    .metric-card span {
+      display: block;
+      color: #7b8595;
+      font-size: 12px;
+      margin-bottom: 9px;
+    }
+
+    .metric-card strong {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .metric-card:first-child strong {
+      color: #c57516;
+    }
+
+    .metric-card.has-link {
+      position: relative;
+    }
+
+    .metric-card.has-link::after {
+      content: "›";
+      position: absolute;
+      right: 15px;
+      top: 30px;
+      color: #c8a979;
+      font-size: 32px;
+    }
+
+    .poster-section {
+      margin: 0 20px 18px;
+      border: 1px solid #efd9be;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .94);
+      padding: 20px 17px 18px;
+      box-shadow: 0 16px 36px rgba(150, 100, 62, .11);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .counter-pill {
+      flex: 0 0 auto;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: #fff4d7;
+      color: #ab731d;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .poster-row {
+      display: flex;
+      gap: 13px;
+      overflow-x: auto;
+      padding: 2px 2px 9px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .poster-card {
+      position: relative;
+      flex: 0 0 164px;
+      border: 2px solid transparent;
+      border-radius: 17px;
+      background: #fffaf1;
+      padding: 9px;
+      cursor: pointer;
+      text-align: left;
+      box-shadow: 0 10px 24px rgba(129, 91, 56, .12);
+      scroll-snap-align: start;
+    }
+
+    .poster-card.selected {
+      border-color: #ffb437;
+      box-shadow: 0 0 0 4px rgba(255, 195, 66, .22), 0 14px 28px rgba(129, 91, 56, .16);
+    }
+
+    .poster-card.selected::after {
+      content: "已选";
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      height: 24px;
+      min-width: 44px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: #ffbd35;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .poster-card img {
+      width: 100%;
+      height: 176px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      background: #f2e6d6;
+    }
+
+    .poster-card h3 {
+      margin: 9px 0 4px;
+      font-size: 13px;
+      color: #222936;
+    }
+
+    .poster-card p {
+      margin: 0;
+      color: #8c7f72;
+      font-size: 11px;
+    }
+
+    .poster-preview {
+      margin-top: 16px;
+      border: 1px dashed #edbe74;
+      border-radius: 18px;
+      padding: 13px;
+      background:
+        linear-gradient(135deg, rgba(255, 244, 214, .72), rgba(255, 255, 255, .85));
+    }
+
+    .preview-shell {
+      display: grid;
+      grid-template-columns: 116px 1fr;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .preview-shell img {
+      width: 116px;
+      height: 148px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 12px 18px rgba(79, 58, 42, .16);
+    }
+
+    .preview-copy strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .preview-copy span {
+      display: block;
+      font-size: 12px;
+      color: #7b8493;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .platform-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .platform-mini i {
+      font-style: normal;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: white;
+      color: #6b7483;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .share-footer {
+      padding: 0 21px 24px;
+      display: grid;
+      grid-template-columns: 1fr 112px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .share-footer small {
+      color: #8f7f73;
+      line-height: 1.5;
+    }
+
+    .primary-cta {
+      height: 46px;
+      background: linear-gradient(135deg, #ff7b56, #f0443e);
+      box-shadow: 0 12px 22px rgba(243, 76, 61, .28);
+      font-size: 14px;
+    }
+
+    .primary-cta:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .share-sheet {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: end;
+      background: rgba(27, 30, 37, .28);
+      z-index: 20;
+    }
+
+    .share-sheet.open {
+      display: flex;
+    }
+
+    .sheet-card {
+      width: 100%;
+      border-radius: 24px 24px 0 0;
+      padding: 18px 18px 28px;
+      background: white;
+      box-shadow: 0 -16px 40px rgba(46, 33, 24, .16);
+    }
+
+    .sheet-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sheet-head strong {
+      font-size: 17px;
+    }
+
+    .sheet-head button {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: #f5f6f8;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 9px;
+      margin-bottom: 14px;
+    }
+
+    .platform {
+      border: 1px solid #ece4dc;
+      border-radius: 15px;
+      background: #fffdf9;
+      padding: 10px 4px 8px;
+      cursor: pointer;
+      color: #3d4656;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .platform.selected {
+      border-color: #ffb83e;
+      background: #fff8e6;
+      color: #9c6414;
+    }
+
+    .platform i {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 7px;
+      border-radius: 12px;
+      color: white;
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .wx i { background: #19b65b; }
+    .moments i { background: #4a9a40; }
+    .wa i { background: #23c065; }
+    .ig i { background: linear-gradient(135deg, #6f3bf0, #fd4d65, #ffbf33); }
+    .fb i { background: #1877f2; }
+
+    .share-previews {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .share-previews img {
+      flex: 0 0 124px;
+      width: 124px;
+      height: 178px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 1px solid #ece3d8;
+      box-shadow: 0 10px 20px rgba(97, 73, 55, .12);
+    }
+
+    .toast {
+      position: absolute;
+      left: 50%;
+      bottom: 92px;
+      transform: translateX(-50%) translateY(18px);
+      min-width: 210px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(30, 34, 42, .9);
+      color: white;
+      font-size: 13px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: .2s ease;
+      z-index: 30;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .share-page {
+      background: #f5f6f8;
+      padding-bottom: 94px;
+    }
+
+    .share-page .page-header {
+      background: #fff;
+      border-bottom: 1px solid #eceef2;
+    }
+
+    .compact-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      padding: 10px 16px 0;
+    }
+
+    .compact-metric {
+      min-height: 60px;
+      padding: 10px 12px 8px;
+      border: 1px solid #ead9c4;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .compact-metric span {
+      display: block;
+      margin-bottom: 4px;
+      color: #7a8492;
+      font-size: 10px;
+    }
+
+    .compact-metric strong {
+      color: #1e2836;
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    .compact-metric:first-child strong {
+      color: #b36a07;
+    }
+
+    .gallery-section {
+      margin: 10px 16px 0;
+      padding: 16px;
+      border: 1px solid #e3e6eb;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .gallery-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 13px;
+    }
+
+    .gallery-heading h2 {
+      margin: 0;
+      color: #20252d;
+      font-size: 18px;
+    }
+
+    .poster-stage {
+      height: 360px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 7px;
+      background: #edf0f3;
+    }
+
+    .poster-stage img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .poster-thumbnails {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      padding: 12px 1px 2px;
+    }
+
+    .poster-thumb-btn {
+      flex: 0 0 62px;
+      width: 62px;
+      height: 78px;
+      padding: 3px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      border-radius: 7px;
+      background: #f3f4f6;
+    }
+
+    .poster-thumb-btn.selected {
+      border-color: #2479f2;
+      background: #e9f2ff;
+    }
+
+    .poster-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .share-actions {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 16;
+      height: 86px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 8px 7px 12px;
+      border-top: 1px solid #e1e4e9;
+      background: #fff;
+      box-shadow: 0 -8px 24px rgba(31, 45, 66, .08);
+    }
+
+    .share-action {
+      min-width: 0;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 5px;
+      padding: 4px 1px;
+      border: 0;
+      color: #3c4450;
+      background: transparent;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .share-action img {
+      width: 30px;
+      height: 30px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .moments-icon {
+      width: 30px;
+      height: 30px;
+      display: block;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #fff 0 24%, transparent 25%),
+        conic-gradient(from -18deg, #14b86a 0 58deg, #72d65c 58deg 118deg, #ffd45c 118deg 178deg, #ff8c43 178deg 238deg, #49a8ff 238deg 298deg, #14b86a 298deg 360deg);
+      box-shadow: inset 0 0 0 1px rgba(9, 134, 73, .16);
+      font-style: normal;
+    }
+
+    .platform-page {
+      color: #111;
+      background: #fff;
+    }
+
+    .platform-page.dark {
+      color: #fff;
+      background: #050505;
+    }
+
+    .platform-status {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .platform-header {
+      min-height: 56px;
+      display: grid;
+      grid-template-columns: 76px 1fr 76px;
+      align-items: center;
+      border-bottom: 1px solid #eceef1;
+    }
+
+    .dark .platform-header { border-bottom-color: #252525; }
+
+    .platform-header h2 {
+      margin: 0;
+      text-align: center;
+      font-size: 19px;
+    }
+
+    .platform-header button {
+      min-height: 38px;
+      padding: 0 13px;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      font-weight: 800;
+    }
+
+    .platform-header .publish-btn {
+      justify-self: end;
+      margin-right: 10px;
+      border-radius: 6px;
+      color: #fff;
+      background: #08b865;
+    }
+
+    .social-body {
+      height: calc(100% - 100px);
+      overflow-y: auto;
+      padding: 18px 18px 108px;
+    }
+
+    .social-user {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 14px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .social-avatar {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: #2f7bd8;
+      font-size: 13px;
+    }
+
+    .social-pills {
+      display: flex;
+      gap: 7px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .social-pills span {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border: 1px solid #d8dce2;
+      border-radius: 18px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .caption-placeholder {
+      margin: 14px 0;
+      color: #8b9098;
+      font-size: 17px;
+    }
+
+    .carried-poster {
+      width: 100%;
+      max-height: 500px;
+      display: block;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #f1f2f4;
+    }
+
+    .platform-bottom-cta {
+      position: absolute;
+      right: 18px;
+      bottom: 22px;
+      min-width: 108px;
+      height: 46px;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      background: #2869eb;
+      font-weight: 800;
+    }
+
+    .instagram-body .carried-poster {
+      width: 72%;
+      height: 390px;
+      margin: 10px auto 26px;
+    }
+
+    .option-list {
+      margin-top: 16px;
+      border-top: 1px solid #eceef1;
+    }
+
+    .option-list div {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eceef1;
+      font-size: 15px;
+    }
+
+    .instagram-share {
+      position: absolute;
+      right: 14px;
+      bottom: 16px;
+      left: 14px;
+      height: 48px;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      background: #465cf5;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .wechat-compose {
+      display: grid;
+      grid-template-columns: 1fr 126px;
+      gap: 14px;
+      min-height: 190px;
+      padding: 28px 12px 22px;
+    }
+
+    .wechat-compose .carried-poster {
+      width: 126px;
+      height: 126px;
+      object-fit: cover;
+    }
+
+    .wechat-options { border-top: 1px solid #eceef1; }
+    .wechat-options div { min-height: 62px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eceef1; font-size: 16px; }
+    .wechat-options .danger { color: #ef4f58; }
+
+    .whatsapp-body {
+      height: calc(100% - 100px);
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 16px 14px 24px;
+    }
+
+    .whatsapp-poster {
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .whatsapp-poster .carried-poster {
+      max-height: 590px;
+      background: #111;
+    }
+
+    .whatsapp-compose {
+      display: grid;
+      grid-template-columns: 1fr 48px;
+      gap: 10px;
+      align-items: center;
+      padding-top: 12px;
+    }
+
+    .whatsapp-compose span {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      border: 1px solid #3c3c3c;
+      border-radius: 24px;
+      color: #ddd;
+    }
+
+    .whatsapp-compose button {
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      color: #07170e;
+      background: #21d373;
+      font-weight: 900;
+    }
+
+    .dev-tools {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 100;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .dev-toggle {
+      width: 52px;
+      height: 38px;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      background: #151b28;
+      box-shadow: 0 10px 24px rgba(20, 26, 38, .22);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .dev-panel {
+      position: absolute;
+      right: 0;
+      bottom: 48px;
+      width: 296px;
+      max-height: min(72vh, 560px);
+      overflow: auto;
+      padding: 12px;
+      border: 1px solid #d8e1ec;
+      border-radius: 8px;
+      color: #172033;
+      background: rgba(255, 255, 255, .98);
+      box-shadow: 0 18px 54px rgba(16, 31, 54, .2);
+    }
+
+    .dev-panel[hidden] {
+      display: none;
+    }
+
+    .dev-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid #e3eaf2;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .dev-panel-head span {
+      color: #697589;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .dev-section {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e3eaf2;
+    }
+
+    .dev-panel-head + .dev-section {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .dev-section-title {
+      margin-bottom: 8px;
+      color: #172033;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .dev-group {
+      display: grid;
+      gap: 7px;
+      margin-top: 11px;
+    }
+
+    .dev-group-title {
+      color: #697589;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .dev-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    .dev-link {
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 9px;
+      border: 1px solid #d9e3ee;
+      border-radius: 6px;
+      color: #1e3d63;
+      background: #f7fbff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .dev-link:hover {
+      border-color: #1688ff;
+      color: #0b63c7;
+      background: #eef7ff;
+    }
+  </style>
+</head>
+<body>
+  <main class="phone" aria-label="学生 App 海报分享赠课原型">
+    <section class="screen account-page active" data-screen="account">
+      <div class="statusbar">
+        <span>15:11</span>
+        <span class="status-icons">
+          <span class="signal"><i></i><i></i><i></i><i></i></span>
+          <span>Wi-Fi</span>
+          <span class="battery">74</span>
+        </span>
+      </div>
+
+      <section class="account-top">
+        <div class="profile">
+          <div class="avatar">測試</div>
+          <div>
+            <h1>測試</h1>
+            <div class="badges">
+              <span class="badge">黃金會員</span>
+              <span class="badge light">LV1 寶藏房</span>
+            </div>
+          </div>
+          <button class="top-action" type="button">錢包 ›</button>
+        </div>
+      </section>
+
+      <section class="vip-card">
+        <div>
+          <strong>中文路黃金會員</strong>
+          <span>開通會員享受價值 <b>HK$1000</b> 好禮</span>
+        </div>
+        <button type="button">立即開通 ›</button>
+      </section>
+
+      <section class="checkin-card">
+        <div class="checkin-head">
+          <span>小鹿幣</span>
+          <small>獎賞中心 ›</small>
+        </div>
+        <div class="reward-dots" aria-label="连续签到记录">
+          <span><b class="dot missed"></b>14</span>
+          <span><b class="dot missed"></b>15</span>
+          <span><b class="dot done">+5</b>今天</span>
+          <span><b class="dot done">+5</b>17</span>
+          <span><b class="dot done">+5</b>18</span>
+          <span><b class="dot done">+5</b>19</span>
+          <span><b class="dot done">+5</b>20</span>
+        </div>
+      </section>
+
+      <section class="share-entry">
+        <div class="share-entry-row">
+          <span><i class="share-icon">礼</i>分享贈課</span>
+          <button type="button" data-goto="share">去分享 ›</button>
+        </div>
+        <div class="menu-row">
+          <span><i class="share-icon">单</i>我的訂單</span>
+          <small>›</small>
+        </div>
+        <div class="menu-row">
+          <span><i class="share-icon">课</i>我的課程</span>
+          <small>›</small>
+        </div>
+        <div class="menu-row">
+          <span><i class="share-icon">管</i>學員管理</span>
+          <small>›</small>
+        </div>
+      </section>
+    </section>
+
+    <section class="screen share-page" data-screen="share">
+      <div class="statusbar">
+        <span>15:11</span>
+        <span class="status-icons">
+          <span class="signal"><i></i><i></i><i></i><i></i></span>
+          <span>Wi-Fi</span>
+          <span class="battery">74</span>
+        </span>
+      </div>
+
+      <header class="page-header">
+        <button class="back-btn" type="button" data-goto="account" aria-label="返回">‹</button>
+        <h1>分享贈課</h1>
+        <button class="ghost-icon" type="button" tabindex="-1"> </button>
+      </header>
+      <section class="compact-metrics" aria-label="赠课数据">
+        <article class="compact-metric"><span>剩餘贈課數</span><strong>1</strong></article>
+        <article class="compact-metric"><span>已獲得贈課數</span><strong>4</strong></article>
+      </section>
+      <section class="gallery-section">
+        <div class="gallery-heading"><h2>本月分享海報</h2></div>
+        <div class="poster-stage"><img id="selectedPoster" src="assets/可分享海报/暑假中文陪学.png" alt="当前选择海报大图"></div>
+        <div class="poster-thumbnails" id="posterRow" aria-label="显示状态海报预览列表">
+          <button class="poster-thumb-btn selected" type="button" data-poster="assets/可分享海报/暑假中文陪学.png" data-title="暑假中文陪学"><img src="assets/可分享海报/暑假中文陪学.png" alt="暑假中文陪学海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/暑假二十五分钟png.png" data-title="暑假二十五分钟"><img src="assets/可分享海报/暑假二十五分钟png.png" alt="暑假二十五分钟海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/暑期稳固中文.png" data-title="暑期稳固中文"><img src="assets/可分享海报/暑期稳固中文.png" alt="暑期稳固中文海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/普通话课.png" data-title="普通话课"><img src="assets/可分享海报/普通话课.png" alt="普通话课海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/认字课.png" data-title="认字课"><img src="assets/可分享海报/认字课.png" alt="认字课海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/阅读写作.png" data-title="阅读写作"><img src="assets/可分享海报/阅读写作.png" alt="阅读写作海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/看图说话.png" data-title="看图说话"><img src="assets/可分享海报/看图说话.png" alt="看图说话海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/从单词到断句.png" data-title="从单词到断句"><img src="assets/可分享海报/从单词到断句.png" alt="从单词到断句海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/内地旅行，沟通会更轻松.png" data-title="内地旅行，沟通会更轻松"><img src="assets/可分享海报/内地旅行，沟通会更轻松.png" alt="内地旅行沟通会更轻松海报"></button>
+          <button class="poster-thumb-btn" type="button" data-poster="assets/可分享海报/家人学中文.png" data-title="家人学中文"><img src="assets/可分享海报/家人学中文.png" alt="家人学中文海报"></button>
+        </div>
+      </section>
+
+      <footer class="share-actions" aria-label="分享及保存操作">
+        <button class="share-action" type="button" data-platform="facebook"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt=""><span>Facebook</span></button>
+        <button class="share-action" type="button" data-platform="instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt=""><span>Instagram</span></button>
+        <button class="share-action" type="button" data-platform="wechat"><i class="moments-icon" aria-hidden="true"></i><span>朋友圈</span></button>
+        <button class="share-action" type="button" data-platform="whatsapp"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt=""><span>WhatsApp</span></button>
+        <button class="share-action" id="savePoster" type="button"><img src="https://cdn.jsdelivr.net/npm/lucide-static@0.468.0/icons/download.svg" alt=""><span>保存</span></button>
+      </footer>
+    </section>
+
+    <section class="screen platform-page" data-screen="facebook">
+      <div class="platform-status"><span>16:20</span><span>Facebook</span></div>
+      <header class="platform-header"><button type="button" data-goto="share">关闭</button><h2>新帖子</h2><span></span></header>
+      <div class="social-body">
+        <div class="social-user"><span class="social-avatar">Perry</span><strong>Perry Liu</strong></div>
+        <div class="social-pills"><span>用户</span><span>地点</span><span>感受/活动</span><span>活动</span></div>
+        <p class="caption-placeholder">分享一下你的新鲜事吧</p>
+        <img class="carried-poster platform-poster" src="assets/可分享海报/暑假中文陪学.png" alt="带入Facebook的新帖子海报">
+      </div>
+      <button class="platform-bottom-cta" type="button">继续</button>
+    </section>
+
+    <section class="screen platform-page" data-screen="instagram">
+      <div class="platform-status"><span>16:23</span><span>Instagram</span></div>
+      <header class="platform-header"><button type="button" data-goto="share">返回</button><h2>新帖子</h2><span></span></header>
+      <div class="social-body instagram-body">
+        <img class="carried-poster platform-poster" src="assets/可分享海报/暑假中文陪学.png" alt="带入Instagram的新帖子海报">
+        <p class="caption-placeholder">添加配文...</p>
+        <div class="social-pills"><span>投票</span><span>话题引子</span></div>
+        <div class="option-list"><div><span>添加音频</span><b>选择</b></div><div><span>标记用户</span><b>选择</b></div><div><span>添加地点</span><b>选择</b></div></div>
+      </div>
+      <button class="instagram-share" type="button">分享</button>
+    </section>
+
+    <section class="screen platform-page" data-screen="wechat">
+      <div class="platform-status"><span>16:18</span><span>朋友圈</span></div>
+      <header class="platform-header"><button type="button" data-goto="share">取消</button><h2>朋友圈</h2><button class="publish-btn" type="button">发表</button></header>
+      <div class="social-body">
+        <div class="wechat-compose"><p class="caption-placeholder">这一刻的想法...</p><img class="carried-poster platform-poster" src="assets/可分享海报/暑假中文陪学.png" alt="带入微信朋友圈的海报"></div>
+        <div class="wechat-options"><div><span>所在位置</span><b>选择</b></div><div><span>提醒谁看</span><b>选择</b></div><div class="danger"><span>谁不可看</span><b>朋友</b></div></div>
+      </div>
+    </section>
+
+    <section class="screen platform-page dark" data-screen="whatsapp">
+      <div class="platform-status"><span>16:20</span><span>WhatsApp</span></div>
+      <header class="platform-header"><button type="button" data-goto="share">关闭</button><h2>新动态</h2><span></span></header>
+      <div class="whatsapp-body">
+        <div class="whatsapp-poster"><img class="carried-poster platform-poster" src="assets/可分享海报/暑假中文陪学.png" alt="带入WhatsApp动态的海报"></div>
+        <div class="whatsapp-compose"><span>添加配文...</span><button type="button">发送</button></div>
+      </div>
+    </section>
+
+    <nav class="app-tabbar" aria-label="App 底部导航">
+      <button type="button" data-goto="account"><span class="tab-ico home"></span>主頁</button>
+      <button type="button"><span class="tab-ico note"></span>評估</button>
+      <button type="button"><span class="tab-ico course"></span>課堂</button>
+      <button class="active" type="button" data-goto="account"><span class="tab-ico mine"></span>賬戶</button>
+    </nav>
+
+    <div class="toast" id="toast">海報已保存到本地</div>
+  </main>
+
+  <aside class="dev-tools" aria-label="开发导航">
+    <div class="dev-panel" id="studentDevPanel" hidden>
+      <div class="dev-panel-head">
+        <strong>前后端 Dev 导航</strong>
+        <span>开发查看</span>
+      </div>
+      <section class="dev-section">
+        <div class="dev-section-title">前端：学生端</div>
+        <div class="dev-group">
+          <div class="dev-group-title">页面</div>
+          <div class="dev-links">
+            <a class="dev-link" href="index.html?screen=account&dev=1">账户页</a>
+            <a class="dev-link" href="index.html?screen=share&dev=1">分享页</a>
+            <a class="dev-link" href="index.html?screen=facebook&poster=1&dev=1">Facebook</a>
+            <a class="dev-link" href="index.html?screen=instagram&poster=1&dev=1">Instagram</a>
+            <a class="dev-link" href="index.html?screen=wechat&poster=1&dev=1">朋友圈</a>
+            <a class="dev-link" href="index.html?screen=whatsapp&poster=1&dev=1">WhatsApp</a>
+          </div>
+        </div>
+        <div class="dev-group">
+          <div class="dev-group-title">状态</div>
+          <div class="dev-links">
+            <a class="dev-link" href="index.html?screen=share&poster=1&dev=1">海报 1</a>
+            <a class="dev-link" href="index.html?screen=share&poster=2&dev=1">海报 2</a>
+            <a class="dev-link" href="index.html?screen=share&poster=3&dev=1">海报 3</a>
+            <a class="dev-link" href="index.html?screen=share&poster=4&dev=1">海报 4</a>
+            <a class="dev-link" href="index.html?screen=share&poster=5&dev=1">海报 5</a>
+            <a class="dev-link" href="index.html?screen=share&poster=6&dev=1">海报 6</a>
+            <a class="dev-link" href="index.html?screen=share&poster=7&dev=1">海报 7</a>
+            <a class="dev-link" href="index.html?screen=share&poster=8&dev=1">海报 8</a>
+            <a class="dev-link" href="index.html?screen=share&poster=9&dev=1">海报 9</a>
+            <a class="dev-link" href="index.html?screen=share&poster=10&dev=1">海报 10</a>
+            <a class="dev-link" href="index.html?screen=share&shareCount=0&dev=1">首条分享</a>
+            <a class="dev-link" href="index.html?screen=share&shareCount=1&dev=1">第二条分享</a>
+            <a class="dev-link" href="index.html?screen=share&toast=saved&dev=1">保存 Toast</a>
+          </div>
+        </div>
+      </section>
+      <section class="dev-section">
+        <div class="dev-section-title">后端：管理后台</div>
+        <div class="dev-group">
+          <div class="dev-group-title">页面 / 弹窗</div>
+          <div class="dev-links">
+            <a class="dev-link" href="admin.html?tab=audit&dev=1">赠课审核</a>
+            <a class="dev-link" href="admin.html?tab=audit&modal=config&dev=1">海报配置</a>
+            <a class="dev-link" href="admin.html?tab=audit&modal=add&dev=1">新增海报</a>
+            <a class="dev-link" href="admin.html?tab=audit&modal=edit&poster=3&dev=1">编辑海报</a>
+            <a class="dev-link" href="admin.html?tab=audit&modal=delete&poster=2&dev=1">删除确认</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <button class="dev-toggle" id="studentDevToggle" type="button" aria-expanded="false" aria-controls="studentDevPanel">DEV</button>
+  </aside>
+
+  <script>
+    const screens = document.querySelectorAll(".screen");
+    const gotoButtons = document.querySelectorAll("[data-goto]");
+    const posterCards = document.querySelectorAll(".poster-thumb-btn");
+    const selectedPoster = document.getElementById("selectedPoster");
+    let selectedPosterTitle = "暑假中文陪学";
+    const platformButtons = document.querySelectorAll("[data-platform]");
+    const platformPosters = document.querySelectorAll(".platform-poster");
+    const savePoster = document.getElementById("savePoster");
+    const appTabbar = document.querySelector(".app-tabbar");
+    const toast = document.getElementById("toast");
+    const platformScreens = new Set(["facebook", "instagram", "wechat", "whatsapp"]);
+    const studentDevToggle = document.getElementById("studentDevToggle");
+    const studentDevPanel = document.getElementById("studentDevPanel");
+    let monthlyShareCount = 0;
+
+    function showScreen(name) {
+      const targetScreen = Array.from(screens).find((screen) => screen.dataset.screen === name);
+      if (!targetScreen) return;
+      screens.forEach((screen) => {
+        screen.classList.toggle("active", screen.dataset.screen === name);
+      });
+      appTabbar.style.display = name === "account" ? "grid" : "none";
+    }
+
+    function selectPoster(card) {
+      if (!card) return;
+      posterCards.forEach((item) => item.classList.remove("selected"));
+      card.classList.add("selected");
+      selectedPoster.src = card.dataset.poster;
+      selectedPosterTitle = card.dataset.title;
+    }
+
+    function syncPlatformPosters(platformName = "share") {
+      platformPosters.forEach((poster) => {
+        poster.src = selectedPoster.getAttribute("src");
+        poster.alt = `${selectedPosterTitle} - ${platformName}发布素材`;
+      });
+    }
+
+    function showToast(message = "海報已保存到本地", duration = 1800) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(() => toast.classList.remove("show"), duration);
+    }
+
+    gotoButtons.forEach((button) => {
+      button.addEventListener("click", () => showScreen(button.dataset.goto));
+    });
+
+    posterCards.forEach((card) => {
+      card.addEventListener("click", () => selectPoster(card));
+    });
+
+    platformButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        syncPlatformPosters(button.dataset.platform);
+        showScreen(button.dataset.platform);
+        const wasFirstShare = monthlyShareCount === 0;
+        monthlyShareCount += 1;
+        const platformLabel = button.querySelector("span")?.textContent || button.dataset.platform;
+        showToast(wasFirstShare ? `${platformLabel} 首条海报分享已生成待赠课记录` : `${platformLabel} 本月第 ${monthlyShareCount} 条分享不生成待赠课记录`, 2600);
+      });
+    });
+
+    savePoster.addEventListener("click", () => {
+      const source = selectedPoster.getAttribute("src");
+      const extension = source.split(".").pop().split("?")[0] || "png";
+      const anchor = document.createElement("a");
+      anchor.href = source;
+      anchor.download = `${selectedPosterTitle}.${extension}`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      showToast();
+    });
+
+    studentDevToggle.addEventListener("click", () => {
+      const willOpen = studentDevPanel.hidden;
+      studentDevPanel.hidden = !willOpen;
+      studentDevToggle.setAttribute("aria-expanded", String(willOpen));
+    });
+
+    function applyDevStateFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const posterIndex = Number(params.get("poster"));
+      if (Number.isInteger(posterIndex) && posterIndex > 0) {
+        selectPoster(posterCards[posterIndex - 1]);
+      }
+
+      const requestedScreen = params.get("screen");
+      const requestedShareCount = Number(params.get("shareCount"));
+      if (Number.isInteger(requestedShareCount) && requestedShareCount >= 0) {
+        monthlyShareCount = requestedShareCount;
+      }
+
+      if (requestedScreen) {
+        if (platformScreens.has(requestedScreen)) syncPlatformPosters(requestedScreen);
+        showScreen(requestedScreen);
+      }
+
+      if (params.get("toast") === "saved") {
+        showToast(undefined, 6000);
+      }
+    }
+
+    applyDevStateFromUrl();
+  </script>
+</body>
+</html>

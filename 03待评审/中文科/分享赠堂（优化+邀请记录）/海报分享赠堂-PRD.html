@@ -1,0 +1,177 @@
+<!doctype html><html lang="zh-CN"><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>分享赠堂（后台优化）</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}body{margin:0;color:#24354b;background:#f5f7fb;font:12px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}h1,h2,h3,p,code,pre,table,button,a{font-size:12px;line-height:1.6}a{color:#285bd6}a:focus-visible{outline:2px solid #3563ff;outline-offset:3px}.top{position:sticky;top:0;z-index:10;height:48px;background:white;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;padding:0 16px;gap:0;overflow-x:auto;white-space:nowrap}.project{flex-shrink:0;position:relative;padding-left:14px;margin-right:24px;color:#334155;cursor:default}.project:before{content:"";position:absolute;left:0;top:2px;height:28px;width:3px;background:#5478e8;border-radius:2px}.project small{display:block;color:#8793a5;font-size:10px;line-height:14px;letter-spacing:1px}.project b{line-height:18px}.top>a{padding:0 12px;height:48px;display:flex;align-items:center;color:#758298;text-decoration:none;font-weight:500}.top>a.current{background:#f5f8ff;color:#3563ff;border-bottom:2px solid #3563ff;font-weight:600}.top>a:hover{background:#f5f8ff}.layout{max-width:1480px;margin:auto;display:grid;grid-template-columns:210px minmax(0,1fr);gap:18px;padding:16px}.toc{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px}.toc a{display:block;color:#526574;text-decoration:none;padding:5px 6px}.toc a:hover{background:#eff5ff;color:#2855ef}.toc .level3{padding-left:16px}.document{background:white;padding:0 20px 24px;min-width:0;border:1px solid #e2e8f0;border-radius:8px}.doc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:16px;margin-bottom:12px}.doc-head h1,.doc-head p{margin:0}.doc-head .intro{color:#53677e}.meta{color:#63758a}h2{border-top:1px solid #e2e8f0;padding-top:14px;margin:18px 0 8px;color:#193a67}h3{margin:14px 0 6px;color:#234b76}p{margin:7px 0}ul,ol{padding-left:22px}li{margin:5px 0}.table-scroll{overflow:auto;max-width:100%;border:1px solid #dbe3ef;border-radius:5px;margin:9px 0}table{width:100%;border-collapse:collapse;min-width:540px}th,td{padding:9px 10px;border-bottom:1px solid #e5ebf3;text-align:left;vertical-align:top}th{background:#edf3fa;color:#284c78}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafcff}pre{padding:12px;background:#f3f6fa;overflow:auto;border-radius:5px}code{overflow-wrap:anywhere}.document a{overflow-wrap:anywhere}@media(max-width:760px){.layout{grid-template-columns:minmax(0,1fr);padding:10px;gap:10px}.toc{position:static;max-height:180px}.document{padding:0 12px 18px}.top{padding:0 10px}}@media print{.top,.toc{display:none}.layout{display:block;padding:0}.document{border:0}table{min-width:0}.table-scroll{overflow:visible}tr{break-inside:avoid}}</style><link rel="stylesheet" href="assets/review-nav.css"></head><body><nav class="top" aria-label="需求导航"><div class="project"><small>需求名稱</small><b>分享赠堂（后台优化）</b></div><a href="admin.html">後台</a><a href="index.html?screen=share">學生端</a><a class="current" aria-current="page" href="海报分享赠堂-PRD.html">PRD</a><a  href="接口说明.html">接口說明</a><a  href="业务流程.html">業務流程</a></nav><div class="layout"><aside class="toc" aria-label="文档目录"><a class="level2" href="#section-1">一、涉及端口 · 菜单 · 功能点</a><a class="level2" href="#section-2">二、业务规则</a><a class="level3" href="#section-3">2.1 赠课统计</a><a class="level3" href="#section-4">2.2 赠课海报配置</a><a class="level3" href="#section-5">2.3 赠堂数量与统计关联</a><a class="level2" href="#section-6">三、业务示例</a><a class="level2" href="#section-7">四、截图对照与模拟数据汇总</a><a class="level3" href="#section-8">4.1 页面截图对照</a><a class="level3" href="#section-9">4.2 模拟数据汇总结果</a><a class="level2" href="#section-10">五、功能需求与验收</a><a class="level2" href="#section-11">六、待确认事项</a></aside><main class="document"><header class="doc-head"><h1>分享赠堂（后台优化）</h1><p class="intro">运营后台用于查看分享赠课统计，并维护赠课海报、赠堂数量、图片和显示状态。统计结果按实际赠课到账记录计算，海报配置保存后供新的读取请求使用，历史记录保留创建时的配置快照。</p><p class="meta">PRD · V2.3 · 更新日期 2026-11-06</p></header>
+<h2 id="section-1">一、涉及端口 · 菜单 · 功能点</h2>
+<ol>
+<li><strong>运营后台｜学员管理 → 分享赠课 → 赠课统计</strong>：按日期、学员和分享状态查询赠课数据，查看累计与当期统计、学员明细及已赠课记录。</li>
+<li><strong>运营后台｜学员管理 → 分享赠课 → 赠课海报配置</strong>：新增、编辑、显示／隐藏、删除和排序海报，配置每张海报的赠堂数量及相关内容。</li>
+</ol>
+<h2 id="section-2">二、业务规则</h2>
+<h3 id="section-3">2.1 赠课统计</h3>
+<ul>
+<li>日期区间默认当周，提供“当周”快捷恢复；开始日期不得晚于结束日期。页面统计时区采用 Asia/Shanghai，周一至周日为一周，海外业务口径待确认。</li>
+<li>支持按学员姓名／编号、所属学管、所属顾问、剩余赠课数和“当月分享状态”筛选；“当月分享状态”仅判断自然月内是否成功调起分享，不随日期区间改成“当期分享状态”。</li>
+<li>当周已分享用户按成功调起分享的学员去重；仅切换海报、保存图片或复制文案不计入分享统计。查询失败显示明确错误，不用0代替失败。</li>
+<li>列表展示学员姓名、学员编号、学管、顾问、最近分享月份、剩余赠课数、累计已获赠堂数、当期已获赠课数、已过期赠课数、可获赠课总数，并提供查看已赠课明细的操作。</li>
+<li><strong>剩余赠课数</strong>为学员当前仍可获赠的课次数，公式为：可获赠课总数 − 累计已获赠堂数 − 已过期赠课数。</li>
+<li><strong>累计已获赠堂数</strong>为学员历次实际到账赠堂数之和，跨月累计，包含当期已获赠数量，不随日期筛选变化。</li>
+<li><strong>当期已获赠课数</strong>表示当前学生在筛选统计时间内实际已获赠课数累计，按实际赠课日期统计，包含开始日和结束日；随日期及学员筛选联动，不等于分享次数。</li>
+<li><strong>最近分享月份</strong>为学员最近一次分享所在的年月；未分析的学员不进入该列表。</li>
+<li><strong>已过期赠课数</strong>为学员已购产品到期时尚未领取、已失效的赠课额度之和，不计入累计已获赠堂数。</li>
+<li><strong>可获赠课总数</strong>为学员各已购产品的赠课上限之和，额度关系为：可获赠课总数 = 剩余赠课数 + 累计已获赠堂数 + 已过期赠课数。</li>
+<li>零结果正常显示0；有效0与查询失败分别处理，不能以0掩盖请求失败。</li>
+</ul>
+<h3 id="section-4">2.2 赠课海报配置</h3>
+<ul>
+<li>每张海报独立维护标题、图片、赠堂数、备注、显示状态、创建人和创建时间；列表按序号展示并支持同状态内拖拽排序。</li>
+<li>赠堂数为大于0的整数，单位为“节”；空值、0、负数和小数不可保存。默认值为1节，列表展示当前配置值。</li>
+<li>标题必填，最多30字；分享文案最多300字；备注用于记录活动或投放说明。新增时图片必填，编辑时未重新上传则保留原图。</li>
+<li>支持新增、编辑、显示／隐藏和删除；最多维护20张海报，同时最多显示10张，至少保留1张显示状态的海报。删除或隐藏不删除已生成的历史分享、赠课记录及配置快照。</li>
+<li>图片支持 JPEG、JPG、PNG；大于1MB自动压缩至1MB以内，不超过1MB保留原图。压缩保持原比例，不裁剪、不拉伸；处理完成展示预览、实际尺寸和文件大小，处理失败提示重新上传，处理期间禁止保存。</li>
+<li>保存成功后，新的读取请求使用最新海报配置；已打开页面不承诺自动刷新。编辑海报不回算已生成的赠课记录，历史记录继续使用创建时的图片、文案和赠堂数量快照。</li>
+<li>历史海报缺少赠堂数配置时按1节兼容；已有配置不因后续编辑降为1节。</li>
+</ul>
+<h3 id="section-5">2.3 赠堂数量与统计关联</h3>
+<ul>
+<li>新生成的赠课记录使用分享发生时经服务端确认的海报配置版本及赠堂数量；统计按实际到账数量计入当期和累计指标。</li>
+<li>同一已购产品的剩余赠课数不足配置数量时，不拆分产品、不降为1节，记录为“不可赠”并展示“剩余赠课数不足”。</li>
+<li>创建订单、付款确认和课时入账全部成功后，状态为“已赠课”，实际到账数量进入统计；任一步失败保留“待赠课”，支持查看原因并重试，重试不得重复赠堂。</li>
+</ul>
+<h2 id="section-6">三、业务示例</h2>
+<ol>
+<li>学员历史累计已获赠12节，本周实际到账2节：累计显示12，当期显示2；切换日期区间后累计仍为12，当期按新范围重算。</li>
+<li>海报A配置3节、海报B配置18节，保存后列表分别显示3节和18节；输入0或1.5时阻止保存，原配置不变。</li>
+<li>当前海报配置为2节，但匹配产品剩余赠课数只有1节：该记录显示“不可赠／剩余赠课数不足”，不拆分、不降额。</li>
+<li>第一条海报配置的“编辑”按钮显示「需求」标识，其余海报的编辑按钮不重复显示；海报排序变化后，标识跟随当前列表第一条。</li>
+</ol>
+<h2 id="section-7">四、截图对照与模拟数据汇总</h2>
+<h3 id="section-8">4.1 页面截图对照</h3>
+<p>以下截图用于对照页面结构、字段顺序和汇总卡片展示。参考截图中的汇总关系为：可获赠课总数 303 = 剩余赠课数 265 + 已获赠课数 36 + 已过期赠课数 2。</p>
+<p><img src="docs/prd-assets/share-gift-reference-20261106.png" alt="截图参考：分享赠课统计"></p>
+<p><img src="docs/prd-assets/share-gift-page-baseline-20261106.png" alt="分享赠课后台页面基线截图"></p>
+<h3 id="section-9">4.2 模拟数据汇总结果</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th align="right">截图参考值</th>
+<th align="right">当前模拟数据</th>
+<th>计算规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>剩余赠课数</td>
+<td align="right">265</td>
+<td align="right">265</td>
+<td>可获赠课总数 − 累计已获赠堂数 − 已过期赠课数</td>
+</tr>
+<tr>
+<td>累计已获赠堂数</td>
+<td align="right">36</td>
+<td align="right">36</td>
+<td>所有学员赠课流水累计</td>
+</tr>
+<tr>
+<td>已过期赠课数</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td>所有学员已过期额度累计</td>
+</tr>
+<tr>
+<td>可获赠课总数</td>
+<td align="right">303</td>
+<td align="right">303</td>
+<td>剩余赠课数 + 累计已获赠堂数 + 已过期赠课数</td>
+</tr>
+<tr>
+<td>当期已获赠课数</td>
+<td align="right">截图未展示</td>
+<td align="right">按筛选日期和赠课流水动态计算</td>
+<td>仅统计所选日期内实际到账数量</td>
+</tr>
+</tbody></table></div>
+<p>当前模拟数据保留截图中的前三条学员及额度口径；新增的“当期已获赠课数”字段不写死，按每条学员的赠课日期流水，在日期、学员和分享状态筛选后重新计算。</p>
+<h2 id="section-10">五、功能需求与验收</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>编号／事项</th>
+<th>需求摘要或规则链接</th>
+<th>操作与可观察结果</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FR01 赠课统计筛选</td>
+<td>2.1</td>
+<td>打开统计页默认显示当周；输入日期、学员或分享状态后查询，列表与统计卡片按同一筛选范围更新；开始日期晚于结束日期时阻止查询并提示。</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR02 累计与当期口径</td>
+<td>2.1</td>
+<td>切换日期区间，累计已获赠堂数保持历史累计，当期已获赠课数按成功到账时间重新计算；零结果显示0，查询失败显示错误。</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR03 海报配置列表</td>
+<td>2.2</td>
+<td>打开赠课海报配置，可见序号、标题、海报图、赠堂数、状态、创建信息及操作；只在当前第一条编辑按钮旁显示一个「需求」标识。</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR04 海报新增与编辑</td>
+<td>2.2</td>
+<td>输入合法标题、图片和正整数赠堂数后保存，列表显示新值；空值、0、负数、小数或缺少新增图片时阻止保存，失败保留输入。</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR05 海报状态与排序</td>
+<td>2.2</td>
+<td>显示／隐藏、删除和同状态内拖拽排序可用；最多20张、最多10张显示且至少保留1张显示，历史记录不受删除或隐藏影响。</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR06 图片处理与配置生效</td>
+<td>2.2</td>
+<td>上传超过1MB图片时压缩至1MB以内并展示预览、尺寸和文件大小；处理期间不可保存，失败可重试；保存后新读取请求使用新配置。</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR07 数量与历史快照</td>
+<td>2.3</td>
+<td>新记录使用服务端确认的配置版本及赠堂数量；编辑海报后既有记录数量不变；缺少历史配置时按1节兼容。</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR08 赠堂失败与统计入账</td>
+<td>2.3</td>
+<td>订单、付款和入账均成功后按实际数量计入统计；任一步失败保留待赠课并可重试，重试不重复赠堂。</td>
+<td>待验收</td>
+</tr>
+</tbody></table></div>
+<h2 id="section-11">六、待确认事项</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>具体问题</th>
+<th>影响及确认角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D01</td>
+<td>统计页既有“已获赠课数”卡片与新增“累计已获赠堂数”是否重复，是否保留两项</td>
+<td>产品确认统计页指标层级及文案</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>配置赠堂数超过单个已购产品剩余赠课数时，是否保持“不拆分、不降额”的不可赠规则，以及符合条件产品的并列排序规则</td>
+<td>产品、运营确认产品筛选及赠堂处理</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>海外业务是否统一采用 Asia/Shanghai 时区及周一至周日作为统计周</td>
+<td>产品、运营确认日期筛选和周统计口径</td>
+</tr>
+</tbody></table></div>
+</main></div><script src="assets/review-nav.js"></script></body></html>

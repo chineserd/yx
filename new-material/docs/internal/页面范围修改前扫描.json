@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "scanner_sha256": "e19a9fbe69d5bf0a9c06c8aa9b9c67133a78646b4094ac1477ce8784f28bc46a",
+  "read_only": true,
+  "semantic_review": "not_run",
+  "scope_complete": true,
+  "surface_text_scan_complete": {},
+  "files": [
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/prd.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "file-input"
+      ],
+      "sha256": "4e45d6171583565628fa8fc7c414ef6b06448d9210b95667749a470e9a4ee7fa",
+      "status": "scanned"
+    },
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/api.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "file-input"
+      ],
+      "sha256": "30adad4f1b2c84f35b6c05d301c68145db62dfd090d01f6f154683c287584fb6",
+      "status": "scanned"
+    }
+  ],
+  "errors": [],
+  "findings": [
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/prd.html",
+          "line": 1,
+          "excerpt": "每月新增素材標識",
+          "content_sha256": "83743f035498dbc95f8d8bc909ecfd6a6e9d5a9e2db259925b3b6aba042ec380"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/api.html",
+          "line": 1,
+          "excerpt": "每月新增素材標識",
+          "content_sha256": "83743f035498dbc95f8d8bc909ecfd6a6e9d5a9e2db259925b3b6aba042ec380"
+        }
+      ],
+      "signature": "24175cc3e0f33d8ca189768013708469bd7c99589533bfd9d1530bc65931e6c9"
+    }
+  ],
+  "limitations": [
+    "Only registered files are inspected; discover routes/imports separately.",
+    "Line/text heuristics skip text shorter than 8 normalized characters and cannot prove conflicts or semantic completeness.",
+    "No rendering, JavaScript execution, model generation, business acceptance or automatic deletion."
+  ]
+}

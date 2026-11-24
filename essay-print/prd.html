@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>作文报告-下载报告（有分数版）｜PRD</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body.prd-page{background:#f4f6fb;color:#303b4c}
+    .prd-page main.prd-main{display:block!important;max-width:1080px;margin:72px auto 64px!important;padding:0 20px}
+    .prd-head,.prd-card{background:#fff;border:1px solid #e1e6ef;border-radius:14px}
+    .prd-head{padding:25px 30px;margin-bottom:16px}
+    .prd-head h1{font-size:24px;line-height:1.35;margin:0 0 8px}
+    .prd-meta{color:#617087;font-size:12px;margin:0 0 12px}
+    .prd-head p:last-child{margin:0;line-height:1.8}
+    .prd-card{padding:24px 30px;margin:16px 0}
+    .prd-card h2{font-size:19px;line-height:1.4;margin:0 0 16px;color:#23446f}
+    .prd-card h3{font-size:15px;margin:18px 0 8px}
+    .prd-card p,.prd-card li{line-height:1.8}
+    .prd-card ol,.prd-card ul{padding-left:22px;margin:8px 0}
+    .prd-card li+li{margin-top:5px}
+    .prd-card a{color:#2365f6}
+    .prd-card table{border-collapse:collapse;width:100%;min-width:570px}
+    .prd-card th,.prd-card td{padding:10px 12px;text-align:left;border-bottom:1px solid #e8edf4;vertical-align:top}
+    .prd-card th{background:#f5f8fc;white-space:nowrap}
+    .prd-table-wrap{overflow:auto}
+    .prd-pending{color:#9a5f12;font-weight:600;white-space:nowrap}
+    @media(max-width:700px){.prd-page main.prd-main{padding:0 12px}.prd-head,.prd-card{padding:18px}.prd-head h1{font-size:20px}}
+  </style>
+</head>
+<body class="prd-page">
+  <nav class="preview">
+    <div class="identity"><small>需求名稱</small><b>作文报告-下载报告（有分数版）</b></div>
+    <a href="./index.html#overview">後台</a>
+    <a class="current" href="./prd.html" aria-current="page">PRD</a>
+    <a class="history" href="/">歷史需求彙總頁</a>
+  </nav>
+  <main class="prd-main">
+    <header class="prd-head">
+      <h1>作文报告-下载报告（有分数版）</h1>
+      <p class="prd-meta">PRD · V1.3 · 更新日期 2026-11-24</p>
+      <p>教師可從成績概覽導出成績表、導出全部已完成學生的作文報告，或在作業批改頁下載當前學生的報告。作文報告含原稿批註、總分、各維度分數與評語。</p>
+    </header>
+
+    <section class="prd-card" id="download-all">
+      <h2>01　▤ 導出全部作文報告</h2>
+      <p><strong>教師後台｜任務管理 → 成績概覽。</strong>頁首「↓ 導出文件」展開「↓ 導出成績表」與「▤ 導出全部作文報告」兩個選項；主入口及作文報告選項顯示「需求」標誌。「導出成績表」是既有功能的入口文案整理，沿用原有 CSV 成績表導出；「導出全部作文報告」是新增功能，選取當前任務中已有完整報告的學生，未完成或尚無報告的學生不納入。</p>
+      <ol>
+        <li>下拉選單選取操作後收起；點擊選單外或按 Esc 亦可關閉。選擇「導出成績表」後取得原有 CSV 成績表，欄位與分數口徑維持原有功能。</li>
+        <li>顯示可導出份數與未納入人數，確認後展示 A4 報告預覽。報告按學生逐份排列，單份內容依次為作文原稿及旁批、作文評分與評語。</li>
+        <li>評分頁展示已保存的<strong>總分／100</strong>及內容、表達、結構、標點字體四個維度的<strong>得分／滿分</strong>，同時展示教師總評、維度評語、整體優點與改善建議。總分為四項原始得分之和；切換後台品第顯示方式不改變導出分數。</li>
+        <li>點擊「列印／儲存為 PDF」開啟瀏覽器列印視窗，選擇「儲存為 PDF」後保存檔案。點擊報告選項時會先展示範圍確認與預覽，不會立即產生 PDF 檔案。</li>
+        <li>存在未確認的批註、總評或分數修改時，先提示教師確認修改；報告只讀取已保存內容。</li>
+      </ol>
+      <h3>示例與驗收</h3>
+      <p>1A 班共 12 人，1 人已完成，導出範圍為 1 份、共 3 頁；其餘 11 人不納入。該學生總分 52／100，維度為內容 22／40、表達 14／30、結構 10／20、標點字體 6／10。</p>
+      <div class="prd-table-wrap"><table><thead><tr><th>編號</th><th>操作與預期結果</th><th>狀態</th></tr></thead><tbody><tr><td>DR-01</td><td>從成績概覽展開「導出文件」：選「導出成績表」可取得原有 CSV；選「導出全部作文報告」僅預覽已完成學生報告，評分頁可見總分及四項得分，儲存為 PDF 後內容與預覽一致。</td><td class="prd-pending">待驗收</td></tr><tr><td>DR-02</td><td>修改批註或評分但未確認時點擊導出，顯示先確認修改的提示，不輸出未保存內容。</td><td class="prd-pending">待驗收</td></tr></tbody></table></div>
+    </section>
+
+    <section class="prd-card" id="download-student">
+      <h2>02　下載學生報告</h2>
+      <p><strong>教師後台｜任務管理 → 成績概覽 → 已完成學生 → 作業批改。</strong>點擊頁首帶「需求」標誌的「▤ 下載作文報告」，下載當前學生的報告，不包含其他學生資料。</p>
+      <ol>
+        <li>單份報告按 A4 排列：前兩頁為該學生作文原稿與旁批，第 3 頁為作文評分與評語；原稿實際頁數變化時，評分頁接在最後。</li>
+        <li>評分頁以<strong>已保存的百分制原始分數</strong>呈現總分／100，以及內容／40、表達／30、結構／20、標點字體／10 的各項得分；總分等於四項得分之和，有效 0 分照常顯示。總評與各維度評語取同一份已保存報告。</li>
+        <li>點擊入口後開啟瀏覽器列印視窗，選擇「儲存為 PDF」保存；建議檔案名稱包含學生班級編號、姓名及作文題目。未保存的修改須先確認。</li>
+      </ol>
+      <h3>示例與驗收</h3>
+      <p>林雋羲的已保存分數為 22＋14＋10＋6＝52，下載報告顯示 52／100，四項分數及對應滿分均可辨認，評語與教師後台保存結果一致。</p>
+      <div class="prd-table-wrap"><table><thead><tr><th>編號</th><th>操作與預期結果</th><th>狀態</th></tr></thead><tbody><tr><td>DR-03</td><td>在已完成學生的作業批改頁點擊「▤ 下載作文報告」，列印內容只含當前學生；評分頁顯示總分與四個維度分數及滿分。</td><td class="prd-pending">待驗收</td></tr><tr><td>DR-04</td><td>先保存分數修改再下載，報告總分、維度分數及概覽列表得分按同一保存值更新；取消修改則仍取前次保存值。</td><td class="prd-pending">待驗收</td></tr></tbody></table></div>
+    </section>
+  </main>
+</body>
+</html>

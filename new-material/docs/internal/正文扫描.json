@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "scanner_sha256": "e19a9fbe69d5bf0a9c06c8aa9b9c67133a78646b4094ac1477ce8784f28bc46a",
+  "read_only": true,
+  "semantic_review": "not_run",
+  "scope_complete": true,
+  "surface_text_scan_complete": {},
+  "files": [
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/prd.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "file-input"
+      ],
+      "sha256": "e2a0dfd184d65b0e6a7eff3c7c314728bb0336609b477f93d57153aaa96a0ae1",
+      "status": "scanned"
+    }
+  ],
+  "errors": [],
+  "findings": [],
+  "limitations": [
+    "Only registered files are inspected; discover routes/imports separately.",
+    "Line/text heuristics skip text shorter than 8 normalized characters and cannot prove conflicts or semantic completeness.",
+    "No rendering, JavaScript execution, model generation, business acceptance or automatic deletion."
+  ]
+}

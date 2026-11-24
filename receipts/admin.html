@@ -1,0 +1,823 @@
+﻿<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>收据与平台协议后台原型</title>
+  <link rel="stylesheet" href="./styles.css?v=20260731-2220">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+        <div class="brand-mark">中</div>
+        <div>
+          <strong>中文路后台</strong>
+          <span>协议与财务控制台</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a>首页</a>
+        <a>学生管理</a>
+        <div class="nav-group is-open">
+          <button type="button">订单管理</button>
+          <div class="nav-sub">
+            <a href="#order-list" data-open-view="order-list">订单列表</a>
+            <a href="#share-gift" data-open-view="share-gift">分享赠课</a>
+          </div>
+        </div>
+        <div class="nav-group is-open">
+          <button type="button">财务管理</button>
+          <div class="nav-sub">
+            <a href="#order-audit" data-open-view="orders">订单审核</a>
+            <a class="is-parent">发票管理</a>
+            <a href="#receipt-audit" class="is-active" data-open-view="receipt-audit">收据凭证</a>
+          </div>
+        </div>
+        <a>产品管理</a>
+        <div class="nav-group is-open">
+          <button type="button">系统管理</button>
+          <div class="nav-sub">
+            <a>地区管理</a>
+            <a href="#platform-agreement" data-open-view="platform-agreement">平台协议</a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div data-view="receipt-audit">
+      <header class="page-header">
+        <div>
+          <div class="breadcrumb">财务管理 / 发票管理 / 收据凭证</div>
+          <h1>收据凭证</h1>
+          <p>仅购买产品的订单支持申请收据；仅付费订单不进入收据申请范围。</p>
+        </div>
+      </header>
+
+      <section class="filter-panel" aria-label="筛选查询">
+        <div class="field">
+          <label for="studentId">学员编号</label>
+          <input id="studentId" data-filter="studentId" type="text" placeholder="如 HKC105873">
+        </div>
+        <div class="field">
+          <label for="orderId">订单编号</label>
+          <input id="orderId" data-filter="orderId" type="text" placeholder="如 ORD20260729001">
+        </div>
+        <div class="field">
+          <label for="receiptPayType">付款类型</label>
+          <select id="receiptPayType" data-filter="payType">
+            <option value="">全部</option>
+            <option value="全款">全款</option>
+            <option value="分期">分期</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="studentName">学员姓名</label>
+          <input id="studentName" data-filter="studentName" type="text" placeholder="输入姓名">
+        </div>
+        <div class="field">
+          <label for="campus">学员校区</label>
+          <select id="campus" data-filter="campus">
+            <option value="">全部校区</option>
+            <option value="中国香港">中国香港</option>
+            <option value="中国澳门">中国澳门</option>
+            <option value="深圳">深圳</option>
+          </select>
+        </div>
+        <div class="field has-popover">
+          <label for="status">审核状态</label>
+          <div class="custom-select" data-status-select>
+            <input id="status" data-filter="status" type="hidden" value="">
+            <button class="custom-select-trigger" type="button" data-status-trigger>
+              <span data-status-label>全部状态</span>
+              <span class="select-caret">▾</span>
+            </button>
+            <div class="custom-select-menu" data-status-menu>
+              <button type="button" data-status-option="" class="is-selected">全部状态</button>
+              <button type="button" data-status-option="待审核">待审核</button>
+              <button type="button" data-status-option="已通过">已通过</button>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="receiptNo">收据编号</label>
+          <input id="receiptNo" data-filter="receiptNo" type="text" placeholder="REC-CN HK01">
+        </div>
+        <div class="field">
+          <label for="dateStart">申请开始时间</label>
+          <input id="dateStart" data-filter="dateStart" type="date">
+        </div>
+        <div class="field">
+          <label for="dateEnd">申请结束时间</label>
+          <input id="dateEnd" data-filter="dateEnd" type="date">
+        </div>
+        <div class="filter-actions">
+          <button class="primary-btn" type="button" data-search>查询</button>
+          <button class="secondary-btn" type="button" data-reset>重置</button>
+        </div>
+      </section>
+
+      <section class="table-card">
+        <div class="table-card-head">
+          <div>
+            <h2>收据凭证列表</h2>
+            <p>展示当前筛选范围内的收据凭证记录，可查看订单与已生成收据。</p>
+          </div>
+          <div class="table-tools">
+            <span data-result-count>0 条记录</span>
+            <button class="secondary-btn compact" type="button" data-export-receipts>导出</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>学员编号</th>
+                <th>订单编号</th>
+                <th>付款类型</th>
+                <th>学员姓名</th>
+                <th>学员校区</th>
+                <th>审核状态</th>
+                <th>收据编号</th>
+                <th>申请时间</th>
+                <th>审核通过时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody data-table-body></tbody>
+          </table>
+        </div>
+        <div class="empty-state" hidden data-empty>
+          <strong>暂无符合条件的收据凭证</strong>
+          <span>可调整筛选条件后重新查询。</span>
+        </div>
+        <div class="pagination-bar">
+          <div class="pagination-total">总记录数:<span data-total-count>0</span></div>
+          <button class="page-btn" type="button" aria-label="上一页">‹</button>
+          <button class="page-btn is-current" type="button">1</button>
+          <button class="page-btn" type="button">2</button>
+          <button class="page-btn" type="button">3</button>
+          <button class="page-btn" type="button">4</button>
+          <button class="page-btn" type="button">5</button>
+          <span class="page-ellipsis">…</span>
+          <button class="page-btn" type="button">304</button>
+          <button class="page-btn" type="button" aria-label="下一页">›</button>
+          <select class="page-size" aria-label="每页条数">
+            <option>10 条/页</option>
+            <option>20 条/页</option>
+            <option>50 条/页</option>
+          </select>
+        </div>
+      </section>
+      </div>
+
+      <div data-view="order-list" hidden>
+        <header class="page-header">
+          <div>
+            <div class="breadcrumb">订单管理 / 订单列表</div>
+            <h1>订单列表</h1>
+            <p>筛选和列表字段参考原订单管理-订单列表页面；符合条件的已发放收据可直接查看。</p>
+          </div>
+        </header>
+
+        <section class="filter-panel order-list-filter-panel" aria-label="订单列表筛选查询">
+          <div class="field">
+            <label for="backendOrderId">订单编号</label>
+            <input id="backendOrderId" data-order-list-filter="orderId" type="text" placeholder="请输入订单编号">
+          </div>
+          <div class="field">
+            <label for="backendOrderStudent">学生姓名/ID</label>
+            <input id="backendOrderStudent" data-order-list-filter="student" type="text" placeholder="请输入学生姓名/ID">
+          </div>
+          <div class="field">
+            <label for="backendOrderCampus">所属校区</label>
+            <select id="backendOrderCampus" data-order-list-filter="campus">
+              <option value="">请选择</option>
+              <option value="中国香港">中国香港</option>
+              <option value="中国澳门">中国澳门</option>
+              <option value="深圳">深圳</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="backendOrderType">订单类型</label>
+            <select id="backendOrderType" data-order-list-filter="orderType">
+              <option value="">请选择</option>
+              <option value="首销">首销</option>
+              <option value="复购">复购</option>
+              <option value="转介绍">转介绍</option>
+              <option value="来华留学">来华留学</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="backendPayType">付款类型</label>
+            <select id="backendPayType" data-order-list-filter="payType">
+              <option value="">请选择</option>
+              <option value="全款">全款</option>
+              <option value="分期">分期</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="backendAuditStatus">审核状态</label>
+            <select id="backendAuditStatus" data-order-list-filter="auditStatus">
+              <option value="">全部</option>
+              <option value="未审核">未审核</option>
+              <option value="审核通过" selected>审核通过</option>
+              <option value="审核拒绝">审核拒绝</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="backendPayMethod">支付方式</label>
+            <select id="backendPayMethod" data-order-list-filter="payMethod">
+              <option value="">请选择</option>
+              <option value="线下汇款">线下汇款</option>
+              <option value="线上支付">线上支付</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>创建时间</label>
+            <div class="date-range">
+              <input data-order-list-filter="createStart" type="date" aria-label="创建开始日期">
+              <span>~</span>
+              <input data-order-list-filter="createEnd" type="date" aria-label="创建结束日期">
+            </div>
+          </div>
+          <div class="field">
+            <label>支付时间</label>
+            <div class="date-range">
+              <input data-order-list-filter="payStart" type="date" aria-label="支付开始日期">
+              <span>~</span>
+              <input data-order-list-filter="payEnd" type="date" aria-label="支付结束日期">
+            </div>
+          </div>
+          <div class="field">
+            <label for="backendLessonCount">购买课次</label>
+            <input id="backendLessonCount" data-order-list-filter="lessonCount" type="text" placeholder="请输入">
+          </div>
+          <div class="field">
+            <label for="backendOrderOwner">订单归属</label>
+            <input id="backendOrderOwner" data-order-list-filter="orderOwner" type="text" placeholder="请输入">
+          </div>
+          <div class="field">
+            <label for="backendClassBound">是否报班</label>
+            <select id="backendClassBound" data-order-list-filter="classBound">
+              <option value="">请选择</option>
+              <option value="是">是</option>
+              <option value="否">否</option>
+            </select>
+          </div>
+          <div class="filter-actions order-list-filter-actions">
+            <button class="primary-btn" type="button" data-order-list-search>查询</button>
+            <button class="secondary-btn" type="button" data-order-list-reset>重置</button>
+          </div>
+        </section>
+
+        <section class="table-card order-list-table-card">
+          <div class="order-list-toolbar">
+            <div class="order-toolbar-left">
+              <button class="primary-btn compact" type="button">+ 新建</button>
+              <button class="secondary-btn compact" type="button">+ 仅付费</button>
+              <button class="secondary-btn compact" type="button">历史课点兑换</button>
+              <button class="secondary-btn compact" type="button">赠送</button>
+            </div>
+            <div class="order-status-tabs">
+              <button class="is-active" type="button">全部</button>
+              <button type="button">待支付</button>
+              <button type="button">已完成</button>
+              <button type="button">已取消</button>
+              <button type="button">退款</button>
+            </div>
+            <div class="order-toolbar-right">
+              <button class="secondary-btn compact" type="button">合并支付</button>
+              <button class="secondary-btn compact" type="button" data-export>导出</button>
+            </div>
+          </div>
+          <div class="table-card-head" hidden>
+            <div>
+              <h2>订单列表</h2>
+              <p>展示订单、确认状态、收据状态与可用操作。</p>
+            </div>
+            <div class="table-tools">
+              <span data-order-list-result-count>0 条记录</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>学生姓名</th>
+                  <th>学员ID</th>
+                  <th>订单编号</th>
+                  <th>审核状态</th>
+                  <th>订单类型</th>
+                  <th>确认状态</th>
+                  <th>交易类型</th>
+                  <th>订单状态</th>
+                  <th>购买产品</th>
+                  <th>订单金额(人民币)</th>
+                  <th>订单金额</th>
+                  <th>到账金额</th>
+                  <th>是否报班</th>
+                  <th>客户来源</th>
+                  <th>付款类型</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody data-order-list-table-body></tbody>
+            </table>
+          </div>
+          <div class="empty-state" hidden data-order-list-empty>
+            <strong>暂无符合条件的订单</strong>
+            <span>可调整筛选条件后重新查询。</span>
+          </div>
+          <div class="pagination-bar">
+            <div class="pagination-total">总记录数:<span data-order-list-total-count>0</span></div>
+            <button class="page-btn" type="button" aria-label="上一页">‹</button>
+            <button class="page-btn is-current" type="button">1</button>
+            <button class="page-btn" type="button">2</button>
+            <button class="page-btn" type="button">3</button>
+            <button class="page-btn" type="button">4</button>
+            <button class="page-btn" type="button">5</button>
+            <span class="page-ellipsis">…</span>
+            <button class="page-btn" type="button">304</button>
+            <button class="page-btn" type="button" aria-label="下一页">›</button>
+            <select class="page-size" aria-label="每页条数">
+              <option>10 条/页</option>
+              <option>20 条/页</option>
+              <option>50 条/页</option>
+            </select>
+          </div>
+        </section>
+      </div>
+
+      <div data-view="orders" hidden>
+        <header class="page-header">
+          <div>
+            <div class="breadcrumb">财务管理 / 订单审核</div>
+            <h1>订单审核</h1>
+            <p>审核订单付款信息、到账金额和收款账户；筛选与列表字段参考原订单审核页面。</p>
+          </div>
+          <button class="ghost-btn" type="button" data-open-view="receipt-audit">前往收据凭证</button>
+        </header>
+
+        <section class="filter-panel order-filter-panel" aria-label="订单筛选查询">
+          <div class="field">
+            <label for="orderListId">订单编号</label>
+            <input id="orderListId" data-order-filter="orderId" type="text" placeholder="请输入订单编号">
+          </div>
+          <div class="field">
+            <label for="orderStudent">学生姓名/ID</label>
+            <input id="orderStudent" data-order-filter="student" type="text" placeholder="请输入学生姓名/ID">
+          </div>
+          <div class="field">
+            <label for="orderCampus">所属校区</label>
+            <select id="orderCampus" data-order-filter="campus">
+              <option value="">请选择</option>
+              <option value="中国香港">中国香港</option>
+              <option value="中国澳门">中国澳门</option>
+              <option value="深圳">深圳</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="orderType">订单类型</label>
+            <select id="orderType" data-order-filter="orderType">
+              <option value="">请选择</option>
+              <option value="首销">首销</option>
+              <option value="来华留学">来华留学</option>
+              <option value="转介绍">转介绍</option>
+              <option value="复购">复购</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="payType">付款类型</label>
+            <select id="payType" data-order-filter="payType">
+              <option value="">请选择</option>
+              <option value="全款">全款</option>
+              <option value="分期">分期</option>
+              <option value="仅付款">仅付款</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="payMethod">支付方式</label>
+            <select id="payMethod" data-order-filter="payMethod">
+              <option value="">请选择</option>
+              <option value="线下汇款">线下汇款</option>
+              <option value="线上支付">线上支付</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>创建时间</label>
+            <div class="date-range">
+              <input data-order-filter="createStart" type="date" aria-label="创建开始日期">
+              <span>~</span>
+              <input data-order-filter="createEnd" type="date" aria-label="创建结束日期">
+            </div>
+          </div>
+          <div class="field">
+            <label>支付时间</label>
+            <div class="date-range">
+              <input data-order-filter="payStart" type="date" aria-label="支付开始日期">
+              <span>~</span>
+              <input data-order-filter="payEnd" type="date" aria-label="支付结束日期">
+            </div>
+          </div>
+          <div class="field">
+            <label for="lessonCount">购买课次</label>
+            <input id="lessonCount" data-order-filter="lessonCount" type="text" placeholder="请输入">
+          </div>
+          <div class="field">
+            <label for="paymentAccount">收款账户</label>
+            <select id="paymentAccount" data-order-filter="paymentAccount">
+              <option value="">全部</option>
+              <option value="大新转数快">大新转数快</option>
+              <option value="汇丰银行">汇丰银行</option>
+              <option value="澳门中银">澳门中银</option>
+              <option value="招商银行">招商银行</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="orderOwner">订单归属</label>
+            <input id="orderOwner" data-order-filter="orderOwner" type="text" placeholder="请输入">
+          </div>
+          <div class="filter-actions order-filter-actions">
+            <button class="primary-btn" type="button" data-order-search>查询</button>
+            <button class="secondary-btn" type="button" data-order-reset>重置</button>
+          </div>
+        </section>
+
+        <section class="table-card">
+          <div class="order-list-toolbar order-audit-toolbar">
+            <div class="order-status-tabs">
+              <input type="hidden" data-order-filter="auditStatus" value="未审核">
+              <button class="is-active" type="button" data-order-audit-tab="未审核">未审核</button>
+              <button type="button" data-order-audit-tab="已审核">已审核</button>
+              <button type="button" data-order-audit-tab="未通过">未通过</button>
+              <button type="button" data-order-audit-tab="">全部</button>
+            </div>
+            <div class="order-toolbar-right">
+              <button class="primary-btn compact" type="button">批量审核</button>
+            </div>
+          </div>
+          <div class="table-card-head" hidden>
+            <div>
+              <h2>订单审核列表</h2>
+              <p>展示订单审核所需的付款类型、支付方式、收款账户、订单归属和对账单信息。</p>
+            </div>
+            <div class="table-tools">
+              <span data-order-result-count>0 条记录</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>学生姓名</th>
+                  <th>学员ID</th>
+                  <th>订单编号</th>
+                  <th>审核状态</th>
+                  <th>拒绝次数</th>
+                  <th>订单类型</th>
+                  <th>订单金额</th>
+                  <th>到账金额</th>
+                  <th>购买产品</th>
+                  <th>付款类型</th>
+                  <th>用户选择</th>
+                  <th>支付方式</th>
+                  <th>收款账户</th>
+                  <th>订单归属</th>
+                  <th>对账单</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody data-order-table-body></tbody>
+            </table>
+          </div>
+          <div class="empty-state" hidden data-order-empty>
+            <strong>暂无符合条件的订单</strong>
+            <span>可调整筛选条件后重新查询。</span>
+          </div>
+          <div class="pagination-bar">
+            <div class="pagination-total">总记录数:<span data-order-total-count>0</span></div>
+            <button class="page-btn" type="button" aria-label="上一页">‹</button>
+            <button class="page-btn is-current" type="button">1</button>
+            <button class="page-btn" type="button">2</button>
+            <button class="page-btn" type="button">3</button>
+            <button class="page-btn" type="button">4</button>
+            <button class="page-btn" type="button">5</button>
+            <span class="page-ellipsis">…</span>
+            <button class="page-btn" type="button">304</button>
+            <button class="page-btn" type="button" aria-label="下一页">›</button>
+            <select class="page-size" aria-label="每页条数">
+              <option>10 条/页</option>
+              <option>20 条/页</option>
+              <option>50 条/页</option>
+            </select>
+          </div>
+        </section>
+      </div>
+
+      <div data-view="share-gift" hidden>
+        <header class="page-header">
+          <div>
+            <div class="breadcrumb">订单管理 / 分享赠课</div>
+            <h1>分享赠课审核</h1>
+            <p>学员上传分享凭证后，在这里审核并填写实际赠课次数。</p>
+          </div>
+        </header>
+
+        <section class="filter-panel share-gift-filter-panel" aria-label="分享赠课筛选查询">
+          <div class="field">
+            <label for="shareGiftStudent">学员</label>
+            <input id="shareGiftStudent" data-share-gift-filter="student" type="text" placeholder="姓名 / 编号">
+          </div>
+          <div class="field">
+            <label for="shareGiftMonth">月份</label>
+            <input id="shareGiftMonth" data-share-gift-filter="month" type="month" placeholder="请选择月份">
+          </div>
+          <div class="field">
+            <label for="shareGiftStatus">审核状态</label>
+            <select id="shareGiftStatus" data-share-gift-filter="status">
+              <option value="">全部状态</option>
+              <option value="待审核">待审核</option>
+              <option value="已赠课">已赠课</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="shareGiftManager">所属学管</label>
+            <select id="shareGiftManager" data-share-gift-filter="manager">
+              <option value="">请选择</option>
+              <option value="牛圆圆">牛圆圆</option>
+              <option value="彭芬兰">彭芬兰</option>
+              <option value="曹园园">曹园园</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>上传时间</label>
+            <div class="date-range">
+              <input data-share-gift-filter="uploadStart" type="date" aria-label="上传开始日期">
+              <span>~</span>
+              <input data-share-gift-filter="uploadEnd" type="date" aria-label="上传结束日期">
+            </div>
+          </div>
+          <div class="field">
+            <label for="shareGiftAdvisor">所属顾问</label>
+            <select id="shareGiftAdvisor" data-share-gift-filter="advisor">
+              <option value="">请选择</option>
+              <option value="黄俊">黄俊</option>
+              <option value="陈晓晴">陈晓晴</option>
+              <option value="卢衍飞">卢衍飞</option>
+            </select>
+          </div>
+          <div class="filter-actions share-gift-filter-actions">
+            <button class="primary-btn" type="button" data-share-gift-search>查询</button>
+            <button class="secondary-btn" type="button" data-share-gift-reset>重置</button>
+          </div>
+        </section>
+
+        <section class="table-card share-gift-table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>学员</th>
+                  <th>学员编号</th>
+                  <th>所属学管</th>
+                  <th>所属顾问</th>
+                  <th>月份</th>
+                  <th>分享凭证</th>
+                  <th>上传时间</th>
+                  <th>状态</th>
+                  <th>赠课数</th>
+                  <th>审核信息</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody data-share-gift-table-body></tbody>
+            </table>
+          </div>
+          <div class="empty-state" hidden data-share-gift-empty>
+            <strong>暂无符合条件的分享赠课记录</strong>
+            <span>可调整筛选条件后重新查询。</span>
+          </div>
+          <div class="pagination-bar">
+            <div class="pagination-total">总记录数:<span data-share-gift-total-count>0</span></div>
+            <button class="page-btn" type="button" aria-label="上一页">‹</button>
+            <button class="page-btn is-current" type="button">1</button>
+            <button class="page-btn" type="button">2</button>
+            <button class="page-btn" type="button">3</button>
+            <button class="page-btn" type="button">4</button>
+            <button class="page-btn" type="button">5</button>
+            <span class="page-ellipsis">…</span>
+            <button class="page-btn" type="button" aria-label="下一页">›</button>
+            <select class="page-size" aria-label="每页条数">
+              <option>10 条/页</option>
+              <option>20 条/页</option>
+            </select>
+          </div>
+        </section>
+      </div>
+
+      <div data-view="platform-agreement" hidden>
+        <header class="page-header">
+          <div>
+            <div class="breadcrumb">系统管理 / 平台协议</div>
+            <h1>平台协议</h1>
+            <p>管理报名协议的草稿、发布与归档版本，供学生 App、校园 Web 和学生启答 iPad 读取。</p>
+          </div>
+          <button class="primary-btn" type="button" data-agreement-new>新增协议</button>
+        </header>
+
+        <section class="filter-panel agreement-filter-panel" aria-label="平台协议筛选查询">
+          <div class="field">
+            <label for="agreementName">协议名称</label>
+            <input id="agreementName" data-agreement-filter="name" type="text" placeholder="如 报名协议">
+          </div>
+          <div class="field">
+            <label for="agreementNo">协议编号</label>
+            <input id="agreementNo" data-agreement-filter="code" type="text" placeholder="如 AGR-ENROLL">
+          </div>
+          <div class="field">
+            <label for="agreementStatus">协议状态</label>
+            <select id="agreementStatus" data-agreement-filter="status">
+              <option value="">全部状态</option>
+              <option value="草稿中">草稿中</option>
+              <option value="已发布">已发布</option>
+              <option value="已归档">已归档</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="agreementCampus">适用校区</label>
+            <select id="agreementCampus" data-agreement-filter="campus">
+              <option value="">全部校区</option>
+              <option value="中国香港/CNHK">中国香港/CNHK</option>
+              <option value="中国澳门/CN Macau">中国澳门/CN Macau</option>
+              <option value="越南/Việt Nam">越南/Việt Nam</option>
+              <option value="印度尼西亚/Indonesia">印度尼西亚/Indonesia</option>
+              <option value="泰国/Thailand">泰国/Thailand</option>
+              <option value="深圳总部/CN SZ">深圳总部/CN SZ</option>
+              <option value="马来西亚/Malaysia">马来西亚/Malaysia</option>
+              <option value="俄罗斯/Poccuя">俄罗斯/Poccuя</option>
+              <option value="阿联酋/UAE">阿联酋/UAE</option>
+              <option value="沙特阿拉伯/Saudi Arabia">沙特阿拉伯/Saudi Arabia</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="agreementCreatedAt">创建时间</label>
+            <input id="agreementCreatedAt" data-agreement-filter="createdAt" type="date">
+          </div>
+          <div class="field">
+            <label for="agreementUpdatedAt">更新时间</label>
+            <input id="agreementUpdatedAt" data-agreement-filter="updatedAt" type="date">
+          </div>
+          <div class="field">
+            <label for="agreementOperator">操作人</label>
+            <input id="agreementOperator" data-agreement-filter="operator" type="text" placeholder="请输入操作人">
+          </div>
+          <div class="filter-actions">
+            <button class="primary-btn" type="button" data-agreement-search>查询</button>
+            <button class="secondary-btn" type="button" data-agreement-reset>重置</button>
+          </div>
+        </section>
+
+        <section class="table-card">
+          <div class="table-card-head">
+            <div>
+              <h2>平台协议列表</h2>
+              <p>发布一个版本后，同协议其他版本自动变为已归档。</p>
+            </div>
+            <div class="table-tools">
+              <span data-agreement-result-count>0 条记录</span>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>协议名称</th>
+                  <th>协议编号</th>
+                  <th>当前版本</th>
+                  <th>协议状态</th>
+                  <th>适用终端</th>
+                  <th>适用校区</th>
+                  <th>创建时间</th>
+                  <th>更新时间</th>
+                  <th>操作人</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody data-agreement-table-body></tbody>
+            </table>
+          </div>
+          <div class="empty-state" hidden data-agreement-empty>
+            <strong>暂无符合条件的平台协议</strong>
+            <span>可调整筛选条件后重新查询。</span>
+          </div>
+          <div class="pagination-bar">
+            <div class="pagination-total">总记录数:<span data-agreement-total-count>0</span></div>
+            <button class="page-btn" type="button" aria-label="上一页">‹</button>
+            <button class="page-btn is-current" type="button">1</button>
+            <button class="page-btn" type="button">2</button>
+            <button class="page-btn" type="button" aria-label="下一页">›</button>
+            <select class="page-size" aria-label="每页条数">
+              <option>10 条/页</option>
+              <option>20 条/页</option>
+            </select>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+  <aside class="dev-panel" data-dev-panel>
+    <div class="dev-head">
+      <div>
+        <strong>Dev 开发导航</strong>
+        <span>后端页面 / 移动端入口 / 弹窗 / 数据工具</span>
+      </div>
+      <button type="button" data-dev-close aria-label="关闭">×</button>
+    </div>
+    <div class="dev-section">
+      <span>后端页面入口</span>
+      <button type="button" data-dev-action="order-list-view">订单列表页</button>
+      <button type="button" data-dev-action="receipt-audit-view">收据凭证页</button>
+      <button type="button" data-dev-action="orders-view">订单审核页</button>
+      <button type="button" data-dev-action="share-gift-view">分享赠课页</button>
+      <button type="button" data-dev-action="agreement-view">平台协议页</button>
+      <a class="dev-nav-link" href="./邮箱发送内容模板.html">邮箱发送模板</a>
+    </div>
+    <div class="dev-section">
+      <span>移动端入口</span>
+      <a class="dev-nav-link" href="./index.html">学生 App 收据</a>
+    </div>
+    <div class="dev-section">
+      <span>平台协议</span>
+      <button type="button" data-dev-action="agreement-new">新增协议</button>
+      <button type="button" data-dev-action="agreement-edit">编辑协议</button>
+      <button type="button" data-dev-action="agreement-campus">适用校区多选</button>
+      <button type="button" data-dev-action="agreement-campus-filter">适用校区筛选</button>
+      <button type="button" data-dev-action="agreement-image">图片工具</button>
+      <button type="button" data-dev-action="agreement-history">历史版本</button>
+      <button type="button" data-dev-action="agreement-history-view">查看历史版本</button>
+      <button type="button" data-dev-action="agreement-archive">归档提示</button>
+      <button type="button" data-dev-action="enrollment-agreement">查看服务协议</button>
+    </div>
+    <div class="dev-section">
+      <span>收据凭证列表</span>
+      <button type="button" data-dev-action="all">全部凭证</button>
+      <button type="button" data-dev-action="pending">待审核</button>
+      <button type="button" data-dev-action="approved">已通过</button>
+      <button type="button" data-dev-action="receipt-full-pay">全款凭证</button>
+      <button type="button" data-dev-action="receipt-installment">分期凭证</button>
+      <button type="button" data-dev-action="receipt-empty">空状态</button>
+      <button type="button" data-dev-action="export-receipts">导出收据列表</button>
+    </div>
+    <div class="dev-section">
+      <span>订单列表场景</span>
+      <button type="button" data-dev-action="order-list-all">订单列表全部</button>
+      <button type="button" data-dev-action="order-list-receipt">可查看收据订单</button>
+      <button type="button" data-dev-action="order-list-installment-plan">分期还款计划</button>
+      <button type="button" data-dev-action="order-list-agreements">已同意协议订单详情</button>
+    </div>
+    <div class="dev-section">
+      <span>订单审核场景</span>
+      <button type="button" data-dev-action="orders-pending">未审核</button>
+      <button type="button" data-dev-action="orders-approved">已审核</button>
+      <button type="button" data-dev-action="orders-rejected">未通过</button>
+      <button type="button" data-dev-action="orders-all">全部</button>
+      <button type="button" data-dev-action="orders-payment-account">收款账户筛选</button>
+    </div>
+    <div class="dev-section">
+      <span>分享赠课</span>
+      <button type="button" data-dev-action="share-gift-all">全部记录</button>
+      <button type="button" data-dev-action="share-gift-pending">待审核</button>
+      <button type="button" data-dev-action="share-gift-approved">已赠课</button>
+      <button type="button" data-dev-action="share-gift-advisor">所属顾问筛选</button>
+    </div>
+    <div class="dev-section">
+      <span>弹窗验证</span>
+      <button type="button" data-dev-action="audit-detail">查看审核结果</button>
+      <button type="button" data-dev-action="receipt">正式章收据预览</button>
+      <button type="button" data-dev-action="installment-receipt">分期收据预览</button>
+      <button type="button" data-dev-action="order-receipt">订单正式章收据</button>
+      <button type="button" data-dev-action="order">订单详情</button>
+    </div>
+    <div class="dev-section">
+      <span>数据工具</span>
+      <button type="button" data-dev-action="reset-data">重置演示数据</button>
+      <button type="button" data-dev-action="export-toast">导出提示</button>
+    </div>
+    <p data-dev-status>已就绪</p>
+  </aside>
+  <button class="dev-toggle" type="button" data-dev-toggle>Dev</button>
+
+  <div class="modal-backdrop" data-modal-backdrop></div>
+  <div class="modal" data-modal>
+    <div class="modal-card" data-modal-card></div>
+  </div>
+
+  <script src="./app.js?v=20260731-2220"></script>
+</body>
+</html>

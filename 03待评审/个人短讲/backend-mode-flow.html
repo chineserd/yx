@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>個人短講｜後臺模式配置與學生流程圖</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;color:#26354a;background:#edf2f7}*{box-sizing:border-box}body{margin:0;padding:24px 28px 36px}.head{display:flex;justify-content:space-between;align-items:end;gap:20px;max-width:1600px;margin:auto}.head h1{margin:0 0 8px;font-size:28px;line-height:1.25;letter-spacing:.01em}.head p{margin:0;color:#677a93;font-size:14px;line-height:1.5}.legend{margin-top:10px;display:flex;gap:18px;font-size:13px;color:#2467ff}.legend .new{color:#d42e2e}.controls{display:flex;align-items:center;gap:8px;white-space:nowrap}.controls button{height:34px;min-width:34px;padding:0 10px;border:1px solid #cbd9e8;border-radius:8px;background:#fff;color:#2d62ae;font:inherit;cursor:pointer}.controls output{min-width:44px;text-align:center;font-size:14px}.canvas{max-width:1600px;margin:18px auto 0;overflow:auto;background:#fff;border:1px solid #d9e3ee;border-radius:16px;min-height:640px}.board{display:grid;grid-template-columns:repeat(4,minmax(270px,1fr));gap:16px;min-width:1270px;padding:22px;transform-origin:top left}.lane{position:relative;min-height:630px;padding:16px;border:1px solid #c6d8f5;border-radius:14px;background:#f3f7ff}.lane:not(:last-child)::after{content:'➜';position:absolute;right:-21px;top:70px;z-index:2;color:#7288a4;font-size:25px}.lane.student{border-color:#b5e3d1;background:#f2fbf7}.lane.logic{border-color:#d9c4ef;background:#faf6fe}.lane.report{border-color:#c6d8f5;background:#f3f7ff}.lane-head{display:flex;align-items:center;gap:10px;margin:2px 0 16px;font-size:17px;font-weight:700}.lane-head b{display:grid;place-items:center;width:30px;height:30px;flex:none;border-radius:50%;background:#3169e8;color:white;font-size:15px}.student .lane-head b{background:#2ca77f}.logic .lane-head b{background:#9360c3}.node{background:#fff;border:1px solid #a9c7fc;border-radius:11px;padding:12px 13px;min-height:72px}.student .node{border-color:#a2dcc7}.logic .node{border-color:#d5b7ef}.node strong{display:block;margin-bottom:5px;font-size:15px;line-height:1.3}.node p{margin:0;color:#61738d;font-size:13px;line-height:1.5}.node.new strong,.node.new p strong,.new-text{color:#cf2c2c}.node .small{font-size:12px}.arrow{text-align:center;color:#7891ae;font-size:24px;line-height:30px}.branch{display:grid;grid-template-columns:1fr 1fr;gap:8px}.branch .node{padding:10px;min-height:78px}.branch-label{display:flex;justify-content:space-around;color:#67829e;font-size:12px;margin:0 0 5px}.mode-list{display:grid;gap:7px}.mode-list .node{min-height:0}.mode-list strong{font-size:13px;margin:0}.mode-list p{font-size:12px}.note{max-width:1600px;margin:12px auto 0;color:#677a93;font-size:12px;line-height:1.5}@media(max-width:700px){body{padding:14px}.head{align-items:start;flex-direction:column}.head h1{font-size:22px}.canvas{min-height:600px}}
+</style>
+</head>
+<body>
+<header class="head"><div><h1>個人短講｜後臺模式配置與學生流程圖</h1><p>題庫設定可用模式 → 教師發佈任務 → 學生按模式作答 → 按當次記錄查看報告</p><div class="legend"><span class="new">紅色：本次新增的配置與判定</span><span>藍色：沿用的頁面與設定</span></div></div><div class="controls" aria-label="流程圖縮放"><button id="minus" aria-label="縮小">−</button><output id="zoom">100%</output><button id="plus" aria-label="放大">＋</button><button id="fit">適合寬度</button><button id="full">全圖</button></div></header>
+<main class="canvas" id="canvas"><div class="board" id="board">
+  <section class="lane"><div class="lane-head"><b>1</b>題目資料庫</div>
+    <div class="node"><strong>建立／選擇短講題目</strong><p>設定題目、難度與教學內容。</p></div><div class="arrow">↓</div>
+    <div class="node new"><strong>勾選題目可用模式</strong><p>初級／中級按等級限制；高級可勾選直接短講、AI 潤色後朗讀。</p></div><div class="arrow">↓</div>
+    <div class="node new"><strong>核對該模式必需素材</strong><p>分步題目、題目語音等缺失時，不能用該模式發佈。</p></div>
+  </section>
+  <section class="lane"><div class="lane-head"><b>2</b>教師後臺／發佈任務</div>
+    <div class="node"><strong>選題並設定班級</strong><p>沿用年級、班級／小組、開始與截止時間。</p></div><div class="arrow">↓</div>
+    <div class="node new"><strong>必選短講模式</strong><p>四選一；選項受題目的可用模式限制。高級須明確選直接或 AI 潤色。</p></div><div class="arrow">↓</div>
+    <div class="node"><strong>設置作答規則</strong><p>沿用作答時間、可練習次數、分數可見性。</p></div><div class="arrow">↓</div>
+    <div class="branch-label"><span>校驗通過</span><span>校驗不通過</span></div><div class="branch"><div class="node new"><strong>發佈並保存模式</strong><p>任務記住當次模式。</p></div><div class="node new"><strong>阻止發佈</strong><p>提示缺少的素材或不匹配項。</p></div></div>
+  </section>
+  <section class="lane student"><div class="lane-head"><b>3</b>學生端／按模式作答</div>
+    <div class="node new"><strong>讀取任務的短講模式</strong><p>只展示該模式對應的頁面和按鈕。</p></div><div class="arrow">↓</div>
+    <div class="mode-list"><div class="node"><strong>初級 · 改對用詞</strong><p>分步作答 → 核對文字稿 → 朗讀 → 錄音</p></div><div class="node"><strong>中級 · AI 潤色</strong><p>分步作答 → AI 潤色／核對 → 朗讀 → 錄音 → 保存講稿</p></div><div class="node"><strong>高級 · 直接短講</strong><p>題目語音 → 準備／倒計時 → 錄音</p></div><div class="node"><strong>高級 · AI 潤色後朗讀</strong><p>首次錄音 → AI 潤色／核對 → 朗讀 → 再次錄音</p></div></div><div class="arrow">↓</div>
+    <div class="node"><strong>提交錄音並生成報告</strong><p>AI 潤色完成後 60 秒內不可再次點擊。</p></div>
+  </section>
+  <section class="lane report"><div class="lane-head"><b>4</b>記錄與評分報告</div>
+    <div class="node new"><strong>保存當次模式快照</strong><p>練習與報告沿用提交時的模式；後臺改配置不改歷史。</p></div><div class="arrow">↓</div>
+    <div class="node"><strong>查看評分報告</strong><p>內容、結構條理、語言運用、表達情感及文字評價。</p></div><div class="arrow">↓</div>
+    <div class="node new"><strong>按剩餘練習次數分支</strong><p>沿用「可練習次數」，不另設重複開關。</p></div><div class="arrow">↓</div>
+    <div class="branch-label"><span>有剩餘次數</span><span>次數用盡</span></div><div class="branch"><div class="node"><strong>可再次練習</strong><p>顯示底部操作。</p></div><div class="node"><strong>只看報告</strong><p>隱藏再次練習。</p></div></div><div class="arrow">↓</div>
+    <div class="node new"><strong>歷史按原模式展示</strong><p>點擊記錄進入當次報告。</p></div>
+  </section>
+</div></main>
+<p class="note">此圖對應 PRD 的「後臺模式配置」規則；紅色項目為需求方案，後臺與正式接口尚未實作。</p>
+<script>
+const board=document.getElementById('board'),canvas=document.getElementById('canvas'),zoom=document.getElementById('zoom');let scale=1;
+function setScale(value){scale=Math.max(.65,Math.min(1.5,Math.round(value*10)/10));board.style.zoom=String(scale);zoom.textContent=Math.round(scale*100)+'%'}
+document.getElementById('minus').onclick=()=>setScale(scale-.1);document.getElementById('plus').onclick=()=>setScale(scale+.1);
+document.getElementById('fit').onclick=()=>setScale(Math.min(1,(canvas.clientWidth-20)/1270));
+document.getElementById('full').onclick=()=>window.open(location.href,'_blank','noopener');
+</script>
+</body>
+</html>

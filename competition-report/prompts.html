@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>報告生成資料｜（作文比賽）學習作文報告</title>
+  <link rel="stylesheet" href="./assets/competition-prompts.css">
+  <script src="./assets/competition-prompts.js" defer></script>
+</head>
+<body>
+  <nav class="prototype-navigation" aria-label="原型預覽導覽">
+    <div class="prototype-surface-tabs">
+      <span class="requirement-identity"><span class="requirement-label">需求名稱</span><span>（作文比賽）學習作文報告</span></span>
+      <div class="prototype-view-tabs" role="tablist" aria-label="預覽內容">
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/tasks">後台</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/prd">PRD</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/api">接口說明</a>
+        <a class="prototype-nav-button difference-tab" role="tab" aria-selected="true" aria-current="page" href="./prompts.html">報告生成資料（提示詞+JSON）</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./flow.html">報告生成流程圖</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./updates.html">更新記錄</a>
+      </div>
+      <a class="prototype-overview-link" href="/">歷史需求彙總頁</a>
+    </div>
+  </nav>
+  <main class="prompt-page">
+  <details class="report-comparison">
+   <summary>作文比賽與班級報告：詳情區別與對應關係 （提示词，已区分开要求）</summary>
+   <p class="report-comparison-note">按提供的對照文檔原文展示；下方階段頁面仍以各自現行規則為準。點擊圖片可查看原圖。</p>
+   <table aria-label="作文比賽與班級報告詳情對照表">
+    <colgroup><col class="comparison-chapter"><col class="comparison-section"><col class="comparison-report"><col class="comparison-report"></colgroup>
+    <thead><tr><th scope="col">章節</th><th scope="col">詳細章節</th><th scope="col">作文比賽</th><th scope="col">班級報告</th></tr></thead>
+    <tbody>
+     <tr><th scope="row">第一章</th><td data-label="詳細章節">1.2 數據概覽<br>分数/等级</td><td data-label="作文比賽"><p>等级分布</p><a href="./report-comparison-doc/image1.png" target="_blank" rel="noopener" aria-label="查看作文比賽等級分布原圖"><img src="./report-comparison-doc/image1.png" alt="作文比賽等級分布截圖" loading="lazy"></a></td><td data-label="班級報告"><p>总分分布</p><a href="./report-comparison-doc/image2.png" target="_blank" rel="noopener" aria-label="查看班級報告總分分布原圖"><img src="./report-comparison-doc/image2.png" alt="班級報告總分分布截圖" loading="lazy"></a></td></tr>
+     <tr><th scope="row">第一章</th><td data-label="詳細章節">1.2 數據概覽</td><td data-label="作文比賽"><p>1.2.2 本校與全體對比<br>（菜单名称按上面命名）<br>不展示分数</p><p>使用区间與四維度展示，不展示具体分数。</p><a href="./report-comparison-doc/image3.png" target="_blank" rel="noopener" aria-label="查看作文比賽對比原圖"><img src="./report-comparison-doc/image3.png" alt="作文比賽本校與全體對比截圖" loading="lazy"></a></td><td data-label="班級報告"><p>1.2.2 班級與班級對比<br>1.2.3 班級與年級對比<br>（菜单名称按上面命名）<br>展示分数</p><p>本校與全体對比展示總分與四維度各自的納入篇數、平均分、最低分、最高分。</p><a href="./report-comparison-doc/image4.png" target="_blank" rel="noopener" aria-label="查看班級報告對比原圖"><img src="./report-comparison-doc/image4.png" alt="班級報告班級對比截圖" loading="lazy"></a></td></tr>
+     <tr><th scope="row">第二章</th><td data-label="詳細章節"></td><td data-label="作文比賽">不变</td><td data-label="班級報告">不变</td></tr>
+     <tr><th scope="row">第三章</th><td data-label="詳細章節"></td><td data-label="作文比賽">不变</td><td data-label="班級報告">不变</td></tr>
+     <tr><th scope="row">第四章</th><td data-label="詳細章節">4 學生作品示例</td><td data-label="作文比賽"><p>文案叫：各维度评语<br>去掉分数相关（详细区别查看截图）</p><p>總分：59／100，隐藏文案内容<br>維度 原得分，隐藏该列<br>修改示範 原得分：16／30，隐藏文案内容</p><a href="./report-comparison-doc/image5.png" target="_blank" rel="noopener" aria-label="查看作文比賽評語原圖"><img src="./report-comparison-doc/image5.png" alt="作文比賽各維度評語截圖" loading="lazy"></a></td><td data-label="班級報告"><p>文案叫：原評分與評語<br>（详细区别查看截图）</p><p>原總分、原總評、四維度原分及原評語。</p><a href="./report-comparison-doc/image6.png" target="_blank" rel="noopener" aria-label="查看班級報告原評分與評語原圖"><img src="./report-comparison-doc/image6.png" alt="班級報告原評分與評語截圖" loading="lazy"></a></td></tr>
+    </tbody>
+   </table>
+  </details>
+    <div class="prompt-layout">
+      <nav class="stage-nav" aria-label="報告生成步驟">
+        <button type="button" data-stage="01"><span>01</span>寫作要求轉化</button>
+        <button type="button" data-stage="02"><span>02</span>逐篇分析</button>
+        <button type="button" data-stage="03"><span>03</span>作文比賽綜合報告</button>
+        <div class="stage-extra"><button type="button" data-guide>提示詞使用說明</button></div>
+      </nav>
+      <article class="prompt-panel" aria-labelledby="panel-title">
+        <div class="panel-toolbar">
+          <div class="phase-tabs" role="tablist" aria-label="文件切換">
+            <button type="button" role="tab" data-phase="input">输入</button>
+            <button type="button" role="tab" data-phase="prompt">提示词</button>
+            <button type="button" role="tab" data-phase="output">输出</button>
+          </div>
+          <div class="panel-actions"><button type="button" id="export-json">導出 JSON</button><button type="button" id="copy-text">複製當前文字</button></div>
+        </div>
+        <h1 id="panel-title" class="sr-only">作文比賽報告生成資料</h1>
+        <div id="prompt-content" class="prompt-content" aria-live="polite"></div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

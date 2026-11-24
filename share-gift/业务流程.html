@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh-CN"><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>分享与邀请业务流程</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}body{margin:0;color:#24354b;background:#f5f7fb;font:12px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}h1,h2,h3,p,code,pre,table,button,a{font-size:12px;line-height:1.6}a{color:#285bd6}a:focus-visible{outline:2px solid #3563ff;outline-offset:3px}.top{position:sticky;top:0;z-index:10;height:48px;background:white;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;padding:0 16px;gap:0;overflow-x:auto;white-space:nowrap}.project{flex-shrink:0;position:relative;padding-left:14px;margin-right:24px;color:#334155;cursor:default}.project:before{content:"";position:absolute;left:0;top:2px;height:28px;width:3px;background:#5478e8;border-radius:2px}.project small{display:block;color:#8793a5;font-size:10px;line-height:14px;letter-spacing:1px}.project b{line-height:18px}.top>a{padding:0 12px;height:48px;display:flex;align-items:center;color:#758298;text-decoration:none;font-weight:500}.top>a.current{background:#f5f8ff;color:#3563ff;border-bottom:2px solid #3563ff;font-weight:600}.top>a:hover{background:#f5f8ff}.layout{max-width:1480px;margin:auto;display:grid;grid-template-columns:210px minmax(0,1fr);gap:18px;padding:16px}.toc{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px}.toc a{display:block;color:#526574;text-decoration:none;padding:5px 6px}.toc a:hover{background:#eff5ff;color:#2855ef}.toc .level3{padding-left:16px}.document{background:white;padding:0 20px 24px;min-width:0;border:1px solid #e2e8f0;border-radius:8px}.doc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:16px;margin-bottom:12px}.doc-head h1,.doc-head p{margin:0}.doc-head .intro{color:#53677e}.meta{color:#63758a}h2{border-top:1px solid #e2e8f0;padding-top:14px;margin:18px 0 8px;color:#193a67}h3{margin:14px 0 6px;color:#234b76}p{margin:7px 0}ul,ol{padding-left:22px}li{margin:5px 0}.table-scroll{overflow:auto;max-width:100%;border:1px solid #dbe3ef;border-radius:5px;margin:9px 0}table{width:100%;border-collapse:collapse;min-width:540px}th,td{padding:9px 10px;border-bottom:1px solid #e5ebf3;text-align:left;vertical-align:top}th{background:#edf3fa;color:#284c78}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafcff}pre{padding:12px;background:#f3f6fa;overflow:auto;border-radius:5px}code{overflow-wrap:anywhere}.document a{overflow-wrap:anywhere}@media(max-width:760px){.layout{grid-template-columns:minmax(0,1fr);padding:10px;gap:10px}.toc{position:static;max-height:180px}.document{padding:0 12px 18px}.top{padding:0 10px}}@media print{.top,.toc{display:none}.layout{display:block;padding:0}.document{border:0}table{min-width:0}.table-scroll{overflow:visible}tr{break-inside:avoid}}</style><link rel="stylesheet" href="assets/review-nav.css?v=20261029-red"></head><body><nav class="top" aria-label="需求导航"><div class="project"><small>需求名稱</small><b>分享贈堂（優化＋邀請記錄）</b></div><a href="admin.html">後台</a><a href="index.html?screen=share">學生端</a><a  href="海报分享赠堂-PRD.html">PRD</a><a  href="接口说明.html">接口說明</a><a class="current" aria-current="page" href="业务流程.html">業務流程</a></nav><div class="layout"><aside class="toc" aria-label="文档目录"><a class="level2" href="#section-1">1. 分享赠堂</a><a class="level2" href="#section-2">2. 邀请与奖励</a><a class="level2" href="#section-3">3. 跨端回写与异常</a><a class="level2" href="#section-4">4. 对应验收</a></aside><main class="document"><header class="doc-head"><h1>分享与邀请业务流程</h1><p class="intro">分享赠堂和邀请奖励分别判断资格，共用来源内容及最终到账记录。规则以<a href="%E6%B5%B7%E6%8A%A5%E5%88%86%E4%BA%AB%E8%B5%A0%E5%A0%82-PRD.html">PRD</a>第二章为准，接口见<a href="%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E.html">接口说明</a>。</p><p class="meta">业务流程 · V2.0 · 更新日期 2026-10-27</p></header>
+<h2 id="section-1">1. 分享赠堂</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>节点</th>
+<th>执行方与动作</th>
+<th>条件／去向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S1</td>
+<td>用户选择海报和配文，系统生成专属链接及二维码海报</td>
+<td>成功→S2；素材不可用／生成失败→重选或重试</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>用户发起社交分享</td>
+<td>调起成功→S3；未安装／失败→保存或复制后手动分享，不占资格；仅保存也不占资格</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>系统记录已调起分享</td>
+<td>当月首条→S4；非首条→结束，仅保存记录</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>系统按海报数量N自动审核并筛选产品</td>
+<td>满足确认后的产品额度规则→S5；无有效产品／额度不足／无匹配产品→不可赠</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>系统创建赠送订单并完成付款确认及入账</td>
+<td>全部成功→S6；失败→保留待赠课，后台按原奖励重试S5</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>用户查看已赠课及订单</td>
+<td>赠送课次N、已获赠+N、剩余额度−N；统计归入实际到账时间</td>
+</tr>
+</tbody></table></div>
+<p>海报N可为1或2；单产品额度不足的处理采用PRD D01评审结果。调起后取消发布不撤销已有月度资格。真实发布结果另存，不作为社媒曝光量。</p>
+<h2 id="section-2">2. 邀请与奖励</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>节点</th>
+<th>执行方与动作</th>
+<th>条件／去向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I1</td>
+<td>新用户点击链接或扫描二维码</td>
+<td>来源有效→保留来源进入I2；无效→普通咨询页、来源未知；活动结束→显示结束说明</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>新用户填写并提交咨询</td>
+<td>校验通过→I3；失败→保留输入重试；未提交→只记匿名访问</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>系统识别客户、去重并确定归属</td>
+<td>新线索→I4；已有线索→返回原提交结果，不重复生成资格；归属冲突按D03</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>客服按活动规则确认邀请有效性</td>
+<td>有效→I5；不符合→记录原因，App同步未符合条件；待核实→保持已提交咨询</td>
+</tr>
+<tr>
+<td>I5</td>
+<td>系统按活动版本判断奖励资格与上限</td>
+<td>满足→待发放并进入I6；不满足→不予发放并记录原因</td>
+</tr>
+<tr>
+<td>I6</td>
+<td>授权运营确认发放福利</td>
+<td>发放中→订单及课时服务；失败→保留原奖励记录重试；全部成功→I7</td>
+</tr>
+<tr>
+<td>I7</td>
+<td>App显示奖励到账，后台可查流水</td>
+<td>赠堂进入指定学生课时账户；统计按实际到账时间入周</td>
+</tr>
+</tbody></table></div>
+<p>I3归属、I4门槛、I5奖励内容、I6发放方式为PRD D02–D05的建议方案，评审后确定。未确定前活动可保存草稿，不开启奖励发放。</p>
+<h2 id="section-3">3. 跨端回写与异常</h2>
+<ul>
+<li>App查看邀请：I3成功后可见脱敏咨询记录；I4后刷新有效性；I7后刷新已到账。无来源咨询不进入任意学生的邀请列表。</li>
+<li>后台改来源：授权人员提供依据并留痕；已经发奖时进入纠错，不自动为新邀请人追加奖励。</li>
+<li>海报下架：阻止S1新的分享内容；I1已有链接按活动时效承接，历史图片及文案快照不替换。</li>
+<li>服务超时：S5和I6先查询原交易结果，再按原记录继续；重复回调只更新原流水。</li>
+<li>咨询跨周：I3计入咨询提交周，I4计入有效确认周，I7计入到账周；同一批咨询的后续结果可单独追踪。</li>
+</ul>
+<h2 id="section-4">4. 对应验收</h2>
+<p>S1–S3对应FR01–04、FR07；S4–S6对应FR05、FR10、FR12；I1–I3对应FR07–09；I4–I7对应FR09–11、FR13。失败、重复、来源未知及跨周路径对应FR14及第六章示例。全部待验收。</p>
+</main></div><script src="assets/review-nav.js"></script></body></html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>更新記錄｜（作文比賽）學習作文報告</title>
+  <style>
+    :root { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; color: #263445; background: #f4f6fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: inherit; }
+    .prototype-navigation { position: fixed; inset: 0 0 auto; z-index: 900; height: 48px; background: #fff; }
+    .prototype-surface-tabs { display: flex; align-items: center; gap: 16px; height: 48px; padding: 0 16px; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #e2e8f0; }
+    .requirement-identity { position: relative; display: inline-flex; flex-direction: column; justify-content: center; flex-shrink: 0; padding-left: 11px; color: #334155; font-size: 12px; line-height: 18px; font-weight: 700; }
+    .requirement-identity::before { content: ""; position: absolute; left: 0; top: 50%; width: 3px; height: 28px; transform: translateY(-50%); border-radius: 2px; background: #5478e8; }
+    .requirement-label { color: #8793a5; font-size: 10px; line-height: 14px; font-weight: 400; letter-spacing: 1px; }
+    .prototype-view-tabs { display: flex; align-items: center; height: 48px; }
+    .prototype-nav-button { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; height: 48px; padding: 0 12px; border-bottom: 2px solid transparent; color: #758298; font-size: 12px; line-height: 18px; font-weight: 500; text-decoration: none; }
+    .prototype-nav-button:hover, .prototype-nav-button[aria-selected="true"] { background: #f5f8ff; }
+    .prototype-nav-button[aria-selected="true"] { border-bottom-color: #3563ff; color: #3563ff; font-weight: 600; }
+    .prototype-nav-button:focus-visible, .prototype-overview-link:focus-visible { outline: 2px solid #3563ff; outline-offset: -3px; }
+    .prototype-overview-link { margin-left: auto; flex-shrink: 0; padding: 8px 0; color: #65758b; font-size: 12px; line-height: 18px; text-decoration: underline; text-underline-offset: 4px; }
+    .prototype-overview-link:hover { color: #3563ff; }
+    .updates-main { max-width: 1040px; margin: 0 auto; padding: 62px 20px 32px; }
+    .updates-heading { margin-bottom: 10px; }
+    .updates-history-heading { margin-top: 28px; }
+    .updates-heading-title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .updates-date { margin: 0 0 3px; color: #66758b; font-size: 12px; line-height: 18px; }
+    h1 { margin: 0; color: #243750; font-size: 20px; line-height: 28px; }
+    .updates-count { display: inline-block; padding: 2px 7px; border-radius: 4px; background: #eaf0ff; color: #3563bf; font-size: 11px; line-height: 18px; }
+    .updates-group { margin-top: 10px; padding: 12px 18px 2px; border: 1px solid #dce3ed; border-radius: 8px; background: #fff; }
+    h2 { margin: 0 0 7px; color: #243750; font-size: 14px; line-height: 22px; }
+    .menu-path { color: #66758b; font-weight: 400; }
+    .change-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 14px; padding: 8px 0; border-top: 1px solid #edf1f6; }
+    .change-row h3 { margin: 0; color: #315a9d; font-size: 13px; line-height: 20px; font-weight: 600; }
+    .change-row p { margin: 0; color: #3f4d60; font-size: 13px; line-height: 20px; }
+    @media (max-width: 700px) {
+      .updates-main { padding: 60px 10px 24px; }
+      .updates-group { padding: 12px 14px 2px; }
+      .change-row { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="prototype-navigation" aria-label="原型預覽導覽">
+    <div class="prototype-surface-tabs">
+      <span class="requirement-identity"><span class="requirement-label">需求名稱</span><span>（作文比賽）學習作文報告</span></span>
+      <div class="prototype-view-tabs" role="tablist" aria-label="預覽內容">
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/tasks">後台</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/prd">PRD</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/api">接口說明</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./prompts.html" style="color:#c62828">報告生成資料（提示詞+JSON）</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./flow.html">報告生成流程圖</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="true" aria-current="page" href="./updates.html">更新記錄</a>
+      </div>
+      <a class="prototype-overview-link" href="/">歷史需求彙總頁</a>
+    </div>
+  </nav>
+
+  <main class="updates-main">
+    <header class="updates-heading">
+      <p class="updates-date">2026 年 11 月 16 日</p>
+      <div class="updates-heading-title"><h1>更新記錄</h1><span class="updates-count">今日 9 項調整</span></div>
+    </header>
+
+    <section class="updates-group" aria-labelledby="topic-updates-1116">
+      <h2 id="topic-updates-1116">徵文比賽 <span class="menu-path">／ 作文綜合報告</span></h2>
+      <div class="change-row"><h3>題目列表序號</h3><p>列表首欄新增「序號」；依目前查詢結果連續編號，查詢與重置後從 1 開始。</p></div>
+      <div class="change-row"><h3>報告生成資料</h3><p>按作文比賽口徑展示 01–03 輸入、提示詞與輸出；左側加入「提示詞使用說明」，03 輸入列明按有效原總分篇數選例的程序契約，01 輸出移除 A 類格式示例。</p></div>
+      <div class="change-row"><h3>報告生成流程圖</h3><p>頂部加入流程 Tab，簡要對照 01、02、程序準備及 03 的輸入、輸出、交接字段與核對步驟。</p></div>
+    </section>
+
+    <section class="updates-group" aria-labelledby="overview-updates-1116">
+      <h2 id="overview-updates-1116">徵文比賽 <span class="menu-path">／ 全校總覽</span></h2>
+      <div class="change-row"><h3>等級分數區間</h3><p>同題表現分布改用 5**、5*、5、4、3、2、1 七檔區間；統計說明底部顯示「上述分段計數規則非香港 DSE 官方分數線」。</p></div>
+      <div class="change-row"><h3>PRD 等級聯動</h3><p>記錄等級區間與「系統／教學設定」的關聯，以及全校總覽、本校概覽與班級概覽的統一計算和驗收邊界。</p></div>
+    </section>
+
+    <section class="updates-group" aria-labelledby="student-updates-1116">
+      <h2 id="student-updates-1116">徵文比賽 <span class="menu-path">／ 學生作文報告</span></h2>
+      <div class="change-row"><h3>單篇展示資料</h3><p>列表各行的「查看作文報告」暫時共用何莘渝《國家就像_______________》這篇展示；文字直接採用何莘渝同篇原稿的歷史 OCR 原文，保留原有字形與換行。</p></div>
+      <div class="change-row"><h3>打印預覽位置</h3><p>全屏打印預覽從藍色系統頁眉下方開始，保留上方導覽及頁眉可見。</p></div>
+      <div class="change-row"><h3>打印評語去分數</h3><p>打印預覽的評語頁移除總分與各維度分數，保留總評、各維度評語、整體優點及改善建議。</p></div>
+      <div class="change-row"><h3>下載按鈕名稱</h3><p>學生作文報告的題目選擇彈窗，底部按鈕改為「下載學生報告」。</p></div>
+    </section>
+
+    <header class="updates-heading updates-history-heading">
+      <p class="updates-date">2026 年 11 月 14 日</p>
+      <div class="updates-heading-title"><h2>歷史更新</h2><span class="updates-count">7 項調整</span></div>
+    </header>
+
+    <section class="updates-group" aria-labelledby="overview-updates">
+      <h2 id="overview-updates">徵文比賽 <span class="menu-path">／ 全校總覽</span></h2>
+      <div class="change-row"><h3>同題成績對比</h3><p>本校藍色範圍線在全體灰色範圍線上方，邊緣間距 2px；顯示「本校平均」，全體與本校最低／最高端點文字改為淺灰藍。</p></div>
+      <div class="change-row"><h3>同題表現分布</h3><p>加深等級 1 至 4 的色塊並使用深色數字；等級 5 保留深藍底與白字。</p></div>
+    </section>
+
+    <section class="updates-group" aria-labelledby="topic-updates">
+      <h2 id="topic-updates">徵文比賽 <span class="menu-path">／ 作文綜合報告</span></h2>
+      <div class="change-row"><h3>題目列表</h3><p>收窄操作列，並將操作列表頭與內容居中。</p></div>
+    </section>
+
+    <section class="updates-group" aria-labelledby="student-updates">
+      <h2 id="student-updates">徵文比賽 <span class="menu-path">／ 學生作文報告</span></h2>
+      <div class="change-row"><h3>報告列表</h3><p>八個欄位按比例分配寬度並居中；窄屏時僅列表內容橫向捲動。</p></div>
+      <div class="change-row"><h3>按題目下載報告</h3><p>精簡下載按鈕及題目選擇彈窗文案，移除單選欄的重複表頭。</p></div>
+      <div class="change-row"><h3>報告詳情評語</h3><p>隱藏四項評分維度、「整體優點」及「整體改善建議」的編輯圖標；保留「總評」編輯入口。</p></div>
+      <div class="change-row"><h3>打印報告預覽</h3><p>多頁縮圖改為橫排；可點擊單頁放大、翻頁並返回縮圖。預覽窗口貼齊屏幕上下邊緣，縮圖在可用區域垂直居中。</p></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>個人短講 PRD</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="./prd.css" />
+</head>
+<body>
+<h1 id="個人短講">個人短講</h1>
+<p>PRD · V0.6 · 更新日期 2026-11-24</p>
+<p>本次新增题目配置、课件关联、学生短讲状态与报告入口，以及教师查看入口。原型顶部提供「原型汇总」入口。听题、准备、演讲页面沿用现有交互。</p>
+<h2 id="一后台教研相关">一、后台（教研相关）</h2>
+<ul>
+<li><strong>个人短讲题目</strong>：在「教研管理 →
+个人短讲」新增、查询和编辑题目。主题、内容、类型、难度、地区必填；内容为学生看到和听到的提问句。</li>
+<li><strong>课件关联</strong>：在「课件管理」列表的「语音评测」与「主题」之间新增「个人短讲」列。一个课件只关联一个题目；弹窗按主题名称搜索并单选，支持更换及取消；未选题目不能保存。取消后保留既有练习与报告。</li>
+<li><strong>学生报告记录</strong>：在「普通话评级管理 →
+个人短讲报告」查看每次练习。列表显示学生编号、姓名、课程、主题、完成情况、提交时间、得分和操作，支持按学生、主题、状态筛选。完成情况仅显示「未完成」「已完成」：发布任务后为未完成，提交个人短讲后为已完成。未出分显示「–」，有效
+0 分显示 0；报告生成后可查看。</li>
+<li><strong>报告详情</strong>：显示学生、题目、总分、演讲原文、录音及四项评价；沿用已有播放、下载、打印、错误反馈和编辑分数操作。模拟案例统一为阿豪、65
+分。</li>
+<li><strong>需求标志</strong>：教研管理、普通话评级管理、课件管理、个人短讲报告及课件列表「个人短讲」列各标一次。数据行、顶部
+Tab 和「个人短讲」二级菜单不重复标。</li>
+</ul>
+<h2 id="二学生端app">二、学生端（App）</h2>
+<ul>
+<li><strong>课次入口</strong>：课表 → 课次 →
+练习新增「个人短讲」。未完成进入听题；已完成进入报告。</li>
+<li><strong>练习</strong>：同一题目依次听题、准备、录音。录音默认 2
+分钟，到时自动停止；麦克风未授权时提示前往手机设置开启。中途退出保留缓存，下次从退出位置继续；已有报告时先展示报告，点击「再次練習」续接缓存。未提交不生成报告。</li>
+<li><strong>状态</strong>：发布任务后入口显示「未完成」，提交个人短讲后显示「已完成」，只有这两种任务状态。完成提示页可返回课次入口；每次提交单独保存，未出分不显示
+0 分。</li>
+<li><strong>报告与重练</strong>：展示总分、内容、結構條理、語言運用、表達情感、总体及分项评价、建议和录音原文。底部固定蓝色「再次練習」按钮；不显示历史记录、最高分文案和本次录音播放器。重练产生新记录，旧报告保留；学生默认查看同课次同题目的最高有效分报告，同分取较晚提交的一次。未出分不参与比较，有效
+0 分参与。</li>
+</ul>
+<h2 id="三后台教师相关">三、后台（教师相关）</h2>
+<p>教师从「课表日历 →
+预习进度」进入完成详情，只看授课班级学生。「个人短讲」列显示「未完成」「已完成」或可用的「查看報告」入口；提交后为已完成，报告生成后可查看。点击「查看報告」打开只读的最高有效分报告，返回完成详情，不提供改分。菜单「课表日历」、入口「预习进度」和弹窗列标题各标一次「需求」，数据行及顶部
+Tab 不重复标。</p>
+<h2 id="四验收重点">四、验收重点</h2>
+<ol type="1">
+<li>一个课件只关联一个题目；更换或取消后，既有报告仍可查看。</li>
+<li>学生两种状态、录音时长与提示、退出续接、再次练习及最高有效分选择符合上述规则。</li>
+<li>后台逐次查看记录；教师仅查看授课班级学生的只读报告；同一次练习在各端的分数与内容一致。</li>
+</ol>
+</body>
+</html>

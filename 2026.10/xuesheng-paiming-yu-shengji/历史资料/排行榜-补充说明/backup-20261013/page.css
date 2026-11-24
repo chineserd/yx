@@ -1,0 +1,134 @@
+*{box-sizing:border-box}body{margin:0;display:block;min-width:0;background:#f1f4f8;font-family:Arial,"PingFang TC","Microsoft JhengHei",sans-serif}.preview-nav{position:fixed;inset:0 0 auto;height:64px;background:white;display:flex;align-items:center;gap:24px;padding:0 24px;z-index:50;overflow-x:auto;white-space:nowrap}.preview-group{display:flex;align-items:center;padding:4px;background:#f1f4f8;border:1px solid #e2e8f0;border-radius:10px;gap:4px}.preview-group strong{font-size:16px;font-weight:600;padding:0 14px;border-right:1px solid #e2e8f0;line-height:24px}.preview-group a{padding:8px 14px;border-radius:6px;font-size:16px;line-height:24px;text-decoration:none}.preview-group .selected{background:#174b80;color:white;font-weight:600}.history{margin-left:auto;font-size:14px;line-height:24px;color:#65758b;text-underline-offset:4px}.preview-stage{padding:88px 16px 24px;display:flex;justify-content:center}.ranking-viewport{width:385px;height:803px;position:relative;overflow:hidden;border-radius:0;box-shadow:0 16px 48px #26345020}.practice-rank-page{position:relative;height:100%;width:100%}.practice-rank-page .task-rank-head{height:70px;padding:18px 20px 0;grid-template-columns:44px 1fr 44px}.practice-rank-page .task-rank-content{height:calc(100% - 70px);padding:0 14px}.practice-rank-page .task-period-tabs{width:calc(100% - 16px);margin:0 0 30px 16px;gap:10px}.practice-rank-page .task-podium{height:164px;margin-top:12px;grid-template-columns:1fr 1.16fr 1fr}.practice-rank-page .task-podium-card{height:124px;min-height:0;padding:36px 8px 10px}.practice-rank-page .task-podium-card.first{height:142px;min-height:0}.practice-rank-page .task-rank-list{height:calc(100% - 370px);min-height:100px;display:flex;flex-direction:column;margin-top:8px;padding-bottom:16px;overscroll-behavior:contain}.practice-rank-page .task-rank-row{flex-shrink:0;height:72px;min-height:72px;grid-template-columns:46px 58px 1fr auto}.practice-rank-page .task-my-rank{min-height:106px;height:106px;bottom:0}.practice-rank-page.metric-practice-score{background-image:url('./assets/practice-rank-score-bg.png')}.task-period-tab:focus-visible,.task-metric-tab:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffda50;outline-offset:3px}.preview-nav a:hover{filter:brightness(.93)}@media(max-width:500px){.preview-stage{padding:64px 0 0}.ranking-viewport{width:100%;height:calc(100dvh - 64px);min-height:640px;box-shadow:none}.preview-nav{padding:0 12px}.practice-rank-page .task-period-tabs{gap:6px}.practice-rank-page .task-period-tab{width:calc((100% - 86px)/3)}.practice-rank-page .task-my-rank p{font-size:13px;gap:3px}.practice-rank-page .task-my-rank p b{font-size:13px}}.practice-rank-page .task-my-rank{grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);column-gap:4px}.practice-rank-page .task-rank-list{height:calc(100% - 342px)}@media(max-width:360px){.practice-rank-page .task-my-rank{padding-left:14px;padding-right:14px}.practice-rank-page .task-my-rank .my-rank-stat span{font-size:18px}.practice-rank-page .task-my-rank p{white-space:normal;flex-wrap:wrap}.practice-rank-page .task-rank-row{padding:8px 14px;grid-template-columns:34px 54px 1fr auto;gap:6px}.practice-rank-page .task-rank-row strong{font-size:18px}.practice-rank-page .task-rank-row em{font-size:22px}.practice-rank-page .task-metric-tabs{gap:12px}.practice-rank-page .task-metric-tab{font-size:16px;min-width:86px}}
+
+/* Preview-only scenario navigation, outside the app canvas. */
+.preview-stage{position:relative;gap:24px;padding-left:176px;padding-right:24px}
+.scenario-tabs{position:absolute;top:88px;left:16px;width:136px;display:flex;flex-direction:column;gap:16px}
+.scenario-tabs button{width:100%;min-height:48px;border:1px solid #d3dce8;border-radius:8px;color:#52647c;background:#fff;font:600 16px/24px Arial,"PingFang TC",sans-serif;cursor:pointer}
+.scenario-tabs button[aria-selected="true"]{color:#fff;background:#174b80;border-color:#174b80}
+.scenario-tabs button:hover{box-shadow:0 2px 8px #174b8020}
+.practice-rank-page .task-my-rank[hidden]{display:none}
+.practice-rank-page.without-my-rank .task-rank-list{height:calc(100% - 248px)}
+@media(max-width:680px){.preview-stage{padding:132px 0 0;display:flex;justify-content:center}.scenario-tabs{top:76px;left:12px;right:12px;width:auto;flex-direction:row;gap:8px}.scenario-tabs button{width:auto;min-width:120px;min-height:44px}.ranking-viewport{flex-shrink:0;max-width:100%}}
+@media(max-width:500px){.ranking-viewport{height:calc(100dvh - 132px)}}
+
+.practice-rank-page .task-my-rank [hidden]{display:none!important}
+.practice-rank-page .task-my-rank.outside-card{grid-template-rows:1fr;row-gap:0;padding-bottom:20px}
+.practice-rank-page .task-my-rank.outside-card .rank-avatar{margin-top:-66px}
+.practice-rank-page .task-my-rank.outside-card [data-my-nickname]{font-size:21px;line-height:1.2;color:#071044}
+
+/* Shared preview navigation: white surface and blue underline tabs. */
+.preview-nav{height:64px;padding:0 24px;border-bottom:1px solid #e2e8f0;gap:24px}
+.preview-group{height:64px;gap:0;padding:0;border:0;border-radius:0;background:transparent}
+.preview-group strong{font-size:14px;line-height:24px;font-weight:600;color:#52647c;border:0;padding:0 16px 0 0}
+.preview-group a{height:64px;display:flex;align-items:center;padding:0 18px;border-radius:0;border-bottom:2px solid transparent;font-size:14px;line-height:24px;font-weight:500;color:#758298;background:transparent}
+.preview-group .selected{background:#f5f8ff;color:#3563ff;border-bottom-color:#3563ff;font-weight:600}
+.preview-nav .preview-group a:hover{background:#f5f8ff;filter:none}
+@media(max-width:680px){.preview-nav{padding:0 12px}}
+
+.preview-nav{overflow-y:hidden}.preview-group{flex-shrink:0}
+
+/* User-supplied student avatars, alternating across the ranking. */
+.practice-rank-page .rank-avatar::before{background-image:url('./assets/student-avatar-1.png');background-size:cover;background-position:center;box-shadow:none}
+.practice-rank-page .rank-avatar:is(.avatar-2,.avatar-4,.avatar-6,.avatar-8,.avatar-10)::before{background-image:url('./assets/student-avatar-2.png');background-size:cover;background-position:center}
+
+/* Keep scenario controls visible while the prototype page scrolls. */
+.scenario-tabs{position:fixed;z-index:40}
+@media(max-width:680px){.scenario-tabs{top:64px;left:0;right:0;padding:12px;background:#f1f4f8}}
+
+/* Crop the supplied thumbnail whitespace inside each circular frame. */
+.practice-rank-page .rank-avatar::before{inset:0;background-size:145% 145%;background-position:50% 46%}
+.practice-rank-page .rank-avatar:is(.avatar-2,.avatar-4,.avatar-6,.avatar-8,.avatar-10)::before{background-size:145% 145%;background-position:49% 52%}
+
+/* Preserve one ordinary space between the inline name and rank. */
+.practice-rank-page .task-my-rank .my-rank-stat:not(.value){display:block}
+
+/* One continuous ranking list, with medals for the first three places. */
+.practice-rank-page .task-rank-content{display:flex;flex-direction:column;padding:0 0 106px;height:calc(100% - 70px)}
+.practice-rank-page .task-period-tabs{flex-shrink:0;width:calc(100% - 28px);margin:0 14px 18px;gap:8px}
+.practice-rank-page .task-rank-list{flex:1;min-height:0;height:auto;margin:0;padding:0 14px 22px;gap:8px;background:transparent;border-radius:0}
+.practice-rank-page .task-rank-row{display:grid;grid-template-columns:32px 46px minmax(0,1fr) auto;gap:10px;align-items:center;flex-shrink:0;height:86px;min-height:86px;margin:0;padding:12px 12px;border:0;border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.66),0 9px 16px rgba(177,72,146,.08);background:rgba(255,244,249,.92)}
+.practice-rank-page .task-rank-row.is-me{background:#eee3ff;box-shadow:inset 0 0 0 2px #c5a1ed}
+.practice-rank-page .task-rank-row .rank-position{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:34px;color:#75869a;font-size:20px;font-weight:700;line-height:1}
+.practice-rank-page .task-rank-row .rank-position span{position:relative;z-index:1}
+.practice-rank-page .task-rank-row .medal{--medal:#f3c52d;--medal-light:#ffea80;--medal-ink:#b38b15;color:var(--medal-ink);align-items:flex-start;padding-top:5px}
+.practice-rank-page .task-rank-row .medal-2{--medal:#abc5d2;--medal-light:#d7e6ee;--medal-ink:#7193a4}
+.practice-rank-page .task-rank-row .medal-3{--medal:#dba267;--medal-light:#f5c794;--medal-ink:#a86d30}
+.practice-rank-page .task-rank-row .medal::before{content:'';position:absolute;top:0;left:0;width:28px;height:28px;border:3px solid var(--medal);border-radius:50%;background:var(--medal-light);box-shadow:inset 0 0 0 2px #ffffff55;z-index:1}
+.practice-rank-page .task-rank-row .medal::after{content:'';position:absolute;top:19px;left:4px;width:20px;height:19px;background:var(--medal);clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%)}
+.practice-rank-page .task-rank-row .rank-avatar{width:44px;height:44px;margin:0;border:0;box-shadow:none;background:transparent}
+.practice-rank-page .task-rank-row .rank-name{display:block;min-width:0;margin:0;color:#071044;font-size:16px;font-weight:700;line-height:1.3}
+.practice-rank-page .task-rank-row .rank-result{display:flex;flex-direction:column;align-items:flex-end;gap:5px;white-space:nowrap}
+.practice-rank-page .task-rank-row .rank-result>div{display:flex;align-items:baseline;gap:4px}
+.practice-rank-page .task-rank-row em{color:#ff7900;font-size:24px;font-weight:800;font-style:normal;line-height:1.2}
+.practice-rank-page .task-rank-row .score-unit{font-size:12px;color:#75869a}
+.practice-rank-page .task-rank-row .rank-change{margin:0;font-size:12px;line-height:1.3;font-weight:500}
+.practice-rank-page .task-rank-row .rank-change.up{color:#00ae54}
+.practice-rank-page .task-rank-row .rank-change.down{color:#ff476b}
+
+/* Keep the personal avatar inline before the student name. */
+.practice-rank-page .task-my-rank{grid-template-columns:44px minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:10px;row-gap:8px;padding:14px 16px 12px}
+.practice-rank-page .task-my-rank .rank-avatar{grid-column:1;grid-row:1;width:44px;height:44px;margin:0;align-self:center;justify-self:start;border-width:2px;box-shadow:none}
+.practice-rank-page .task-my-rank .my-rank-stat:not(.value){grid-column:2;grid-row:1}
+.practice-rank-page .task-my-rank .my-rank-stat.value{grid-column:3;grid-row:1}
+.practice-rank-page .task-my-rank p{grid-column:1 / -1;grid-row:2}
+.practice-rank-page .task-my-rank.outside-card{grid-template-rows:1fr;padding:14px 16px}
+.practice-rank-page .task-my-rank.outside-card .rank-avatar{margin:0;align-self:center}
+
+/* Homepage visual language: sky blue, soft white cards and deep blue type. */
+.practice-rank-page,.practice-rank-page.metric-practice-score{background:linear-gradient(180deg,#c9eaff 0%,#e9f6ff 32%,#f6fbff 72%,#eef8ff 100%);color:#163f59}
+.practice-rank-page::before,.practice-rank-page::after{display:none}
+.practice-rank-page .task-rank-head button#back{color:#245776;background:transparent;text-shadow:none;box-shadow:none}
+.practice-rank-page .task-metric-tab{color:#6c8ba0;text-shadow:none;font-weight:600}
+.practice-rank-page .task-metric-tab.active{color:#164663;font-weight:800}
+.practice-rank-page .task-metric-tab.active::after{background:#2dc5ee;box-shadow:none;border-radius:4px}
+.practice-rank-page .task-period-tab{border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.55);color:#52758d;box-shadow:none;font-weight:600}
+.practice-rank-page .task-period-tab+.task-period-tab{border-left:1px solid rgba(255,255,255,.9)}
+.practice-rank-page .task-period-tab.active{color:#078bb9;background:#fff;box-shadow:0 3px 10px #75b5db16}
+.practice-rank-page .rank-scope-trigger,.practice-rank-page .rank-scope-inline.open .rank-scope-trigger{color:#34617b;background:#eef8ff;border:1px solid #fff;box-shadow:none;text-shadow:none;font-weight:600}
+.practice-rank-page .rank-scope-trigger i{border-color:#6490aa}
+.practice-rank-page .rank-scope-menu{border:1px solid #e0f0fa;box-shadow:0 8px 24px #2356751a}
+.practice-rank-page .rank-scope-menu button{color:#416b83}
+.practice-rank-page .rank-scope-menu button.active{color:#009dcc;background:#eaf8ff}
+.practice-rank-page .task-rank-row{background:rgba(255,255,255,.86);border:1px solid #fff;border-radius:20px;box-shadow:none}
+.practice-rank-page .task-rank-row.is-me{background:#def3ff;border-color:#9cdef3;box-shadow:none}
+.practice-rank-page .task-rank-row .rank-name{color:#183e54}
+.practice-rank-page .task-rank-row em{color:#153f59}
+.practice-rank-page .task-rank-row .score-unit,.practice-rank-page .task-rank-row .rank-position:not(.medal){color:#7892a5}
+.practice-rank-page .task-my-rank{background:rgba(247,252,255,.98);border:1px solid #fff;border-radius:22px 22px 0 0;box-shadow:0 -5px 18px #2e668814}
+.practice-rank-page .task-my-rank .my-rank-stat span,.practice-rank-page .task-my-rank.outside-card [data-my-nickname]{color:#19465e}
+.practice-rank-page .task-my-rank strong{color:#129fc8}
+.practice-rank-page .task-my-rank em{color:#153f59}
+.practice-rank-page .task-my-rank p b{color:#52768b}
+.practice-rank-page .task-my-rank .rank-avatar{border-color:white;background:#eef8f3}
+.task-period-tab:focus-visible,.task-metric-tab:focus-visible,button:focus-visible,a:focus-visible{outline-color:#26bde8}
+
+/* Readable personal-rank feedback, including on narrow screens. */
+.practice-rank-page .task-my-rank p{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;column-gap:6px;row-gap:0;margin:0;font-size:14px;line-height:20px;white-space:normal}
+.practice-rank-page .task-my-rank p .rank-change,.practice-rank-page .task-my-rank p b{font-size:14px;line-height:20px;font-weight:500}
+.practice-rank-page .task-my-rank p .rank-change{white-space:nowrap}
+.practice-rank-page .task-my-rank:not(.outside-card){padding-top:10px;padding-bottom:8px;row-gap:4px}
+
+/* App design baseline V1.1: readable tokens and 44px touch targets. */
+.practice-rank-page{font-family:system-ui,"PingFang TC","PingFang SC","Microsoft JhengHei","Microsoft YaHei",sans-serif}
+.practice-rank-page .task-metric-tab{height:44px;font-size:16px;line-height:24px;color:#526574}
+.practice-rank-page .task-metric-tab.active,.practice-rank-page .task-period-tab.active{color:#007eab}
+.practice-rank-page .task-metric-tab.active::after{height:3px;background:#3acaff}
+.practice-rank-page .task-period-tab{height:44px;min-width:44px;flex:1;width:auto;border-radius:12px;font-size:16px;line-height:24px;color:#526574}
+.practice-rank-page .task-rank-head button#back{width:44px;height:44px;padding:0}
+.practice-rank-page .rank-scope-trigger{height:44px;min-width:60px;color:#526574}
+.practice-rank-page .rank-scope-menu button{min-height:44px;width:100%;font-size:16px;color:#526574}
+.practice-rank-page .rank-scope-menu{top:48px}
+.practice-rank-page .task-rank-list{padding-left:16px;padding-right:16px;gap:12px}
+.practice-rank-page .task-rank-row{border-radius:16px}
+.practice-rank-page .task-rank-row .rank-name{font-size:16px;line-height:24px;font-weight:600;color:#172b3a;overflow-wrap:anywhere}
+.practice-rank-page .task-rank-row .rank-result em{font-variant-numeric:tabular-nums;color:#172b3a}
+.practice-rank-page .task-rank-row .score-unit,.practice-rank-page .task-rank-row .rank-position:not(.medal){color:#64748b}
+.practice-rank-page .task-rank-row .rank-change{font-size:14px;line-height:20px}
+.practice-rank-page .rank-change.up{color:#15803d}
+.practice-rank-page .rank-change.down{color:#d92d20}
+.practice-rank-page .task-my-rank p b{color:#526574}
+.practice-rank-page .task-rank-row .rank-change.up{color:#15803d}
+.practice-rank-page .task-rank-row .rank-change.down{color:#d92d20}
+.practice-rank-page button:focus-visible{outline:2px solid #007eab;outline-offset:2px}
+.practice-rank-page button:active{filter:brightness(.95)}
+.practice-rank-page .task-period-tab:hover{background:#e7f6fc}

@@ -1,0 +1,375 @@
+﻿<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学生 App 收据与协议原型</title>
+  <link rel="stylesheet" href="./styles.css?v=20260731-2220">
+</head>
+<body class="app-prototype-page">
+  <main class="app-prototype-main app-only-main">
+    <section class="student-app-stage app-single-stage" data-view="student-app" aria-label="学生 App 收据原型">
+      <div class="phone-shell account-phone">
+        <div class="app-screen" data-app-screen="account">
+          <div class="app-statusbar account-statusbar">
+            <span>16:02</span>
+            <strong>5G <b>86</b></strong>
+          </div>
+
+          <div class="account-scroll">
+            <section class="account-profile">
+              <div class="profile-avatar">
+                <span>佩</span>
+                <i></i>
+              </div>
+              <div class="profile-main">
+                <div class="profile-name">Perry <span>›</span></div>
+                <div class="profile-level"><i></i> LV1 寶寶鹿</div>
+              </div>
+              <button type="button" class="switch-student-btn">切換學員</button>
+            </section>
+
+            <section class="reward-card">
+              <div class="reward-title">獎賞中心</div>
+              <div class="reward-inner">
+                <span class="coin-mark">鹿</span>
+                <div>
+                  <strong>小鹿幣</strong>
+                  <em>0</em>
+                </div>
+                <span class="reward-arrow">›</span>
+              </div>
+              <div class="gift-box"></div>
+            </section>
+
+            <section class="checkin-card">
+              <div class="checkin-head">
+                <strong>簽到賺小鹿幣</strong>
+                <span>已簽到0天 ›</span>
+              </div>
+              <div class="checkin-days">
+                <div class="day missed"><i></i><b>26</b></div>
+                <div class="day missed"><i></i><b>27</b></div>
+                <div class="day missed"><i></i><b>28</b></div>
+                <div class="day today"><i>+5</i><b>今天</b></div>
+                <div class="day today"><i>+5</i><b>30</b></div>
+                <div class="day today"><i>+5</i><b>31</b></div>
+                <div class="day today"><i>+5</i><b>01</b></div>
+              </div>
+              <p>連續簽到7天獲得45小鹿幣</p>
+            </section>
+
+            <section class="account-menu-card">
+              <button class="account-menu-row" type="button" data-app-nav="orders">
+                <span class="menu-icon icon-order">▣</span>
+                <strong>我的訂單</strong>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-course">▤</span>
+                <strong>我的課程</strong>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-student">▥</span>
+                <strong>學員管理</strong>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-switch">▧</span>
+                <strong>身份切換</strong>
+                <small>學生</small>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-cert">▤</span>
+                <strong>我的證書</strong>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-help">◌</span>
+                <strong>客戶支援</strong>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button" data-app-nav="agreement">
+                <span class="menu-icon icon-agreement">§</span>
+                <strong>平台協議</strong>
+                <em>›</em>
+              </button>
+            </section>
+
+            <section class="account-menu-card secondary-menu">
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-lang">◎</span>
+                <strong>語言 / Language</strong>
+                <small>繁體</small>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-device">⌁</span>
+                <strong>設備檢測</strong>
+                <em>›</em>
+              </button>
+              <button class="account-menu-row" type="button">
+                <span class="menu-icon icon-setting">◇</span>
+                <strong>設定</strong>
+                <em>›</em>
+              </button>
+            </section>
+          </div>
+
+          <nav class="app-bottom-nav">
+            <span><i>⌂</i><b>主頁</b></span>
+            <span><i>▣</i><b>評估</b></span>
+            <span><i>▤</i><b>課堂</b></span>
+            <span class="is-active"><i>鹿</i><b>賬戶</b></span>
+          </nav>
+        </div>
+
+        <div class="app-screen" data-app-screen="orders" hidden>
+          <div class="app-statusbar order-statusbar">
+            <span>17:46</span>
+            <strong>5G <b>62</b></strong>
+          </div>
+          <header class="orders-app-header">
+            <button type="button" data-app-nav="account" aria-label="返回">‹</button>
+            <strong>我的訂單</strong>
+            <span></span>
+          </header>
+
+          <div class="orders-scroll">
+            <article class="mobile-order-card">
+              <div class="mobile-order-student">
+                <span class="deer-avatar">鹿</span>
+                <strong>椰子</strong>
+                <button class="receipt-inline-action" type="button" data-app-nav="order-confirm">确认订单</button>
+              </div>
+              <div class="mobile-order-summary">
+                <span><b>8</b>課次</span>
+                <strong>HK$0</strong>
+              </div>
+            </article>
+
+            <article class="mobile-order-card">
+              <div class="mobile-order-student">
+                <span class="deer-avatar">鹿</span>
+                <strong>方璟明</strong>
+                <button class="receipt-inline-action" type="button" data-app-receipt-action="apply">申請收據</button>
+              </div>
+              <div class="mobile-order-summary">
+                <span><b>72</b>課次</span>
+                <strong>HK$7650</strong>
+              </div>
+            </article>
+
+            <article class="mobile-order-card">
+              <div class="mobile-order-student">
+                <span class="deer-avatar">鹿</span>
+                <strong>林子朗</strong>
+                <button class="receipt-inline-action" type="button" data-app-receipt-action="installment-apply" data-installment-apply-button>申請分期收據</button>
+              </div>
+              <div class="mobile-order-installment">
+                <span>分期付款</span>
+                <strong>第 3 / 3 期</strong>
+                <em>所有分期款項已全數結清</em>
+              </div>
+              <div class="mobile-order-summary">
+                <span><b>96</b>課次</span>
+                <strong>HK$15300</strong>
+              </div>
+            </article>
+
+            <article class="mobile-order-card">
+              <div class="mobile-order-student">
+                <span class="deer-avatar">鹿</span>
+                <strong>周晴</strong>
+                <button class="receipt-inline-action" type="button" data-app-receipt-action="installment-approved" data-record-id="3">查看分期收據</button>
+              </div>
+              <div class="mobile-order-installment">
+                <span>分期付款</span>
+                <strong>第 2 / 3 期</strong>
+                <em>本期收據已生成</em>
+              </div>
+              <div class="mobile-order-summary">
+                <span><b>30</b>課次</span>
+                <strong>MOP$4380</strong>
+              </div>
+            </article>
+
+            <article class="mobile-order-card">
+              <div class="mobile-order-student">
+                <span class="deer-avatar">鹿</span>
+                <strong>張嘉言</strong>
+                <button class="receipt-inline-action" type="button" data-app-receipt-action="approved">查看收據</button>
+              </div>
+              <div class="mobile-order-summary">
+                <span><b>28</b>課次</span>
+                <strong>¥4200</strong>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="app-screen" data-app-screen="order-confirm" hidden>
+          <div class="app-statusbar order-statusbar">
+            <span>18:22</span>
+            <strong>5G <b>82</b></strong>
+          </div>
+          <header class="orders-app-header">
+            <button type="button" data-app-nav="orders" aria-label="返回">‹</button>
+            <strong>订单确认</strong>
+            <span></span>
+          </header>
+
+          <div class="app-confirm-scroll">
+            <article class="app-confirm-order-card">
+              <section class="app-confirm-product">
+                <div class="confirm-product-head">
+                  <span class="confirm-product-avatar">鹿</span>
+                  <strong>8</strong>
+                </div>
+                <h2>測試產品1</h2>
+                <p><span>班型：</span><strong>1V1</strong></p>
+                <p><span>授課時長：</span><strong>60 分鐘</strong></p>
+                <div class="confirm-product-price">
+                  <span><b>8</b>課次</span>
+                  <strong>HK$0</strong>
+                </div>
+              </section>
+              <section class="app-confirm-product">
+                <div class="confirm-product-head">
+                  <span class="confirm-product-avatar">鹿</span>
+                  <strong>72</strong>
+                </div>
+                <h2>中文閱讀理解強化班</h2>
+                <p><span>班型：</span><strong>1V1</strong></p>
+                <p><span>授課時長：</span><strong>60 分鐘</strong></p>
+                <div class="confirm-product-price">
+                  <span><b>72</b>課次</span>
+                  <strong>HK$7650</strong>
+                </div>
+              </section>
+              <section class="app-confirm-total">
+                <div><span>付款類型</span><strong>全款</strong></div>
+                <div><span>訂單總額</span><strong>HK$7650</strong></div>
+                <div><span>實際付款</span><strong>HK$7650</strong></div>
+              </section>
+            </article>
+          </div>
+
+          <footer class="app-confirm-footer">
+            <div class="app-agreement-check-row">
+              <input id="appConfirmAgreementCheck" type="checkbox" data-app-confirm-agreement-check>
+              <span>
+                我已阅读并同意
+                <button type="button" data-app-policy-link="service">《服務協議》</button>
+                和
+                <button type="button" data-app-policy-link="afterSale">《售後政策》</button>
+              </span>
+            </div>
+            <div class="app-confirm-actions-bar">
+              <button class="order-error-btn" type="button" data-app-nav="orders">订单有误</button>
+              <button class="order-confirm-btn" type="button" data-submit-app-order-confirm>订单确认</button>
+            </div>
+          </footer>
+        </div>
+
+        <div class="app-screen" data-app-screen="agreement" hidden>
+          <div class="app-statusbar order-statusbar">
+            <span>17:46</span>
+            <strong>5G <b>62</b></strong>
+          </div>
+          <header class="orders-app-header">
+            <button type="button" data-app-nav="account" aria-label="返回">‹</button>
+            <strong>平台協議</strong>
+            <span></span>
+          </header>
+
+          <div class="agreement-app-scroll">
+            <button class="agreement-list-row" type="button" data-app-policy="service">
+              <span class="menu-icon icon-agreement">§</span>
+              <strong>服務協議</strong>
+              <em>›</em>
+            </button>
+            <button class="agreement-list-row" type="button" data-app-policy="afterSale">
+              <span class="menu-icon icon-agreement">§</span>
+              <strong>售後政策</strong>
+              <em>›</em>
+            </button>
+          </div>
+        </div>
+
+        <div class="app-screen" data-app-screen="agreement-detail" hidden>
+          <div class="app-statusbar order-statusbar">
+            <span>17:46</span>
+            <strong>5G <b>62</b></strong>
+          </div>
+          <header class="orders-app-header">
+            <button type="button" data-app-policy-back aria-label="返回">‹</button>
+            <strong data-app-policy-title>服務協議</strong>
+            <span></span>
+          </header>
+
+          <div class="agreement-app-scroll">
+            <article class="agreement-reader-card app-policy-reader" data-app-policy-reader></article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dev-panel" data-dev-panel>
+    <div class="dev-head">
+      <div>
+        <strong>Dev 開發導航</strong>
+        <span>移動端頁面 / 後端入口 / 狀態 / 彈窗</span>
+      </div>
+      <button type="button" data-dev-close aria-label="關閉">×</button>
+    </div>
+    <div class="dev-section">
+      <span>移動端頁面入口</span>
+      <button type="button" data-dev-action="student-app-view">賬戶頁</button>
+      <button type="button" data-dev-action="app-orders-view">我的訂單</button>
+      <button type="button" data-dev-action="app-order-confirm-view">订单确认</button>
+      <button type="button" data-dev-action="app-agreement-view">平台協議</button>
+    </div>
+    <div class="dev-section">
+      <span>後端入口</span>
+      <a class="dev-nav-link" href="./admin.html">後台管理端</a>
+      <a class="dev-nav-link" href="./邮箱发送内容模板.html">郵箱模板頁</a>
+    </div>
+    <div class="dev-section">
+      <span>學生 App 流程</span>
+      <button type="button" data-dev-action="app-apply">申請收據</button>
+      <button type="button" data-dev-action="app-installment-receipt">申請分期收據</button>
+      <button type="button" data-dev-action="app-auto-approved">自動通過</button>
+      <button type="button" data-dev-action="app-approved">查看正式章收據</button>
+      <button type="button" data-dev-action="app-installment-approved">查看分期收據</button>
+      <button type="button" data-dev-action="app-email-template">發送郵箱模板</button>
+      <button type="button" data-dev-action="app-receipt-issued-notice">收據開立通知</button>
+      <button type="button" data-dev-action="app-order-confirm-submit">确认订单记录</button>
+    </div>
+    <div class="dev-section">
+      <span>後端驗證</span>
+      <button type="button" data-dev-action="receipt">後台同款收據</button>
+      <button type="button" data-dev-action="order">關聯訂單詳情</button>
+    </div>
+    <div class="dev-section">
+      <span>移動端協議</span>
+      <button type="button" data-dev-action="app-agreement-detail">服務協議</button>
+      <button type="button" data-dev-action="app-after-sale-policy">售後政策</button>
+    </div>
+    <p data-dev-status>已就緒</p>
+  </aside>
+  <button class="dev-toggle" type="button" data-dev-toggle>Dev</button>
+
+  <div class="modal-backdrop" data-modal-backdrop></div>
+  <div class="modal" data-modal>
+    <div class="modal-card" data-modal-card></div>
+  </div>
+
+  <script src="./app.js?v=20260731-2220"></script>
+</body>
+</html>

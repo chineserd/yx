@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#2d324b">
+  <title>AI 普通話－繁體字版</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="icons.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="preview-bar" aria-label="原型導航">
+    <div class="preview-name"><i aria-hidden="true"></i><span><small>需求名稱</small><strong>AI 普通話－繁體字版</strong></span></div>
+    <button class="preview-tab selected" data-shell-tab="student" aria-current="page">學生端（App）</button>
+    <button class="preview-tab" data-shell-tab="prd">PRD</button>
+    <a class="preview-history" href="../../index.html">歷史需求彙總頁</a>
+  </header>
+  <div class="preview-body" id="previewBody">
+    <nav class="mobile-page-tabs" id="mobilePageTabs" aria-label="學生端頁面切換">
+      <button data-page="calendar">課表</button>
+      <button data-page="lesson">課程章節</button>
+      <button data-page="oral">練習列表</button>
+      <button data-page="sentences">句子練習</button>
+      <button data-page="sentenceDetail">句子跟讀</button>
+      <button data-page="scenes">場景對話</button>
+      <button data-page="sceneDetail">對話錄音</button>
+      <button data-page="profile">我的</button>
+      <button data-preview-action="language">選擇語言</button>
+    </nav>
+    <aside class="flow-sidebar" id="flowSidebar" aria-label="頁面目錄">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-expanded="true" aria-controls="directoryNav">收起目錄 ‹</button>
+      <nav id="directoryNav" aria-label="學生端頁面">
+        <button class="directory-home" data-page="calendar">課表</button>
+        <section class="directory-group" aria-label="課程入口">
+          <h2>課程入口</h2>
+          <ol><li><button data-page="lesson"><span>01</span>課程章節</button></li></ol>
+        </section>
+        <section class="directory-group" aria-label="AI 口語練習">
+          <h2>AI 口語練習</h2>
+          <ol>
+            <li><button data-page="oral"><span>01</span>練習列表</button></li>
+            <li><button data-page="sentences"><span>02</span>句子練習</button></li>
+            <li><button data-page="sentenceDetail"><span>03</span>句子跟讀</button></li>
+            <li><button data-page="scenes"><span>04</span>場景對話</button></li>
+            <li><button data-page="sceneDetail"><span>05</span>對話錄音</button></li>
+          </ol>
+        </section>
+        <section class="directory-group" aria-label="個人設定">
+          <h2>個人設定</h2>
+          <ol>
+            <li><button data-page="profile"><span>01</span>我的</button></li>
+            <li><button data-preview-action="language"><span>02</span>選擇語言</button></li>
+          </ol>
+        </section>
+      </nav>
+    </aside>
+    <main class="stage" id="studentStage">
+      <div class="phone-viewport" id="phoneViewport">
+        <div class="phone" id="phone" aria-label="AI 普通話 App">
+          <div id="app"></div>
+          <div id="overlayRoot"></div>
+        </div>
+      </div>
+    </main>
+    <main class="prd-view" id="prdView" hidden>
+      <iframe src="prd.html" title="AI 口語練習 PRD"></iframe>
+    </main>
+  </div>
+</body>
+</html>

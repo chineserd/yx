@@ -1,0 +1,28 @@
+{
+  "surfaces": [
+    {
+      "id": "prd",
+      "name": "需求正文",
+      "sources": [
+        "../../../海报分享赠堂-PRD.md"
+      ],
+      "generated": [
+        "../../../海报分享赠堂-PRD.html"
+      ]
+    },
+    {
+      "id": "app",
+      "name": "App",
+      "sources": [
+        "../../../index.html"
+      ]
+    },
+    {
+      "id": "admin",
+      "name": "后台",
+      "sources": [
+        "../../../admin.html"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fafafa">
+  <title>個人短講｜C 端</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./prototype.css">
+  <link rel="stylesheet" href="./student-records.css">
+  <link rel="stylesheet" href="./app-visual.css">
+  <link rel="stylesheet" href="./speech-flow.css">
+</head>
+<body>
+  <header class="prototype-nav" aria-label="原型视图">
+    <div class="prototype-name"><small>需求名稱</small><strong>個人短講-C 端</strong></div>
+    <nav class="prototype-tabs" aria-label="端口切換">
+      <button type="button" data-preview="admin" class="selected" aria-current="page">後台（教研相关）</button>
+      <button type="button" data-preview="teacher">後台（教師相关）</button>
+      <button type="button" data-preview="app">App 端</button>
+      <button type="button" data-preview="flow">流程圖</button>
+      <button type="button" data-preview="prd">PRD</button>
+      <a href="../../../" class="prototype-overview-tab">原型汇总</a>
+    </nav>
+  </header>
+  <section id="admin-panel" class="preview-panel" aria-label="教研相關後台原型"></section>
+  <section id="teacher-panel" class="preview-panel" aria-label="教師相關後台原型" hidden></section>
+  <section id="app-panel" class="preview-panel" aria-label="App 原型" hidden>
+    <div class="preview-shell">
+      <button type="button" class="app-state-toggle" aria-controls="app-state-nav" aria-expanded="true">‹ 收起</button>
+      <aside id="app-state-nav" class="app-state-nav" aria-label="个人短讲页面目录">
+        <h2>個人短講</h2>
+        <nav aria-label="个人短讲状态与页面">
+          <div class="app-state-group">
+            <button type="button" data-speech-state="pending">未完成</button>
+            <div class="app-state-pages" role="group" aria-label="未完成页面">
+              <button type="button" data-speech-status="pending" data-speech-page="lesson"><span>01</span>課程練習頁</button>
+              <button type="button" data-speech-status="pending" data-speech-page="speech-guided"><span>02</span>聽題目語音</button>
+              <button type="button" data-speech-status="pending" data-speech-page="speech-ready"><span>03</span>題目就緒</button>
+              <button type="button" data-speech-status="pending" data-speech-page="speech-countdown"><span>04</span>準備演講</button>
+              <button type="button" data-speech-status="pending" data-speech-page="speech-recording"><span>05</span>錄音中</button>
+            </div>
+          </div>
+          <div class="app-state-group">
+            <button type="button" data-speech-state="done">已完成</button>
+            <div class="app-state-pages" role="group" aria-label="已完成页面">
+              <button type="button" data-speech-status="done" data-speech-page="lesson"><span>01</span>課程練習頁</button>
+              <button type="button" data-speech-status="done" data-speech-page="speech-finished"><span>02</span>完成提示</button>
+              <button type="button" data-speech-status="done" data-speech-page="speech-report"><span>03</span>測評報告</button>
+            </div>
+          </div>
+        </nav>
+      </aside>
+      <div class="phone-stage"><div class="phone-surface"><main id="app" class="app" aria-live="polite"></main></div></div>
+    </div>
+  </section>
+  <section id="flow-panel" class="preview-panel" aria-label="業務流程圖" hidden></section>
+  <section id="prd-panel" class="preview-panel" aria-label="個人短講 PRD" hidden><iframe class="prd-frame" src="./prd.html" title="個人短講 PRD"></iframe></section>
+  <script type="module" src="./prototype.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

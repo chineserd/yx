@@ -1,0 +1,80 @@
+/* Shared student tablet density. CSS pixels stay constant across orientation. */
+:is(.learning-home,.pad-guide,.practice-view){--student-title:22px;--student-section:18px;--student-body:16px;--student-caption:14px;--student-space:20px;font-size:var(--student-body);line-height:26px}
+.pad-guide{padding:20px 24px 120px}
+.pad-guide #padApp{max-width:1120px}
+.pad-guide :is(h1,h2),.pad-intro h2,.learning-header h1,.practice-header h1,.pad-sheet-header h3{font-size:var(--student-title);line-height:32px;font-weight:600}
+.pad-guide :is(h3,h4),.pad-field-label,.pad-section-title-plain b,.pad-sheet-label,.learning-module h2,.learning-profile strong,.practice-record h2,.practice-empty h2{font-size:var(--student-section);line-height:28px}
+.pad-guide textarea{font-size:18px;line-height:28px;min-height:144px;padding:14px}
+.pad-guide .pad-card{padding:20px;margin-bottom:16px}
+.pad-guide .pad-learning-card{padding:0 20px}
+.pad-guide .pad-topic-card{padding-left:20px}
+.pad-intro{margin-bottom:18px}.pad-intro>p{margin-top:6px}
+.pad-question{padding:20px 0}.pad-question-heading{grid-template-columns:28px minmax(0,1fr);gap:12px}
+.pad-question-heading>span{width:28px;height:28px;border-radius:8px}
+.pad-question>.pad-choice-grid,.pad-question>.pad-chips,.pad-coach,.pad-principles,.pad-thesis-result{margin-left:40px}
+.pad-choice{font-size:16px;line-height:26px;min-height:56px;padding:12px;gap:10px}
+.pad-choice.selected{padding:11px}
+.pad-choice-grid{gap:12px;margin-top:12px}
+.pad-choice>span.pad-choice-key{width:28px;height:28px;flex-basis:28px}
+.pad-thesis-result{padding:16px}.pad-thesis-result p,.pad-topic-summary{font-size:16px;line-height:26px}
+.pad-steps{margin-bottom:20px}.pad-steps button{min-height:52px}
+.pad-topic-layout{gap:16px}
+.pad-material-layout{gap:16px;grid-template-columns:minmax(0,1fr) 224px}
+.pad-material-grid{gap:12px}.pad-material{min-height:0;padding:14px;gap:8px;border-radius:12px}.pad-material.selected{padding:13px}
+.pad-material strong,.pad-material>span{font-size:16px;line-height:26px}
+.pad-material-use{padding-top:8px}.pad-selected li{font-size:16px;min-height:48px}
+.pad-outline li{padding:16px 0;gap:12px}.pad-outline p{margin-top:4px}
+.pad-technique-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:16px}
+.pad-technique-grid .pad-choice{min-height:0}
+.pad-expression-example{padding:16px;margin-top:16px}
+.pad-footer{min-height:76px;padding-block:12px calc(12px + env(safe-area-inset-bottom));gap:12px}
+.pad-footer>div{gap:12px}.pad-footer-note{font-size:14px}
+.pad-guide .pad-footer{padding-inline:20px}
+.pad-footer-actions .pad-primary,.pad-footer-actions .pad-secondary{min-width:112px}
+.pad-guidance-sheet{padding:20px}
+.pad-blueprint p,.pad-blueprint li{font-size:16px;line-height:26px}
+.pad-blueprint.pad-guidance-sheet>section,.pad-sheet-grid>section{padding:18px 0}
+.pad-sheet-grid{gap:20px}.pad-sheet-header{padding-bottom:16px}
+.pad-sheet-topic>p{font-size:18px;line-height:28px}
+.pad-sheet-materials article{padding:12px}.pad-sheet-materials p{line-height:26px!important}
+.pad-sheet-outline article>p{line-height:26px}.pad-sheet-thesis{font-weight:500}
+.pad-sheet-footer{padding-top:16px}.pad-dialog h2{font-size:22px;line-height:32px}
+.learning-home{padding:20px 20px 0;container:student-home / inline-size}
+.learning-header{margin-bottom:16px;gap:16px}.learning-avatar{width:48px;height:48px}
+.learning-records{min-height:48px;font-size:16px;border-radius:12px}
+.learning-columns{gap:16px;padding-bottom:16px}.learning-module-body{padding:16px}
+.learning-module h2{margin-bottom:12px}.learning-module-body section+section{margin-top:16px;padding-top:16px}
+.learning-tile{min-height:64px;padding:10px;gap:8px;border-radius:12px;font-size:16px;line-height:24px}
+.learning-icon{width:32px;height:36px;border-radius:10px}.learning-icon svg{width:24px;height:28px}
+.learning-bottom{min-height:64px;margin-inline:-20px}.learning-bottom>a,.learning-bottom>button{font-size:14px;min-height:64px}.learning-bottom span{font-size:24px;line-height:28px}
+.practice-view{container:student-records / inline-size}
+.practice-content,.practice-detail{max-width:1160px;padding:24px 20px}
+.practice-header{padding-inline:20px;gap:12px}
+.practice-categories{gap:12px}.practice-categories a{font-size:16px;min-height:48px;padding:10px 12px;border-radius:12px}
+.practice-activities{margin-top:16px;gap:8px}.practice-list-heading{margin:20px 0 12px}
+.practice-list{gap:12px}.practice-record{padding:16px;gap:16px}.practice-record h2{margin-top:8px}
+.practice-record-icon{width:56px;height:56px;font-size:28px;border-radius:16px}
+.practice-meta{gap:10px}.practice-empty{min-height:220px}
+/* Layout follows available content width, including the review directory. */
+@container pad-app (min-width:840px){
+ .pad-topic-layout{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+ .pad-topic-layout.pad-topic-before-start{grid-template-columns:1fr}
+ .pad-start-guide:not(.pad-start-guide-below) ol{display:block}.pad-start-guide:not(.pad-start-guide-below) li{margin:12px 0}
+ .pad-start-guide-below ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.pad-start-guide-below li{margin:0}
+ .pad-sheet-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.45fr)}
+ .pad-sheet-grid>section+section{border-top:0}
+ .pad-sheet-materials{grid-template-columns:1fr 1fr}
+ .pad-steps button{flex-direction:row;justify-content:center;gap:8px;min-height:48px}
+ .pad-step-copy b{font-size:14px}
+}
+@container pad-app (max-width:959px){.pad-material-layout{grid-template-columns:1fr}}
+@container pad-app (max-width:700px){
+ .pad-question>.pad-choice-grid,.pad-question>.pad-chips,.pad-coach,.pad-principles,.pad-thesis-result{margin-left:0}
+ .pad-technique-grid{grid-template-columns:1fr}
+}
+@container student-home (max-width:820px){.learning-columns{grid-template-columns:1fr}.learning-header{grid-template-columns:1fr auto}.learning-header h1{grid-row:2;grid-column:1/-1;text-align:center}}
+@container student-home (min-width:821px){.learning-columns{grid-template-columns:1fr 1fr}}
+@container student-records (max-width:700px){.practice-categories{grid-template-columns:repeat(2,minmax(0,1fr))}.practice-record{gap:12px}.practice-record-icon{width:44px;height:48px}.pad-sheet-grid,.pad-sheet-materials{grid-template-columns:1fr}.pad-sheet-grid{gap:0}.pad-sheet-footer{flex-direction:column;align-items:flex-start}}
+@media(max-width:1100px){.pad-guide{padding-bottom:160px}}
+@media(max-width:700px){.pad-guide{padding-inline:16px}.pad-guide .pad-card{padding:16px}.pad-guide .pad-learning-card{padding:0 16px}.learning-home{padding-inline:16px}.learning-bottom{margin-inline:-16px}}
+@media print{.pad-guide{padding:0}.pad-guide .pad-card{box-shadow:none}}

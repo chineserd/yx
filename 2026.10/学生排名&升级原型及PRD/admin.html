@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>學生排名與證書原型</title>
+    <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./review-nav.css">
+<style>.requirement-identity.requirement-identity{position:relative;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;flex-shrink:0;gap:0;margin:0;padding:0 0 0 11px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#334155;font:700 12px/18px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;white-space:nowrap;cursor:default;text-decoration:none}.requirement-identity::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:28px;border-radius:2px;background:#5478e8}.requirement-identity>.requirement-label{font:400 10px/14px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;letter-spacing:1px;color:#8793a5;cursor:default}.requirement-identity>.requirement-name{font:inherit;color:#334155;cursor:default}</style></head>
+  <body>
+    <main class="prototype-shell">
+      <nav class="review-top" aria-label="原型頂部導航"><span class="requirement-identity "><span class="requirement-label">需求名稱</span><span class="requirement-name">學生排名&amp;升級</span></span><a href="./admin.html" aria-current="page">後台</a><a href="./index.html">學生端（App）</a><a href="./学生排名&升级-PRD.html">PRD</a><a class="review-history" href="../../index.html">歷史需求彙總頁</a></nav>
+
+      <section class="mode-view active" id="mode-web" aria-label="学校 Web 原型">
+        <div class="web-shell">
+          <aside class="web-sidebar">
+            <div class="brand-row">
+              <span>鳳</span>
+              <strong>鳳溪第一小學</strong>
+            </div>
+            <button class="side-item">中文路朗誦比賽</button>
+            <button class="side-item" data-menu-section="students">學生管理</button>
+            <button class="side-sub" data-web-page="classes" data-parent-section="students">班級管理<span class="requirement-badge">需求</span></button>
+            <button class="side-sub" data-web-page="students" data-parent-section="students">學生列表<span class="requirement-badge">需求</span></button>
+            <button class="side-sub" data-web-page="rankings" data-parent-section="students">排行榜<span class="requirement-badge">需求</span></button>
+            <button class="side-item active" data-menu-section="settings">設定</button>
+            <button class="side-sub active setting-sub" data-web-page="terms" data-parent-section="settings">學年學期<span class="requirement-badge">需求</span></button>
+            <button class="side-sub setting-sub" data-web-page="accounts" data-parent-section="settings">賬號管理</button>
+            <button class="side-sub setting-sub" data-web-page="upgrade-import" data-parent-section="settings">升級數據導入<span class="requirement-badge">需求</span></button>
+          </aside>
+
+          <section class="web-workspace">
+            <header class="web-topbar">
+              <div>普通話科</div>
+              <div>鳳溪第一小學</div>
+              <div>繁體中文</div>
+              <div>幫助中心</div>
+              <span class="admin-avatar">A</span>
+              <strong>admin</strong>
+            </header>
+
+            <article class="web-page active" id="web-terms">
+              <div class="page-head">
+                <div>
+                  <p>設定 / 學年學期</p>
+                  <h2>學年學期</h2>
+                </div>
+              </div>
+              <section class="table-card term-management-card">
+                <div class="term-section-head">
+                  <h3>學年列表</h3>
+                  <button class="primary-btn small" data-modal="year">新增學年</button>
+                </div>
+                <div class="filters compact term-filters">
+                  <label>學年<select data-year-list-filter><option>2024-2025學年</option><option selected>2025-2026學年</option><option>2026-2027學年</option><option>2027-2028學年</option></select></label>
+                  <button class="primary-btn small" data-year-list-query>查詢</button>
+                  <button class="ghost-btn small" data-year-list-reset>重置</button>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>序號</th>
+                      <th>學年</th>
+                      <th>開始日期</th>
+                      <th>結束日期</th>
+                      <th>學年狀態</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody data-year-list-body>
+                    <tr>
+                      <td>1</td>
+                      <td>2025-2026學年</td>
+                      <td>2025-09-01</td>
+                      <td>2026-08-31</td>
+                      <td><span class="status enabled">進行中</span></td>
+                      <td><button class="link-btn" data-modal="yearEdit" data-year-value="2025-2026學年">編輯</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="term-section-head">
+                  <h3>學期列表</h3>
+                  <button class="primary-btn small" data-modal="term">新增學期</button>
+                </div>
+                <div class="filters compact term-filters">
+                  <label>學年<select data-term-list-year-filter><option>2024-2025學年</option><option selected>2025-2026學年</option><option>2026-2027學年</option><option>2027-2028學年</option></select></label>
+                  <label>學期<select data-term-list-term-filter><option>全部</option><option>上學期</option><option>中學期</option><option>下學期</option></select></label>
+                  <button class="primary-btn small" data-term-list-query>查詢</button>
+                  <button class="ghost-btn small" data-term-list-reset>重置</button>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>序號</th>
+                      <th>學年</th>
+                      <th>學期</th>
+                      <th>開始日期</th>
+                      <th>結束日期</th>
+                      <th>學期狀態</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody data-term-list-body>
+                    <tr>
+                      <td>1</td>
+                      <td>2025-2026學年</td>
+                      <td>下學期</td>
+                      <td>2026-02-16</td>
+                      <td>2026-07-31</td>
+                      <td><span class="status disabled">已結束</span></td>
+                      <td><button class="link-btn" data-modal="termEdit">編輯</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>2025-2026學年</td>
+                      <td>中學期</td>
+                      <td>2026-01-21</td>
+                      <td>2026-02-15</td>
+                      <td><span class="status disabled">已結束</span></td>
+                      <td><button class="link-btn" data-modal="termEdit">編輯</button></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>2025-2026學年</td>
+                      <td>上學期</td>
+                      <td>2025-09-01</td>
+                      <td>2026-01-20</td>
+                      <td><span class="status disabled">已結束</span></td>
+                      <td><button class="link-btn" data-modal="termEdit">編輯</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            </article>
+
+            <article class="web-page" id="web-accounts">
+              <div class="page-head">
+                <div>
+                  <p>設定 / 賬號管理</p>
+                  <h2>賬號管理</h2>
+                </div>
+                <div class="page-actions">
+                  <button class="primary-btn">新增</button>
+                </div>
+              </div>
+              <section class="table-card account-card">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>賬號</th>
+                      <th>暱稱</th>
+                      <th>角色</th>
+                      <th>狀態</th>
+                      <th>創建時間</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>admin</td>
+                      <td>admin</td>
+                      <td>超級管理員</td>
+                      <td><label class="switch-row"><input type="checkbox" checked /><span></span></label></td>
+                      <td>2025-09-18 17:30:57</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>teacher1</td>
+                      <td>老師</td>
+                      <td>老師</td>
+                      <td><label class="switch-row"><input type="checkbox" checked /><span></span></label></td>
+                      <td>2025-09-29 15:41:20</td>
+                      <td><button class="link-btn">編輯</button><button class="link-btn">刪除</button></td>
+                    </tr>
+                    <tr>
+                      <td>teacher2</td>
+                      <td>老師2</td>
+                      <td>老師</td>
+                      <td><label class="switch-row"><input type="checkbox" checked /><span></span></label></td>
+                      <td>2025-11-10 17:51:07</td>
+                      <td><button class="link-btn">編輯</button><button class="link-btn">刪除</button></td>
+                    </tr>
+                    <tr>
+                      <td>teacher-1</td>
+                      <td>老師</td>
+                      <td>管理員</td>
+                      <td><label class="switch-row"><input type="checkbox" checked /><span></span></label></td>
+                      <td>2026-06-23 11:48:32</td>
+                      <td><button class="link-btn">編輯</button><button class="link-btn">刪除</button></td>
+                    </tr>
+                    <tr>
+                      <td>teacher5</td>
+                      <td>老師5</td>
+                      <td>老師</td>
+                      <td><label class="switch-row"><input type="checkbox" checked /><span></span></label></td>
+                      <td>2026-07-14 11:38:09</td>
+                      <td><button class="link-btn">編輯</button><button class="link-btn">刪除</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            </article>
+
+            <article class="web-page" id="web-upgrade-import">
+              <div class="page-head">
+                <div>
+                  <p>設定 / 升級數據導入</p>
+                  <h2>升級數據導入</h2>
+                </div>
+              </div>
+              <section class="table-card upgrade-import-card">
+                <div class="upgrade-import-layout">
+                  <aside class="upgrade-stepper" aria-label="升級數據導入步驟">
+                    <button class="active" type="button" data-upgrade-step-nav="1"><span>1</span><b>上傳文件</b></button>
+                    <button type="button" data-upgrade-step-nav="2"><span>2</span><b>導入老師</b></button>
+                    <button type="button" data-upgrade-step-nav="3"><span>3</span><b>導入班級</b></button>
+                    <button type="button" data-upgrade-step-nav="4"><span>4</span><b>設置班級老師</b></button>
+                    <button type="button" data-upgrade-step-nav="5"><span>5</span><b>導入學生</b></button>
+                  </aside>
+                  <div class="upgrade-import-main">
+                    <section class="upgrade-panel active" data-upgrade-panel="1">
+                      <div class="upgrade-panel-head">
+                        <div>
+                          <h3>導入步驟</h3>
+                          <p>每次導入總數不超過 5000 條；每步操作獨立生效，中斷不影響已導入的數據。</p>
+                        </div>
+                      </div>
+                      <ol class="upgrade-instructions">
+                        <li>
+                          下載標準模板，按示例格式和示例說明填寫需要導入的電子表格文件。
+                          <a class="primary-btn upgrade-template-download" href="./导入导出模板-raw/學校班級、學生、老師資料_匯入範本.xlsx" download>
+                            <strong>下載標準模板</strong>
+                            <span>學校班級、學生、老師資料_匯入範本</span>
+                          </a>
+                        </li>
+                        <li>點擊「導入數據」按鈕，選擇您要導入的電子表格文件。</li>
+                        <li>導入成功後，頁面會提示成功數量、失敗數量，並進入各 Sheet 預覽確認。</li>
+                        <li>如有失敗記錄，點擊編輯修正失敗的單元格後，進行確認並提交。</li>
+                      </ol>
+                      <div class="upgrade-upload-box" data-upgrade-upload-box>
+                        <input type="file" accept=".xlsx,.xls" data-upgrade-file hidden />
+                        <button class="primary-btn" type="button" data-upgrade-file-trigger>導入數據</button>
+                        <div>
+                          <strong data-upgrade-file-name>尚未選擇文件</strong>
+                          <p data-upgrade-file-status>請上傳 Excel 文件，系統將先校驗文件格式、Sheet 與表頭。</p>
+                        </div>
+                      </div>
+                      <footer class="upgrade-actions">
+                        <button class="primary-btn" type="button" data-upgrade-next disabled>下一步</button>
+                      </footer>
+                    </section>
+
+                    <section class="upgrade-panel" data-upgrade-panel="2">
+                      <div class="upgrade-panel-head">
+                        <div>
+                          <h3>批量新增老師帳號</h3>
+                          <p>系統自動讀取第 1 個 Sheet「01-老師帳號」，並按填寫內容進行確認。</p>
+                        </div>
+                      </div>
+                      <div class="upgrade-summary">共讀取到 4 條老師數據，其中 2 條校驗通過，2 條存在異常。</div>
+                      <div class="filters compact upgrade-filters" data-upgrade-filters>
+                        <label>老師姓名<input data-upgrade-filter="老師姓名" placeholder="請輸入" /></label>
+                        <label>登入用戶名<input data-upgrade-filter="登入用戶名" placeholder="請輸入" /></label>
+                        <label>校驗狀態<select data-upgrade-status-filter><option value="">全部</option><option value="通過">已通過</option><option value="未通過">未通過</option></select></label>
+                        <button class="primary-btn small" type="button" data-upgrade-filter-query>查詢</button>
+                        <button class="ghost-btn small" type="button" data-upgrade-filter-reset>重置</button>
+                      </div>
+                      <div class="upgrade-preview-table">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>序號</th>
+                              <th>老師姓名</th>
+                              <th>權限安排</th>
+                              <th>登入用戶名</th>
+                              <th>登入密碼</th>
+                              <th>電郵</th>
+                              <th>國家/地區區號</th>
+                              <th>手機號碼</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>陳大文</td>
+                              <td>管理員(科主任)</td>
+                              <td>chendawen@test.com</td>
+                              <td>chendawen24285129</td>
+                              <td>chendanwen@test.com</td>
+                              <td>+852</td>
+                              <td>91234567</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>陳小文</td>
+                              <td>老師</td>
+                              <td>chenxiao@test.com</td>
+                              <td>chenxiaowen24285129</td>
+                              <td>lisi@test.com</td>
+                              <td>+86</td>
+                              <td>15891234567</td>
+                            </tr>
+                            <tr class="validation-failed-row">
+                              <td>4</td>
+                              <td>王老師</td>
+                              <td>老師</td>
+                              <td>chendawen@test.com</td>
+                              <td>wang123456</td>
+                              <td>wang@test.com</td>
+                              <td>+852</td>
+                              <td>91230000</td>
+                            </tr>
+                            <tr class="validation-failed-row">
+                              <td>5</td>
+                              <td></td>
+                              <td>老師</td>
+                              <td>teacher5@test.com</td>
+                              <td>teacher5123</td>
+                              <td>teacher5@test.com</td>
+                              <td>+852</td>
+                              <td>92345678</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="upgrade-error-box empty">如果第 1 個 Sheet 為空，系統提示「未檢測到數據」，可直接點擊「跳過此步」。</div>
+                      <footer class="upgrade-actions">
+                        <button class="ghost-btn" type="button" data-upgrade-prev>上一步</button>
+                        <button class="ghost-btn" type="button" data-upgrade-confirm>跳過此步</button>
+                        <button class="primary-btn" type="button" data-upgrade-confirm>確認並導入老師數據</button>
+                      </footer>
+                    </section>
+
+                    <section class="upgrade-panel" data-upgrade-panel="3">
+                      <div class="upgrade-panel-head">
+                        <div>
+                          <h3>批量新增班級</h3>
+                          <p>系統自動讀取第 2 個 Sheet「02-新增班級」，並按填寫內容進行確認。</p>
+                        </div>
+                      </div>
+                      <div class="upgrade-summary">共讀取到 4 條班級數據，其中 2 條校驗通過，2 條存在異常；導入後生成實際班級 ID。</div>
+                      <div class="filters compact upgrade-filters" data-upgrade-filters>
+                        <label>年級<select data-upgrade-filter="年級"><option value="">全部</option><option>P1</option><option>P2</option><option>P3</option><option>P4</option><option>P5</option><option>P6</option><option>S1</option><option>S2</option><option>S3</option><option>S4</option><option>S5</option><option>S6</option></select></label>
+                        <label>班別<input data-upgrade-filter="班別" placeholder="請輸入" /></label>
+                        <label>校驗狀態<select data-upgrade-status-filter><option value="">全部</option><option value="通過">已通過</option><option value="未通過">未通過</option></select></label>
+                        <button class="primary-btn small" type="button" data-upgrade-filter-query>查詢</button>
+                        <button class="ghost-btn small" type="button" data-upgrade-filter-reset>重置</button>
+                      </div>
+                      <div class="upgrade-preview-table">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>學年</th>
+                              <th>年級</th>
+                              <th>班別</th>
+                              <th>開啟管理員（科主任）-管理學生權限</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>2026-2027學年</td>
+                              <td>P1</td>
+                              <td>1A</td>
+                              <td>開啟</td>
+                            </tr>
+                            <tr>
+                              <td>2026-2027學年</td>
+                              <td>P1</td>
+                              <td>1B</td>
+                              <td>開啟</td>
+                            </tr>
+                            <tr class="validation-failed-row">
+                              <td>2026-2027學年</td>
+                              <td>P1</td>
+                              <td>1A</td>
+                              <td>開啟</td>
+                            </tr>
+                            <tr class="validation-failed-row">
+                              <td>2026-2027學年</td>
+                              <td>P2</td>
+                              <td></td>
+                              <td>關閉</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <footer class="upgrade-actions">
+                        <button class="ghost-btn" type="button" data-upgrade-prev>上一步</button>
+                        <button class="primary-btn" type="button" data-upgrade-confirm>確認並創建班級</button>
+                      </footer>
+                    </section>
+
+                    <section class="upgrade-panel" data-upgrade-panel="4">
+                      <div class="upgrade-panel-head">
+                        <div>
+                          <h3>設置各班科任老師</h3>
+                          <p>系統讀取第 2 個 Sheet「設置各班科任老師」，並按填寫內容進行確認。</p>
+                        </div>
+                      </div>
+                      <div class="upgrade-summary">共讀取到 4 條班級老師數據，其中 3 條校驗通過，1 條存在異常。</div>
+                      <div class="filters compact upgrade-filters" data-upgrade-filters>
+                        <label>年級<select data-upgrade-filter="年級"><option value="">全部</option><option>P1</option><option>P2</option><option>P3</option><option>P4</option><option>P5</option><option>P6</option><option>S1</option><option>S2</option><option>S3</option><option>S4</option><option>S5</option><option>S6</option></select></label>
+                        <label>班別<input data-upgrade-filter="班别" placeholder="請輸入" /></label>
+                        <label>老師用户名<input data-upgrade-filter="老師用户名" placeholder="請輸入" /></label>
+                        <label>老師姓名<input data-upgrade-filter="老師姓名" placeholder="請輸入" /></label>
+                        <label>校驗狀態<select data-upgrade-status-filter><option value="">全部</option><option value="通過">已通過</option><option value="未通過">未通過</option></select></label>
+                        <button class="primary-btn small" type="button" data-upgrade-filter-query>查詢</button>
+                        <button class="ghost-btn small" type="button" data-upgrade-filter-reset>重置</button>
+                      </div>
+                      <div class="upgrade-preview-table">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>學年</th>
+                              <th>年級</th>
+                              <th>班别</th>
+                              <th>老師角色</th>
+                              <th>老師用户名</th>
+                              <th>老師姓名</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>2026-2027學年</td>
+                              <td>P1</td>
+                              <td>1A</td>
+                              <td>管理員(科主任)</td>
+                              <td>chendawen@test.com</td>
+                              <td>陳大文</td>
+                            </tr>
+                            <tr>
+                              <td>2026-2027學年</td>
+                              <td>P1</td>
+                              <td>1A</td>
+                              <td>管理員(科主任)</td>
+                              <td>chennxiao@test.com</td>
+                              <td>陳小文</td>
+                            </tr>
+                            <tr>
+                              <td>2026-2027學年</td>
+                              <td>P1</td>
+                              <td>1A</td>
+                              <td>教學老師</td>
+                              <td>T003</td>
+                              <td>王五</td>
+                            </tr>
+                            <tr class="validation-failed-row">
+                              <td>2026-2027學年</td>
+                              <td>P2</td>
+                              <td>1A</td>
+                              <td>教學老師</td>
+                              <td>T004</td>
+                              <td>李六</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <footer class="upgrade-actions">
+                        <button class="ghost-btn" type="button" data-upgrade-prev>上一步</button>
+                        <button class="primary-btn" type="button" data-upgrade-confirm>確認並綁定關係</button>
+                      </footer>
+                    </section>
+
+                    <section class="upgrade-panel" data-upgrade-panel="5">
+                      <div class="upgrade-panel-head">
+                        <div>
+                          <h3>批量新增學生</h3>
+                          <p>系統讀取第 4 個 Sheet「04-班級學生」，並按填寫內容進行確認。</p>
+                        </div>
+                      </div>
+                      <div class="upgrade-summary">共讀取到 4 名學生數據，其中 3 條校驗通過，1 條存在異常。</div>
+                      <div class="filters compact upgrade-filters" data-upgrade-filters>
+                        <label>年級<select data-upgrade-filter="年級"><option value="">全部</option><option>P1</option><option>P2</option><option>P3</option><option>P4</option><option>P5</option><option>P6</option><option>S1</option><option>S2</option><option>S3</option><option>S4</option><option>S5</option><option>S6</option></select></label>
+                        <label>班別<input data-upgrade-filter="班別" placeholder="請輸入" /></label>
+                        <label>學生姓名<input data-upgrade-filter="學生姓名" placeholder="請輸入" /></label>
+                        <label>登入帳號<input data-upgrade-filter="登入帳號" placeholder="請輸入" /></label>
+                        <label>校驗狀態<select data-upgrade-status-filter><option value="">全部</option><option value="通過">已通過</option><option value="未通過">未通過</option></select></label>
+                        <button class="primary-btn small" type="button" data-upgrade-filter-query>查詢</button>
+                        <button class="ghost-btn small" type="button" data-upgrade-filter-reset>重置</button>
+                      </div>
+                      <div class="upgrade-preview-table">
+                        <table>
+                          <thead><tr><th>序號</th><th>年級</th><th>班別</th><th>學號</th><th>學生姓名</th><th>英文名</th><th>登入帳號</th><th>登入密碼</th><th>性別</th></tr></thead>
+                          <tbody>
+                            <tr><td>1</td><td>P1</td><td>1A</td><td>1</td><td>陳大文</td><td>Ruby</td><td>Chantaiwen@cnrd.edu.hk</td><td>S6658476</td><td>男</td></tr>
+                            <tr><td>2</td><td>P1</td><td>1A</td><td>2</td><td>陳小明</td><td>Jacky</td><td>jacky</td><td>S5749907</td><td>女</td></tr>
+                            <tr><td>3</td><td>P1</td><td>1B</td><td>1</td><td>林同學</td><td>Lam</td><td>lam01</td><td>S1234567</td><td>男</td></tr>
+                            <tr class="validation-failed-row"><td>4</td><td>P2</td><td>2A</td><td>1</td><td>黃同學</td><td>Wong</td><td>wong01</td><td>S7654321</td><td>女</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="upgrade-pagination" data-upgrade-pagination></div>
+                      <footer class="upgrade-actions">
+                        <button class="ghost-btn" type="button" data-upgrade-prev>上一步</button>
+                        <button class="primary-btn" type="button" data-upgrade-complete>確認並導入學生</button>
+                        <button class="primary-btn" type="button" data-upgrade-complete>完成</button>
+                      </footer>
+                    </section>
+                  </div>
+                </div>
+              </section>
+            </article>
+
+            <article class="web-page" id="web-classes">
+              <div class="page-head">
+                <div>
+                  <p>學生管理 / 班級管理</p>
+                  <h2>班級管理</h2>
+                </div>
+                <div class="page-actions">
+                  <button class="primary-btn" data-modal="class">新增班級</button>
+                </div>
+              </div>
+              <section class="table-card class-management-card">
+                <aside class="class-side-filter" aria-label="班級側邊篩選">
+                  <label>學年<select><option selected>2025-2026學年</option><option>2024-2025學年</option><option>2026-2027學年</option><option>2027-2028學年</option></select></label>
+                  <nav class="grade-tree" aria-label="年級篩選">
+                    <button class="active" data-grade-filter="all">全部年級</button>
+                    <button data-grade-filter="P1">P1</button>
+                    <button data-grade-filter="P2">P2</button>
+                    <button data-grade-filter="P3">P3</button>
+                    <button data-grade-filter="P4">P4</button>
+                    <button data-grade-filter="P5">P5</button>
+                    <button data-grade-filter="P6">P6</button>
+                    <button data-grade-filter="S1">S1</button>
+                    <button data-grade-filter="S2">S2</button>
+                    <button data-grade-filter="S3">S3</button>
+                    <button data-grade-filter="S4">S4</button>
+                    <button data-grade-filter="S5">S5</button>
+                    <button data-grade-filter="S6">S6</button>
+                  </nav>
+                </aside>
+                <div class="class-main-content">
+                  <div class="filters compact class-filters">
+                    <label>班級名稱<input value="" placeholder="請輸入" /></label>
+                    <label>管理員(科主任)<select><option>全部</option><option>陳老師</option><option>王老師</option><option>李老師</option></select></label>
+                    <label>教學老師<select><option>全部</option><option>李老師</option><option>周老師</option><option>陳老師</option><option>王老師</option></select></label>
+                    <button class="primary-btn small">查詢</button>
+                    <button class="ghost-btn small">重置</button>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>班級名稱</th>
+                        <th>學年</th>
+                        <th>年級</th>
+                        <th>班級人數</th>
+                        <th>管理員(科主任)</th>
+                        <th>教學老師</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-class-grade="S1">
+                        <td><a>S1 A班</a></td>
+                        <td>2025-2026學年</td>
+                        <td>S1</td>
+                        <td>32</td>
+                        <td>陳老師</td>
+                        <td>李老師、周老師</td>
+                        <td><button class="link-btn">查看學生</button><button class="link-btn" data-modal="class">編輯</button></td>
+                      </tr>
+                      <tr data-class-grade="S2">
+                        <td><a>S2 B班</a></td>
+                        <td>2025-2026學年</td>
+                        <td>S2</td>
+                        <td>28</td>
+                        <td>王老師</td>
+                        <td>周老師、陳老師</td>
+                        <td><button class="link-btn">查看學生</button><button class="link-btn" data-modal="class">編輯</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+
+            <article class="web-page" id="web-students">
+              <div class="page-head">
+                <div>
+                  <p>學生管理 / 學生列表</p>
+                  <h2>學生列表</h2>
+                </div>
+                <div class="page-actions">
+                  <a class="ghost-btn action-link" href="./导入导出模板-raw/批量導出學生.xlsx" download>導出學生</a>
+                  <button class="primary-btn" data-modal="student">新增學生</button>
+                </div>
+              </div>
+              <section class="table-card management-card">
+                <aside class="side-filter" aria-label="學生側邊篩選">
+                  <label>學年<select><option selected>2025-2026學年</option><option>2024-2025學年</option><option>2026-2027學年</option><option>2027-2028學年</option></select></label>
+                  <nav class="grade-tree" aria-label="年級篩選">
+                    <button class="active" data-grade-filter="all">全部年級</button>
+                    <button data-grade-filter="P1">P1</button>
+                    <button data-grade-filter="P2">P2</button>
+                    <button data-grade-filter="P3">P3</button>
+                    <button data-grade-filter="P4">P4</button>
+                    <button data-grade-filter="P5">P5</button>
+                    <button data-grade-filter="P6">P6</button>
+                    <button data-grade-filter="S1">S1</button>
+                    <button data-grade-filter="S2">S2</button>
+                    <button data-grade-filter="S3">S3</button>
+                    <button data-grade-filter="S4">S4</button>
+                    <button data-grade-filter="S5">S5</button>
+                    <button data-grade-filter="S6">S6</button>
+                  </nav>
+                </aside>
+                <div class="main-content">
+                  <div class="filters compact student-filters">
+                    <label>學生姓名<input placeholder="請輸入" /></label>
+                    <label>班級<select><option>全部</option><option>S1 A班</option></select></label>
+                    <label>在學狀態<select><option>全部</option><option>在學</option><option>轉移</option><option>離校</option><option>畢業</option></select></label>
+                    <button class="primary-btn small">查詢</button>
+                    <button class="ghost-btn small">重置</button>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>學生姓名</th>
+                        <th>學生登入帳號</th>
+                        <th>班級學號</th>
+                        <th>性別</th>
+                        <th>年級</th>
+                        <th>在學狀態</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-class-grade="S1">
+                        <td><a>張曉剛</a></td>
+                        <td>1111</td>
+                        <td>1</td>
+                        <td>女</td>
+                        <td>S1</td>
+                        <td><span class="status enabled">在學</span></td>
+                        <td><button class="link-btn">詳情</button><button class="link-btn" data-modal="student">編輯</button></td>
+                      </tr>
+                      <tr data-class-grade="P1">
+                        <td><a>測試學生2</a></td>
+                        <td>1112</td>
+                        <td>2</td>
+                        <td>女</td>
+                        <td>P1</td>
+                        <td><span class="status warning">離校</span></td>
+                        <td><button class="link-btn">詳情</button><button class="link-btn" data-modal="student">編輯</button></td>
+                      </tr>
+                      <tr data-class-grade="P1">
+                        <td><a>測試學生3</a></td>
+                        <td>1113</td>
+                        <td>3</td>
+                        <td>女</td>
+                        <td>P1</td>
+                        <td><span class="status disabled">畢業</span></td>
+                        <td><button class="link-btn">詳情</button><button class="link-btn" data-modal="student">編輯</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+
+            <article class="web-page" id="web-tasks-admin">
+              <div class="page-head">
+                <div>
+                  <p>學生管理 / 任務管理</p>
+                  <h2>任務管理</h2>
+                </div>
+                <div class="page-actions task-page-tools">
+                  <button class="plain-tool-btn">建議/意見</button>
+                  <button class="plain-tool-btn">評價</button>
+                </div>
+              </div>
+              <section class="task-dashboard">
+                <div class="task-panel-head">
+                  <h3>發布的任務</h3>
+                </div>
+                <div class="task-stat-grid">
+                  <article class="task-stat-card">
+                    <div>
+                      <span>進行中</span>
+                      <strong>0</strong>
+                    </div>
+                    <i class="stat-icon red">•••</i>
+                  </article>
+                  <article class="task-stat-card">
+                    <div>
+                      <span>已結束</span>
+                      <strong>130</strong>
+                    </div>
+                    <i class="stat-icon yellow">✓</i>
+                  </article>
+                  <article class="task-stat-card">
+                    <div>
+                      <span>任務完成率</span>
+                      <strong>5.00<small>%</small></strong>
+                    </div>
+                    <i class="stat-icon green">%</i>
+                  </article>
+                </div>
+              </section>
+              <section class="table-card task-list-card">
+                <div class="task-category-tabs">
+                  <button class="active">全部</button>
+                  <button>語音評測</button>
+                  <button>場景對話</button>
+                  <button>作文</button>
+                  <button>DSE-作文</button>
+                  <button>聆聽與拼音</button>
+                  <button>個人短講</button>
+                  <button>看圖說話</button>
+                  <button>綜合評測</button>
+                </div>
+                <div class="filters compact task-admin-filters">
+                  <label>任務標題<input placeholder="請輸入" /></label>
+                  <label>班級名稱<select><option>請選擇</option><option>S1 A班</option><option>P3 IT一班</option></select></label>
+                  <label>年級<select><option>請選擇</option><option>P1</option><option>P2</option><option>S1</option></select></label>
+                  <button class="primary-btn small">查詢</button>
+                  <button class="ghost-btn small">重置</button>
+                </div>
+                <p class="field-note">發布任務時，取「進行中」學年所在班級的在學學生；離校、畢業學生不參與新發布任務。</p>
+                <div class="task-status-tabs">
+                  <button class="active">全部</button>
+                  <button>進行中</button>
+                  <button>已完成</button>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>標題</th>
+                      <th>完成情況</th>
+                      <th>班級/小組</th>
+                      <th>年級</th>
+                      <th>截止時間</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><a>《長歌行》</a></td><td><span class="task-progress"><i style="width: 0%"></i></span> 0/6</td><td>P3-IT一班</td><td>P3</td><td>2025-11-18</td><td><button class="link-btn">查看詳情</button><button class="link-btn">刪除</button></td></tr>
+                    <tr><td><a>《長歌行》</a></td><td><span class="task-progress"><i style="width: 0%"></i></span> 0/1</td><td>P1-IT一班</td><td>P1</td><td>2025-11-27</td><td><button class="link-btn">查看詳情</button><button class="link-btn">刪除</button></td></tr>
+                    <tr><td><a>綜合測評一</a></td><td><span class="task-progress"><i style="width: 62%"></i></span> 8/13</td><td>S3-IT一班9</td><td>S3</td><td>2025-11-25</td><td><button class="link-btn">查看詳情</button><button class="link-btn">刪除</button></td></tr>
+                  </tbody>
+                </table>
+              </section>
+            </article>
+
+            <article class="web-page" id="web-practice-admin">
+              <div class="page-head">
+                <div>
+                  <p>學生管理 / 練習情況</p>
+                  <h2>練習情況</h2>
+                </div>
+              </div>
+              <section class="task-dashboard">
+                <div class="task-panel-head">
+                  <h3>練習情況</h3>
+                </div>
+                <div class="task-stat-grid">
+                  <article class="task-stat-card">
+                    <div>
+                      <span>練習人次</span>
+                      <strong>1,286</strong>
+                    </div>
+                    <i class="stat-icon blue">習</i>
+                  </article>
+                  <article class="task-stat-card">
+                    <div>
+                      <span>本週完成</span>
+                      <strong>642</strong>
+                    </div>
+                    <i class="stat-icon green">✓</i>
+                  </article>
+                  <article class="task-stat-card">
+                    <div>
+                      <span>平均得分</span>
+                      <strong>87<small>分</small></strong>
+                    </div>
+                    <i class="stat-icon yellow">分</i>
+                  </article>
+                </div>
+              </section>
+              <section class="table-card task-list-card">
+                <div class="task-category-tabs">
+                  <button class="active">全部</button>
+                  <button>語音評測</button>
+                  <button>場景對話</button>
+                  <button>聆聽與拼音</button>
+                  <button>個人短講</button>
+                  <button>看圖說話</button>
+                  <button>作文</button>
+                  <button>綜合練習</button>
+                </div>
+                <div class="filters compact task-admin-filters">
+                  <label>練習名稱<input placeholder="請輸入" /></label>
+                  <label>班級<select><option>請選擇</option><option>S1 A班</option><option>S1 B班</option></select></label>
+                  <label>年級<select><option>請選擇</option><option>S1</option><option>S2</option><option>P1</option></select></label>
+                  <button class="primary-btn small">查詢</button>
+                  <button class="ghost-btn small">重置</button>
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>練習名稱</th>
+                      <th>完成情況</th>
+                      <th>班級</th>
+                      <th>年級</th>
+                      <th>最近提交</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><a>聲母辨讀練習</a></td><td><span class="task-progress"><i style="width: 86%"></i></span> 145/168</td><td>S1 A班</td><td>S1</td><td>2026-07-24</td><td><button class="link-btn">查看詳情</button></td></tr>
+                    <tr><td><a>情境對話練習</a></td><td><span class="task-progress"><i style="width: 74%"></i></span> 124/168</td><td>S1 B班</td><td>S1</td><td>2026-07-23</td><td><button class="link-btn">查看詳情</button></td></tr>
+                    <tr><td><a>短講流暢度練習</a></td><td><span class="task-progress"><i style="width: 68%"></i></span> 114/168</td><td>S1 A班</td><td>S1</td><td>2026-07-22</td><td><button class="link-btn">查看詳情</button></td></tr>
+                  </tbody>
+                </table>
+              </section>
+            </article>
+
+            <article class="web-page" id="web-rankings">
+              <div class="page-head">
+                <div>
+                  <p>學生管理 / 排行榜</p>
+                  <h2>排行榜</h2>
+                </div>
+              </div>
+              <div class="rankings-tabs" role="tablist" aria-label="排行榜類型">
+                <button class="active" type="button" role="tab" aria-selected="true" data-ranking-tab="task">任務排行榜</button>
+                <button type="button" role="tab" aria-selected="false" data-ranking-tab="practice">練習排行榜</button>
+              </div>
+              <div class="ranking-tab-panel active" data-ranking-panel="task">
+              <section class="table-card web-task-rank-card">
+                <div class="filters compact web-task-rank-filters">
+                  <label>學年<select data-task-web-year-filter><option>2024-2025學年</option><option selected>2025-2026學年</option><option>2026-2027學年</option><option>2027-2028學年</option></select></label>
+                  <label>時間<select data-task-web-time-filter><option selected>本週</option><option>本月</option><option>上學期</option><option>中學期</option><option>下學期</option><option>本學年</option></select></label>
+                  <label>年級<select data-task-web-grade-filter><option selected>S1</option><option>S2</option></select></label>
+                  <label>班級<select data-task-web-class-filter><option selected>全部班級</option><option>S1 A班</option><option>S1 B班</option><option>S2 B班</option></select></label>
+                  <button class="primary-btn small" data-task-web-query>查詢</button>
+                  <button class="ghost-btn small" data-task-web-reset>重置</button>
+                </div>
+                <div class="rank-data-table task-web-rank-table">
+                  <div class="subsection-head task-web-rank-head">
+                    <strong data-task-web-rank-title>任務總分排行榜</strong>
+                    <div class="task-web-head-actions">
+                      <div class="task-web-permission-inline admin-only">
+                        <span>對學生展示排行榜</span>
+                        <span class="permission-help" title="開啟後，全校學生顯示任務排行榜；關閉後，全校學生隱藏任務排行榜。">!</span>
+                        <label class="switch-row mini"><input type="checkbox" data-task-student-visible /><span></span></label>
+                      </div>
+                      <button class="ghost-btn small rank-export-btn" type="button" data-task-web-export>導出</button>
+                    </div>
+                  </div>
+                  <div class="task-web-rank-view active" data-task-web-view-panel="table">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>序號</th>
+                          <th><button class="table-sort-btn" type="button" data-task-web-sort>年級排名 <span data-task-web-sort-icon>↑</span></button></th>
+                          <th>年級排名升跌</th>
+                          <th>班級排名</th>
+                          <th>班級排名升跌</th>
+                          <th>學生姓名</th>
+                          <th>學生編號</th>
+                          <th>年級</th>
+                          <th>班級</th>
+                        <th data-task-web-rank-metric>任務總分</th>
+                        </tr>
+                      </thead>
+                      <tbody data-task-web-rank-body></tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              </div>
+              <div class="ranking-tab-panel" data-ranking-panel="practice">
+              <section class="table-card web-task-rank-card">
+                <div class="filters compact web-task-rank-filters">
+                  <label>學年<select data-practice-web-year-filter><option>2024-2025學年</option><option selected>2025-2026學年</option><option>2026-2027學年</option><option>2027-2028學年</option></select></label>
+                  <label>時間<select data-practice-web-time-filter><option selected>本週</option><option>本月</option><option>上學期</option><option>中學期</option><option>下學期</option><option>本學年</option></select></label>
+                  <label>年級<select data-practice-web-grade-filter><option selected>S1</option><option>S2</option></select></label>
+                  <label>班級<select data-practice-web-class-filter><option selected>全部班級</option><option>S1 A班</option><option>S1 B班</option><option>S2 B班</option></select></label>
+                  <button class="primary-btn small" data-practice-web-query>查詢</button>
+                  <button class="ghost-btn small" data-practice-web-reset>重置</button>
+                </div>
+                <div class="rank-data-table task-web-rank-table">
+                  <div class="subsection-head task-web-rank-head">
+                    <strong data-practice-web-rank-title>練習總分排行榜</strong>
+                    <div class="task-web-head-actions">
+                      <div class="task-web-permission-inline admin-only">
+                        <span>對學生展示排行榜</span>
+                        <span class="permission-help" title="開啟後，全校學生顯示練習排行榜；關閉後，全校學生隱藏練習排行榜。">!</span>
+                        <label class="switch-row mini"><input type="checkbox" data-practice-student-visible /><span></span></label>
+                      </div>
+                      <button class="ghost-btn small rank-export-btn" type="button" data-practice-web-export>導出</button>
+                    </div>
+                  </div>
+                  <div class="task-web-rank-view active" data-practice-web-view-panel="table">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>序號</th>
+                          <th><button class="table-sort-btn" type="button" data-practice-web-sort>年級排名 <span data-practice-web-sort-icon>↑</span></button></th>
+                          <th>年級排名升跌</th>
+                          <th>班級排名</th>
+                          <th>班級排名升跌</th>
+                          <th>學生姓名</th>
+                          <th>學生編號</th>
+                          <th>年級</th>
+                          <th>班級</th>
+                        <th data-practice-web-rank-metric>練習總分</th>
+                        </tr>
+                      </thead>
+                      <tbody data-practice-web-rank-body></tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              </div>
+            </article>
+
+            <article class="web-page" id="web-ranking">
+              <div class="page-head">
+                <div>
+                  <p>學生管理 / 學生獎勵 / 學生排名</p>
+                  <h2>學生排名</h2>
+                </div>
+                <div class="page-actions">
+                  <div class="view-switch" aria-label="排名顯示模式">
+                    <button class="view-toggle active" data-rank-view="board">排行榜樣式</button>
+                    <button class="view-toggle" data-rank-view="chart">圖表樣式</button>
+                  </div>
+                </div>
+              </div>
+              <section class="table-card ranking-card">
+                <div class="filters compact">
+                  <label>學年學期<select><option>2025-2026 下學期</option><option>2025-2026 中學期</option><option>2025-2026 上學期</option></select></label>
+                  <label>班級<select><option>S1 A班</option><option>S2 B班</option><option>全部班級</option></select></label>
+                  <button class="primary-btn small">查詢</button>
+                  <button class="ghost-btn small">匯出</button>
+                </div>
+                <div class="ranking-tabs" aria-label="排行榜类别">
+                  <button class="rank-tab active" data-rank-type="finish">任務完成總數</button>
+                  <button class="rank-tab" data-rank-type="score">任務總分</button>
+                  <button class="rank-tab" data-rank-type="voice">語音評測</button>
+                  <button class="rank-tab" data-rank-type="dialog">場景對話</button>
+                  <button class="rank-tab" data-rank-type="listen">聆聽與拼音</button>
+                  <button class="rank-tab" data-rank-type="speech">個人短講</button>
+                  <button class="rank-tab" data-rank-type="picture">看圖說話</button>
+                  <button class="rank-tab" data-rank-type="writing">作文</button>
+                  <button class="rank-tab" data-rank-type="dse">DSE-作文</button>
+                  <button class="rank-tab" data-rank-type="exam">綜合評測</button>
+                </div>
+                <div class="rank-summary">
+                  <div><span>當前榜單</span><strong data-rank-title>任務完成總數</strong></div>
+                  <div><span>班級人數</span><strong>32</strong></div>
+                  <div><span>更新時間</span><strong>2026-07-21 18:00</strong></div>
+                </div>
+                <div class="visibility-corner">
+                  <span><b data-permission-name>任務完成總數</b> 對學生展示排行榜</span>
+                  <label class="switch-row mini"><input type="checkbox" checked /><span></span></label>
+                </div>
+
+                <div class="rank-view active" data-rank-view-panel="board">
+                  <section class="leaderboard-hero">
+                    <div class="leader-stats">
+                      <span>我的班級排名</span>
+                      <strong data-rank-focus-rank>2</strong>
+                      <p>張曉剛 · S1 A班</p>
+                    </div>
+                    <div class="leader-avatar">測</div>
+                    <div class="leader-score">
+                      <span data-rank-focus-metric>完成數</span>
+                      <strong data-rank-focus-value>126</strong>
+                    </div>
+                  </section>
+                  <div class="leaderboard-list" data-leaderboard-list></div>
+                </div>
+
+                <div class="rank-view" data-rank-view-panel="chart">
+                  <div class="chart-card">
+                    <div class="chart-head">
+                      <div><span>圖表樣式</span><strong data-chart-title>任務完成總數</strong></div>
+                      <p>字段沿用排行榜：排名、學生姓名、班級、指標值、學生端可見</p>
+                    </div>
+                    <div class="bar-chart" data-chart-bars></div>
+                  </div>
+                </div>
+
+                <div class="rank-data-table">
+                  <div class="subsection-head">
+                    <strong>榜單明細</strong>
+                    <span>字段：排名、學生姓名、班級、指標值、學生端可見</span>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>排名</th>
+                        <th>學生姓名</th>
+                        <th>班級</th>
+                        <th data-rank-metric>完成數</th>
+                        <th>學生端可見</th>
+                      </tr>
+                    </thead>
+                    <tbody data-rank-body></tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+
+          </section>
+        </div>
+      </section>
+
+      <section class="mode-view" id="mode-app" aria-label="學生 App 原型">
+        <div class="phone-stage">
+          <div class="phone-shell">
+            <header class="phone-status"><span>22:35</span><span>5G 66</span></header>
+            <section class="app-screen active" id="app-learning">
+              <div class="learning-home">
+                <section class="learning-hero" aria-label="學生資訊">
+                  <div class="learning-student">
+                    <span class="learning-avatar" aria-hidden="true"></span>
+                    <div>
+                      <strong>測試學生1</strong>
+                      <span>S1 A班</span>
+                    </div>
+                  </div>
+                  <div class="learning-hero-award" aria-hidden="true"></div>
+                </section>
+                <section class="learning-summary-card rank-entry-off" aria-label="學習概覽">
+                  <button class="learning-stat" type="button" data-app-page="tasks">
+                    <strong>132</strong>
+                    <span>待完成任務 <i>›</i></span>
+                  </button>
+                  <span class="learning-summary-divider" aria-hidden="true"></span>
+                  <button class="learning-stat learning-record-stat" type="button">
+                    <strong>399</strong>
+                    <span>練習記錄 <i>›</i></span>
+                  </button>
+                  <span class="learning-summary-divider" aria-hidden="true" hidden></span>
+                  <button class="learning-stat stat-rank" type="button" data-app-page="practice-ranking" aria-label="查看排行榜" hidden>
+                    <span class="ranking-entry-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+                    <b>排行榜</b>
+                  </button>
+                </section>
+                <section class="learning-menu-card">
+                  <h2>口語</h2>
+                  <button class="learning-menu-row" type="button"><span class="menu-art voice"></span><strong>發音評測</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art dialog"></span><strong>場景對話</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art speech"></span><strong>個人短講</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art picture"></span><strong>看圖說話</strong><i>›</i></button>
+                </section>
+                <section class="learning-menu-card practice">
+                  <h2>練習</h2>
+                  <button class="learning-menu-row" type="button"><span class="menu-art video"></span><strong>HSK視頻學習</strong><i>›</i></button>
+                  <button class="learning-menu-row" type="button"><span class="menu-art listen"></span><strong>聆聽練習</strong><i>›</i></button>
+                </section>
+              </div>
+            </section>
+
+            <section class="app-screen" id="app-tasks">
+              <header class="task-page-head">
+                <span></span>
+                <h2>任務</h2>
+                <div class="task-head-actions">
+                  <button class="task-rank-entry task-report-entry" aria-label="查看學習報告">
+                    <span></span>
+                  </button>
+                </div>
+              </header>
+              <div class="task-tabs" aria-label="任務狀態">
+                <button class="active">未完成</button>
+                <button>已完成</button>
+                <button>已過期</button>
+              </div>
+              <div class="task-card-stack">
+                <article class="student-task-card">
+                  <div class="task-card-type"><span class="task-type-icon voice"></span>發音評測</div>
+                  <h3>《春曉》</h3>
+                  <div class="task-card-foot"><span>admin</span><span>2026-07-21</span><b>日常</b></div>
+                </article>
+                <article class="student-task-card">
+                  <div class="task-card-type"><span class="task-type-icon dialog"></span>場景對話</div>
+                  <h3>到遊樂場去</h3>
+                  <div class="task-card-foot"><span>admin</span><span>2026-07-21</span><b>日常</b></div>
+                </article>
+                <article class="student-task-card">
+                  <div class="task-card-type"><span class="task-type-icon voice"></span>發音評測</div>
+                  <h3>《風》</h3>
+                  <div class="task-card-foot"><span>admin</span><span>2026-07-21</span><b>日常</b></div>
+                </article>
+              </div>
+            </section>
+
+            <section class="app-screen" id="app-me">
+              <div class="app-hero">
+                <button class="back-btn">‹</button>
+                <div class="profile-card">
+                  <div class="cartoon-avatar">學</div>
+                  <div>
+                    <h2>張曉剛</h2>
+                    <p>學生編號</p>
+                  </div>
+                  <strong>1111</strong>
+                </div>
+              </div>
+              <div class="app-content pull-up">
+                <button class="menu-row"><span class="menu-icon">指</span><strong>操作指引</strong><i>›</i></button>
+                <div class="info-card">
+                  <p><span>所在班級</span><strong>S1 A班</strong></p>
+                  <p><span>所屬學校</span><strong>鳳溪第一小學</strong></p>
+                  <p><span>學校ID</span><strong>666667</strong></p>
+                </div>
+                <div class="info-card">
+                  <p><span>修改密碼</span><i>›</i></p>
+                  <p><span>手機號</span><strong>+852-124</strong><i>›</i></p>
+                  <p><span>郵箱</span><strong>288@qq.com</strong><i>›</i></p>
+                </div>
+                <button class="logout">退出登錄</button>
+                <button class="about">關於我們</button>
+              </div>
+            </section>
+
+            <section class="app-screen" id="app-ranking">
+              <div class="task-rank-page">
+                <header class="task-rank-head">
+                  <button data-app-page="tasks" aria-label="返回任務">‹</button>
+                  <div class="task-title-switch" aria-label="排行榜範圍">
+                    <button class="task-scope-tab active" data-task-scope="class">班級排行榜</button>
+                    <button class="task-scope-tab" data-task-scope="grade">年級排行榜</button>
+                  </div>
+                </header>
+                <div class="task-rank-content">
+                  <div class="task-metric-tabs" aria-label="排行榜指標">
+                    <button class="task-metric-tab active" data-task-metric="finish">任務完成總數</button>
+                    <button class="task-metric-tab" data-task-metric="score">任務總分</button>
+                  </div>
+                  <div class="task-period-tabs" aria-label="排行榜時間篩選">
+                    <button class="task-period-tab active" data-task-period="week">本週</button>
+                    <button class="task-period-tab" data-task-period="month">本月</button>
+                    <button class="task-period-tab" data-task-period="term">本學期</button>
+                  </div>
+                  <section class="task-podium" data-task-podium></section>
+                  <section class="task-my-rank">
+                    <div class="my-rank-stat">
+                      <span>我的名次：</span>
+                      <strong data-task-my-rank>4</strong>
+                    </div>
+                    <div class="rank-avatar me"></div>
+                    <div class="my-rank-stat value">
+                      <span data-task-my-label>完成總數：</span>
+                      <em data-task-my-value>856</em>
+                    </div>
+                    <p data-task-my-trend>距離上一名還差 131 次！繼續加油！</p>
+                  </section>
+                  <section class="task-rank-list" data-task-rank-list></section>
+                </div>
+              </div>
+            </section>
+
+            <section class="app-screen" id="app-practice-ranking">
+              <div class="task-rank-page practice-rank-page">
+                <header class="task-rank-head">
+                  <button data-app-page="learning" aria-label="返回練習記錄">‹</button>
+                  <div class="task-metric-tabs" aria-label="排行榜指標">
+                    <button class="task-metric-tab active" data-practice-metric="task-score">任務總分榜</button>
+                    <button class="task-metric-tab" data-practice-metric="practice-score">練習總分榜</button>
+                  </div>
+                </header>
+                <div class="task-rank-content">
+                  <div class="task-period-tabs" aria-label="排行榜時間篩選">
+                    <button class="task-period-tab active" data-practice-period="week">本週</button>
+                    <button class="task-period-tab" data-practice-period="month">本月</button>
+                    <button class="task-period-tab" data-practice-period="term">本學期</button>
+                    <div class="rank-scope-inline" data-practice-scope-dropdown>
+                      <button class="rank-scope-trigger" type="button" data-practice-scope-toggle aria-haspopup="true" aria-expanded="false">
+                        <span data-practice-scope-label>班級</span>
+                        <i aria-hidden="true"></i>
+                      </button>
+                      <div class="rank-scope-menu" role="menu" aria-label="排行榜範圍">
+                        <button class="active" type="button" role="menuitemradio" aria-checked="true" data-practice-scope-option="class">班級</button>
+                        <button type="button" role="menuitemradio" aria-checked="false" data-practice-scope-option="grade">年級</button>
+                      </div>
+                    </div>
+                  </div>
+                  <section class="task-podium" data-practice-podium></section>
+                  <section class="task-my-rank">
+                    <div class="my-rank-stat">
+                      <span>我的名次：</span>
+                      <strong data-practice-my-rank>4</strong>
+                    </div>
+                    <div class="rank-avatar me avatar-4"></div>
+                    <div class="my-rank-stat value">
+                      <em data-practice-my-value>856</em>
+                    </div>
+                    <p data-practice-my-trend>↑1 距離上一名還差 131 次！繼續加油！</p>
+                  </section>
+                  <section class="task-rank-list" data-practice-rank-list></section>
+                </div>
+              </div>
+            </section>
+
+            <nav class="app-bottom-nav" aria-label="學生 App 底部導覽">
+              <button class="active" data-app-page="learning"><span>學</span><b>學習</b></button>
+              <button data-app-page="tasks"><span>任</span><b>任務</b></button>
+              <button><span>拓</span><b>拓展課</b></button>
+              <button><span>直</span><b>直播課</b></button>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <nav class="review-pages" aria-label="後台頁面目錄"><section class="review-group"><h2>學年與升級</h2><div><button type="button" data-dev-web-page="terms" ><span>01</span>學年學期</button><button type="button" data-dev-web-page="upgrade-import" data-dev-upgrade-step="1"><span>02</span>下載及上傳模板</button><button type="button" data-dev-web-page="upgrade-import" data-dev-upgrade-step="2"><span>03</span>導入老師</button><button type="button" data-dev-web-page="upgrade-import" data-dev-upgrade-step="3"><span>04</span>導入班級</button><button type="button" data-dev-web-page="upgrade-import" data-dev-upgrade-step="4"><span>05</span>設置班級老師</button><button type="button" data-dev-web-page="upgrade-import" data-dev-upgrade-step="5"><span>06</span>導入學生</button></div></section><section class="review-group"><h2>學生管理</h2><div><button type="button" data-dev-web-page="classes" ><span>01</span>班級管理</button><button type="button" data-dev-web-page="students" ><span>02</span>學生列表</button><button type="button" data-dev-web-page="rankings" data-ranking-target="task"><span>03</span>任務排行榜</button><button type="button" data-dev-web-page="rankings" data-ranking-target="practice"><span>04</span>練習排行榜</button></div></section></nav>
+    </main>
+
+    <div class="modal-layer" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <header><h3 data-modal-title>新增</h3><button class="modal-close">×</button></header>
+        <div class="modal-body" data-modal-body></div>
+        <footer><button class="ghost-btn modal-close">取消</button><button class="primary-btn modal-close">確定</button></footer>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+<script src="./review-nav.js"></script>
+  </body>
+</html>

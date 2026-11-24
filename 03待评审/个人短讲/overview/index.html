@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>個人短講｜四種模式頁面總覽</title>
+  <style>
+    :root { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans CJK SC", sans-serif; color: #172b3a; background: #edf6fa; }
+    * { box-sizing: border-box; }
+    html { scroll-snap-type: y proximity; scroll-behavior: smooth; }
+    body { margin: 0; }
+    .board { min-height: calc(100svh - 48px); scroll-snap-align: start; scroll-margin-top: 48px; display: flex; flex-direction: column; align-items: center; padding: 18px 24px 12px; }
+    .board + .board { border-top: 1px solid #d9eaf2; }
+    .board-head { width: min(100%, 1100px); min-height: 58px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .board-head h1, .board-head h2 { font-size: 19px; line-height: 1.3; margin: 0; font-weight: 650; }
+    .board-head p { margin: 4px 0 0; color: #526574; font-size: 12px; }
+    .board-index { color: #007eab; font-size: 13px; white-space: nowrap; }
+    .grid { width: min(100%, 1360px); display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin: auto; }
+    .shot { position: relative; margin-top: 20px; aspect-ratio: 379 / 852; border: 1px solid #d5e8f0; border-radius: 14px; background-image: var(--image); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #f5fafd; box-shadow: 0 5px 18px rgba(50, 100, 126, .10); }
+    .shot::before { content: attr(data-label); position: absolute; top: -19px; left: 2px; color: #172b3a; font-size: 12px; line-height: 16px; font-weight: 650; white-space: nowrap; }
+    .level-nav { position: sticky; z-index: 2; top: 0; display: flex; justify-content: center; gap: 8px; padding: 7px 16px; background: rgba(237, 246, 250, .96); border-bottom: 1px solid #d9eaf2; }
+    .level-nav a { min-width: 48px; border: 1px solid #cfe5ef; border-radius: 999px; padding: 7px 9px; background: #fff; color: #366176; font-size: 12px; text-align: center; text-decoration: none; box-shadow: 0 2px 8px rgba(50, 100, 126, .08); }
+    .level-nav a:hover, .level-nav a:focus-visible { border-color: #269fd0; color: #007eab; }
+    .grid-3 { width: min(100%, 660px); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    #basic-answer .grid-3 { width: min(100%, 610px); }
+    .grid-solo { width: min(100%, 190px); grid-template-columns: 1fr; }
+    .grid-4 { width: min(100%, 880px); grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-5 { width: min(100%, 1100px); grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .route-cards { width: min(100%, 1100px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 10px 0 0; }
+    .route-cards.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    #entry .grid-3 { width: min(100%, 580px); }
+    .route-card { padding: 9px 14px; border: 1px solid #d5e8f0; border-radius: 12px; background: #fff; font-size: 12px; color: #526574; }
+    .route-card strong { display: block; color: #1f4559; margin-bottom: 3px; font-size: 14px; }
+    .route-card.current { border-color: #4aafd5; box-shadow: inset 0 0 0 1px #4aafd5; }
+    .phase { display: inline-block; margin-left: 8px; padding: 3px 8px; border-radius: 6px; background: #dff1fa; color: #007eab; font-size: 12px; vertical-align: 2px; }
+    .shot.shared::after { content: "共用頁面"; position: absolute; right: 6px; bottom: 6px; padding: 3px 6px; border-radius: 5px; background: rgba(255,255,255,.92); color: #366176; font-size: 10px; }
+    .stage-note { width: min(100%, 1100px); margin-top: 10px; padding: 10px 14px; border: 1px solid #d5e8f0; border-radius: 10px; color: #526574; background: #fff; font-size: 12px; }
+    .shot.mock { container-type: inline-size; overflow: hidden; background: #edf7ff; }
+    .mock-phone { position: absolute; inset: 0; display: flex; flex-direction: column; background: #edf7ff; color: #172b3a; }
+    .mock-top { position: relative; flex: 0 0 8%; display: grid; place-items: center; font-size: 4.4cqw; font-weight: 650; }
+    .mock-top::before { content: '‹'; position: absolute; left: 7%; top: 10%; font-size: 8cqw; font-weight: 400; }
+    .mock-progress { display: flex; align-items: center; justify-content: space-between; flex: 0 0 5.5%; margin: 0 5%; padding: 0 2%; border-radius: 7cqw; background: #d8effa; color: #7794aa; font-size: 3.1cqw; }
+    .mock-progress span { display: grid; place-items: center; width: 7.5cqw; height: 7.5cqw; border: 1px solid #a8d7eb; border-radius: 50%; background: white; }
+    .mock-progress span:first-child { border-color: #25a5df; color: #168dca; }
+    .mock-progress b { color: #29a3de; font-size: 5cqw; }
+    .mock-stage { flex: 0 0 4%; margin: 1% 6% 0; text-align: right; color: #526574; font-size: 3cqw; }
+    .mock-card { display: flex; flex-direction: column; flex: 1; min-height: 0; margin: 3% 5% 0; padding: 6%; border: 1px solid #bce4f7; border-radius: 4cqw; background: white; }
+    .mock-card.center { justify-content: center; align-items: center; text-align: center; }
+    .mock-card.short { flex: 0 0 35%; }
+    .mock-card strong { font-size: 4.3cqw; line-height: 1.4; }
+    .mock-card p { margin: 0 0 5%; font-size: 4cqw; line-height: 1.65; }
+    .mock-card.center p { margin: 0; }
+    .mock-dock { flex: 0 0 11%; display: flex; align-items: center; justify-content: center; gap: 3%; padding: 4% 5%; border-top: 1px solid #dceaf2; }
+    .mock-action { display: grid; place-items: center; min-height: 11cqw; width: 100%; border-radius: 99px; background: #25a3de; color: white; font-size: 4cqw; font-weight: 650; }
+    .mock-action.green { background: #28c532; }
+    .mock-action.light { background: white; border: 1px solid #8bd3ef; color: #168ec7; }
+    .mock-note { margin: 4% 6% 0; padding: 3% 4%; border: 1px solid #c7efca; border-radius: 2cqw; background: #f0fff2; color: #328348; font-size: 3cqw; }
+    .mock-textarea { flex: 1; min-height: 0; margin-top: 4%; padding: 5%; border: 1px solid #86cdf0; border-radius: 3cqw; background: #f8fcff; font-size: 3.8cqw; line-height: 1.9; white-space: pre-line; }
+    .mock-helper { margin-top: 4%; color: #526574; font-size: 3.2cqw; line-height: 1.5; }
+    .mock-mini-action { align-self: flex-end; margin-top: 3%; padding: 2% 5%; border: 1px solid #8bd3ef; border-radius: 99px; color: #168ec7; font-size: 3.2cqw; }
+    .mock-timer { display: grid; place-items: center; align-content: center; width: 35cqw; height: 35cqw; margin: auto; border: 3cqw solid #26a7e6; border-radius: 50%; color: #219bd9; }
+    .mock-timer strong { font-size: 8cqw; line-height: 1; }
+    .mock-timer small { margin-top: 2%; font-size: 3cqw; }
+    .mock-audio { margin: 5% 0; padding: 4%; border-radius: 99px; background: #eef1f3; color: #172b3a; font-size: 3.4cqw; }
+    .mock-reading { flex: 1; min-height: 0; margin: 2% 5% 0; padding: 6%; border: 1px solid #bce4f7; border-radius: 4cqw; background: white; font-size: 4.1cqw; line-height: 2.2; }
+    .mock-reading ruby { ruby-position: over; }
+    .mock-reading rt { color: #7091aa; font-size: 2.6cqw; }
+    .mock-reader-head { display: flex; justify-content: space-between; align-items: center; margin: 2% 6%; font-size: 4cqw; font-weight: 650; }
+    .mock-reader-head span { padding: 2% 4%; border: 1px solid #ffb5ae; border-radius: 99px; color: #f35b50; font-weight: 500; }
+    .mock-level-card { display: flex; align-items: center; justify-content: space-between; height: 20%; margin: 4% 5% 0; padding: 6%; border-radius: 4cqw; color: white; font-size: 4.3cqw; font-weight: 650; }
+    .mock-level-card:nth-of-type(2) { background: linear-gradient(120deg,#4bc4ef,#38bdf0); }
+    .mock-level-card:nth-of-type(3) { background: linear-gradient(120deg,#7ca6fa,#688df3); }
+    .mock-level-card:nth-of-type(4) { background: linear-gradient(120deg,#8574f6,#9a7df5); }
+    .mock-level-card span { min-width: 0; }
+    .mock-level-card strong { font-size: 4.7cqw; }
+    .mock-level-card small { display: block; margin-top: 9%; font-size: 3.5cqw; font-weight: 400; }
+    .mock-level-card img { width: 20cqw; height: 20cqw; flex-shrink: 0; }
+    @media (max-width: 1100px) and (orientation: landscape) {
+      .grid, .grid-3, .grid-4, .grid-5 { width: min(calc(100svh - 170px), calc(100vw - 48px)); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .grid-solo { width: min(100%, 190px); grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px), (orientation: portrait) {
+      html { scroll-snap-type: none; }
+      .board { min-height: auto; padding: 18px 14px 26px; }
+      .grid, .grid-3, .grid-4, .grid-5 { width: min(100%, 660px); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px auto; }
+      .grid-solo { width: min(100%, 190px); grid-template-columns: 1fr; }
+      .route-cards, .route-cards.four { grid-template-columns: 1fr; }
+      .board-head { min-height: auto; }
+      .board-head h1, .board-head h2 { font-size: 17px; }
+    }
+    @media (max-width: 420px) {
+      .grid, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; width: min(100%, 345px); }
+      .grid-solo { width: min(100%, 190px); }
+    }
+  </style>
+</head>
+<body>
+<nav class="level-nav" aria-label="按模式查看頁面"><a href="#basic-answer">初級</a><a href="#intermediate-answer">中級</a><a href="#advanced-answer">高級·直接</a><a href="#advanced-polish-answer">高級·AI 潤色</a></nav>
+<main>
+<section class="board" id="entry" aria-labelledby="entry-title"><div class="board-head"><div><h1 id="entry-title">共用入口 · 四種模式 <span class="phase">選擇流程</span></h1><p>首頁 → 選擇難度 → 選擇題目</p></div><span class="board-index">第 1 / 9 屏 · 3 個畫面</span></div><div class="route-cards four" aria-label="四種模式流程"><div class="route-card"><strong>初級 · 改對用詞</strong>分步作答 → 改對用詞（核對文字稿） → 拼音與朗讀 → 評分報告</div><div class="route-card"><strong>中級 · AI 潤色</strong>分步作答 → AI 潤色（核對文字稿） → 拼音與朗讀 → 評分報告</div><div class="route-card"><strong>高級 · 直接短講</strong>題目語音 → 準備演講 → 倒計時 → 錄音 → 評分報告</div><div class="route-card"><strong>高級 · AI 潤色後朗讀</strong>題目語音 → 準備演講 → 倒計時 → 首次錄音 → AI 潤色（核對文字稿） → 拼音示範 → 再次朗讀 → 評分報告</div></div><div class="grid grid-3" role="group" aria-label="共用入口 · 四種模式選擇流程頁面"><div class="shot shared" data-label="首頁" style="--image:url('./actual-pages/01-home.jpg')" role="img" aria-label="首頁頁面"></div><div class="shot mock" data-label="選擇難度（三個級別）" role="img" aria-label="選擇難度（三個級別）靜態頁面"><div class="mock-phone"><div class="mock-top">個人短講</div><div class="mock-level-card"><span><strong>初級　P1-P3</strong><small>固定表達框架，訓練重點句式</small></span><img src="../home/level-icon-basic.svg" alt=""></div><div class="mock-level-card"><span><strong>中級　P4-P6</strong><small>形成邏輯架構，豐富演講細節</small></span><img src="../home/level-icon-intermediate.svg" alt=""></div><div class="mock-level-card"><span><strong>高級　S1-S3</strong><small>嚴格演講標準，專業修改建議</small></span><img src="../home/level-icon-advanced.svg" alt=""></div></div></div><div class="shot shared" data-label="選擇題目" style="--image:url('./actual-pages/03-topics.jpg')" role="img" aria-label="選擇題目頁面"></div></div></section>
+<section class="board" id="basic-answer" aria-labelledby="basic-answer-title"><div class="board-head"><div><h2 id="basic-answer-title">初級 · 改對用詞 <span class="phase">作答與改詞</span></h2><p>分步作答 → 作答錄音中 → 改對用詞（核對文字稿）</p></div><span class="board-index">第 2 / 9 屏 · 3 個畫面</span></div><div class="grid grid-3" role="group" aria-label="初級 · 改對用詞作答與改詞頁面"><div class="shot mock" data-label="分步作答" role="img" aria-label="分步作答靜態頁面"><div class="mock-phone"><div class="mock-top">我的課間活動</div><div class="mock-progress"><span>01</span><b>››</b><span>02</span><b>››</b><span>03</span></div><div class="mock-stage">第一次作答</div><div class="mock-card center"><p>下課後，你和同學一起做甚麼？</p></div><div class="mock-dock"><div class="mock-action ">♩ 開始作答</div></div></div></div><div class="shot mock" data-label="作答錄音中" role="img" aria-label="作答錄音中靜態頁面"><div class="mock-phone"><div class="mock-top">我的課間活動</div><div class="mock-progress"><span>01</span><b>››</b><span>02</span><b>››</b><span>03</span></div><div class="mock-stage">第一次作答</div><div class="mock-card center"><p>下課後，你和同學一起做甚麼？</p></div><div class="mock-note">正在聆聽，請用普通話作答…</div><div class="mock-dock"><div class="mock-action green">■ 結束作答</div></div></div></div><div class="shot mock" data-label="改對用詞（核對文字稿）" role="img" aria-label="改對用詞（核對文字稿）靜態頁面"><div class="mock-phone"><div class="mock-top">我的課間活動</div><div class="mock-card"><strong>編輯並確認你的短講</strong><div class="mock-textarea">下課鈴一響，我和同學就到操場跳繩。
+
+有一次我跳錯了，大家笑着鼓勵我，我們又重新開始。
+
+我喜歡課間，因為可以運動，也能和同學一起玩。</div></div><div class="mock-dock"><div class="mock-action">確認講稿，去練習</div></div></div></div></div></section>
+<section class="board" id="basic-result" aria-labelledby="basic-result-title"><div class="board-head"><div><h2 id="basic-result-title">初級 · 改對用詞 <span class="phase">錄音與結果</span></h2><p>拼音與示範 → 學生朗讀 → 提交評分 → 評分報告</p></div><span class="board-index">第 3 / 9 屏 · 3 個畫面</span></div><div class="grid grid-3" role="group" aria-label="初級 · 改對用詞錄音與結果頁面"><div class="shot shared" data-label="拼音與朗讀示範" style="--image:url('./actual-pages/08-prep-pinyin.jpg')" role="img" aria-label="拼音與朗讀示範頁面"></div><div class="shot shared" data-label="學生朗讀錄音中" style="--image:url('./actual-pages/11-recording.jpg')" role="img" aria-label="學生朗讀錄音中頁面"></div><div class="shot shared" data-label="評分報告" style="--image:url('./actual-pages/14-report.jpg')" role="img" aria-label="評分報告頁面"></div></div></section>
+<section class="board" id="intermediate-answer" aria-labelledby="intermediate-answer-title"><div class="board-head"><div><h2 id="intermediate-answer-title">中級 · AI 潤色 <span class="phase">作答與 AI 潤色</span></h2><p>分步作答 → 作答錄音中 → AI 潤色（核對文字稿）</p></div><span class="board-index">第 4 / 9 屏 · 3 個畫面</span></div><div class="grid grid-3" role="group" aria-label="中級 · AI 潤色作答與 AI 潤色頁面"><div class="shot" data-label="分步作答" style="--image:url('./actual-pages/04-guided.jpg')" role="img" aria-label="分步作答頁面"></div><div class="shot" data-label="作答錄音中" style="--image:url('./actual-pages/05-guided-recording.jpg')" role="img" aria-label="作答錄音中頁面"></div><div class="shot" data-label="AI 潤色（核對文字稿）" style="--image:url('./actual-pages/06-manuscript.jpg')" role="img" aria-label="AI 潤色（核對文字稿）頁面"></div></div></section>
+<section class="board" id="intermediate-result" aria-labelledby="intermediate-result-title"><div class="board-head"><div><h2 id="intermediate-result-title">中級 · AI 潤色 <span class="phase">錄音與結果</span></h2><p>拼音與示範 → 學生朗讀 → 提交評分 → 評分報告</p></div><span class="board-index">第 5 / 9 屏 · 3 個畫面</span></div><div class="grid grid-3" role="group" aria-label="中級 · AI 潤色錄音與結果頁面"><div class="shot shared" data-label="拼音與朗讀示範" style="--image:url('./actual-pages/08-prep-pinyin.jpg')" role="img" aria-label="拼音與朗讀示範頁面"></div><div class="shot shared" data-label="學生朗讀錄音中" style="--image:url('./actual-pages/11-recording.jpg')" role="img" aria-label="學生朗讀錄音中頁面"></div><div class="shot shared" data-label="評分報告" style="--image:url('./actual-pages/14-report.jpg')" role="img" aria-label="評分報告頁面"></div></div></section>
+<section class="board" id="advanced-answer" aria-labelledby="advanced-answer-title"><div class="board-head"><div><h2 id="advanced-answer-title">高級 · 直接短講 <span class="phase">作答</span></h2><p>題目語音播放 → 準備演講 → 演講倒計時 → 演講錄音中</p></div><span class="board-index">第 6 / 9 屏 · 4 個畫面</span></div><div class="grid grid-4" role="group" aria-label="高級 · 直接短講作答頁面"><div class="shot" data-label="題目語音播放" style="--image:url('../advanced-direct/01-topic-audio.png')" role="img" aria-label="題目語音播放頁面"></div><div class="shot" data-label="準備演講" style="--image:url('../advanced-direct/02-ready.png')" role="img" aria-label="準備演講頁面"></div><div class="shot" data-label="演講倒計時" style="--image:url('../advanced-direct/03-timer.png')" role="img" aria-label="演講倒計時頁面"></div><div class="shot" data-label="演講錄音中" style="--image:url('../advanced-direct/04-recording.png')" role="img" aria-label="演講錄音中頁面"></div></div></section>
+<section class="board" id="advanced-result" aria-labelledby="advanced-result-title"><div class="board-head"><div><h2 id="advanced-result-title">高級 · 直接短講 <span class="phase">錄音與結果</span></h2><p>結束錄音 → 提交評分 → 評分報告 → 歷史記錄</p></div><span class="board-index">第 7 / 9 屏 · 3 個畫面</span></div><div class="grid grid-3" role="group" aria-label="高級 · 直接短講錄音與結果頁面"><div class="shot mock" data-label="正在提交評分" role="img" aria-label="正在提交評分頁面"><div class="mock-phone"><div class="mock-top">個人短講</div><div class="mock-card center"><strong>正在提交評分</strong><p>錄音已提交，正在生成報告，請稍候…</p></div></div></div><div class="shot shared" data-label="評分報告" style="--image:url('./actual-pages/14-report.jpg')" role="img" aria-label="評分報告頁面"></div><div class="shot shared" data-label="歷史記錄" style="--image:url('./actual-pages/13-history.jpg')" role="img" aria-label="歷史記錄頁面"></div></div></section>
+<section class="board" id="advanced-polish-answer" aria-labelledby="advanced-polish-answer-title"><div class="board-head"><div><h2 id="advanced-polish-answer-title">高級 · AI 潤色後朗讀 <span class="phase">首次作答</span></h2><p>題目語音播放 → 準備演講 → 演講倒計時 → 首次錄音</p></div><span class="board-index">第 8 / 9 屏 · 4 個畫面</span></div><div class="grid grid-4" role="group" aria-label="高級 · AI 潤色後朗讀首次作答頁面"><div class="shot" data-label="題目語音播放" style="--image:url('../advanced-direct/01-topic-audio.png')" role="img" aria-label="題目語音播放頁面"></div><div class="shot" data-label="準備演講" style="--image:url('../advanced-direct/02-ready.png')" role="img" aria-label="準備演講頁面"></div><div class="shot" data-label="演講倒計時" style="--image:url('../advanced-direct/03-timer.png')" role="img" aria-label="演講倒計時頁面"></div><div class="shot" data-label="演講錄音中" style="--image:url('../advanced-direct/04-recording.png')" role="img" aria-label="演講錄音中頁面"></div></div></section>
+<section class="board" id="advanced-polish-result" aria-labelledby="advanced-polish-result-title"><div class="board-head"><div><h2 id="advanced-polish-result-title">高級 · AI 潤色後朗讀 <span class="phase">AI 潤色、錄音與結果</span></h2><p>AI 潤色（核對文字稿） → 拼音示範 → 再次朗讀 → 提交評分 → 評分報告</p></div><span class="board-index">第 9 / 9 屏 · 4 個畫面</span></div><div class="grid grid-4" role="group" aria-label="高級 · AI 潤色後朗讀AI 潤色、錄音與結果頁面"><div class="shot" data-label="AI 潤色（核對文字稿）" style="--image:url('./actual-pages/06-manuscript.jpg')" role="img" aria-label="AI 潤色（核對文字稿）頁面"></div><div class="shot shared" data-label="拼音與朗讀示範" style="--image:url('./actual-pages/08-prep-pinyin.jpg')" role="img" aria-label="拼音與朗讀示範頁面"></div><div class="shot shared" data-label="學生朗讀錄音中" style="--image:url('./actual-pages/11-recording.jpg')" role="img" aria-label="學生朗讀錄音中頁面"></div><div class="shot shared" data-label="評分報告" style="--image:url('./actual-pages/14-report.jpg')" role="img" aria-label="評分報告頁面"></div></div></section>
+</main>
+</body>
+</html>

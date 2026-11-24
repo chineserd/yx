@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">学生作文报告 Tab 展示建议</title>
+  <desc id="desc">一级 Tab 为写作指导、作文批改、写后指导待上线。作文批改选中时，内部展示评分与评语、批改信息二级 Tab。</desc>
+  <rect width="1200" height="430" fill="#f3f6fb"/>
+  <rect x="35" y="28" width="1130" height="374" rx="14" fill="#fff" stroke="#dfe6ef"/>
+  <text x="72" y="77" fill="#26364c" font-size="22" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">學習作文報告</text>
+  <text x="72" y="104" fill="#7b8798" font-size="13" font-family="PingFang SC, Microsoft YaHei, sans-serif">命題作文　《對當代中國發展有貢獻或影響力的人物》</text>
+  <line x1="35" y1="127" x2="1165" y2="127" stroke="#e4eaf2"/>
+  <text x="78" y="170" fill="#64748b" font-size="16" font-family="PingFang SC, Microsoft YaHei, sans-serif">寫作指導</text>
+  <text x="235" y="170" fill="#2365f6" font-size="16" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">作文批改</text>
+  <text x="394" y="170" fill="#a8b1be" font-size="16" font-family="PingFang SC, Microsoft YaHei, sans-serif">寫後指導</text>
+  <rect x="478" y="149" width="58" height="27" rx="13" fill="#f1f3f6"/>
+  <text x="490" y="168" fill="#9aa5b5" font-size="12" font-family="PingFang SC, Microsoft YaHei, sans-serif">待上線</text>
+  <line x1="35" y1="188" x2="1165" y2="188" stroke="#e4eaf2"/>
+  <rect x="215" y="185" width="102" height="3" fill="#2365f6"/>
+  <rect x="58" y="210" width="1084" height="164" rx="10" fill="#f8fafc" stroke="#e5ebf3"/>
+  <text x="83" y="250" fill="#26364c" font-size="15" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">評分與評語</text>
+  <text x="230" y="250" fill="#718096" font-size="15" font-family="PingFang SC, Microsoft YaHei, sans-serif">批改信息</text>
+  <line x1="83" y1="269" x2="1117" y2="269" stroke="#dfe6ef"/>
+  <rect x="83" y="266" width="96" height="3" fill="#2365f6"/>
+  <text x="84" y="308" fill="#26364c" font-size="15" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">總評</text>
+  <text x="84" y="340" fill="#6b7a8e" font-size="14" font-family="PingFang SC, Microsoft YaHei, sans-serif">此處展示總分、各維度評語與改善建議；切換「批改信息」查看原文批註。</text>
+</svg>

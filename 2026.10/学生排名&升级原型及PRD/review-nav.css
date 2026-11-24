@@ -1,0 +1,27 @@
+/* Preview navigation; business layouts and rules remain owned by styles.css. */
+body { padding-top:64px; }
+.review-top { position:fixed; inset:0 0 auto; height:64px; z-index:100; box-sizing:border-box; display:flex; align-items:center; padding:0 24px; background:#fff; border-bottom:1px solid #e2e8f0; overflow-x:auto; white-space:nowrap; font-family:system-ui,"PingFang TC",sans-serif; }
+.review-top strong { flex-shrink:0; font-size:14px;line-height:24px;font-weight:600;color:#52647c;margin-right:12px; }
+.review-top a { display:flex; align-items:center; height:64px;box-sizing:border-box;flex-shrink:0;padding:0 18px;color:#758298;font-size:14px;line-height:24px;font-weight:500;text-decoration:none;border-bottom:2px solid transparent; }
+.review-top a[aria-current] {color:#3563ff;background:#f5f8ff;border-bottom-color:#3563ff;font-weight:600;}
+.review-top a:hover {background:#f5f8ff;}
+.review-top a.review-history {margin-left:auto;padding-left:24px;color:#65758b;text-decoration:underline;text-underline-offset:3px;}
+.review-top :focus-visible,.review-pages button:focus-visible {outline:2px solid #3563ff;outline-offset:-3px;}
+.review-pages {position:fixed;top:88px;left:12px;bottom:12px;width:196px;box-sizing:border-box;padding:10px;overflow-y:auto;border:1px solid #dce8f0;border-radius:14px;background:#fff;box-shadow:0 4px 16px #1736570a;z-index:90;font-family:system-ui,"PingFang TC",sans-serif;}
+.review-group + .review-group {border-top:1px solid #dce8f0;margin-top:12px;padding-top:12px;}
+.review-group h2 {font-size:14px;line-height:24px;min-height:44px;margin:0;display:flex;align-items:center;padding:0 8px;color:#526574;font-weight:600;white-space:nowrap;}
+.review-group:has([aria-current]) h2 {color:#2855ef;background:#eff5ff;border-radius:8px;}
+.review-group>div {border-left:1px solid #dce8f0;margin:4px 0 0 8px;padding-left:6px;}
+.review-pages button {display:flex;align-items:center;width:100%;min-height:44px;gap:8px;padding:6px 8px;border:0;border-radius:6px;background:transparent;color:#526574;font-size:12px;line-height:18px;text-align:left;white-space:nowrap;cursor:pointer;}
+.review-pages button span {font-size:10px;color:#64748b;}
+.review-pages button:hover {background:#eff5ff;}
+.review-pages button[aria-current] {color:#006b98;background:#dff2ff;font-weight:600;}
+.review-pages .review-home {font-size:14px;}
+#mode-app,#mode-web {margin-left:220px;overflow:auto;max-width:calc(100vw - 220px);}
+.app-prototype-page .phone-stage {min-width:434px;min-height:calc(100vh - 64px);box-sizing:border-box;}
+.web-shell {height:calc(100vh - 64px);min-width:1100px;}
+.modal-layer {z-index:1100;}.date-picker-popover {z-index:1200;}
+.requirement-badge {display:inline-block;margin-left:8px;padding:0 5px;border:1px solid #e53935;border-radius:4px;background:#e53935;color:#fff;font-size:11px;font-weight:600;line-height:16px;white-space:nowrap;vertical-align:middle;}
+.review-document .toc {top:88px;max-height:calc(100vh - 112px);overflow:auto;}
+.review-document [id] {scroll-margin-top:88px;}
+@media(max-width:700px){.review-pages{left:6px;width:182px;padding:7px;}#mode-app,#mode-web{margin-left:200px;max-width:calc(100vw - 200px);}.review-top{padding:0 12px;}}

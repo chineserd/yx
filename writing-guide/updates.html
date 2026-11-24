@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作文寫前指導｜更新記錄</title>
+  <link rel="stylesheet" href="styles.css?v=872febc01f">
+  <link rel="stylesheet" href="flow.css?v=20261117-genre">
+  <style>
+    .requirement-identity{position:relative;display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;flex-shrink:0;margin:0 12px 0 0;padding:0 0 0 11px;color:#334155;font:700 12px/18px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;white-space:nowrap}
+    .requirement-identity::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:28px;border-radius:2px;background:#5478e8}
+    .requirement-label{color:#8793a5;font:400 10px/14px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;letter-spacing:1px}
+    .update-log-view .doc-index{display:flex;flex-wrap:wrap;gap:4px 8px;margin-bottom:16px}
+    .update-log-view .flow-section h2{margin-bottom:8px}
+    .update-log-view .flow-section li{line-height:1.6}
+  </style>
+</head>
+<body>
+  <nav class="preview-nav" aria-label="需求預覽導航">
+    <span class="requirement-identity"><span class="requirement-label">需求名稱</span><span class="requirement-name">作文寫前指導</span></span>
+    <a href="中文作文.html#/backend/publish-essay">後台</a>
+    <a href="student-preview.html#/student-flow">學生端流程</a>
+    <a href="student-preview.html#/prd">PRD</a>
+    <a href="simple-prd.html">功能清單</a>
+    <a href="student-preview.html#/prompt-guide">提示詞</a>
+    <a href="updates.html" aria-current="page">更新記錄</a>
+    <a href="student-preview.html#/student-empty-tablet" data-view-link="student-tablet">學生-啟達平板端</a>
+    <a class="history-link" href="/">歷史需求彙總頁</a>
+  </nav>
+  <main class="document-view update-log-view">
+    <header class="doc-heading"><h1>更新記錄</h1><p>按日期整理作文寫前指導原型的修改；僅列有變更的日期。</p></header>
+    <nav class="doc-index" aria-label="更新日期">
+      <a href="#d2026-11-18">11月18日</a><a href="#d2026-11-17">11月17日</a><a href="#d2026-11-16">11月16日</a>
+    </nav>
+    <section class="flow-section" id="d2026-11-18"><h2><time datetime="2026-11-18">2026年11月18日</time></h2><ul>
+      <li>提示詞第 1 次調用將論說文立場固定為「同意／反對／視乎情況而論」，模型只為每項生成一句對應題目的說明。</li>
+      <li>PRD 增加作文成績公布後的寫前指導規則：未完成者進入學生端「已過期」，仍可提交；提交成功後進入「已完成」。</li>
+      <li>提示詞頁保留全部規則文字；第 1 次調用「輸出 3、立場選項」整條標紅，其餘原紅藍標記取消。</li>
+    </ul></section>
+    <section class="flow-section" id="d2026-11-17"><h2><time datetime="2026-11-17">2026年11月17日</time></h2><ul>
+      <li>文體選項調整為「記敍抒情」「論說文」，同步學生選項、提示詞、PRD、功能清單和報告展示；只替換名稱的地方僅將名稱標紅。</li>
+      <li>立場選項限定在題目要求表態且使用「論說文」時展示；提示詞和輸出均要求每項附一句簡短說明，改寫的規則整段標紅。</li>
+      <li>頂部新增「更新記錄」，按日期展示修改內容。</li>
+    </ul></section>
+    <section class="flow-section" id="d2026-11-16"><h2><time datetime="2026-11-16">2026年11月16日</time></h2><ul>
+      <li>成績概覽更新指標卡、AI智能總結、雷達圖和維度詳情；與學生答題情況改為上下排列。</li>
+      <li>寫前指導完成卡和學生答題欄按任務開關顯示；學生表格以提交日期、作文批改狀態取代用時，PRD 補入對應規則和截圖。</li>
+      <li>頂部恢復「提示詞」入口，展示模型調用、輸入輸出、藍圖匯總及暫緩的看圖寫作，支援逐節複製。</li>
+      <li>學習作文報告標題旁加入返回按鈕，返回原任務的學生答題情況。</li>
+    </ul></section>
+  </main>
+</body>
+</html>

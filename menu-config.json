@@ -1,0 +1,529 @@
+{
+  "meta": {
+    "title": "产品原型总览",
+    "subtitle": "Product Prototype Overview · 产品经理维护",
+    "updatedAt": "2026-11-24",
+    "owner": "PM",
+    "version": "1.0"
+  },
+  "stats": {
+    "inProgress": 4,
+    "review": 1,
+    "delivered": 12,
+    "archived": 8
+  },
+  "tags": [
+    {
+      "id": "B端",
+      "color": "blue"
+    },
+    {
+      "id": "C端",
+      "color": "pink"
+    },
+    {
+      "id": "AI整理",
+      "color": "purple"
+    },
+    {
+      "id": "学校",
+      "color": "cyan"
+    },
+    {
+      "id": "会员",
+      "color": "amber"
+    },
+    {
+      "id": "续费",
+      "color": "amber"
+    },
+    {
+      "id": "财务",
+      "color": "orange"
+    },
+    {
+      "id": "订单",
+      "color": "orange"
+    },
+    {
+      "id": "DSE",
+      "color": "indigo"
+    },
+    {
+      "id": "拖拽",
+      "color": "purple"
+    }
+  ],
+  "groups": [
+    {
+      "id": "ready-development",
+      "title": "01 可开发",
+      "subtitle": "",
+      "color": "blue",
+      "items": [
+        {
+          "id": "LOCAL-a54f2e59a8da",
+          "status": "in-progress",
+          "title": "作文报告-下载报告（有分数版）",
+          "folderName": "作文报告-下载报告（有分数版）",
+          "localSource": "01 可开发/中文科/作文报告-下载报告（有分数版）",
+          "previewUrl": "./essay-print/",
+          "businessCategory": "中文科",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-10-27"
+        },
+        {
+          "id": "LOCAL-f359aaf9f00d",
+          "status": "in-progress",
+          "title": "写作要求与作文报告优化",
+          "folderName": "写作要求与作文报告优化",
+          "localSource": "01 可开发/中文科/写作要求与作文报告优化",
+          "previewUrl": "./writing-report/",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-11-03",
+          "businessCategory": "中文科"
+        },
+        {
+          "id": "LOCAL-f22d65f34152",
+          "status": "in-progress",
+          "title": "个人短讲-C 端(中文路 app)",
+          "folderName": "个人短讲-C 端(中文路 app)",
+          "localSource": "01 可开发/中文路/个人短讲-C 端(中文路 app)",
+          "previewUrl": "./short-speech-c/",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-11-23",
+          "businessCategory": "中文路"
+        },
+        {
+          "id": "LOCAL-e99ab3dfd7bb",
+          "status": "in-progress",
+          "title": "考点管理(后台中文路+后台普通话科+app)",
+          "folderName": "考点管理(后台中文路+后台普通话科+app)",
+          "localSource": "01 可开发/中文路/考点管理(后台中文路+后台普通话科+app)",
+          "previewUrl": "./2026.09/%E8%80%83%E7%82%B9%E7%AE%A1%E7%90%86/",
+          "businessCategory": "中文路",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-09-29"
+        },
+        {
+          "id": "LOCAL-90274600248b",
+          "status": "in-progress",
+          "title": "课后学习报告（正式报告）",
+          "folderName": "课后学习报告（正式报告）",
+          "localSource": "01 可开发/中文路/课后学习报告（正式报告）",
+          "previewUrl": "./learning-report/",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-09-16",
+          "businessCategory": "中文路"
+        }
+      ],
+      "expanded": true,
+      "showEmpty": true
+    },
+    {
+      "id": "in-review",
+      "title": "02 评审中",
+      "subtitle": "",
+      "expanded": true,
+      "color": "green",
+      "showEmpty": true,
+      "items": []
+    },
+    {
+      "id": "pending-review",
+      "title": "03待评审",
+      "subtitle": "",
+      "expanded": true,
+      "color": "green",
+      "showEmpty": true,
+      "items": [
+        {
+          "id": "LOCAL-8a99c8a5b6eb",
+          "status": "in-progress",
+          "title": "作文-写后指导",
+          "folderName": "作文-写后指导",
+          "localSource": "03待评审/中文科/作文-写后指导",
+          "previewUrl": "./essay-after/",
+          "businessCategory": "中文科",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-09-03"
+        },
+        {
+          "id": "REQ-CHINESE-REPORT",
+          "title": "班级作文报告（班级报告+ 课堂点评）",
+          "folderName": "班级作文报告（班级报告+ 课堂点评）",
+          "status": "in-progress",
+          "previewUrl": "./class-report/",
+          "updatedAt": "2026-11-23",
+          "requirementBindings": [
+            {
+              "names": [
+                "班级作文点评",
+                "班級作文點評"
+              ],
+              "backend": "#/tasks"
+            }
+          ],
+          "localSource": "03待评审/中文科/班级作文报告（班级报告+ 课堂点评）",
+          "createdAt": "2026-10-08",
+          "businessCategory": "中文科"
+        },
+        {
+          "id": "LOCAL-a75acdc450c6",
+          "status": "in-progress",
+          "title": "（个人）作文综合报告",
+          "folderName": "（个人）作文综合报告",
+          "localSource": "03待评审/中文科/（个人）作文综合报告",
+          "previewUrl": "./writing-summary/",
+          "businessCategory": "中文科",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-10-23"
+        },
+        {
+          "id": "LOCAL-ffcbc3195da4",
+          "status": "in-progress",
+          "title": "分享赠课-人工审核与添加赠课",
+          "folderName": "分享赠课-人工审核与添加赠课",
+          "localSource": "03待评审/中文路/分享赠课-人工审核与添加赠课",
+          "previewUrl": "./gift-audit/",
+          "businessCategory": "中文路",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-11-23"
+        },
+        {
+          "id": "LOCAL-e7d1efe5f6a0",
+          "status": "in-progress",
+          "title": "分享邀请与渠道统计",
+          "folderName": "分享邀请与渠道统计",
+          "localSource": "03待评审/中文路/分享邀请与渠道统计",
+          "previewUrl": "./invite-channels/",
+          "businessCategory": "中文路",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-10-29"
+        },
+        {
+          "id": "LOCAL-bae5c9f41141",
+          "status": "in-progress",
+          "title": "满意度调查",
+          "folderName": "满意度调查",
+          "localSource": "03待评审/中文路/满意度调查",
+          "previewUrl": "./satisfaction/",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-10-27",
+          "businessCategory": "中文路"
+        },
+        {
+          "id": "LOCAL-watch-video-20261123",
+          "status": "in-progress",
+          "title": "观看视频",
+          "folderName": "观看视频",
+          "localSource": "03待评审/中文路/观看视频",
+          "previewUrl": "./watch-video/",
+          "businessCategory": "中文路",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-11-23"
+        },
+        {
+          "id": "LOCAL-7d2a9d5bfa58",
+          "status": "in-progress",
+          "title": "个人短讲-普通话科",
+          "folderName": "个人短讲-普通话科",
+          "localSource": "03待评审/普通话科/个人短讲-普通话科",
+          "previewUrl": "./short-talk/",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-10-13",
+          "businessCategory": "普通话科"
+        },
+        {
+          "id": "LOCAL-6cf4d2104cf6",
+          "status": "in-progress",
+          "title": "每月新增素材标识",
+          "folderName": "每月新增素材标识",
+          "localSource": "03待评审/普通话科/每月新增素材标识",
+          "previewUrl": "./new-material/",
+          "businessCategory": "普通话科",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-10-22"
+        },
+        {
+          "id": "REQ-LISTENING-PAPER-LIBRARY",
+          "title": "聆聽與拼音-試卷庫 區分 公共和校本庫",
+          "folderName": "聆聽與拼音-試卷庫 區分 公共和校本庫",
+          "createdAt": "2026-10-12",
+          "updatedAt": "2026-11-23",
+          "status": "review",
+          "previewUrl": "./2026.10/lingting-pinyin-shijuanku/",
+          "localSource": "03待评审/普通话科/聆聽與拼音-試卷庫 區分 公共和校本庫",
+          "businessCategory": "普通话科"
+        }
+      ]
+    },
+    {
+      "id": "iteration-history",
+      "title": "04 迭代记录",
+      "subtitle": "",
+      "color": "blue",
+      "items": [
+        {
+          "id": "REQ-001",
+          "title": "命题作文-批量导入",
+          "subtitle": "批量导入作文、核查文件与学生对应关系，查看需求及验收清单。",
+          "status": "launched",
+          "previewUrl": "./2026.09/mingti-zuowen-piliang-daoru/",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-09-21",
+          "folderName": "命题作文-批量导入",
+          "localSource": "04 迭代记录/2026.09/命题作文-批量导入",
+          "businessCategory": "中文科"
+        },
+        {
+          "id": "REQ-ESSAY-GRADE",
+          "title": "作文品第切换",
+          "subtitle": "成绩概览、评分切换、学生报告、品第统计与导出。",
+          "status": "in-progress",
+          "previewUrl": "./2026.10/grade/",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-10-10",
+          "folderName": "作文品第切换",
+          "requirementBindings": [
+            {
+              "names": [
+                "作文品第"
+              ],
+              "backend": "#overview",
+              "student": "#student"
+            }
+          ],
+          "localSource": "04 迭代记录/2026.10/作文品第切换",
+          "businessCategory": "中文科"
+        },
+        {
+          "id": "REQ-PUTONGHUA",
+          "title": "公务员普通话",
+          "subtitle": "普通话评测、学习系统方案及独立评测体验。",
+          "status": "in-progress",
+          "previewUrl": "./2026.10/gongwuyuan-putonghua/",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-10-08",
+          "folderName": "公务员普通话",
+          "localSource": "04 迭代记录/2026.10/公务员普通话"
+        },
+        {
+          "id": "LOCAL-c42c2e3063c9",
+          "status": "in-progress",
+          "title": "增加客户收据及协议",
+          "folderName": "增加客户收据及协议",
+          "localSource": "04 迭代记录/2026.10/增加客户收据及协议",
+          "previewUrl": "./receipts/",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-09-17"
+        },
+        {
+          "id": "LOCAL-129cfb0c3fc0",
+          "status": "in-progress",
+          "title": "学生排名&升级",
+          "folderName": "学生排名&升级",
+          "localSource": "04 迭代记录/2026.10/学生排名&升级",
+          "previewUrl": "./2026.10/xuesheng-paiming-yu-shengji/",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-09-17"
+        },
+        {
+          "id": "LOCAL-fc415689ec50",
+          "status": "in-progress",
+          "title": "作文写前指导",
+          "folderName": "作文写前指导",
+          "localSource": "04 迭代记录/2026.11/作文写前指导",
+          "previewUrl": "./writing-guide/",
+          "businessCategory": "中文科",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-09-03"
+        },
+        {
+          "id": "LOCAL-d87749ecfe28",
+          "status": "in-progress",
+          "title": "分享赠堂（后台优化）",
+          "folderName": "分享赠堂（后台优化）",
+          "localSource": "04 迭代记录/2026.11/分享赠堂（后台优化）",
+          "previewUrl": "./share-gift/",
+          "businessCategory": "中文路",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-09-16"
+        },
+        {
+          "id": "LOCAL-ca5155ae489e",
+          "status": "in-progress",
+          "title": "征文比赛-学校综合报告与学生报告",
+          "folderName": "征文比赛-学校综合报告与学生报告",
+          "localSource": "04 迭代记录/2026.11/征文比赛-学校综合报告与学生报告",
+          "previewUrl": "./competition-report/",
+          "businessCategory": "中文科",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-11-12"
+        },
+        {
+          "id": "LOCAL-5e9278511f0d",
+          "status": "in-progress",
+          "title": "新增作文题库",
+          "folderName": "新增作文题库",
+          "localSource": "04 迭代记录/2026.11/新增作文题库",
+          "previewUrl": "./2026.11/%E6%96%B0%E5%A2%9E%E4%BD%9C%E6%96%87%E9%A2%98%E5%BA%93/",
+          "businessCategory": "中文科",
+          "updatedAt": "2026-11-23",
+          "createdAt": "2026-11-03"
+        },
+        {
+          "id": "LOCAL-38a350fc461d",
+          "status": "in-progress",
+          "title": "星级评分方式（老师可选可配）",
+          "folderName": "星级评分方式（老师可选可配）",
+          "localSource": "04 迭代记录/2026.11/星级评分方式（老师可选可配）",
+          "previewUrl": "./2026.11/%E6%98%9F%E7%BA%A7%E8%AF%84%E5%88%86%E6%96%B9%E5%BC%8F%EF%BC%88%E8%80%81%E5%B8%88%E5%8F%AF%E9%80%89%E5%8F%AF%E9%85%8D%EF%BC%89/",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-11-03",
+          "businessCategory": "中文科"
+        },
+        {
+          "id": "LOCAL-aec45e3c8061",
+          "status": "in-progress",
+          "title": "普通話－繁體字版（已经实现，只是改 bug）",
+          "folderName": "普通話－繁體字版（已经实现，只是改 bug）",
+          "localSource": "04 迭代记录/2026.11/普通話－繁體字版（已经实现，只是改 bug）",
+          "previewUrl": "./mandarin-tc/",
+          "updatedAt": "2026-11-24",
+          "createdAt": "2026-11-23",
+          "businessCategory": "中文路"
+        }
+      ],
+      "expanded": false,
+      "showEmpty": true
+    },
+    {
+      "id": "pending-business-confirmation",
+      "title": "待业务方确认",
+      "subtitle": "",
+      "color": "green",
+      "expanded": true,
+      "showEmpty": false,
+      "items": [],
+      "hidden": true
+    },
+    {
+      "id": "hidden-history",
+      "title": "历史入口",
+      "expanded": false,
+      "items": [
+        {
+          "id": "REQ-KAODIAN-GL",
+          "title": "考点管理 · 中文路后台",
+          "subtitle": "在线试题管理 → 考点管理后台，含港澳题库+考点联动、需求标识、标签映射、停用恢复",
+          "version": "V0.3",
+          "status": "in-progress",
+          "tags": [
+            "B端",
+            "学校"
+          ],
+          "previewUrl": "/2026.09/考点管理/",
+          "extras": [
+            {
+              "label": "港澳题库+考点联动",
+              "url": "/2026.09/考点管理/#view-tiku"
+            },
+            {
+              "label": "考点管理后台",
+              "url": "/2026.09/考点管理/#view-kaodian"
+            }
+          ],
+          "branch": "feature/REQ-KAODIAN-GL",
+          "updatedAt": "2026-09-28",
+          "hidden": true
+        },
+        {
+          "id": "REQ-APP-KAODIAN-FILTER",
+          "title": "App-学生-考点筛选",
+          "subtitle": "拼音考点标签同步开放到学生端，支持学生自主筛选考点练习",
+          "version": "V0.1",
+          "status": "in-progress",
+          "tags": [
+            "C端",
+            "学校"
+          ],
+          "previewUrl": "/2026.09/考点管理/App-学生-考点筛选/",
+          "extras": [],
+          "branch": "feature/REQ-APP-KAODIAN-FILTER",
+          "updatedAt": "2026-09-28",
+          "hidden": true
+        },
+        {
+          "id": "REQ-VIP-001",
+          "title": "黄金会员续费",
+          "subtitle": "线下会员续费全流程，含财务审核 + 学员确认",
+          "version": "V0.1",
+          "status": "review",
+          "tags": [
+            "C端",
+            "会员",
+            "续费"
+          ],
+          "previewUrl": "#",
+          "extras": [],
+          "branch": "feature/REQ-VIP-001-v0.1",
+          "updatedAt": "2026-09-17",
+          "hidden": true
+        },
+        {
+          "id": "REQ-002",
+          "title": "AI 智能分类 · 拖拽分配",
+          "subtitle": "作文图片 AI 自动分类，老师拖拽分配到学生",
+          "version": "V0.1",
+          "status": "in-progress",
+          "tags": [
+            "B端",
+            "AI整理",
+            "拖拽"
+          ],
+          "previewUrl": "http://a.localhost:4173/mockup-ai-classify.html",
+          "extras": [],
+          "branch": "explore/REQ-AI-classify",
+          "updatedAt": "2026-09-24",
+          "hidden": true
+        },
+        {
+          "id": "REQ-003",
+          "title": "DSE 作文批改",
+          "subtitle": "香港 DSE 考试作文 AI 评分",
+          "version": "V0.0",
+          "status": "designing",
+          "tags": [
+            "B端",
+            "学校",
+            "DSE"
+          ],
+          "previewUrl": "#",
+          "extras": [],
+          "branch": "",
+          "updatedAt": "2026-09-10",
+          "hidden": true
+        },
+        {
+          "id": "REQ-XYZ-001",
+          "title": "订单全链路",
+          "subtitle": "线下订单 + 财务审核 + 学员确认",
+          "version": "V1.0",
+          "status": "delivered",
+          "tags": [
+            "B端",
+            "财务",
+            "订单"
+          ],
+          "previewUrl": "#",
+          "extras": [],
+          "branch": "main",
+          "deliveredAt": "2026-08-15",
+          "updatedAt": "2026-08-15",
+          "hidden": true
+        }
+      ]
+    }
+  ]
+}

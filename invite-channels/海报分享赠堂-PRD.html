@@ -1,0 +1,376 @@
+<!doctype html><html lang="zh-CN"><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>分享赠堂（优化＋邀请记录）</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}body{margin:0;color:#24354b;background:#f5f7fb;font:12px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}h1,h2,h3,p,code,pre,table,button,a{font-size:12px;line-height:1.6}a{color:#285bd6}a:focus-visible{outline:2px solid #3563ff;outline-offset:3px}.top{position:sticky;top:0;z-index:10;height:48px;background:white;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;padding:0 16px;gap:0;overflow-x:auto;white-space:nowrap}.project{flex-shrink:0;position:relative;padding-left:14px;margin-right:24px;color:#334155;cursor:default}.project:before{content:"";position:absolute;left:0;top:2px;height:28px;width:3px;background:#5478e8;border-radius:2px}.project small{display:block;color:#8793a5;font-size:10px;line-height:14px;letter-spacing:1px}.project b{line-height:18px}.top>a{padding:0 12px;height:48px;display:flex;align-items:center;color:#758298;text-decoration:none;font-weight:500}.top>a.current{background:#f5f8ff;color:#3563ff;border-bottom:2px solid #3563ff;font-weight:600}.top>a:hover{background:#f5f8ff}.layout{max-width:1480px;margin:auto;display:grid;grid-template-columns:210px minmax(0,1fr);gap:18px;padding:16px}.toc{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px}.toc a{display:block;color:#526574;text-decoration:none;padding:5px 6px}.toc a:hover{background:#eff5ff;color:#2855ef}.toc .level3{padding-left:16px}.document{background:white;padding:0 20px 24px;min-width:0;border:1px solid #e2e8f0;border-radius:8px}.doc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:16px;margin-bottom:12px}.doc-head h1,.doc-head p{margin:0}.doc-head .intro{color:#53677e}.meta{color:#63758a}h2{border-top:1px solid #e2e8f0;padding-top:14px;margin:18px 0 8px;color:#193a67}h3{margin:14px 0 6px;color:#234b76}p{margin:7px 0}ul,ol{padding-left:22px}li{margin:5px 0}.table-scroll{overflow:auto;max-width:100%;border:1px solid #dbe3ef;border-radius:5px;margin:9px 0}table{width:100%;border-collapse:collapse;min-width:540px}th,td{padding:9px 10px;border-bottom:1px solid #e5ebf3;text-align:left;vertical-align:top}th{background:#edf3fa;color:#284c78}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafcff}pre{padding:12px;background:#f3f6fa;overflow:auto;border-radius:5px}code{overflow-wrap:anywhere}.document a{overflow-wrap:anywhere}@media(max-width:760px){.layout{grid-template-columns:minmax(0,1fr);padding:10px;gap:10px}.toc{position:static;max-height:180px}.document{padding:0 12px 18px}.top{padding:0 10px}}@media print{.top,.toc{display:none}.layout{display:block;padding:0}.document{border:0}table{min-width:0}.table-scroll{overflow:visible}tr{break-inside:avoid}}</style><link rel="stylesheet" href="assets/review-nav.css"></head><body><nav class="top" aria-label="需求导航"><div class="project"><small>需求名稱</small><b>分享贈堂（優化＋邀請記錄）</b></div><a href="admin.html">後台</a><a href="index.html?screen=share">學生端</a><a class="current" aria-current="page" href="海报分享赠堂-PRD.html">PRD</a><a  href="接口说明.html">接口說明</a><a  href="业务流程.html">業務流程</a></nav><div class="layout"><aside class="toc" aria-label="文档目录"><a class="level2" href="#section-1">一、涉及端口 · 菜单 · 功能点</a><a class="level2" href="#section-2">二、业务规则</a><a class="level3" href="#section-3">2.1 月度分享资格</a><a class="level3" href="#section-4">2.2 分享赠堂的产品与订单规则</a><a class="level3" href="#section-5">2.3 邀请归因与福利边界</a><a class="level3" href="#section-6">2.4 版本兼容与配置生效</a><a class="level2" href="#section-7">三、需求内容</a><a class="level3" href="#section-8">3.1 后台数据统计</a><a class="level3" href="#section-9">3.2 分享海报展示</a><a class="level3" href="#section-10">3.3 海报赠堂配置</a><a class="level3" href="#section-11">3.4 海报图片优化</a><a class="level3" href="#section-12">3.5 路径、短链接与渠道统计</a><a class="level3" href="#section-13">3.6 海报配套文案</a><a class="level3" href="#section-14">3.7 邀请明细与福利赠送</a><a class="level2" href="#section-15">四、业务示例</a><a class="level2" href="#section-16">五、功能需求与验收</a><a class="level2" href="#section-17">六、待确认事项</a></aside><main class="document"><header class="doc-head"><h1>分享赠堂（优化＋邀请记录）</h1><p class="intro">用户选择海报和配套文案分享，通过专属短链接或二维码邀请好友咨询，并查看邀请明细。后台配置赠课数量、管理登记跟进，按日期和渠道查看分享及登记效果。</p><p class="meta">PRD · V2.2 · 更新日期 2026-10-30</p></header>
+<h2 id="section-1">一、涉及端口 · 菜单 · 功能点</h2>
+<ol>
+<li><strong>运营后台｜学员管理 → 分享赠课</strong>：赠课审核、赠课统计、邀请明细、邀请统计、登记列表、渠道统计。</li>
+<li><strong>运营后台｜分享赠课 → 赠课海报配置</strong>：维护图片、标题、分享文案、自定义赠课数量、显示状态及排序。</li>
+<li><strong>学生 App｜账号 → 分享赠课 → 我的邀请</strong>：左右滑动海报、复制含短链接的文案、分享或保存海报、查看个人邀请成果。</li>
+<li><strong>新用户 H5｜专属短链接／海报二维码 → 课程咨询</strong>：登记个人信息，成功后进入 WhatsApp 咨询。</li>
+<li><strong>关联模块｜订单与课时账户</strong>：承接既有分享赠堂；邀请福利的具体资格和发放规则由运营确认。</li>
+</ol>
+<h2 id="section-2">二、业务规则</h2>
+<h3 id="section-3">2.1 月度分享资格</h3>
+<ul>
+<li>用户成功调起社交平台分享面板，记为一次“已调起分享”；是否在社媒实际发布，独立记录为“已确认发布／未确认发布／取消／失败”。调起成功不能用作社媒曝光或实际发布量。</li>
+<li>保留每名学生每月首次成功调起分享生成一条赠课审核记录的规则，自动审核后进入“待赠课”；第 2 次及以后仅记录分享，不再产生当月分享奖励。跨平台共享该月资格。</li>
+<li>调起失败、未安装平台、仅切换海报、仅保存图片或复制文案均不消耗月度资格。已经调起后取消发布，按现有调起口径不撤销已生成的资格；若改为实际发布后赠堂，须另行确定平台可验证方式及业务规则。</li>
+<li>每张海报可配置分享赠堂数量 N，N 为自定义正整数（单位：节）；以当月首次符合条件记录对应海报的数量为准。后续换海报不补差、不追加当月资格。</li>
+<li>历史海报缺少赠堂配置时按原 1 堂兼容；历史订单和已经生成的奖励保留原数量。编辑海报不回算旧记录。</li>
+<li>分享记录保存学生、海报及文案版本、渠道、发生时间、调起结果与来源标识。月度去重以服务端学生身份和业务月份为准。</li>
+<li>月和周均建议采用 Asia/Shanghai 时区；跨地区业务时区由运营确认后统一用于页面、统计、导出。</li>
+</ul>
+<h3 id="section-4">2.2 分享赠堂的产品与订单规则</h3>
+<ul>
+<li>学生须存在未过期已购产品，且存在同校区、同课时分钟数的赠堂产品。已购 45min 产品只匹配 45min；已购 30min、45min 可分别匹配对应时长。</li>
+<li><strong>配置数量超过额度的处理，待确认</strong>：同一个已购产品的剩余赠课数须 ≥ N；不足时不拆分产品、不降为 1 堂，状态为“不可赠”，原因“剩余赠课数不足”。该建议影响产品筛选和订单数量，见第六章 D01。</li>
+<li>符合条件的已购产品按剩余课次数从少到多排序，默认选择最少者。并列时建议按产品到期时间由近到远、再按产品编号升序；单选且切换取消原选中项。</li>
+<li>赠堂产品沿用既有五种产品配置，名称为“分享贈堂-{课时分钟}”，适用校区取已购产品校区。90min 等无对等赠堂产品时不可赠。</li>
+<li>订单确认默认值：订单类型“赠送”、交易类型“常规”、归属为所选已购产品所属顾问、来源“系统下单”、赠送课次 N，自动提交。</li>
+<li>付款确认默认值：付款链接“后台自选”、付款类型“全款”、支付方式“线下汇款”、收款账户“赠送账户”、实际支付时间为处理时刻、备注为产品名称，金额 0。</li>
+<li>创建订单、付款确认和课时入账全部成功后，状态为“已赠课”，所选已购产品已获赠课数 +N、剩余赠课数 −N。任一步失败保留“待赠课”，后台查看原因并重试；重试复用原订单和奖励，不重复赠堂。</li>
+<li>无未过期产品、无对等赠堂产品、剩余赠课数不足分别显示对应不可赠原因。</li>
+<li>订单列表新增支付成功的赠送订单，隐藏编辑按钮；详情购买课次数为 0、赠送课次为 N，展示学生、产品、归属、支付信息和关联奖励记录。</li>
+<li>历史上传凭证的待审核记录保留人工审核能力；历史凭证、订单和快照继续可查。</li>
+</ul>
+<h3 id="section-5">2.3 邀请归因与福利边界</h3>
+<ul>
+<li>专属来源关联邀请人、海报及文案版本、分享渠道、进入方式；登记成功后保留这些信息，支持查看是谁分享了什么内容及带来的登记效果。</li>
+<li>链接与二维码指向同一咨询登记页；进入方式分别记为链接、扫码。只扫描但未打开页面不计扫码进入。</li>
+<li>渠道按分享时的选择归因，内容转发后保留原来源，不自动识别最终转发平台。</li>
+<li>未选择渠道直接复制文案，归为“复制文案／渠道未知”；不可强行归入某一社交渠道。该类来源的后台筛选呈现见待确认项。</li>
+<li>来源缺失或无效时允许普通咨询，记录为未知来源，不伪造邀请人。历史记录保留当时的内容快照。</li>
+<li>邀请福利与每月分享赠堂分别处理；海报配置的赠课数量不自动作为邀请奖励数量。访问、扫码或登记成功均不直接代表已获得福利。</li>
+<li>用户可查看本人邀请成果与被邀请新用户明细；新用户定义、归属冲突、奖励条件、数量及发放方式见第六章。</li>
+</ul>
+<h3 id="section-6">2.4 版本兼容与配置生效</h3>
+<p>以下为配置生效及兼容的需求规则，最低支持版本与旧版限制策略须经研发验证后确认（D11）。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>生效时机与处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后台新增或修改海报、文案、赠课数量</td>
+<td>服务端保存成功后对新的读取请求生效；保存失败不发布新配置。后台列表更新为保存结果</td>
+</tr>
+<tr>
+<td>新版App重新进入或刷新分享页</td>
+<td>拉取最新配置，更新海报、文案及赠课数量；常驻已打开页面不承诺无刷新实时推送</td>
+</tr>
+<tr>
+<td>用户停留页面期间后台改了配置</td>
+<td>生成分享内容或提交赠课资格前校验配置版本；发现变化时提示刷新并让用户确认新海报及数量，不按过期显示静默发奖</td>
+</tr>
+<tr>
+<td>尚未生成赠课记录</td>
+<td>以服务端校验后确认的配置版本及数量生成记录；数量与该次分享内容保持一致</td>
+</tr>
+<tr>
+<td>已生成的待赠课、已赠课记录及订单</td>
+<td>固定该记录创建时的配置快照，不随后续修改增减数量，不回算历史订单或课时</td>
+</tr>
+<tr>
+<td>已保存、已发出的海报及文案</td>
+<td>不远程替换已有图片、二维码、文字或短链接；历史来源仍指向当时邀请人及内容版本</td>
+</tr>
+<tr>
+<td>历史链接再次被打开</td>
+<td>保留原归因；读取当前咨询页。海报隐藏或改图不等于历史链接失效，活动结束或链接失效按对应规则提示</td>
+</tr>
+<tr>
+<td>历史海报缺赠课数量字段</td>
+<td>仅缺字段时按原1节兼容；不能把已配置的其他数量降为1节</td>
+</tr>
+<tr>
+<td>旧版App支持新数量及来源字段</td>
+<td>能力经验证后可读取兼容配置；是否支持不能只根据版本名称推断</td>
+</tr>
+<tr>
+<td>旧版App无法展示或正确处理新数量、短链接、二维码</td>
+<td>建议提示升级，并阻止通过不兼容入口生成新配置的分享或赠课资格；不出现显示1节却按其他数量赠课的情况。既有订单和历史记录保留查询</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>服务端统一控制月度去重、配置版本、赠课数量和幂等；客户端升级、跨设备操作或切换海报不重置已用资格。</li>
+<li>图片、文案和数量按同一配置版本发布，缓存更新不可把新图片与旧数量拼接展示。</li>
+<li>后台配置保存生效不等于所有安装版本即时具备新功能；渠道统计、邀请明细、自动短链接及新版展示须满足对应端能力要求。</li>
+<li>海报图片自动压缩适用于新增或重新上传的图片，不自动重压历史已分享海报。</li>
+</ul>
+<h2 id="section-7">三、需求内容</h2>
+<h3 id="section-8">3.1 后台数据统计</h3>
+<ul>
+<li>赠课统计增加日期区间，默认当周，提供“当周”快捷恢复；按周查看当周已分享用户与实际赠出的堂数。开始日期不得晚于结束日期。</li>
+<li>学员姓名、学员编号、所属学管、所属顾问、剩余赠课数继续支持筛选。</li>
+<li>“当月分享状态”使用已分享／未分享单选，直接点选；该条件判断当月状态，不能随日期区间悄然改为“当期分享状态”。</li>
+<li>列表展示学员姓名、编号、学管、顾问、剩余赠课数、当期已获赠课数、最近分享月份、已过期赠课数、可获赠课总数及查看已赠操作。</li>
+<li>当周已分享用户按成功调起分享的学员去重；不能把分享面板调起当作社媒实际发布或曝光。筛选、列表与导出使用相同数据范围。</li>
+<li>零结果显示0；查询失败明确提示，不用0代替失败。</li>
+</ul>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>统计口径</th>
+<th>筛选联动</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>累计已获赠堂数</td>
+<td>用户历史所有已赠堂数累加，跨月不归零；顶部展示全部学员历史汇总</td>
+<td>固定历史累计口径，不随页面筛选变化；新增实际赠堂后正常累加</td>
+</tr>
+<tr>
+<td>当期已获赠堂数</td>
+<td>筛选区间内实际赠出的堂数，按成功到账时间计入；列表文案为“当期已获赠课数”</td>
+<td>随筛选条件联动</td>
+</tr>
+<tr>
+<td>剩余、已过期、可获赠课总数</td>
+<td>沿用学员产品额度口径</td>
+<td>顶部额度汇总不随下方筛选变化</td>
+</tr>
+</tbody></table></div>
+<p>当期数量是历史累计的区间切片，不能代替历史累计参与产品总额度等式。界面中既有“已获赠课数”卡片与新增累计指标的关系见D08。</p>
+<h3 id="section-9">3.2 分享海报展示</h3>
+<ul>
+<li>海报左右滑动切换，当前海报居中，两侧露出相邻海报并略缩小，形成叠加层次；指示圆点随选中项同步，不自动轮播。</li>
+<li>沿用现有海报图片与内容，等比展示；去掉“本月分享海报”标题和圆点两侧独立箭头按钮。</li>
+<li>顶部剩余赠课数与已获得赠课数紧凑展示，标签与数字同行；“我的邀请”置于右上角。</li>
+<li>默认选择第一张显示海报，切换后同步海报、配套文案与专属链接。</li>
+<li>生成分享海报时默认在左下角嵌入二维码，保持可扫码识别；二维码不得裁掉。保存的是包含二维码的当前海报。</li>
+<li>操作入口顺序为 Facebook、Instagram、朋友圈、WhatsApp、保存。无法直接携带文案的平台，提供复制文案后分享的方式。</li>
+<li>无可用海报显示空态，图片加载失败可重试；分享失败不消耗月度资格。</li>
+</ul>
+<h3 id="section-10">3.3 海报赠堂配置</h3>
+<ul>
+<li>每张海报独立配置赠课数量，使用数字输入框，输入大于0的整数，单位“节”；空值、0、负数及小数不可保存。默认1节，不限制为1–15节下拉。</li>
+<li>保存后列表同步展示数量；编辑不回算已生成的赠课记录，缺配置的历史海报按1节兼容。</li>
+<li>标题必填、最多30字；分享文案最多300字，可自动配文后编辑；备注用于后台说明。</li>
+<li>保留新增、编辑、显示／隐藏、删除及同状态内排序能力；最多20张、同时显示最多10张，保留至少1张显示海报的既有规则。</li>
+<li>图片新增必填，编辑不换图保留原图；保存失败保留输入，取消编辑不写入。历史来源快照不随海报修改或删除而丢失。</li>
+</ul>
+<h3 id="section-11">3.4 海报图片优化</h3>
+<ul>
+<li>支持 JPEG、JPG、PNG；大于1MB自动压缩至1MB以内，不超过1MB保留原图。</li>
+<li>推荐尺寸750×1800px；压缩保持原比例，不裁剪、不拉伸，保证文字清晰和二维码可识别。</li>
+<li>处理完成展示预览、实际尺寸及文件大小；处理中禁止提交，失败提示重新上传。</li>
+<li>原图与最终分享图均应清晰可读；若无法兼顾体积和识别效果，不静默发布低质量图片，提示重新处理。</li>
+</ul>
+<h3 id="section-12">3.5 路径、短链接与渠道统计</h3>
+<p><strong>自动生成与进入路径</strong></p>
+<ul>
+<li>选择海报和渠道后自动生成专属短链接，关联邀请人、海报及渠道；短链域名与跳转服务统一配置，后台无需为每张海报填写链接。</li>
+<li>二维码与文字短链接进入同一“课程咨询”页，并分别保留扫码／链接进入方式。</li>
+<li>咨询页顶部有返回按钮和居中标题，品牌标识及介绍居中；展示联系人称呼、国家／地区代码、电话号码、孩子年龄、学习需求和信息使用同意项。</li>
+<li>姓名、电话、年龄与同意项必填；学习需求选填。提交前校验，提交中禁止重复点击，失败保留资料并允许重试。</li>
+<li>成功后显示“提交成功”及即将进入 WhatsApp 的说明；倒计时3秒自动进入咨询页，同时保留立即进入按钮。离开成功页或手动进入后取消倒计时，避免二次跳转。</li>
+<li>咨询内容携带本次课程及登记信息供用户确认后发送；页面跳转不等同于消息已发送或客服已回复。</li>
+</ul>
+<p><strong>渠道统计</strong></p>
+<ul>
+<li>在登记列表右侧设置独立渠道统计Tab。筛选：日期（默认当周）、渠道、海报、邀请人；顶部汇总及列表随查询条件同步变化。</li>
+<li>渠道与App入口一致：Facebook、Instagram、朋友圈、WhatsApp、保存。“保存”统计保存海报后扫码带来的访问及登记，不是保存按钮点击次数。</li>
+<li>“查看登记明细”沿用当前渠道及其他筛选条件，显示登记人、联系方式、邀请人、海报来源、登记时间及跟进状态。</li>
+</ul>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>口径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>访问次数</td>
+<td>落地页成功打开次数，重复打开累计</td>
+</tr>
+<tr>
+<td>访问人数</td>
+<td>区间内按访客标识去重</td>
+</tr>
+<tr>
+<td>扫码进入人数</td>
+<td>扫码后成功打开落地页的去重访客数</td>
+</tr>
+<tr>
+<td>链接进入人数</td>
+<td>通过文字链接打开落地页的去重访客数</td>
+</tr>
+<tr>
+<td>登记人数</td>
+<td>区间内成功提交登记并去重的人数</td>
+</tr>
+<tr>
+<td>登记转化率</td>
+<td>登记人数 ÷ 访问人数 × 100%，展示1位小数；分母为0时展示“—”</td>
+</tr>
+</tbody></table></div>
+<p>跨渠道、跨进入方式可重复出现同一访客，汇总重新去重，不能直接累加分组人数。访客识别与登记去重的跨设备合并规则见D09。</p>
+<p><strong>登记列表与跟进</strong></p>
+<ul>
+<li>登记列表位于邀请统计右侧，汇集成功提交的资料，字段包括登记人、联系号码、孩子年龄、学习需求、邀请人、海报来源、登记时间、跟进状态及备注；详情保留渠道和进入方式。</li>
+<li>支持登记人／号码、邀请人和跟进状态查询、重置；查看详情可更新状态及备注。</li>
+<li>状态为待跟进、已联系、跟进中、已完成、无效；新登记默认待跟进。备注最多500字。</li>
+<li>保存后列表与详情一致，刷新保留；保存失败保留编辑内容。跟进状态不自动等同于邀请奖励资格。</li>
+</ul>
+<h3 id="section-13">3.6 海报配套文案</h3>
+<ul>
+<li>后台自动配文后可编辑保存，App随所选海报展示对应文案。</li>
+<li>系统将专属短链接自动追加到文案末尾，点击复制时一并复制文案与链接；无需后台填写链接。</li>
+<li>切换海报或渠道同步更新对应文案及专属链接；分享到不同渠道时使用当前内容。</li>
+<li>无文案时提供填写或重新配文入口；复制失败提供长按复制提示。自动配文是否使用AI不作为已确定的实现方式。</li>
+</ul>
+<h3 id="section-14">3.7 邀请明细与福利赠送</h3>
+<ul>
+<li>App右上角“我的邀请”展示本人邀请成果及被邀请新用户明细；后台邀请明细查看邀请人、被邀请人、内容来源、渠道及时间。</li>
+<li>后台邀请统计按邀请人汇总参与邀请人数、邀请新用户数，展示邀请人成果及最近邀请时间，可查看明细；不展示发起咨询人数和咨询转化率卡片。</li>
+<li>App展示脱敏被邀请人资料；后台完整联系方式按权限控制，内部跟进备注不对邀请人展示。</li>
+<li>邀请人可据有效邀请获得福利，福利规则确认后执行；条件、数量、上限、到账对象、有效期及发放方式不得由海报分享数量自动推导。</li>
+<li>福利发放应有可追溯记录，只有实际到账后显示已到账；失败重试不得重复发放。细化发放状态与操作入口待规则确认。</li>
+</ul>
+<h2 id="section-15">四、业务示例</h2>
+<ol>
+<li>学员累计已获赠12节，当前周到账2节：累计显示12、当期显示2；切换至另一区间，累计仍为12，当期按该区间重算。</li>
+<li>海报A配置3节，海报B配置18节，两者保存后各自列表显示对应值；输入0或1.5时阻止保存，不更改原值。</li>
+<li>周日分享、周一实际到账3节：分享人数归分享发生周，3节计入周一所在周的当期已获赠数量，历史累计增加3。</li>
+<li>通过Facebook专属文字链接进入并登记，记录Facebook及链接进入；同内容转发后仍保留Facebook归属。</li>
+<li>某渠道100名访客、10名登记人：登记转化率10.0%；无访问时显示0人、转化率“—”。</li>
+<li>登记提交成功后显示3秒提示；用户提前点击立即进入时，只进入一次WhatsApp咨询页，不自动发送消息。</li>
+</ol>
+<h2 id="section-16">五、功能需求与验收</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>编号／事项</th>
+<th>操作与可观察结果</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FR01 后台统计</td>
+<td>默认当周；累计不受筛选影响，当期按实际到账时间随筛选变化，列表与导出一致</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR02 海报滚动</td>
+<td>左右切换可见相邻海报层次，图片、圆点、文案及链接同步</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR03 赠堂配置</td>
+<td>自定义正整数可保存并在列表展示；空值、0、负数、小数被阻止</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR04 图片优化</td>
+<td>超过1MB自动压缩，原比例及二维码可读；处理中不可提交，失败可重试</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR05 短链与二维码</td>
+<td>无需后台填写链接，分别进入同一咨询页并保留邀请人、海报、渠道和进入方式</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR06 登记跳转</td>
+<td>必填校验，成功后倒计时3秒或立即进入；失败保留内容、不重复跳转</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR07 渠道统计</td>
+<td>五渠道及日期/海报/邀请人查询联动，统计分母与去重正确，明细范围一致</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR08 登记跟进</td>
+<td>新登记默认待跟进；更新状态与备注后刷新保留，未授权人员不能查看完整联系方式</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR09 配套文案</td>
+<td>后台保存后App同步，复制含短链接，切换海报及渠道更新内容</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR10 邀请明细</td>
+<td>用户只能查看本人邀请成果及脱敏明细，后台可追踪内容来源和时间</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR11 福利发放</td>
+<td>按确认规则生成福利记录，真实到账后显示结果，重试不重复入账</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR12 历史兼容</td>
+<td>月度资格和历史订单继续有效，海报修改不回算历史赠课与来源快照</td>
+<td>待验收</td>
+</tr>
+<tr>
+<td>FR13 配置生效与版本兼容</td>
+<td>保存后重新进入读取新配置；停留页生成分享前校验版本；已生成赠课不回算，不兼容版本按确认策略处理</td>
+<td>待验收</td>
+</tr>
+</tbody></table></div>
+<h2 id="section-17">六、待确认事项</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>具体问题</th>
+<th>影响及确认角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D01</td>
+<td>配置N节超过单产品可赠额度时，是否不拆分、不降额；产品并列排序规则</td>
+<td>产品、运营确认订单与产品筛选规则</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>新用户定义及有效邀请条件，手机号是否验证</td>
+<td>运营、客服确认，影响邀请人数及福利资格</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>多来源归属优先级、归属有效期、重复登记与跨活动规则、来源纠正权限</td>
+<td>产品、运营确认，避免重复归属</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>邀请福利类型、数量、上限、适用产品、到账学生、是否占用既有额度及是否叠加</td>
+<td>运营、教务确认</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>福利自动或人工发放、误发及已使用福利如何纠正</td>
+<td>运营、教务确认</td>
+</tr>
+<tr>
+<td>D07</td>
+<td>周/月统一业务时区及周起始日</td>
+<td>原型采用Asia/Shanghai、周一至周日，运营确认海外业务口径</td>
+</tr>
+<tr>
+<td>D08</td>
+<td>原有“已获赠课数”汇总卡片与新增累计卡片是否重复，是否保留</td>
+<td>产品确认；当期列表字段及累计不随筛选规则已明确</td>
+</tr>
+<tr>
+<td>D09</td>
+<td>匿名访客跨设备识别、登记去重、跨期访问后登记的转化分母</td>
+<td>产品、研发确认，避免统计失真</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>“复制文案／渠道未知”是否作为五个固定入口之外的独立筛选项</td>
+<td>产品确认展示方式，来源数据不得丢失</td>
+</tr>
+<tr>
+<td>D11</td>
+<td>最低支持App版本、各渠道SDK及旧版能力、升级提示或兼容模式的具体限制</td>
+<td>研发与产品验证；不得在未验证前承诺旧版实时支持</td>
+</tr>
+</tbody></table></div>
+</main></div><script src="assets/review-nav.js"></script></body></html>

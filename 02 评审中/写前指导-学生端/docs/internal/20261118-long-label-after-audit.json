@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "scanner_sha256": "e19a9fbe69d5bf0a9c06c8aa9b9c67133a78646b4094ac1477ce8784f28bc46a",
+  "read_only": true,
+  "semantic_review": "not_run",
+  "scope_complete": false,
+  "surface_text_scan_complete": {},
+  "files": [
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "file-input"
+      ],
+      "sha256": "b57d9e91bbe318daa9bd7839ab9ef282d3edb56c3010c8f1cb6e2d700e38fb45",
+      "status": "scanned"
+    },
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/prompt-guide-content.json",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "file-input"
+      ],
+      "sha256": "f05544d854579befa69c99e541cc2e0da16132198e6c5d3b893025c530026674",
+      "status": "unsupported"
+    }
+  ],
+  "errors": [
+    {
+      "kind": "unsupported_file",
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/prompt-guide-content.json",
+      "reason": "no visible-text extractor for this format"
+    }
+  ],
+  "findings": [
+    {
+      "kind": "technical_noise",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 24,
+          "excerpt": "提示詞",
+          "content_sha256": "e98e5845b5f38ca8ff38854e59d33ff964b32beff8259a80e3251fa598d6f100"
+        }
+      ],
+      "matched": "提示詞",
+      "signature": "2dd4aa45bd23bfc1b42a06a18b84c742d8b3ff489d71afedefab60c462f2e4dc",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "technical_noise",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 498,
+          "excerpt": "寫前指導提示詞",
+          "content_sha256": "a450d907702e8e68354fc538aa2ca9cdcf2dcfb3773bd966efc41be7c9344959"
+        }
+      ],
+      "matched": "提示詞",
+      "signature": "6ba9877d7fd8602e99aff3439f7422a641daa9d85aa590eb2549421d8315b6ff",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "technical_noise",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 498,
+          "excerpt": "以《写前指导-提示词-1116.docx》為基礎展示模型調用、輸入輸出與提示詞；文體分類按現行規則更新，看圖寫作仍暫不實施。",
+          "content_sha256": "9577b08df1ded4d3fce54200ab698e70e8af875dee9dd507edff24f27ecf7d67"
+        }
+      ],
+      "matched": "提示词",
+      "signature": "22075031b505ad99cc25b825a3528ffb844a9380599959bf70f000a9599b0444",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "technical_noise",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 506,
+          "excerpt": "提示詞職責與輸出",
+          "content_sha256": "d0f7fdd2ac05d8925579e63e70086be29900ed44f80cfde98e705febcff904ac"
+        }
+      ],
+      "matched": "提示詞",
+      "signature": "d8165b1d41c482e3a5fde2d316a4be4216804213a2f665824e190e566549ef92",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "technical_noise",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 506,
+          "excerpt": "每階段使用固定System規則＋帶變量的User模板，返回結構化JSON。不同作文更換輸入，不另建一份提示詞；文體差異以規則分支處理。最終六部分藍圖由程序組裝通過校驗的結果，不再讓模型重寫已選材料。",
+          "content_sha256": "3670754d94d899b3d70df283ba19c11eaf0608eb0385d169cbc0f8919faa8349"
+        }
+      ],
+      "matched": "提示詞",
+      "signature": "5afce3c5e14d17d3fb047ce5066c39335a069e8beb61eac1d5ccc6bca9eb3a47",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "technical_noise",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 506,
+          "excerpt": "現階段先完成交互原型與接入設計；按用戶要求暫不測試Dify，也未導入或發佈工作流。三階段提示詞、輸出Schema及正式後端接線留待下一階段落實。",
+          "content_sha256": "2b8288fd0df891667393631bc7ffee5eaa862daa328a5ee36111918e8795e56a"
+        }
+      ],
+      "matched": "提示詞",
+      "signature": "bb708587d339013efdd363f16228526c4d4fe4f3e300b7443edaf00ee3ece0d4",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "technical_noise",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 506,
+          "excerpt": "正式模型提示詞、HTTP方法、路徑、學生身份與資料權限尚未接入；提交失敗及重試須由服務端確認，不能以進入第4步代替保存成功。",
+          "content_sha256": "1a7a7fde50aec66a8180aec751a24a5dcb99cd2f37eddc641087bbb11c636e47"
+        }
+      ],
+      "matched": "提示詞",
+      "signature": "be130de57fc4f4339643fc84c3f69dba39f9d208088fa1017a147e3c133ee9c4",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 508,
+          "excerpt": "查看JSON內容",
+          "content_sha256": "014ea5781336b7032239be9afc194da9d931dd06dee020e1670d232ce0b96655"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 508,
+          "excerpt": "查看JSON內容",
+          "content_sha256": "014ea5781336b7032239be9afc194da9d931dd06dee020e1670d232ce0b96655"
+        }
+      ],
+      "signature": "bc486eea0fa7ab73eb46bfb172f6cd839430603d65a6e9001879fd78c39eb11a",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 514,
+          "excerpt": "無法識別或識別失敗：展示兩項。",
+          "content_sha256": "c06382c9b9c3d0fa6aaf7b48e68b5447ad423cde8be500f3555b846649d84010"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/student-preview.html",
+          "line": 514,
+          "excerpt": "無法識別或識別失敗：展示兩項。",
+          "content_sha256": "c06382c9b9c3d0fa6aaf7b48e68b5447ad423cde8be500f3555b846649d84010"
+        }
+      ],
+      "signature": "5895c051cb58fb7cc340d36a0480760276902ac9b2b4d97dd6af41047e2056f1",
+      "baseline_status": "persistent"
+    }
+  ],
+  "limitations": [
+    "Only registered files are inspected; discover routes/imports separately.",
+    "Line/text heuristics skip text shorter than 8 normalized characters and cannot prove conflicts or semantic completeness.",
+    "No rendering, JavaScript execution, model generation, business acceptance or automatic deletion."
+  ],
+  "baseline_comparison": {
+    "baseline": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/01 可开发/中文科/作文写前指导/docs/internal/20261118-before-audit.json",
+    "absent": [],
+    "interpretation": "absent means not matched in this run, not fixed; review scanner changes, changed scope, read errors and wording manually",
+    "same_scanner": true,
+    "same_file_scope": true,
+    "both_scans_complete": false
+  }
+}

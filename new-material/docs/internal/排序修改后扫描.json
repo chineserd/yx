@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scanner_sha256": "e19a9fbe69d5bf0a9c06c8aa9b9c67133a78646b4094ac1477ce8784f28bc46a",
+  "read_only": true,
+  "semantic_review": "not_run",
+  "scope_complete": true,
+  "surface_text_scan_complete": {},
+  "files": [
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/prd.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "file-input"
+      ],
+      "sha256": "5d49b4ac26adb600ac91e36508a8791b9af22ef0d1202a91056626cf7f4519dc",
+      "status": "scanned"
+    },
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/api.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "file-input"
+      ],
+      "sha256": "2216971cc4a62e2d020b2f0a3af312b20eac724c2e272082e3900b66b81a4fc9",
+      "status": "scanned"
+    }
+  ],
+  "errors": [],
+  "findings": [
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/prd.html",
+          "line": 2,
+          "excerpt": "每月新增素材標識",
+          "content_sha256": "83743f035498dbc95f8d8bc909ecfd6a6e9d5a9e2db259925b3b6aba042ec380"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/api.html",
+          "line": 1,
+          "excerpt": "每月新增素材標識",
+          "content_sha256": "83743f035498dbc95f8d8bc909ecfd6a6e9d5a9e2db259925b3b6aba042ec380"
+        }
+      ],
+      "signature": "24175cc3e0f33d8ca189768013708469bd7c99589533bfd9d1530bc65931e6c9",
+      "baseline_status": "persistent"
+    },
+    {
+      "kind": "near_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/prd.html",
+          "line": 2,
+          "excerpt": "標識位置：練習／素材條目名稱；圖中「校本」展示標識位置。",
+          "content_sha256": "74fd1c833beede3329b4977028922ce835a2cb76e834b3541c861f020c39ac5b"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/prd.html",
+          "line": 2,
+          "excerpt": "標識位置：練習／素材條目名稱；圖中「拼音校本庫」展示標識位置。",
+          "content_sha256": "7884c411294ff00116734c3f012bbe6a1a5114721c1e6b1c59fc3ee6ccafa2e8"
+        }
+      ],
+      "signature": "812d32d78d3557807ec8dfe5d073b28eb8c205537185a7720911f4b230f970c1",
+      "baseline_status": "persistent"
+    }
+  ],
+  "limitations": [
+    "Only registered files are inspected; discover routes/imports separately.",
+    "Line/text heuristics skip text shorter than 8 normalized characters and cannot prove conflicts or semantic completeness.",
+    "No rendering, JavaScript execution, model generation, business acceptance or automatic deletion."
+  ],
+  "baseline_comparison": {
+    "baseline": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/DSE/每月新增素材标识/docs/internal/排序修改前扫描.json",
+    "absent": [],
+    "interpretation": "absent means not matched in this run, not fixed; review scanner changes, changed scope, read errors and wording manually",
+    "same_scanner": true,
+    "same_file_scope": true,
+    "both_scans_complete": true
+  }
+}

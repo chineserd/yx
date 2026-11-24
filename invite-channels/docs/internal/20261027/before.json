@@ -1,0 +1,2735 @@
+{
+  "schema_version": 1,
+  "scanner_sha256": "e19a9fbe69d5bf0a9c06c8aa9b9c67133a78646b4094ac1477ce8784f28bc46a",
+  "read_only": true,
+  "semantic_review": "not_run",
+  "scope_complete": true,
+  "surface_text_scan_complete": {
+    "prd": true,
+    "app": true,
+    "admin": true
+  },
+  "files": [
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "prd"
+      ],
+      "sha256": "e17fb7ccbbb2ad597c68d7eb8dca908f4713733d4b0511e185742ff216e20d01",
+      "status": "scanned"
+    },
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.html",
+      "roles": [
+        "generated"
+      ],
+      "surfaces": [
+        "prd"
+      ],
+      "sha256": "7f37b8a1c8eb4c1f96d0522263fdbb3039b542f88770ee95ce301370c3732de0",
+      "status": "scanned"
+    },
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "app"
+      ],
+      "sha256": "ee0b595bf6db383840bae8ac3d23c316c9e54b8e81a0d0ddbda0ce79a1d945ed",
+      "status": "scanned"
+    },
+    {
+      "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+      "roles": [
+        "business"
+      ],
+      "surfaces": [
+        "admin"
+      ],
+      "sha256": "fb452f14f46089836c95d893d35b3a2d2d20c2eb279aeb9ba0832ef4c6013eb8",
+      "status": "scanned"
+    }
+  ],
+  "errors": [],
+  "findings": [
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 135,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 172,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        }
+      ],
+      "signature": "8556bef5898784b857e3054442aa756783981f30bc8c4aa165a3db850dfe2b84"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 135,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 227,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        }
+      ],
+      "signature": "8556bef5898784b857e3054442aa756783981f30bc8c4aa165a3db850dfe2b84"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 135,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 341,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        }
+      ],
+      "signature": "8556bef5898784b857e3054442aa756783981f30bc8c4aa165a3db850dfe2b84"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 141,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 181,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 141,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 236,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 141,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 269,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 141,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 288,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 141,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 351,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 172,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 227,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        }
+      ],
+      "signature": "8556bef5898784b857e3054442aa756783981f30bc8c4aa165a3db850dfe2b84"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 172,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 341,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        }
+      ],
+      "signature": "8556bef5898784b857e3054442aa756783981f30bc8c4aa165a3db850dfe2b84"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 181,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 236,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 181,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 269,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 181,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 288,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 181,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 351,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "near_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 197,
+          "excerpt": "- 用户具备「订单管理 / 分享赠课 / 赠课审核」的菜单权限。",
+          "content_sha256": "25be0e32ad669bf9037a10f08c1f23005534b9a5f716c41f2810fef2c0ddd245"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 299,
+          "excerpt": "- 用户具备订单管理 -分享赠课的菜单权限",
+          "content_sha256": "af71e81ba18a1e3f6adcc90e459b5b4ed3a8c9b6cdf2680f3daaad2679cbbd54"
+        }
+      ],
+      "signature": "07ef503b42c01488a5efcdc44b7b4cbca220cdd981950c4a66b8e5d9086c0214"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 227,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 341,
+          "excerpt": "| 序号 | 字段名称 | 类型 | 是否必填 | 字段长度 | 数据来源 | 数据区间 | 提示文案 | 其他 |",
+          "content_sha256": "a224fff6d1032ce7ab2d088f4b86a0d7340b8097fa8c96ba9d305d2c365254cc"
+        }
+      ],
+      "signature": "8556bef5898784b857e3054442aa756783981f30bc8c4aa165a3db850dfe2b84"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 236,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 269,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 236,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 288,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 236,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 351,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 269,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 288,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 269,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 351,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 288,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/海报分享赠堂-PRD.md",
+          "line": 351,
+          "excerpt": "**边界条件与异常处理**：",
+          "content_sha256": "25101ef307a1aacde8e3c7ffbaa8ae3a77a5e1811ca936e39c7dad16ec5a9cd7"
+        }
+      ],
+      "signature": "337994b3761f5a657376b55b1b447a07f3c398fe8b33a3c75993b9eeec736905"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1465,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1474,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "df830eaa0601c210853d6b413fbbb07b4ace982a59a73f6b99bafe6850ebf7e0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1465,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1538,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "df830eaa0601c210853d6b413fbbb07b4ace982a59a73f6b99bafe6850ebf7e0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1465,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1465,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 270,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1465,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 527,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1466,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1486,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "c3a0e66145c4dad5b0500506c3461229e0cf3937d0de77887d6734f87d127540"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1466,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1539,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "c3a0e66145c4dad5b0500506c3461229e0cf3937d0de77887d6734f87d127540"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1466,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1466,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1466,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1466,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 528,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1468,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1507,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "41dabb87db0fc7def402f21fe0e8b900bf5dcef059e6db8787d0ce260e2e764c"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1468,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1541,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "41dabb87db0fc7def402f21fe0e8b900bf5dcef059e6db8787d0ce260e2e764c"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1468,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1468,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1468,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1468,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 530,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1474,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1538,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "df830eaa0601c210853d6b413fbbb07b4ace982a59a73f6b99bafe6850ebf7e0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1474,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1474,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 270,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1474,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 527,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1486,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1539,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "c3a0e66145c4dad5b0500506c3461229e0cf3937d0de77887d6734f87d127540"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1486,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1486,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1486,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1486,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 528,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1507,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1541,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "41dabb87db0fc7def402f21fe0e8b900bf5dcef059e6db8787d0ce260e2e764c"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1507,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1507,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1507,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1507,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 530,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1528,
+          "excerpt": "前后端 Dev 导航",
+          "content_sha256": "15b00b20a73c19b706d85d35b2d8eb1a9e13bf66a5c6841d357b764498ea3041"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 517,
+          "excerpt": "前后端 Dev 导航",
+          "content_sha256": "15b00b20a73c19b706d85d35b2d8eb1a9e13bf66a5c6841d357b764498ea3041"
+        }
+      ],
+      "signature": "d3e64d692f3672acb85bd8c0a17cac62d1f65838e0a7dce8c6662fe16f09fef1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1538,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1538,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 270,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1538,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 527,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "a579e1c5975db4dba2834a7c8b71de06124a988c9a8cde8489ab0c4cbc5518b7"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1539,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1539,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1539,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1539,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 528,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "1052fecad3fab2e50695db78ada1349fb19a21acd0e4561734748104abce91e1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1541,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1541,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1541,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/index.html",
+          "line": 1541,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 530,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "eab6935d23433d32fe9685651acb84dc5ab8057eacce5874a9378f5ce5a7b271"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 6,
+          "excerpt": "订单管理 - 分享赠课 - 赠课审核",
+          "content_sha256": "54797c204a9149d0fe49a4dfa2a160836522cacf89661edaa71789042f7207ae"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 250,
+          "excerpt": "订单管理 / 分享赠课 / 赠课审核",
+          "content_sha256": "54797c204a9149d0fe49a4dfa2a160836522cacf89661edaa71789042f7207ae"
+        }
+      ],
+      "signature": "0afa563bf1959e715ce0aa805218be44ca944b8e024e42299595ebbef59912c1"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 270,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "7220c8b202ee7f9cd6031d1d571081ce2be6265ba8b425d9e1f8ada681cee0bc"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 527,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "7220c8b202ee7f9cd6031d1d571081ce2be6265ba8b425d9e1f8ada681cee0bc"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "475236c427fcebfeee43bee0b5dc373160f4a9315dccba886cdb655b11933da6"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "475236c427fcebfeee43bee0b5dc373160f4a9315dccba886cdb655b11933da6"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 528,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "475236c427fcebfeee43bee0b5dc373160f4a9315dccba886cdb655b11933da6"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "65fcf81f18c5f31780a571507c96ac998e361038906a17d2823b48c2047671b0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "65fcf81f18c5f31780a571507c96ac998e361038906a17d2823b48c2047671b0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 260,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 530,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "65fcf81f18c5f31780a571507c96ac998e361038906a17d2823b48c2047671b0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 270,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 527,
+          "excerpt": "Facebook",
+          "content_sha256": "3d59f7548e1af2151b64135003ce63c0a484c26b9b8b166a7b1c1805ec34b00a"
+        }
+      ],
+      "signature": "7220c8b202ee7f9cd6031d1d571081ce2be6265ba8b425d9e1f8ada681cee0bc"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 270,
+          "excerpt": "审核通过时间：2026-08-17 16:11:06",
+          "content_sha256": "58a3e3752e0451b64d7317e024313826dc03b9bffeff7cf0f2530a78d408445d"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 271,
+          "excerpt": "审核通过时间：2026-08-17 16:11:06",
+          "content_sha256": "58a3e3752e0451b64d7317e024313826dc03b9bffeff7cf0f2530a78d408445d"
+        }
+      ],
+      "signature": "1a2b257e3e1b51fd324582b97bacd1f14fed11ee9ceff51444115d216ba61767"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 270,
+          "excerpt": "审核通过时间：2026-08-17 16:11:06",
+          "content_sha256": "58a3e3752e0451b64d7317e024313826dc03b9bffeff7cf0f2530a78d408445d"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "审核通过时间：2026-08-17 16:11:06",
+          "content_sha256": "58a3e3752e0451b64d7317e024313826dc03b9bffeff7cf0f2530a78d408445d"
+        }
+      ],
+      "signature": "1a2b257e3e1b51fd324582b97bacd1f14fed11ee9ceff51444115d216ba61767"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 271,
+          "excerpt": "HKC15330",
+          "content_sha256": "f24aa9ea133daa07ade8b5d84ae5134a66002d4c302f3c4bee1101eee5f47cd7"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 365,
+          "excerpt": "HKC15330",
+          "content_sha256": "f24aa9ea133daa07ade8b5d84ae5134a66002d4c302f3c4bee1101eee5f47cd7"
+        }
+      ],
+      "signature": "8606ea79e1e9800a58e3b893b95a43ab35e0ed1b6dcb7f6d7902b0efe93ac5b8"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 271,
+          "excerpt": "审核通过时间：2026-08-17 16:11:06",
+          "content_sha256": "58a3e3752e0451b64d7317e024313826dc03b9bffeff7cf0f2530a78d408445d"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "审核通过时间：2026-08-17 16:11:06",
+          "content_sha256": "58a3e3752e0451b64d7317e024313826dc03b9bffeff7cf0f2530a78d408445d"
+        }
+      ],
+      "signature": "1a2b257e3e1b51fd324582b97bacd1f14fed11ee9ceff51444115d216ba61767"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "HKC107055",
+          "content_sha256": "c61c6965d3e547c85001c91572f8da5fd3e1cd252bda9cff1e793f52c1686517"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "HKC107055",
+          "content_sha256": "c61c6965d3e547c85001c91572f8da5fd3e1cd252bda9cff1e793f52c1686517"
+        }
+      ],
+      "signature": "5b32a99fddad28d4b31078356c88e67627c048027d0dff56341552e19f8beca6"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "475236c427fcebfeee43bee0b5dc373160f4a9315dccba886cdb655b11933da6"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 528,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "475236c427fcebfeee43bee0b5dc373160f4a9315dccba886cdb655b11933da6"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "2026-08-15 12:06",
+          "content_sha256": "1fdc3ebe794011189d6ac54fa2df686cb01f86bd619340d47bff1418d39fe748"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 484,
+          "excerpt": "2026-08-15 12:06",
+          "content_sha256": "1fdc3ebe794011189d6ac54fa2df686cb01f86bd619340d47bff1418d39fe748"
+        }
+      ],
+      "signature": "1d871d2081313e66449bfaea23b6be9a4ff56ab8bd259552923739795a5b22a5"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 272,
+          "excerpt": "2026-08-15 09:28",
+          "content_sha256": "15461c6a291845768dec495f9a9beda32b7c4716a8cebf588e66425f54198639"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 494,
+          "excerpt": "2026-08-15 09:28",
+          "content_sha256": "15461c6a291845768dec495f9a9beda32b7c4716a8cebf588e66425f54198639"
+        }
+      ],
+      "signature": "6a745a526c476b3ab49d7a9219ec30978ab8b6dcdff8e267043994b295bd1218"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "65fcf81f18c5f31780a571507c96ac998e361038906a17d2823b48c2047671b0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 273,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 530,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "65fcf81f18c5f31780a571507c96ac998e361038906a17d2823b48c2047671b0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 308,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 528,
+          "excerpt": "Instagram",
+          "content_sha256": "5ede56738376a8c53a7c99bf275b077a5c10df780a20cf3d8282fd59a2a9fb56"
+        }
+      ],
+      "signature": "475236c427fcebfeee43bee0b5dc373160f4a9315dccba886cdb655b11933da6"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 309,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 530,
+          "excerpt": "WhatsApp",
+          "content_sha256": "ec8202b6f9fb16f9e26b66367afa4e037752f3c09a18cefab426165e06a424b1"
+        }
+      ],
+      "signature": "65fcf81f18c5f31780a571507c96ac998e361038906a17d2823b48c2047671b0"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 310,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 381,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 382,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "conflict_candidate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 383,
+          "excerpt": "分享贈堂-45min",
+          "content_sha256": "18ed72444b19ab98ed7edc08c38569f27b47b391869755d3f0e5134eb672d00a"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "basis": "similar wording with changed numeric/obligation tokens",
+      "signature": "025762d9a449376b9590c31cd89387fe7c73ec6e89036eee8fec224e9208ac19"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 400,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 405,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    },
+    {
+      "kind": "exact_duplicate",
+      "candidate": true,
+      "requires_semantic_review": true,
+      "evidence": [
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 423,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        },
+        {
+          "path": "/Users/yuzhoudeshengyin/Desktop/01中文路/04-原型与代码/02 原型汇总-迭代中/03待评审/中文科/分享赠堂（优化+邀请记录）/admin.html",
+          "line": 458,
+          "excerpt": "分享贈堂-25min",
+          "content_sha256": "ac64a20f076f7fa1afe2948c3f543da7618170322b41e5edab58e99a26ed83cc"
+        }
+      ],
+      "signature": "611cc7d0b2ee1b81e64965caf7f86422a2ca2143f25aaa726ca4caa2a97c8b47"
+    }
+  ],
+  "limitations": [
+    "Only registered files are inspected; discover routes/imports separately.",
+    "Line/text heuristics skip text shorter than 8 normalized characters and cannot prove conflicts or semantic completeness.",
+    "No rendering, JavaScript execution, model generation, business acceptance or automatic deletion."
+  ]
+}

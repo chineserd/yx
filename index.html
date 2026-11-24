@@ -1,18 +1,557 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- vercel-redeploy trigger: 2026-09-28 12:38 -->
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="refresh" content="0;url=https://chineserd-private-prototypes.onrender.com/">
-  <title>中文路原型登录</title>
-  <script>
-    const path = location.pathname.startsWith('/yx/') ? location.pathname.slice(3) : '/';
-    location.replace('https://chineserd-private-prototypes.onrender.com/auth/login?next=' + encodeURIComponent((path || '/') + location.search + location.hash));
-  </script>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8" />
+<title>产品原型总览</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f4f5f7;
+    color: #1f2937;
+    font-size: 14px;
+    min-height: 100vh;
+  }
+
+  /* ── 顶部 ── */
+  .topbar {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 14px 32px; min-height: 68px;
+    display: flex; align-items: center; gap: 24px;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .brand { display: flex; align-items: center; gap: 0; font-weight: 600; }
+  .brand .logo {
+    width: 88px; height: 39px; object-fit: contain; flex-shrink: 0;
+  }
+  .brand-text { font-size: 16px; line-height: 24px; font-weight: 650; color: #172b4d; white-space: nowrap; padding-left: 18px; margin-left: 18px; border-left: 1px solid #dce2eb; }
+
+  #sync-local { flex-shrink: 0; white-space: nowrap; min-width: 96px; height: 36px; margin-left: 20px; padding: 0 14px; justify-content: center; gap: 7px; border: 1px solid #bfd1f3; border-radius: 9px; background: #edf4ff; color: #2454ad; font-size: 13px; font-weight: 600; box-shadow: 0 1px 3px rgba(35,83,160,.1); transition: background .18s, border-color .18s, box-shadow .18s, transform .18s; }
+  #sync-local:hover { background: #dfecff; border-color: #8aaceb; box-shadow: 0 3px 9px rgba(35,83,160,.14); transform: translateY(-1px); }
+  #sync-local:active { transform: translateY(0); box-shadow: 0 1px 3px rgba(35,83,160,.1); }
+  #sync-local:disabled { cursor: wait; opacity: .75; transform: none; }
+  #sync-local .sync-icon { width: 16px; height: 16px; flex: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+  #sync-local.is-syncing .sync-icon { animation: sync-rotate .8s linear infinite; }
+  @keyframes sync-rotate { to { transform: rotate(360deg); } }
+  .topbar-tools { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+  .search-box {
+    display: flex; align-items: center; gap: 6px;
+    width: 280px; height: 34px;
+    background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;
+    padding: 0 12px;
+    transition: all .15s;
+  }
+  .search-box:focus-within { background: #fff; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.1); }
+  .search-box::before { content: "🔍"; font-size: 12px; opacity: .5; }
+  .search-box input {
+    flex: 1; border: none; background: transparent; outline: none;
+    font-size: 13px; color: #111827;
+  }
+  .search-box input::placeholder { color: #9ca3af; }
+  .tool-btn {
+    height: 34px; padding: 0 12px; border-radius: 8px;
+    background: #fff; border: 1px solid #e5e7eb;
+    color: #374151; font-size: 13px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .tool-btn:hover { background: #f9fafb; }
+  .tool-btn.primary { background: #111827; color: #fff; border-color: #111827; }
+
+  /* ── 主体 ── */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 32px 48px;
+  }
+
+  /* ── 顶部数据条 ── */
+  .stats-row {
+    display: flex; gap: 12px; margin-bottom: 24px;
+  }
+  .stat-card {
+    flex: 1;
+    background: #fff; border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    border: 1px solid #f3f4f6;
+  }
+  .stat-card .label { font-size: 12px; color: #6b7280; margin-bottom: 6px; }
+  .stat-card .value { font-size: 24px; font-weight: 600; color: #111827; }
+  .stat-card.in-progress .value { color: #2563eb; }
+  .stat-card.review .value { color: #f59e0b; }
+  .stat-card.delivered .value { color: #10b981; }
+  .stat-card.archived .value { color: #9ca3af; }
+
+  /* ── 标签筛选 ── */
+  .filter-bar {
+    background: #fff; border-radius: 10px;
+    padding: 12px 16px; margin-bottom: 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .filter-bar .lbl { font-size: 12px; color: #6b7280; margin-right: 4px; }
+  .filter-tag {
+    padding: 4px 10px; border-radius: 999px;
+    background: #f3f4f6; color: #374151;
+    font-size: 12px; cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .filter-tag:hover { background: #e5e7eb; }
+  .filter-tag.active { background: #eef2ff; color: #4338ca; border-color: #c7d2fe; }
+  .filter-clear {
+    margin-left: auto;
+    font-size: 12px; color: #6b7280; cursor: pointer;
+  }
+  .filter-clear:hover { color: #ef4444; }
+
+  /* ── 时间分组（一级菜单） ── */
+  .time-group { margin-bottom: 14px; }
+  .time-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 5px 4px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .time-head:hover .caret { color: #2563eb; }
+  .caret {
+    display: inline-block;
+    color: #9ca3af;
+    transition: transform .2s;
+    font-size: 12px;
+    width: 14px;
+  }
+  .time-group.expanded .caret { transform: rotate(90deg); }
+  .time-title { font-size: 16px; font-weight: 600; color: #111827; }
+  .time-title .badge {
+    font-size: 11px; font-weight: 500;
+    margin-left: 8px; padding: 2px 8px; border-radius: 999px;
+    background: #eef2ff; color: #4338ca;
+    vertical-align: middle;
+  }
+  .time-group.color-blue .time-title .badge { background: #dbeafe; color: #1d4ed8; }
+  .time-group.color-green .time-title .badge { background: #d1fae5; color: #047857; }
+  .time-meta { font-size: 12px; color: #9ca3af; margin-left: auto; }
+
+  .time-body { display: none; padding: 4px 0 0 20px; }
+  .time-group.expanded .time-body { display: grid; }
+
+  .month-group { margin-bottom: 20px; min-width: 0; }
+  .month-group summary { cursor: pointer; padding: 8px 0; font-size: 14px; font-weight: 600; color: #526574; }
+  .month-group .req-grid { margin-top: 8px; }
+
+  /* 待评审业务分类：固定卡片宽度，浅底分区，窄屏顺序换行。 */
+  .category-grid { display:grid; grid-template-columns:repeat(auto-fill, min(100%, 344px)); gap:12px; align-items:start; }
+  .category-panel { min-width:0; padding:10px; border-radius:12px; background:#eceff3; box-shadow:inset 0 0 0 1px #aab8ca; }
+  .category-title { display:flex; align-items:center; gap:8px; margin:0 0 8px; color:#172b4d; font-size:15px; line-height:22px; font-weight:700; }
+  .category-dot { width:7px; height:7px; border-radius:50%; background:var(--category-color); flex-shrink:0; }
+  .category-count { margin-left:auto; padding:0 8px; border-radius:12px; background:#f8fafc; color:#334155; font-size:12px; font-weight:600; box-shadow:inset 0 0 0 1px #b8c4d4; }
+  .category-panel .req-grid { grid-template-columns:minmax(0, 1fr); }
+
+  /* ── 需求卡片（二级菜单） ── */
+  .req-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(100%, 320px));
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .req-card {
+    background: #fff; border-radius: 10px;
+    height: 100px; box-sizing: border-box;
+    border: 1px solid #e5e7eb;
+    padding: 12px 16px;
+    transition: all .15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .req-card:hover {
+    border-color: #c7d2fe;
+    box-shadow: 0 4px 12px rgba(99,102,241,.08);
+    transform: translateY(-1px);
+  }
+  .req-card.status-in-progress { border-top: 3px solid #2563eb; }
+  .req-card.status-review { border-top: 3px solid #f59e0b; }
+  .req-card.status-launched { border-top: 3px solid #10b981; }
+  .req-status.launched { background: #d1fae5; color: #047857; }
+  .req-status.launched::before { content: "✓ "; }
+  .req-card.status-delivered { border-top: 3px solid #10b981; }
+  .req-card.status-designing { border-top: 3px solid #9ca3af; }
+
+  .req-card-head {
+    display: flex; align-items: center; gap: 16px;
+    height: 38px; margin-bottom: 6px; font-size: 12px;
+  }
+  .req-card-head .req-title { margin: 0; flex: 1; min-width: 0; }
+  .req-card-head .req-link { flex-shrink: 0; padding: 6px 12px; }
+  .req-card-head .req-title { overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; line-height: 21px; max-height: 42px; }
+  .req-link:focus-visible { outline: 3px solid #93c5fd; outline-offset: 3px; }
+  .req-id {
+    font-family: "SF Mono", Consolas, monospace;
+    color: #6b7280;
+    font-size: 12px;
+  }
+  .req-version {
+    background: #f3f4f6; color: #374151;
+    padding: 1px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 500;
+  }
+  .req-status {
+    margin-left: auto;
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 500;
+  }
+  .req-status.in-progress { background: #dbeafe; color: #1d4ed8; }
+  .req-status.in-progress::before { content: "● "; color: #2563eb; }
+  .req-status.review { background: #fef3c7; color: #92400e; }
+  .req-status.review::before { content: "● "; color: #f59e0b; }
+  .req-status.delivered { background: #d1fae5; color: #047857; }
+  .req-status.delivered::before { content: "✓ "; }
+  .req-status.designing { background: #f3f4f6; color: #6b7280; }
+  .req-status.designing::before { content: "○ "; }
+
+  .req-title {
+    font-size: 16px; font-weight: 600;
+    margin: 0 0 6px; color: #111827;
+    line-height: 1.4;
+  }
+  .req-subtitle {
+    font-size: 12px; color: #6b7280;
+    margin: 0 0 12px; line-height: 1.5;
+  }
+  .req-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .req-tags .tag {
+    font-size: 11px; padding: 2px 8px; border-radius: 4px;
+    background: #f3f4f6; color: #6b7280;
+  }
+  .req-tags .tag.color-blue { background: #dbeafe; color: #1d4ed8; }
+  .req-tags .tag.color-pink { background: #fce7f3; color: #be185d; }
+  .req-tags .tag.color-purple { background: #ede9fe; color: #6d28d9; }
+  .req-tags .tag.color-cyan { background: #cffafe; color: #0e7490; }
+  .req-tags .tag.color-amber { background: #fef3c7; color: #92400e; }
+  .req-tags .tag.color-orange { background: #ffedd5; color: #c2410c; }
+  .req-tags .tag.color-indigo { background: #e0e7ff; color: #4338ca; }
+
+  .req-actions {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .req-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 5px 10px; border-radius: 6px;
+    background: #f9fafb; color: #374151;
+    font-size: 12px; text-decoration: none;
+    border: 1px solid #f3f4f6;
+  }
+  .req-link:hover { background: #f3f4f6; color: #111827; }
+  .req-link.primary {
+    background: #dbe7ff; color: #2454ad; border-color: #9ebbed; font-weight: 600;
+  }
+  .req-link.primary:hover { background: #c5d8fb; color: #1d4595; border-color: #7c9edb; }
+  .req-link.disabled { opacity: .4; pointer-events: none; }
+
+  .req-meta {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; color: #9ca3af;
+  }
+  .req-meta code {
+    background: #f3f4f6; padding: 1px 6px; border-radius: 4px;
+    font-family: "SF Mono", Consolas, monospace; color: #4b5563;
+  }
+
+  /* ── 空状态 ── */
+  .empty {
+    text-align: center; padding: 60px 20px;
+    color: #9ca3af; font-size: 13px;
+  }
+  .empty-icon { font-size: 32px; margin-bottom: 8px; opacity: .5; }
+
+  /* ── 底部说明 ── */
+  footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 32px 40px;
+    color: #9ca3af; font-size: 12px;
+    text-align: center;
+  }
+  footer a { color: #6366f1; text-decoration: none; }
+
+  /* ── 提示横幅 ── */
+  .setup-banner {
+    background: linear-gradient(90deg, #fef3c7 0%, #fef9c3 100%);
+    border: 1px solid #fbbf24; border-radius: 10px;
+    padding: 12px 16px; margin-bottom: 20px;
+    font-size: 13px; color: #92400e;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .setup-banner b { color: #78350f; }
+  .setup-banner .close {
+    margin-left: auto; cursor: pointer; color: #92400e;
+    font-size: 16px;
+  }
+@media (max-width: 700px) {
+    .topbar { flex-wrap: wrap; padding: 14px 20px; gap: 10px; }
+    .brand { flex-wrap: nowrap; }
+    .brand-text { padding-left: 12px; margin-left: 12px; font-size: 15px; }
+    #sync-local { margin-left: 12px; min-width: 88px; padding: 0 10px; }
+    .brand-text { white-space: nowrap; }
+    .topbar-tools { width: 100%; margin-left: 0; }
+    .search-box { width: 100%; }
+    .search-box input { min-width: 0; }
+  }
+
+  [hidden] { display:none !important; }
+  .overview-views { display:flex; gap:8px; margin-bottom:12px; }
+  .overview-views button { background:white; color:#52627a; border:1px solid #cbd5e1; border-radius:8px; padding:10px 18px; font:inherit; cursor:pointer; }
+  .overview-views button.active { background:#edf3ff; color:#1d4ed8; border-color:#2365f6; font-weight:600; }
+  button:focus-visible, a:focus-visible, select:focus-visible { outline:2px solid #2365f6; outline-offset:3px; }
+  main { max-width:1680px; padding-top:16px; }
+  .overview-views { margin-bottom:12px; }
+  .sheet-toolbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; }
+  #requirements-sync { color:#52627a; font-size:12px; line-height:20px; }
+  .sheet-scroll { overflow:auto; background:white; border:1px solid #cbd5e1; border-radius:12px; box-shadow:0 4px 20px rgba(15,35,75,.035); }
+  .source-sheet { width:100%; min-width:1180px; table-layout:fixed; border-collapse:separate; border-spacing:0; color:#000; font-family:"DengXian","等线","PingFang SC",sans-serif; font-size:10pt; line-height:1.8; }
+  .source-sheet td,.source-sheet th { border:0; border-right:1px solid #d8dfe8; border-bottom:1px solid #d8dfe8; padding:14px 16px; vertical-align:middle; text-align:left; font-weight:400; white-space:pre-wrap; overflow-wrap:anywhere; }
+  .source-sheet th { padding-top:15px; padding-bottom:15px; letter-spacing:.02em; }
+  .source-sheet td[data-cell^="A"] { white-space:nowrap; padding-left:12px; padding-right:10px; font-variant-numeric:tabular-nums; }
+  .source-sheet td[data-cell^="G"] { white-space:normal; }
+  .source-sheet tr > :last-child { border-right:0; }
+  .source-sheet tr:last-child > td { border-bottom:0; }
+  .source-sheet a { color:#175ceb; text-decoration:underline; text-underline-offset:4px; line-height:28px; display:inline-block; }
+  .source-sheet a:hover { text-decoration-thickness:2px; }
+  @media(max-width:700px) { main{padding:20px 16px;} .topbar{flex-wrap:wrap;padding:12px 16px;} .topbar-tools{width:100%;} .search-box{flex:1;min-width:0;} .search-box input{width:100%;} }
+</style>
 </head>
 <body>
-  <p>正在前往中文路原型登录页。</p>
-  <p><a href="https://chineserd-private-prototypes.onrender.com/">打开登录页</a></p>
+
+<div class="topbar">
+  <div class="brand">
+    <img class="logo" src="./assets/chineserd-logo.png" alt="中文路" width="88" height="39">
+    <span class="brand-text">产品原型总览</span>
+    <button id="sync-local" class="tool-btn" type="button" aria-label="刷新原型汇总"><svg class="sync-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg><span class="sync-label">刷新</span></button>
+  </div>
+  <div class="topbar-tools">
+    <div class="search-box">
+      <input id="search" type="search" placeholder="搜索需求标题 / ID / 标签..." />
+    </div>
+  </div>
+</div>
+
+<main>
+  <p id="local-sync-status" role="status" hidden style="color:#52627a;line-height:1.6;overflow-wrap:anywhere"></p>
+  <nav class="overview-views" aria-label="总览视图">
+    <button id="requirements-view" aria-pressed="false" hidden>需求更新记录</button>
+    <button id="prototypes-view" class="active" aria-pressed="true">全部原型</button>
+  </nav>
+  <section id="requirements-panel" aria-label="需求更新记录" hidden>
+    <div class="sheet-toolbar"><span id="requirements-sync" role="status">正在读取需求更新记录…</span><button id="refresh-requirements" class="tool-btn">检查更新</button></div>
+    <div id="requirements-content"></div>
+  </section>
+
+  <div id="timeline"></div>
+
+</main>
+
+<footer>
+  内部文件，请勿外传
+</footer>
+
+<script>
+const STATUS_LABEL = {
+  "in-progress": "开发中",
+  "review":      "评审中",
+  "delivered":   "已交付",
+  "launched":    "已上线",
+  "designing":   "设计中",
+  "archived":    "已归档"
+};
+
+const BUSINESS_CATEGORIES = ['普通话科', '中文科', '中文路', 'DSE'];
+const CATEGORY_COLORS = ['#7097be', '#7b9d8b', '#b19a72', '#9789b7', '#94a3b8'];
+function businessCategory(item) {
+  const pathCategory = (item.localSource || '').split('/')[1];
+  if (BUSINESS_CATEGORIES.includes(pathCategory)) return pathCategory;
+  return BUSINESS_CATEGORIES.includes(item.businessCategory) ? item.businessCategory : '未分类';
+}
+function categoryOrder(items) {
+  const names = new Set(items.filter(item => !item.hidden).map(businessCategory));
+  return [...names].sort((a, b) => {
+    if (a === '未分类') return 1;
+    if (b === '未分类') return -1;
+    return a.localeCompare(b, 'zh-CN');
+  });
+}
+let config = null;
+let searchQuery = "";
+
+async function load() {
+  const res = await fetch("menu-config.json", { cache: "no-cache" });
+  config = await res.json();
+  const order = ['ready-development', 'in-review', 'pending-review', 'iteration-history'];
+  const rank = g => order.includes(g.id) ? order.indexOf(g.id) : order.length;
+  config.groups = config.groups.map(g => ({ ...g, expanded: g.expanded === true }))
+    .sort((a, b) => rank(a) - rank(b));
+  config.groups.forEach(g => { if (['ready-development', 'pending-review'].includes(g.id)) g.categoryOrder = categoryOrder(g.items); });
+  render();
+  window.dispatchEvent(new CustomEvent("prototype-config", {detail:config}));
+}
+
+function render() {
+  renderTimeline();
+}
+
+function requirementDate(item) {
+  return /^\d{4}-\d{2}-\d{2}/.test(item.createdAt || "") ? item.createdAt : "";
+}
+function requirementTitle(item) {
+  return item.folderName || item.title;
+}
+function newestFirst(a, b) {
+  return requirementDate(b).localeCompare(requirementDate(a));
+}
+function folderNameFirst(a, b) {
+  return requirementTitle(a).localeCompare(requirementTitle(b), 'zh-CN', { numeric: true });
+}
+
+function matchesFilter(item) {
+  // 临时隐藏的需求不出现在目录或搜索结果中；保留配置便于恢复。
+  if (item.hidden === true) return false;
+  // 搜索
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    const hay = [
+      requirementTitle(item), item.title, item.id, item.subtitle, item.version, businessCategory(item),
+      ...(item.tags || [])
+    ].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+function renderGroupItems(group) {
+  if (!group.items.length) return `<p class="req-subtitle">暂无原型</p>`;
+  if (['ready-development', 'pending-review'].includes(group.id)) {
+    const categories = group.categoryOrder || categoryOrder(group.items);
+    return `<div class="category-grid">${categories.map(name => {
+      const items = group.items.filter(item => businessCategory(item) === name);
+      if (!items.length) return '';
+      const color = CATEGORY_COLORS[BUSINESS_CATEGORIES.includes(name) ? BUSINESS_CATEGORIES.indexOf(name) : 4];
+      return `<section class="category-panel" aria-label="${name}" style="--category-color:${color}">
+        <h2 class="category-title"><span class="category-dot" aria-hidden="true"></span>${name}<span class="category-count">${items.length} 项</span></h2>
+        <div class="req-grid">${items.map(renderCard).join('')}</div>
+      </section>`;
+    }).join('')}</div>`;
+  }
+  if (group.id !== 'iteration-history') {
+    return `<div class="req-grid">${group.items.map(renderCard).join('')}</div>`;
+  }
+  const months = new Map();
+  for (const item of group.items) {
+    const month = (item.localSource || '').split('/')[1];
+    const key = /^\d{4}\.\d{2}$/.test(month || '') ? month : '未分类';
+    if (!months.has(key)) months.set(key, []);
+    months.get(key).push(item);
+  }
+  return [...months.keys()].sort((a, b) => b.localeCompare(a)).map(month => `
+    <details class="month-group" open>
+      <summary>${month} · ${months.get(month).length} 项</summary>
+      <div class="req-grid">${months.get(month).sort(newestFirst).map(renderCard).join('')}</div>
+    </details>`).join('');
+}
+
+const cardResizeObserver = new ResizeObserver(entries => {
+  for (const entry of entries) fitCardTitle(entry.target);
+});
+function fitCardTitle(card) {
+  const title = card.querySelector('.req-title');
+  if (!title || !title.clientWidth) return;
+  title.style.display = 'block';
+  title.style.maxHeight = 'none';
+  title.style.fontSize = '16px';
+  // Long titles become smaller before the final two-line ellipsis.
+  if (title.scrollHeight > 22) title.style.fontSize = '14px';
+  for (let size = 13; title.scrollHeight > 43 && size >= 12; size--) {
+    title.style.fontSize = `${size}px`;
+  }
+  title.style.display = '';
+  title.style.maxHeight = '';
+  title.title = title.textContent;
+}
+
+function renderTimeline() {
+  cardResizeObserver.disconnect();
+  const wrap = document.getElementById("timeline");
+  const matchedGroups = config.groups
+    .map(g => ({ ...g, items: g.items.filter(matchesFilter).sort(
+      ['ready-development', 'pending-review'].includes(g.id) ? folderNameFirst : newestFirst
+    ) }))
+    .filter(g => !g.hidden && (g.items.length > 0 || (g.showEmpty && !searchQuery)));
+
+  if (matchedGroups.length === 0) {
+    wrap.innerHTML = `<div class="empty">
+      <div class="empty-icon">📭</div>
+      没有匹配的需求。试试调整搜索词。
+    </div>`;
+    return;
+  }
+
+  wrap.innerHTML = matchedGroups.map(g => {
+    const itemsHtml = renderGroupItems(g);
+    return `
+      <section class="time-group ${g.expanded ? "expanded" : ""} color-${g.color || "blue"}">
+        <div class="time-head" onclick="toggleGroup(this.parentElement)">
+          <span class="caret">▶</span>
+          <span class="time-title">
+            ${g.title}
+            <span class="badge">${g.items.length} 项</span>
+          </span>
+          <span class="time-meta">${g.subtitle}</span>
+        </div>
+        <div class="time-body">
+          ${itemsHtml}
+        </div>
+      </section>
+    `;
+  }).join("");
+  wrap.querySelectorAll(".req-card").forEach(card => cardResizeObserver.observe(card));
+}
+
+function toggleGroup(group) {
+  group.classList.toggle("expanded");
+}
+
+function renderCard(item) {
+  const previewDisabled = !item.previewUrl || item.previewUrl === "#";
+  const previewHtml = previewDisabled
+    ? `<span class="req-link disabled">原型未上传</span>`
+    : `<a class="req-link primary" href="${item.previewUrl}" target="_blank">原型 ↗</a>`;
+
+  return `
+    <div class="req-card">
+      <div class="req-card-head">
+        <h3 class="req-title">${requirementTitle(item)}</h3>
+        ${previewHtml}
+      </div>
+      <div class="req-meta">更新 ${item.updatedAt}</div>
+    </div>
+  `;
+}
+
+// 搜索框监听
+document.getElementById("search").addEventListener("input", e => {
+  searchQuery = e.target.value.trim();
+  renderTimeline();
+});
+
+load().catch(() => { document.getElementById("requirements-sync").textContent="原型目录读取失败，请刷新重试。"; });
+</script>
+<script type="module" src="./assets/requirements.js"></script>
+<script src="./assets/local-sync.js"></script>
+
 </body>
 </html>

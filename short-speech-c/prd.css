@@ -1,0 +1,23 @@
+:root{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#243247;background:#eef3f8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{max-width:1080px;margin:24px auto 64px;padding:28px 42px 44px;background:#fff;border:1px solid #dae4f0;border-radius:12px;box-shadow:0 6px 20px #28425b0b;font-size:14px;line-height:1.75}
+h1{display:inline-block;margin:0 22px 0 0;font-size:25px;line-height:1.4;color:#1c2e47}
+h1+p{display:inline-block;margin:0;color:#61738c;font-size:12px}
+h1+p+p{margin:12px 0 22px;color:#3e516b;font-size:14px}
+h2{margin:30px 0 12px;padding-left:12px;border-left:4px solid #5478e8;font-size:18px;line-height:1.5;color:#243247;scroll-margin-top:16px}
+h3{margin:20px 0 9px;font-size:15px;color:#283b54;scroll-margin-top:16px}
+p{margin:9px 0 14px}
+ol,ul{padding-left:24px}
+li{margin:6px 0}
+table{display:table;width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:13px}
+th,td{padding:9px 11px;border:1px solid #dce5f0;text-align:left;vertical-align:top}
+th{background:#f3f7fc;font-weight:700}
+tr:nth-child(even) td{background:#fbfcfe}
+a{color:#2e64c8}
+.issue-inline,.issues,.issues span{color:#c8192e;font-weight:600}
+.issue-inline{background:#fff1f2;padding:1px 4px;border-radius:3px}
+.issues{border:1px solid #f3a5ae;background:#fff6f7;border-radius:8px;padding:10px 20px}
+.issues ol{margin:0}
+.issues li{margin:7px 0}
+@media(max-width:760px){body{margin:0;padding:18px 16px;border:0;border-radius:0}h1{display:block;margin:0}h1+p{display:block;margin:5px 0 0}table{display:block;overflow-x:auto;white-space:normal}th,td{min-width:120px}}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>報告生成流程圖｜（作文比賽）學習作文報告</title>
+  <link rel="stylesheet" href="./assets/competition-prompts.css">
+  <link rel="stylesheet" href="./assets/competition-flow.css">
+  <script src="./assets/competition-flow.js" defer></script>
+</head>
+<body>
+  <nav class="prototype-navigation" aria-label="原型預覽導覽">
+    <div class="prototype-surface-tabs">
+      <span class="requirement-identity"><span class="requirement-label">需求名稱</span><span>（作文比賽）學習作文報告</span></span>
+      <div class="prototype-view-tabs" role="tablist" aria-label="預覽內容">
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/tasks">後台</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/prd">PRD</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./index.html#/api">接口說明</a>
+        <a class="prototype-nav-button difference-tab" role="tab" aria-selected="false" href="./prompts.html">報告生成資料（提示詞+JSON）</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="true" aria-current="page" href="./flow.html">報告生成流程圖</a>
+        <a class="prototype-nav-button" role="tab" aria-selected="false" href="./updates.html">更新記錄</a>
+      </div>
+      <a class="prototype-overview-link" href="/">歷史需求彙總頁</a>
+    </div>
+  </nav>
+  <main class="flow-page">
+    <header class="flow-heading">
+      <h1>作文比賽報告生成流程</h1>
+      <p>同一比賽、同一題目、本校作文形成一份報告；01 每題一次、02 每篇一次、03 每份報告一次。</p>
+    </header>
+
+    <div class="flow-track" aria-label="報告生成四個關鍵步驟">
+      <section class="flow-card model-step">
+        <div class="flow-card-head"><span class="step-tag">01 · 模型</span><h2>寫作要求轉化</h2></div>
+        <p><b>接入</b> 題目原文、題幹、寫作要求、<span class="difference-inline">後台已有的作文文體</span>、A／B／C 固定骨架</p>
+        <p><b>產出</b> 沿用後台已有的作文文體；2.1／2.2 原文、2.3 與第 3 章節點</p>
+        <p class="flow-check"><b>核對</b> 題目與來源一致；骨架節點和順序固定</p>
+      </section>
+      <section class="flow-card model-step">
+        <div class="flow-card-head"><span class="step-tag">02 · 每篇模型</span><h2>逐篇分析</h2></div>
+        <p><b>接入</b> 01 選定骨架、作文 ID／原文、同篇原報告及已核對例證</p>
+        <p><b>產出</b> 各細項本項總結；正面／問題「原文片段＋對應批注／評語」</p>
+        <p class="flow-check"><b>核對</b> 題目、作文、框架及來源版本；例證整組同篇同項</p>
+      </section>
+      <section class="flow-card program-step">
+        <div class="flow-card-head"><span class="step-tag">程序 · 不調模型</span><h2>統計與選例</h2></div>
+        <p><b>接入</b> 本校本題逐篇結果、原分、全體同題資料、教學設定</p>
+        <p><b>產出</b> 等級人數、總分與四維度對比圖資料、已核准例證、示例清單、最多 10 篇本校本題作文全文</p>
+        <p class="flow-check"><b>核對</b> 有效篇數、版本、同篇配對；等級分界取自教學設定</p>
+      </section>
+      <section class="flow-card model-step">
+        <div class="flow-card-head"><span class="step-tag">03 · 模型</span><h2>綜合報告</h2></div>
+        <p><b>接入</b> 01 框架、全批 02 結果、程序統計和選定示例；僅 3.1.2 無前 10 名單時可另帶作文 ID、全文、有效原總分及輸入順序</p>
+        <p><b>產出</b> 四章正文、分項分析、語言選讀與示例入選說明</p>
+        <p class="flow-check"><b>展示</b> 圖表用程序資料；分析正文與示例不展示原分</p>
+      </section>
+    </div>
+
+    <div class="flow-detail-grid">
+      <section class="flow-detail" aria-labelledby="handoff-title">
+        <h2 id="handoff-title">02 → 程序 → 03：交接字段</h2>
+        <div class="field-row"><strong>範圍與來源</strong><span>同次比賽同題範圍、題目原文、本校 ID、作文 ID、01 選定骨架、來源版本</span></div>
+        <div class="field-row"><strong>逐篇內容</strong><span>節點編號／標題、本項總結、正面與問題原文評語配對</span></div>
+        <div class="field-row"><strong>程序結果</strong><span>納入篇數、等級分布、總分與四維度對比區間、合格例證</span></div>
+        <div class="field-row"><strong>詞句候選</strong><span>程序名單 candidate_essays；無名單時提供 essay_id、original_total_score、input_order、full_text</span></div>
+        <div class="field-row"><strong>示例交接</strong><span>n、essay_id、case_type、display_order、少於 4 篇的原因</span></div>
+      </section>
+      <section class="flow-detail" aria-labelledby="case-title">
+        <h2 id="case-title">學生作品示例：按有效篇數選取</h2>
+        <p id="case-definition">讀取選例契約中…</p>
+        <div id="case-rules" class="case-rules" aria-live="polite"></div>
+        <p id="case-ranking" class="muted"></p>
+      </section>
+      <section class="flow-detail flow-detail-wide" aria-labelledby="statistics-title">
+        <h2 id="statistics-title">1.2 數據如何由程序準備</h2>
+        <div class="field-row"><strong>範圍與有效值</strong><span id="statistics-scope">程序按同次比賽、同一題目及適用組別核對正式納入作文清單；本校是同題全體的子集，同一作文 ID 只計一次，評分標準與來源版本須一致。 原總分只接受 0—100 的有效數值，0 分有效；四維度各按同版評分設定核驗有效範圍。缺值或無效值不以 0 補足，按指標分別排除並交付各自有效篇數。</span></div>
+        <div class="field-row"><strong>1.2.1</strong><span id="statistics-grade">1.2.1 讀取系統／教學設定的等級名稱與分數區間，對本校有效原總分逐篇歸入唯一等級；程序按全部等級計數並核對合計等於有效原總分篇數。報告的等級人數與柱狀圖只展示人數大於 0 的等級，不展示 0 人檔。沒有有效原總分時交付空態原因。</span></div>
+        <div class="field-row"><strong>1.2.2</strong><span id="statistics-comparison">1.2.2 對本校與同題全體的總分及四維度，分別計算有效篇數、最低值、最高值及平均值作內部繪圖資料；兩組使用同一指標坐標軸，輸出區間端點與平均相對位置。報告只展示納入篇數、區間圖與相對位置，不展示具體分數。</span></div>
+        <div class="field-row"><strong>位置與空態</strong><span id="statistics-empty">同一指標的共用坐標軸下限取兩組最低值的較小者，上限取兩組最高值的較大者；位置 =（值－坐標軸下限）／（上限－下限）。上下限相同時統一置中，不除以零。 未取得經程序確認的同題全體資料時，1.2.2 不生成對比圖；任一指標的任一組有效篇數為 0 時，該指標顯示程序空態與原因。不得以 0 分或模型推測補足缺失資料。</span></div>
+        <p><a href="./examples/competition-statistics-historical-eight.json">查看歷史資料的統計 JSON 示例</a>（僅供測試；缺全體資料時對比留空）。</p>
+      </section>
+    </div>
+    <p class="flow-footnote">3.1.2 無獨立前 10 名單而有有效原總分與全文時，模型可依同一規則排序選材，第 4 章示例仍由程序選定。原分不在比賽報告展示。字段細節見「報告生成資料（提示詞+JSON）」。</p>
+  </main>
+</body>
+</html>

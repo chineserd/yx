@@ -1,0 +1,61 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { fileRecord, bindImportStudent, retryImportRecord, deferImportRecords, acknowledgeImportOverwrite, visibleImportRows, importStats } from '../src/import-records.mjs';
+const roster = [{ code:6684, name:'高俊杰', files:[{src:'mock.jpg'}], gradingStatus:'未上传' }];
+const draft = () => [fileRecord('IMG_20260922.jpg',roster,'unmatched'),fileRecord('6684_2.jpg',roster,'damaged','文件校验失败：图片损坏')];
+test('matching retains IDs and order and records one latest explanation without grading', () => {
+  const original = draft();
+  const next = bindImportStudent(original,'unmatched',6684,roster).records;
+  assert.equal(next[0].lastAction,'已手动匹配：6684—高俊杰');
+  assert.equal(next[0].issue,'');
+  assert.equal(next[0].canPreview,true);
+  assert.equal(next[0].decision,'pending');
+  assert.equal(next[0].fileName,'IMG_20260922.jpg');
+  assert.deepEqual(next.map(r=>r.id),original.map(r=>r.id));
+  assert.equal(next[1],original[1]);
+  assert.equal(original[0].lastAction,undefined);
+  assert.equal(importStats(next).ready,1);
+  assert.equal(importStats(next).exception,1);
+});
+test('acted-on row stays in the exception view until an explicit filter change, counts are real', () => {
+  const next=bindImportStudent(draft(),'unmatched',6684,roster).records;
+  assert.deepEqual(visibleImportRows(next,'exception',['unmatched']).map(r=>[r.record.id,r.index]),[['unmatched',0],['damaged',1]]);
+  assert.deepEqual(visibleImportRows(next,'exception').map(r=>r.record.id),['damaged']);
+  assert.deepEqual(visibleImportRows(next,'ready').map(r=>r.record.id),['unmatched']);
+});
+test('matching retains unrelated errors, successful retry replaces rather than appends latest action', () => {
+  const initial=draft().map(r=>r.id==='unmatched'?{...r,issue:r.issue+'；文件校验失败：图片损坏'}:r);
+  const bound=bindImportStudent(initial,'unmatched',6684,roster).records;
+  assert.match(bound[0].issue,/图片损坏/);
+  assert.equal(bound[0].canPreview,false);
+  assert.match(bound[0].lastAction,/已手动匹配/);
+  const deferred=deferImportRecords(bound,'unmatched');
+  assert.equal(deferred[0].lastAction,'已暂不处理，本次不提交');
+  const retried=retryImportRecord(deferred,'unmatched',roster);
+  assert.equal(retried[0].lastAction,'已重新导入，校验通过');
+  assert.equal(retried[0].issue,'');
+  assert.equal(retried[0].fileName,'IMG_20260922.jpg');
+  assert.equal(retried[1],bound[1]);
+});
+test('overwrite and defer-all have row-local latest explanations and retain order', () => {
+  const input=[fileRecord('6684_1.jpg',roster,'overwrite','待确认：覆盖按新文件批改。'),...draft()];
+  const deferred=deferImportRecords(input);
+  assert.ok(deferred.every(r=>r.lastAction==='已暂不处理，本次不提交'));
+  const next=acknowledgeImportOverwrite(deferred,'overwrite',roster);
+  assert.equal(next[0].lastAction,'已确认覆盖，提交后按新文件批改');
+  assert.equal(next[0].decision,'pending');
+  assert.equal(next[0].issue,'');
+  assert.deepEqual(next.map(r=>r.id),input.map(r=>r.id));
+});
+test('resolved highlight is persistent and matching never auto-scrolls or opens another modal', () => {
+  const source=readFileSync(new URL('../src/CompositionImport.jsx',import.meta.url),'utf8');
+  const css=readFileSync(new URL('../src/composition-import.css',import.meta.url),'utf8');
+  assert.match(source,/record.lastAction && record.decision === "pending" \? "is-resolved"/);
+  assert.match(source,/aria-live="polite" aria-atomic="true"/);
+  assert.ok(source.includes('record.canPreview && <button onClick={() => openRecordPreview(record)}>查看</button>'));
+  assert.doesNotMatch(source,/record.canPreview \? "查看" : "无法查看"/);
+  assert.doesNotMatch(source,/scrollIntoView/);
+  assert.match(css,/\.is-resolved td \{ background: #effaf3; \}/);
+  assert.doesNotMatch(css,/\.is-resolved[^}]*animation/);
+});

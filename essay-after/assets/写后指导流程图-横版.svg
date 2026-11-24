@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="760" viewBox="0 0 1560 760" role="img" aria-labelledby="title desc">
+<title id="title">作文寫後指導｜角色與菜單流程圖</title>
+<desc id="desc">固定橫向四欄，依次說明教師發佈任務並開啟寫後指導、學生提交初稿及查看批改報告、學生逐條處理意見並形成修改稿、教師在任務列表與單生報告查看結果。關閉開關時不展示寫後專屬入口。完成口徑和提交方式待確認。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6c819d" stroke-width="2"/></marker></defs>
+<rect x="1" y="1" width="1558" height="758" rx="16" fill="#fff" stroke="#d9e4f1"/>
+<g font-family="PingFang TC,Microsoft JhengHei,sans-serif">
+<rect x="28" y="28" width="352" height="674" rx="13" fill="#f3f7fe" stroke="#b6cdfb"/>
+<circle cx="55" cy="61" r="14" fill="#3563df"/>
+<text x="55" y="66" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">1</text>
+<text x="80" y="66" fill="#233247" font-size="17" font-weight="700">教師後台／發佈任務</text>
+<rect x="412" y="28" width="352" height="674" rx="13" fill="#f1faf6" stroke="#a9ddc4"/>
+<circle cx="439" cy="61" r="14" fill="#2b9d79"/>
+<text x="439" y="66" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">2</text>
+<text x="464" y="66" fill="#233247" font-size="17" font-weight="700">學生端／初稿與批改</text>
+<rect x="796" y="28" width="352" height="674" rx="13" fill="#faf5fd" stroke="#d9baf0"/>
+<circle cx="823" cy="61" r="14" fill="#8f55bd"/>
+<text x="823" y="66" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">3</text>
+<text x="848" y="66" fill="#233247" font-size="17" font-weight="700">學生端／寫後指導</text>
+<rect x="1180" y="28" width="352" height="674" rx="13" fill="#f3f7fe" stroke="#b6cdfb"/>
+<circle cx="1207" cy="61" r="14" fill="#3563df"/>
+<text x="1207" y="66" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">4</text>
+<text x="1232" y="66" fill="#233247" font-size="17" font-weight="700">教師後台／查看結果</text>
+<path d="M381 92 L409 92" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M765 92 L793 92" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1149 92 L1177 92" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="44" y="112" width="320" height="82" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="60" y="142" fill="#243247" font-size="16" font-weight="700">選擇命題作文</text>
+<text x="60" y="168" fill="#60718a" font-size="14" font-weight="400">設定班級、時間與作文上傳方式。</text>
+<path d="M204 195 L204 213" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="44" y="225" width="320" height="118" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="60" y="255" fill="#243247" font-size="16" font-weight="700">配置寫後指導開關</text>
+<text x="60" y="281" fill="#60718a" font-size="14" font-weight="400">默認關閉；開啟後保存到本任務。</text>
+<text x="60" y="304" fill="#60718a" font-size="14" font-weight="400">關閉時不出現寫後專屬入口、</text>
+<text x="60" y="327" fill="#60718a" font-size="14" font-weight="400">進度卡與學生狀態列。</text>
+<path d="M204 344 L204 365" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="44" y="377" width="320" height="82" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="60" y="407" fill="#243247" font-size="16" font-weight="700">發佈作文任務</text>
+<text x="60" y="433" fill="#60718a" font-size="14" font-weight="400">學生按任務要求完成作文初稿。</text>
+<path d="M204 460 L204 483" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="44" y="495" width="320" height="82" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="60" y="525" fill="#243247" font-size="16" font-weight="700">任務管理列表</text>
+<text x="60" y="551" fill="#60718a" font-size="14" font-weight="400">已開啟的作文進入「寫後作文」Tab。</text>
+<rect x="44" y="607" width="320" height="68" rx="10" fill="#f8faff" stroke="#b6cdfb" stroke-dasharray="6 5"/>
+<text x="60" y="637" fill="#243247" font-size="16" font-weight="700">關閉分支</text>
+<text x="60" y="663" fill="#60718a" font-size="14" font-weight="400">沿用原作文批改流程。</text>
+<rect x="428" y="112" width="320" height="82" rx="10" fill="#fff" stroke="#a9ddc4"/>
+<text x="444" y="142" fill="#243247" font-size="16" font-weight="700">查看教師任務</text>
+<text x="444" y="168" fill="#60718a" font-size="14" font-weight="400">取得本次作文題目與要求。</text>
+<path d="M588 195 L588 213" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="428" y="225" width="320" height="82" rx="10" fill="#fff" stroke="#a9ddc4"/>
+<text x="444" y="255" fill="#243247" font-size="16" font-weight="700">提交作文初稿</text>
+<text x="444" y="281" fill="#60718a" font-size="14" font-weight="400">保留與本次任務對應的原稿。</text>
+<path d="M588 308 L588 326" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="428" y="338" width="320" height="82" rx="10" fill="#fff" stroke="#a9ddc4"/>
+<text x="444" y="368" fill="#243247" font-size="16" font-weight="700">作文批改完成</text>
+<text x="444" y="394" fill="#60718a" font-size="14" font-weight="400">形成作文評分報告與批改信息。</text>
+<path d="M588 421 L588 439" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="428" y="451" width="320" height="105" rx="10" fill="#fff" stroke="#a9ddc4"/>
+<text x="444" y="481" fill="#243247" font-size="16" font-weight="700">查看作文評分報告</text>
+<text x="444" y="507" fill="#60718a" font-size="14" font-weight="400">已開啟任務可進入寫後指導；</text>
+<text x="444" y="530" fill="#60718a" font-size="14" font-weight="400">未開啟任務不展示寫後入口。</text>
+<rect x="812" y="112" width="320" height="82" rx="10" fill="#fff" stroke="#d9baf0"/>
+<text x="828" y="142" fill="#243247" font-size="16" font-weight="700">查看原稿與指導意見</text>
+<text x="828" y="168" fill="#60718a" font-size="14" font-weight="400">對照批改信息閱讀修改方向。</text>
+<path d="M972 195 L972 213" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="812" y="225" width="320" height="105" rx="10" fill="#fff" stroke="#d9baf0"/>
+<text x="828" y="255" fill="#243247" font-size="16" font-weight="700">逐條處理意見</text>
+<text x="828" y="281" fill="#60718a" font-size="14" font-weight="400">修改：調整作文內容。</text>
+<text x="828" y="304" fill="#60718a" font-size="14" font-weight="400">忽略／確認：記錄本條處理結果。</text>
+<path d="M972 331 L972 351" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="812" y="363" width="320" height="86" rx="10" fill="#fff" stroke="#d9baf0"/>
+<text x="828" y="393" fill="#243247" font-size="16" font-weight="700">仍有未處理的意見？</text>
+<text x="828" y="419" fill="#60718a" font-size="14" font-weight="400">有：返回逐條處理。</text>
+<text x="828" y="442" fill="#60718a" font-size="14" font-weight="400">無：形成修改／忽略狀態及連線對應。</text>
+<path d="M1133 406 H1152 V279 H1135" stroke="#8f55bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="1139" y="354" fill="#71528d" font-size="12" font-weight="700">有</text>
+<path d="M972 450 L972 473" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="812" y="485" width="320" height="105" rx="10" fill="#fff" stroke="#d9baf0"/>
+<text x="828" y="515" fill="#243247" font-size="16" font-weight="700">形成指導後作文稿</text>
+<text x="828" y="541" fill="#60718a" font-size="14" font-weight="400">根據已完成修改的意見整理文章。</text>
+<text x="828" y="564" fill="#60718a" font-size="14" font-weight="400">忽略的意見保留處理記錄。</text>
+<rect x="812" y="607" width="320" height="68" rx="10" fill="#fdfaff" stroke="#d9baf0" stroke-dasharray="6 5"/>
+<text x="828" y="637" fill="#243247" font-size="16" font-weight="700">提交規則待確認</text>
+<text x="828" y="663" fill="#60718a" font-size="14" font-weight="400">保存、提交及完成判定尚待評審。</text>
+<rect x="1196" y="112" width="320" height="82" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="1212" y="142" fill="#243247" font-size="16" font-weight="700">寫後作文任務列表</text>
+<text x="1212" y="168" fill="#60718a" font-size="14" font-weight="400">查看已開啟任務及寫後進度。</text>
+<path d="M1356 195 L1356 213" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1196" y="225" width="320" height="105" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="1212" y="255" fill="#243247" font-size="16" font-weight="700">任務詳情｜成績概覽</text>
+<text x="1212" y="281" fill="#60718a" font-size="14" font-weight="400">顯示寫後指導完成進度卡。</text>
+<text x="1212" y="304" fill="#60718a" font-size="14" font-weight="400">學生表格逐人顯示完成狀態。</text>
+<path d="M1356 331 L1356 351" stroke="#86a0bd" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1196" y="363" width="320" height="113" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="1212" y="393" fill="#243247" font-size="16" font-weight="700">學習作文報告｜寫後指導</text>
+<text x="1212" y="419" fill="#60718a" font-size="14" font-weight="400">頂部新增「寫後指導」Tab。</text>
+<text x="1212" y="442" fill="#60718a" font-size="14" font-weight="400">左：合成後作文；右：逐條意見，</text>
+<text x="1212" y="465" fill="#60718a" font-size="14" font-weight="400">指導後作文稿。</text>
+<rect x="1196" y="515" width="320" height="75" rx="10" fill="#fff" stroke="#b6cdfb"/>
+<text x="1212" y="545" fill="#243247" font-size="16" font-weight="700">查看學生處理結果</text>
+<text x="1212" y="571" fill="#60718a" font-size="14" font-weight="400">在同一頁左右聯動查看作文與意見。</text>
+<path d="M365 284 H390 V640 H366" stroke="#8298b8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="369" y="275" fill="#52647c" font-size="12" font-weight="700">關閉</text>
+<text x="217" y="360" fill="#52647c" font-size="12" font-weight="700">開啟</text>
+<line x1="28" y1="720" x2="1532" y2="720" stroke="#dbe4ef"/>
+<text x="28" y="744" fill="#6b5a37" font-size="13" font-weight="400">待確認：意見來源、學生入口、修改／忽略／確認的撤回規則、完成統計口徑、修改稿保存與提交方式。</text>
+</g></svg>

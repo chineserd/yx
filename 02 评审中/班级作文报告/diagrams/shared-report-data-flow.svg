@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="338" viewBox="0 0 1120 338" role="img" aria-labelledby="title desc">
+<title id="title">兩類報告共用資料流程</title>
+<desc id="desc">批改完成，校驗來源，整理單篇資料，篩選有效資料；分別彙總班級與個人報告，更新最新結果。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="none" stroke="#8295b3" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;fill:#262626}.title{font-size:17px;font-weight:600}.body{font-size:14px;fill:#595959}.tag{font-size:13px;fill:#2365f6}.line{fill:none;stroke:#8295b3;stroke-width:1.5;marker-end:url(#arrow)}.box{fill:#f5f8ff;stroke:#cdddfb}.branch{fill:#fff;stroke:#cdddfb}</style>
+<g>
+<rect class="box" x="8" y="8" width="254" height="88" rx="8"/><text class="title" x="24" y="35">① 批改完成</text><text class="body" x="24" y="59">讀取最新已完成的單篇報告</text><text class="body" x="24" y="80">學生・任務・評分標準</text>
+<rect class="box" x="292" y="8" width="254" height="88" rx="8"/><text class="title" x="308" y="35">② 校驗來源</text><text class="body" x="308" y="59">核對成績、原文與評語</text><text class="body" x="308" y="80">保留原文位置與來源關聯</text>
+<rect class="box" x="576" y="8" width="254" height="88" rx="8"/><text class="title" x="592" y="35">③ 整理單篇資料</text><text class="body" x="592" y="59">拆分評價・統一分類</text><text class="body" x="592" y="80">句子唯一歸屬・保留原始證據</text>
+<rect class="box" x="860" y="8" width="252" height="88" rx="8"/><text class="title" x="876" y="35">④ 篩選有效資料</text><text class="body" x="876" y="59">按權限與公布狀態篩選</text><text class="body" x="876" y="80">依各報告範圍取數</text>
+<path class="line" d="M262 52H286"/><path class="line" d="M546 52H570"/><path class="line" d="M830 52H854"/>
+<path d="M986 96V120H280" fill="none" stroke="#8295b3" stroke-width="1.5"/>
+<path class="line" d="M280 120V150"/><path class="line" d="M840 120V150"/>
+<rect class="branch" x="70" y="156" width="420" height="88" rx="8"/><text class="title" x="90" y="182">班級作文報告</text><text class="body" x="90" y="206">同班級・同任務・同評分標準</text><text class="body" x="90" y="229">分數統計・問題涉及人數・課堂案例</text>
+<rect class="branch" x="630" y="156" width="420" height="88" rx="8"/><text class="title" x="650" y="182">個人作文綜合報告</text><text class="body" x="650" y="206">同學生・指定時段・同評分標準</text><text class="body" x="650" y="229">分數變化・問題篇數與次數・原文案例</text>
+<path d="M280 244V264H840V244" fill="none" stroke="#8295b3" stroke-width="1.5"/><path class="line" d="M560 264V278"/>
+<rect x="350" y="284" width="420" height="48" rx="8" fill="#2365f6"/><text x="370" y="314" style="fill:white;font-size:17px;font-weight:600">更新報告</text><text x="474" y="314" style="fill:white;font-size:14px">只展示最新結果・查看與導出一致</text>
+</g></svg>
