@@ -6,6 +6,8 @@ serves them under /yx/ to keep the existing absolute links working.
 """
 
 import argparse
+import hashlib
+import html as html_tools
 import json
 import re
 import shutil
@@ -16,6 +18,37 @@ MAX_FILES = 20_000
 MAX_FILE_BYTES = 25 * 1024 * 1024
 SKIP_DIRS = {".git", "cloudflare-dist", "__pycache__"}
 SKIP_FILES = {"cloudflare-build.py", ".DS_Store"}
+UPDATE_SCRIPT = '<script defer src="/yx/assets/prototype-update.js" data-prototype="{group}" data-version="{version}"></script>'
+
+
+def prototype_group(relative: Path) -> str | None:
+    parts = relative.parts
+    if len(parts) < 2 or relative.suffix.lower() != ".html":
+        return None
+    if "qa-evidence" in parts or "archive" in parts or "restore-backup" in relative.as_posix():
+        return None
+    if re.fullmatch(r"20\d\d\.\d\d", parts[0]) and len(parts) >= 3:
+        return "/".join(parts[:2])
+    if re.match(r"0[1-5](?:\s|待)", parts[0]):
+        depth = 3 if len(parts) >= 4 and parts[1] in {"中文科", "普通话科"} else 2
+        return "/".join(parts[:depth])
+    return parts[0]
+
+
+def content_hash(paths: list[Path], source: Path) -> str:
+    digest = hashlib.sha256()
+    for path in sorted(paths, key=lambda item: item.relative_to(source).as_posix()):
+        relative = path.relative_to(source)
+        if any(part in relative.parts for part in {"qa-evidence", "archive", "docs", "tests", "design-qa"}):
+            continue
+        if path.suffix.lower() in {".md", ".txt", ".ts", ".tsx", ".vue"} or path.name == "version.json":
+            continue
+        digest.update(relative.as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        with path.open("rb") as file:
+            for chunk in iter(lambda: file.read(1024 * 1024), b""):
+                digest.update(chunk)
+    return digest.hexdigest()[:20]
 
 
 def build(source: Path, output: Path) -> dict:
@@ -63,6 +96,26 @@ def build(source: Path, output: Path) -> dict:
         raise ValueError("总览登录提示的域名判断已变化，请检查后再发布")
     home.write_text(html.replace(old_gate, new_gate), encoding="utf-8")
 
+    pages = [path for path in site.rglob("*.html")
+             if prototype_group(path.relative_to(site)) is not None]
+    groups = sorted({prototype_group(path.relative_to(site)) for path in pages})
+    versions = {
+        group: content_hash([path for path in (source / group).rglob("*") if path.is_file()], source)
+        for group in groups
+    }
+    for page in pages:
+        group = prototype_group(page.relative_to(site))
+        page_html = page.read_text(encoding="utf-8")
+        tag = UPDATE_SCRIPT.format(group=html_tools.escape(group, quote=True), version=versions[group])
+        page_html, inserted = re.subn(r"</head\s*>", lambda match: tag + "\n" + match.group(),
+                                      page_html, count=1, flags=re.IGNORECASE)
+        if inserted != 1:
+            raise ValueError(f"原型页面缺少 head，无法接入更新提示：{page.relative_to(site)}")
+        page.write_text(page_html, encoding="utf-8")
+    (site / "prototype-versions.json").write_text(
+        json.dumps(versions, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
     header_rules = ["/*", "  Cache-Control: no-cache, max-age=0, must-revalidate"]
     fingerprinted = re.compile(r".+-[A-Za-z0-9_-]{8,}\.(?:js|css|svg|png|webp|woff2)$")
     for directory in sorted(site.rglob("assets")):
@@ -96,7 +149,8 @@ def build(source: Path, output: Path) -> dict:
     (site / "deployment-version.json").write_text(
         json.dumps({"commit": commit}, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    return {"ok": True, "files": count, "fingerprinted_asset_groups": (len(header_rules) - 2) // 4,
+    return {"ok": True, "files": count, "update_pages": len(pages), "update_groups": len(groups),
+            "fingerprinted_asset_groups": (len(header_rules) - 2) // 4,
             "commit": commit, "output": str(output)}
 
 
