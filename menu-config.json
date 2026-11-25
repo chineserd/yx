@@ -2,7 +2,7 @@
   "meta": {
     "title": "中文路需求原型汇总",
     "subtitle": "Product Prototype Overview · 产品经理维护",
-    "updatedAt": "2026-11-24",
+    "updatedAt": "2026-11-25",
     "owner": "PM",
     "version": "1.0"
   },
@@ -127,22 +127,24 @@
       "expanded": true,
       "color": "green",
       "showEmpty": true,
-      "items": []
-    },
-    {
-      "id": "pending-review",
-      "title": "03待评审",
-      "subtitle": "",
-      "expanded": true,
-      "color": "green",
-      "showEmpty": true,
       "items": [
+        {
+          "id": "LOCAL-7d2a9d5bfa58",
+          "status": "in-progress",
+          "title": "个人短讲-普通话科",
+          "folderName": "个人短讲-普通话科",
+          "localSource": "02 评审中/个人短讲-普通话科",
+          "previewUrl": "./short-talk/",
+          "updatedAt": "2026-11-25",
+          "createdAt": "2026-10-13",
+          "businessCategory": "普通话科"
+        },
         {
           "id": "LOCAL-8a99c8a5b6eb",
           "status": "in-progress",
           "title": "作文-写后指导",
           "folderName": "作文-写后指导",
-          "localSource": "03待评审/中文科/作文-写后指导",
+          "localSource": "02 评审中/作文-写后指导",
           "previewUrl": "./essay-after/",
           "businessCategory": "中文科",
           "updatedAt": "2026-11-24",
@@ -164,10 +166,20 @@
               "backend": "#/tasks"
             }
           ],
-          "localSource": "03待评审/中文科/班级作文报告（班级报告+ 课堂点评）",
+          "localSource": "02 评审中/班级作文报告（班级报告+ 课堂点评）",
           "createdAt": "2026-10-08",
           "businessCategory": "中文科"
-        },
+        }
+      ]
+    },
+    {
+      "id": "pending-review",
+      "title": "03待评审",
+      "subtitle": "",
+      "expanded": true,
+      "color": "green",
+      "showEmpty": true,
+      "items": [
         {
           "id": "LOCAL-a75acdc450c6",
           "status": "in-progress",
@@ -222,17 +234,6 @@
           "businessCategory": "中文路",
           "updatedAt": "2026-11-23",
           "createdAt": "2026-11-23"
-        },
-        {
-          "id": "LOCAL-7d2a9d5bfa58",
-          "status": "in-progress",
-          "title": "个人短讲-普通话科",
-          "folderName": "个人短讲-普通话科",
-          "localSource": "03待评审/普通话科/个人短讲-普通话科",
-          "previewUrl": "./short-talk/",
-          "updatedAt": "2026-11-24",
-          "createdAt": "2026-10-13",
-          "businessCategory": "普通话科"
         },
         {
           "id": "LOCAL-6cf4d2104cf6",
