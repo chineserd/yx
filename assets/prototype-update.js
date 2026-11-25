@@ -28,6 +28,64 @@
   document.head.appendChild(style);
   document.documentElement.classList.add('shared-update-active');
 
+  const restoreKey = `prototype-update-restore:${group}`;
+  const label = (element) => element?.textContent?.replace(/\s+/g, ' ').trim() || '';
+  const selectedButton = (root) => root?.querySelector('button[aria-current="page"], button.selected');
+  const saveCurrentPage = () => {
+    const top = selectedButton(document.querySelector('.preview-nav, [aria-label="原型導航"], [aria-label="原型导航"]'));
+    const directory = selectedButton(document.querySelector('.page-directory, [aria-label="頁面目錄"], [aria-label="页面目录"]'));
+    const section = directory?.closest('nav[aria-label]');
+    try {
+      sessionStorage.setItem(restoreKey, JSON.stringify({
+        url: location.pathname + location.search + location.hash,
+        time: Date.now(),
+        top: label(top),
+        directory: directory ? { section: section?.getAttribute('aria-label') || '', button: label(directory) } : null,
+      }));
+    } catch (_) { /* The URL still survives a reload when storage is unavailable. */ }
+  };
+  const restoreCurrentPage = () => {
+    let saved;
+    try {
+      saved = JSON.parse(sessionStorage.getItem(restoreKey) || 'null');
+      sessionStorage.removeItem(restoreKey);
+    } catch (_) { return; }
+    if (!saved || saved.url !== location.pathname + location.search + location.hash ||
+        Date.now() - saved.time > 120_000) return;
+    let topClicked = false;
+    let observer;
+    const finish = () => observer?.disconnect();
+    const attempt = () => {
+      if (saved.top && !topClicked) {
+        const top = [...document.querySelectorAll('.preview-nav button, [aria-label="原型導航"] button, [aria-label="原型导航"] button')]
+          .find((button) => label(button) === saved.top);
+        if (!top) return;
+        topClicked = true;
+        if (!top.classList.contains('selected')) {
+          top.click();
+          if (saved.directory) return;
+        }
+      }
+      if (saved.directory) {
+        const sections = [...document.querySelectorAll('.page-directory nav[aria-label], [aria-label="頁面目錄"] nav[aria-label], [aria-label="页面目录"] nav[aria-label]')];
+        const section = sections.find((item) => item.getAttribute('aria-label') === saved.directory.section);
+        const buttons = section ? [...section.querySelectorAll('button')]
+          : [...document.querySelectorAll('.page-directory button, [aria-label="頁面目錄"] button, [aria-label="页面目录"] button')];
+        const matches = buttons.filter((button) => label(button) === saved.directory.button);
+        const target = section ? matches[0] : matches.length === 1 ? matches[0] : null;
+        if (!target) return;
+        if (target.getAttribute('aria-current') !== 'page') target.click();
+      }
+      finish();
+    };
+    observer = new MutationObserver(attempt);
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    attempt();
+    setTimeout(finish, 5_000);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', restoreCurrentPage, { once: true });
+  else restoreCurrentPage();
+
   let checking = false;
   const showNotice = () => {
     if (document.getElementById('prototype-update-notice')) return;
@@ -39,7 +97,7 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.textContent = '立即刷新';
-    button.addEventListener('click', () => location.reload());
+    button.addEventListener('click', () => { saveCurrentPage(); location.reload(); });
     notice.append(message, button);
     document.body.appendChild(notice);
   };
