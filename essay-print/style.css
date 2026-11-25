@@ -41,6 +41,8 @@
 
 /* 三页姓名与作文题目采用统一的标签、字体与间距。 */
 .print-student-meta,.score-print-heading>p{display:flex;gap:28px;font-family:"Songti TC","Songti SC",SimSun,serif;font-size:12px;font-weight:400;line-height:1.3;color:#292929}.print-student-meta{flex-wrap:wrap}.sheet-heading{align-items:baseline;gap:16px}.sheet-heading>span{white-space:nowrap}
+.prototype-preview-button{gap:7px}.prototype-preview-button small{font-size:10px;color:#657184;font-weight:400}.print-typo-line{position:absolute;height:0;border-bottom:2px solid #d74646;z-index:3;pointer-events:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}.sheet-typo-legend{font:11px/1.5 system-ui;color:#a33e3e;margin-top:6px}.score-print-grade{display:block;font-size:12px;font-weight:600;margin-top:5px}.score-print-typos{border:1px solid #e6bcbc;background:#fffafa;padding:8px 12px;flex-shrink:0}.score-print-typos h2{color:#a33e3e}.score-print-typos p{font-size:12px}
+.overview-action-stack{display:flex;flex-direction:column;align-items:flex-end;gap:8px;min-width:0}.overview-preview-button{font-size:12px}@media(max-width:760px){.overview-action-stack{width:100%}.overview-actions{width:100%}}
 
 /* 任務列表與學生答題欄位 */
 #task-list{margin-top:16px}
@@ -123,3 +125,31 @@
 .download-export-menu button{display:flex;align-items:center;width:100%;min-height:36px;padding:8px 10px;border:0;background:transparent;color:#334155;text-align:left;white-space:nowrap}
 .download-export-menu button:hover,.download-export-menu button:focus-visible{background:#edf3ff;color:#2365f6}
 .download-export-menu .table-demand-badge{margin-left:auto}
+
+/* 原稿錯別字開關、獨立評分展示，以及報告頁眉學生資料。 */
+.typo-toggle{display:inline-flex;align-items:center;border:0;background:transparent;color:#637084;font:inherit;font-size:10px;cursor:pointer;padding:2px 4px}.typo-toggle:focus-visible{outline:2px solid #2365f6}.typos-hidden .paper .typo-mark{display:none}.typos-hidden #text-view .paper-cell.typo{box-shadow:none;color:inherit}.typo-score-dimension .dimension-header{justify-content:space-between}.typo-score-dimension .dimension-header strong{font-size:15px}.typo-score-value{margin-left:auto;font-size:16px;font-weight:600}.typo-score-dimension .dimension-comment{line-height:1.7}.print-student-meta,.score-print-heading>p{flex-wrap:wrap;gap:4px 18px}.print-student-meta .report-topic,.score-print-heading .report-topic{flex-basis:100%}.sheet-heading{align-items:flex-start}.sheet-heading>span{padding-top:2px}
+/* 评分长文在同一张 A4 内完整收纳。 */
+.report-sheet.score-report-sheet{padding:30px 40px 25px;gap:7px;font-size:13px;line-height:1.23}
+.score-print-heading{padding-bottom:7px}.score-print-heading h1{font-size:20px;margin-bottom:5px}
+.score-print-overall,.score-print-dimensions{padding:8px 10px}.score-print-dimension{padding:5px 0}
+.score-print-insights{padding:7px 10px}.score-print-insights li{margin-bottom:2px}
+.score-print-typos{padding:6px 10px}.score-report-sheet p{line-height:1.23}
+@media print{#print-output .score-report-sheet{padding:8mm 10.6mm 6.6mm}}
+
+.score-print-level{display:block;font-size:12px;margin-top:3px}.score-print-total{min-width:105px}.report-display-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#526078;white-space:nowrap}.report-display-control select{font:inherit;font-size:12px;border:1px solid #d9e1eb;border-radius:6px;background:white;padding:6px}.paper-preview-toolbar>div:last-child{align-items:center;flex-wrap:wrap}
+
+.typo-score-dimension .dimension-header{justify-content:flex-start}.typo-score-dimension .dimension-header label{font-size:15px;font-weight:600;flex:0 0 64px}.typo-score-dimension .dimension-numbers{font-size:18px}.score-print-dimension:last-child{border-bottom:0}
+/* 附件《無愧的選擇》原型專用預覽；原稿保留附件原貌。 */
+.reference-manuscript-sheet{position:relative;padding:0;overflow:hidden;display:block;background:#fff}
+.reference-manuscript-sheet>img{display:block;width:100%;height:100%;object-fit:fill}
+.reference-extra-meta{position:absolute;top:76px;right:45px;font:12px/1.4 "Songti TC","Songti SC",serif;color:#292929;background:#fff;padding:1px 3px}
+.reference-score-sheet .score-print-heading{border-color:#2786bb}.reference-score-sheet .score-print-heading h1,.reference-score-sheet h2{color:#247caa}
+.reference-score-sheet .score-print-overall,.reference-score-sheet .score-print-dimensions,.reference-score-sheet .score-print-insights{border-color:#9fc2d3}
+@media print{#print-output .reference-manuscript-sheet{padding:0}}
+
+.score-print-total{text-align:left;min-width:130px}.score-print-total-line{display:flex;align-items:baseline;gap:2px;white-space:nowrap;font-size:12px;font-weight:600}.score-print-total-line strong{font-size:27px;line-height:1.1}.score-print-total-line small{display:inline;margin:0;font-size:11px;font-weight:400}.score-print-grade,.score-print-level{white-space:nowrap;font-size:11px;margin-top:4px}
+
+.reference-header-mask{position:absolute;z-index:4;top:0;left:0;right:0;height:145px;background:#fff;padding:34px 45px 0;box-sizing:border-box}.reference-header-mask .score-print-heading{border-color:#2786bb}.reference-header-mask .score-print-heading h1{color:#247caa}.reference-score-sheet .score-print-heading,.reference-header-mask .score-print-heading{font-family:"Songti TC","Songti SC",serif}.reference-score-sheet .score-print-heading>p,.reference-header-mask .score-print-heading>p{gap:4px 18px}
+
+/* 單份及批量導出共用的藍線頁眉，與原型樣例一致。 */
+.unified-report-heading{display:block;border-bottom:2px solid #2786bb;padding-bottom:7px;margin-bottom:12px}.unified-report-heading h1{margin:0 0 5px;text-align:center;font:600 20px/1.4 system-ui;color:#247caa}.sheet-heading-details{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.sheet-heading-details .print-student-meta{flex:1;gap:4px 18px}.sheet-heading-details>span{white-space:nowrap;font-size:11px;color:#5d6874}.score-report-sheet .score-print-heading{border-color:#2786bb}.score-report-sheet .score-print-heading h1,.score-report-sheet h2{color:#247caa}.score-report-sheet .score-print-overall,.score-report-sheet .score-print-dimensions,.score-report-sheet .score-print-insights{border-color:#9fc2d3}

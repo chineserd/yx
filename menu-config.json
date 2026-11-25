@@ -64,12 +64,12 @@
         {
           "id": "LOCAL-a54f2e59a8da",
           "status": "in-progress",
-          "title": "作文报告-下载报告（有分数版）",
-          "folderName": "作文报告-下载报告（有分数版）",
-          "localSource": "01 可开发/中文科/作文报告-下载报告（有分数版）",
+          "title": "作文报告-下载报告（有分数+等级或品第+错别字）",
+          "folderName": "作文报告-下载报告（有分数+等级或品第+错别字）",
+          "localSource": "01 可开发/中文科/作文报告-下载报告（有分数+等级或品第+错别字）",
           "previewUrl": "./essay-print/",
           "businessCategory": "中文科",
-          "updatedAt": "2026-11-24",
+          "updatedAt": "2026-11-25",
           "createdAt": "2026-10-27"
         },
         {

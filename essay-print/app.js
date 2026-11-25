@@ -21,6 +21,7 @@ $('.paper-scroll').onkeydown=e=>{if(e.target.matches('[data-anchor]')&&e.target.
 $('.paper-scroll').onclick=e=>{let a=e.target.closest('[data-anchor]');if(a)select(+a.dataset.anchor,'anchor')};
 function setMode(m){mode=m;$('.paper').hidden=m!=='image';$('#text-view').hidden=m!=='text';for(const name of ['image','text']){const button=$('#'+name+'-tab');button.classList.toggle('selected',m===name);button.setAttribute('aria-selected',String(m===name))}$('.counts').innerHTML='總字數 <b>497</b> 字 <i>｜</i> 疑似錯別字 <strong>17</strong> 字';$('.paper-scroll').scrollTop=0;highlightCells();lines()}
 $('#image-tab').onclick=()=>setMode('image');$('#text-tab').onclick=()=>setMode('text');
+$('#toggle-typos').onclick=()=>{const hidden=document.body.classList.toggle('typos-hidden');$('#toggle-typos').setAttribute('aria-pressed',String(!hidden));$('#toggle-typos').innerHTML='<i class="red"></i>疑似錯別字：'+(hidden?'關':'開')};
 function setTab(t){if(summaryEditing){notify('請先確認或取消正在編輯的總評');return}if(editing>=0&&t!=='notes'){notify('請先保存或取消正在編輯的批註');return}currentTab=t;$('#notes-panel').hidden=t!=='notes';$('#score-panel').hidden=t!=='score';$('#notes-tab').classList.toggle('active',t==='notes');$('#notes-tab').setAttribute('aria-selected',String(t==='notes'));$('#score-tab').setAttribute('aria-selected',String(t==='score'));$('#score-mode').hidden=t!=='score';$('#score-tab').classList.toggle('active',t==='score');lines()}
 $('#notes-tab').onclick=()=>setTab('notes');$('#score-tab').onclick=()=>setTab('score');
 $('#save').onclick=()=>{if(editing>=0){notify('請先保存正在編輯的批註');return}try{localStorage.setItem('essay-handwritten-lin-junxi-v1',JSON.stringify(notes));dirty=false;$('#dirty').textContent='';notify('修改已保存')}catch{notify('保存失敗，請重試')}};
@@ -93,9 +94,12 @@ const isInsideDownloadExport=e=>e.composedPath().some(node=>node?.classList?.con
 window.addEventListener('pointerdown',e=>{if(!isInsideDownloadExport(e))setDownloadExportOpen(false)});
 window.addEventListener('focusin',e=>{if(!isInsideDownloadExport(e))setDownloadExportOpen(false)});
 $('#export-scores').onclick=()=>{const csv='\uFEFF排名,班級編號,學生,得分,品第,提交日期,寫前指導,作文批改狀態\r\n'+students.map(s=>`${s.complete?'1':'-'},${s.number},${s.name},${s.complete?'52':'-'},${s.complete?'中中（下）':'-'},${s.submittedAt},${s.guidance},${s.grading}`).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='我最喜歡的故事人物-成績表.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
-let printTrigger;
-function showPrint(all){if(editing>=0||dirty||summaryEditing){notify(all?'請先確認修改，再導出作文報告':'請先確認修改，再下載作文報告');return}printTrigger=all?downloadExportTrigger:$('#print-one');if(!all){printDirectly();return}$('#print-title').textContent=all?'導出全部作文報告':'下載作文報告';$('#print-scope').textContent=all?'1A · 共12名學生，1份作文報告可導出；11名未完成學生不納入本次導出。':`當前學生：${essayData.student} · 1份作文報告 · 共${essayData.pages.length+1}頁`;$('#print-dialog .print-selected span:first-child').textContent=essayData.student;$('#print-dialog .print-selected span:nth-child(2)').textContent='《'+essayData.essayTitle+'》';$('#print-dialog').showModal()}
+let printTrigger,referencePreview=false;
+function showPrint(all){if(editing>=0||dirty||summaryEditing){notify(all?'請先確認修改，再導出作文報告':'請先確認修改，再下載作文報告');return}referencePreview=false;printTrigger=all?downloadExportTrigger:$('#print-one');if(!all){printDirectly();return}$('#print-title').textContent=all?'導出全部作文報告':'下載作文報告';$('#print-scope').textContent=all?'1A · 共12名學生，1份作文報告可導出；11名未完成學生不納入本次導出。':`當前學生：${essayData.student} · 1份作文報告 · 共${essayData.pages.length+1}頁`;$('#print-dialog .print-selected span:first-child').textContent=essayData.student;$('#print-dialog .print-selected span:nth-child(2)').textContent='《'+essayData.essayTitle+'》';$('#print-dialog').showModal()}
 $('#print-one').onclick=()=>showPrint(false);$('#print-all').onclick=()=>showPrint(true);
+function previewReference(button){if(editing>=0||dirty||summaryEditing){notify('請先確認修改，再預覽作文報告');return}referencePreview=true;printTrigger=button;openPaperPreview()}
+$('#preview-one').onclick=()=>previewReference($('#preview-one'));
+$('#preview-overview').onclick=()=>previewReference($('#preview-overview'));
 function closePrint(){$('#print-dialog').close();printTrigger?.focus()}
 $('#cancel-print').onclick=closePrint;$('#close-print').onclick=closePrint;$('#print-dialog').addEventListener('close',()=>printTrigger?.focus());
 $('#do-print').onclick=()=>openPaperPreview();
@@ -126,7 +130,7 @@ function simplifyPrintComment(note,index){
 }
 const printNumbers=['①','②','③','④','⑤','⑥','⑦','⑧'];
 function makePrintPage(){
- return essayData.pages.map((page,pageIndex)=>{const ids=pageIndex===0?[0,1,2,3,6]:[4,5,7];return `<article class="report-sheet" data-scan="${pageIndex+1}"><header class="sheet-heading"><div class="print-student-meta"><span>姓名：${esc(essayData.student)}</span><span>題目：${esc(essayData.essayTitle)}</span></div><span>第 ${pageIndex+1} / ${essayData.pages.length} 頁</span></header><div class="annotated-layout"><div class="manuscript-column"><div class="sheet-manuscript"><img src="./assets/lin-junxi-${pageIndex+1}.jpg" alt="${esc(essayData.student)}作文原稿第 ${pageIndex+1} 頁">${makePrintUnderlines(page)}${ids.map(i=>{const mark=page.marks.find(m=>m.anchor===`annotation-${i}`);if(!mark)return '';const top=mark.style.match(/top: ([\d.]+)%/)[1];return `<span class="sheet-anchor ${notes[i][3]?'praise':'correction'}" style="top:${top}%;left:${i===1?94:1}%">${printNumbers[i]}</span>`}).join('')}</div></div><aside class="marginal-column"><h3>— 旁批 —</h3>${ids.map(i=>`<p class="marginal-note ${notes[i][3]?'praise':'correction'}"><span>${printNumbers[i]}</span>${esc(simplifyPrintComment(notes[i],i))}${essayData.notes[i].unlocated?'<small>（暫無對應位置）</small>':''}</p>`).join('')}</aside></div></article>`}).join('');
+ return essayData.pages.map((page,pageIndex)=>{const ids=pageIndex===0?[0,1,2,3,6]:[4,5,7];return `<article class="report-sheet" data-scan="${pageIndex+1}"><header class="sheet-heading unified-report-heading"><h1>作文原稿與批註</h1><div class="sheet-heading-details"><div class="print-student-meta"><span>姓名：${esc(essayData.student)}</span><span>班級：${esc(taskItems[0].className)}</span><span>學號：${esc(essayData.studentNumber)}</span><span class="report-topic">題目：${esc(essayData.essayTitle)}</span></div><span>第 ${pageIndex+1} / ${essayData.pages.length+1} 頁</span></div></header><div class="annotated-layout"><div class="manuscript-column"><div class="sheet-manuscript"><img src="./assets/lin-junxi-${pageIndex+1}.jpg" alt="${esc(essayData.student)}作文原稿第 ${pageIndex+1} 頁">${makePrintUnderlines(page)}${makePrintTypoMarks(page)}${ids.map(i=>{const mark=page.marks.find(m=>m.anchor===`annotation-${i}`);if(!mark)return '';const top=mark.style.match(/top: ([\d.]+)%/)[1];return `<span class="sheet-anchor ${notes[i][3]?'praise':'correction'}" style="top:${top}%;left:${i===1?94:1}%">${printNumbers[i]}</span>`}).join('')}</div></div><aside class="marginal-column"><h3>— 旁批 —</h3>${ids.map(i=>`<p class="marginal-note ${notes[i][3]?'praise':'correction'}"><span>${printNumbers[i]}</span>${esc(simplifyPrintComment(notes[i],i))}${essayData.notes[i].unlocated?'<small>（暫無對應位置）</small>':''}</p>`).join('')}</aside></div><div class="sheet-typo-legend">紅色底線：疑似錯別字，請結合原稿核對</div></article>`}).join('');
 }
 // 旁批起排位置：起於原稿首行正文（作文標題行下方），避免旁批與作文標題同行。
 // 比例依各頁原稿實際高度換算，第 1 頁標題行底部約在原稿高度 21.5% 處，故取 22.5%。
@@ -150,9 +154,9 @@ function syncMarginalStart(){
  });
 }
 function openPaperPreview(){
- $('#paper-preview-scope').textContent=printTrigger?.id==='download-export-trigger'?'A4 · 210 × 297 mm · 全部可導出報告 · 1份 · 共3頁':`A4 · 210 × 297 mm · ${essayData.student} · 1份作文報告 · 共${essayData.pages.length+1}頁`;
- const markup=makePrintPage();$('#preview-pages').innerHTML=markup;$('#print-output').innerHTML=markup;
- closePrint();$('#paper-preview').showModal();fitPaperPreview();syncMarginalStart();
+ $('#paper-preview-scope').textContent=referencePreview?'A4 · 小鹿1《無愧的選擇》· 僅供原型查看 · 共4頁':printTrigger?.id==='download-export-trigger'?'A4 · 210 × 297 mm · 全部可導出報告 · 1份 · 共3頁':`A4 · 210 × 297 mm · ${essayData.student} · 1份作文報告 · 共${essayData.pages.length+1}頁`;
+ const markup=referencePreview?makeReferenceReport():makePrintPage();$('#preview-pages').innerHTML=markup;$('#print-output').innerHTML=referencePreview?'':markup;$('#print-paper').hidden=referencePreview;
+ if($('#print-dialog').open)closePrint();$('#paper-preview').showModal();fitPaperPreview();syncMarginalStart();
 }
 // 预览窗操作：返回关闭弹窗并把焦点还给触发按钮；打印走系统打印，打印内容由 @media print 下的 #print-output 提供。
 $('#exit-paper-preview').onclick=()=>$('#paper-preview').close();
@@ -213,5 +217,12 @@ function makePrintUnderlines(page){
   if(!Object.values(position).every(Number.isFinite)||Object.keys(position).length!==4)return '';
   const praise=notes[i][3];
   return `<span class="print-quote-line ${praise?'praise':'correction'}" data-print-note="${i+1}" aria-hidden="true" style="left:${position.left}%;top:${position.top+position.height-0.35}%;width:${position.width}%"></span>`;
+ }).join('');
+}
+function makePrintTypoMarks(page){
+ return page.marks.filter(mark=>!mark.anchor&&mark.label?.includes('錯別字')).map(mark=>{
+  const position=Object.fromEntries([...mark.style.matchAll(/(left|top|width|height):\s*([\d.]+)%/g)].map(m=>[m[1],Number(m[2])]));
+  if(!Object.values(position).every(Number.isFinite)||Object.keys(position).length!==4)return '';
+  return `<span class="print-typo-line" title="${esc(mark.label)}" aria-label="${esc(mark.label)}" style="left:${position.left}%;top:${position.top+position.height-0.35}%;width:${position.width}%"></span>`;
  }).join('');
 }

@@ -4,7 +4,7 @@
 <meta name="robots" content="noindex, nofollow">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>作文报告-下载报告（有分数版）｜PRD</title>
+  <title>作文報告-下載報告（有分數+等級或品第+錯別字）｜PRD</title>
   <link rel="stylesheet" href="./style.css">
   <style>
     body.prd-page{background:#f4f6fb;color:#303b4c}
@@ -26,22 +26,23 @@
     .prd-card th{background:#f5f8fc;white-space:nowrap}
     .prd-table-wrap{overflow:auto}
     .prd-pending{color:#9a5f12;font-weight:600;white-space:nowrap}
+    .prd-reference{margin:18px 0}.prd-reference img{display:block;width:100%;height:auto;border:1px solid #e1e6ef;border-radius:8px}.prd-reference figcaption{margin-top:6px;color:#617087;font-size:12px;line-height:1.5}
     @media(max-width:700px){.prd-page main.prd-main{padding:0 12px}.prd-head,.prd-card{padding:18px}.prd-head h1{font-size:20px}}
   </style>
 <script id="github-pages-prototype-redirect">if(location.hostname==="chineserd.github.io")location.replace("https://chineserd-prototypes.pages.dev"+location.pathname+location.search+location.hash);</script>
 </head>
 <body class="prd-page">
   <nav class="preview">
-    <div class="identity"><small>需求名稱</small><b>作文报告-下载报告（有分数版）</b></div>
+    <div class="identity"><small>需求名稱</small><b>作文報告-下載報告（有分數+等級或品第+錯別字）</b></div>
     <a href="./index.html#overview">後台</a>
     <a class="current" href="./prd.html" aria-current="page">PRD</a>
     <a class="history" href="/">歷史需求彙總頁</a>
   </nav>
   <main class="prd-main">
     <header class="prd-head">
-      <h1>作文报告-下载报告（有分数版）</h1>
-      <p class="prd-meta">PRD · V1.3 · 更新日期 2026-11-24</p>
-      <p>教師可從成績概覽導出成績表、導出全部已完成學生的作文報告，或在作業批改頁下載當前學生的報告。作文報告含原稿批註、總分、各維度分數與評語。</p>
+      <h1>作文報告-下載報告（有分數+等級或品第+錯別字）</h1>
+      <p class="prd-meta">PRD · V1.4 · 更新日期 2026-11-25</p>
+      <p>教師可從成績概覽導出成績表、導出全部已完成學生的作文報告，或在作業批改頁下載當前學生的報告。作文報告含原稿批註、疑似錯別字標記、學生班級與學號、總分、品第、各維度分數與評語。</p>
     </header>
 
     <section class="prd-card" id="download-all">
@@ -50,7 +51,7 @@
       <ol>
         <li>下拉選單選取操作後收起；點擊選單外或按 Esc 亦可關閉。選擇「導出成績表」後取得原有 CSV 成績表，欄位與分數口徑維持原有功能。</li>
         <li>顯示可導出份數與未納入人數，確認後展示 A4 報告預覽。報告按學生逐份排列，單份內容依次為作文原稿及旁批、作文評分與評語。</li>
-        <li>評分頁展示已保存的<strong>總分／100</strong>及內容、表達、結構、標點字體四個維度的<strong>得分／滿分</strong>，同時展示教師總評、維度評語、整體優點與改善建議。總分為四項原始得分之和；切換後台品第顯示方式不改變導出分數。</li>
+        <li>評分頁始終展示已保存的<strong>總分／100</strong>；品第、等級按學生端成績展示配置決定是否顯示。預覽可切換「僅分數」「分數＋品第」「分數＋等級」「三者同時顯示」，等級名稱與區間依學校設定。評分頁另展示內容、表達、結構、標點字體四個維度的<strong>得分／滿分</strong>，以及教師總評、維度評語、整體優點與改善建議。錯別字分按數量獨立展示，不計入目前四維百分制總分；切換後台品第顯示方式不改變導出分數。</li>
         <li>點擊「列印／儲存為 PDF」開啟瀏覽器列印視窗，選擇「儲存為 PDF」後保存檔案。點擊報告選項時會先展示範圍確認與預覽，不會立即產生 PDF 檔案。</li>
         <li>存在未確認的批註、總評或分數修改時，先提示教師確認修改；報告只讀取已保存內容。</li>
       </ol>
@@ -63,13 +64,15 @@
       <h2>02　下載學生報告</h2>
       <p><strong>教師後台｜任務管理 → 成績概覽 → 已完成學生 → 作業批改。</strong>點擊頁首帶「需求」標誌的「▤ 下載作文報告」，下載當前學生的報告，不包含其他學生資料。</p>
       <ol>
-        <li>單份報告按 A4 排列：前兩頁為該學生作文原稿與旁批，第 3 頁為作文評分與評語；原稿實際頁數變化時，評分頁接在最後。</li>
+        <li>單份報告按 A4 排列：前兩頁為該學生作文原稿與旁批，第 3 頁為作文評分與評語；原稿實際頁數變化時，評分頁接在最後。單份與批量導出共用藍線頁眉：標題下依序顯示姓名、班級、學號，題目另起一行。原稿標示可定位的疑似錯別字，評分頁在「標點字體」之後，以相同分項樣式僅顯示錯別字得分／3。</li>
         <li>評分頁以<strong>已保存的百分制原始分數</strong>呈現總分／100，以及內容／40、表達／30、結構／20、標點字體／10 的各項得分；總分等於四項得分之和，有效 0 分照常顯示。總評與各維度評語取同一份已保存報告。</li>
-        <li>點擊入口後開啟瀏覽器列印視窗，選擇「儲存為 PDF」保存；建議檔案名稱包含學生班級編號、姓名及作文題目。未保存的修改須先確認。</li>
+        <li><strong>學生端成績展示配置控制下載學生報告的結果欄。</strong>分數始終顯示；在「教學設定 → 成績展示」學生端勾選「品第」時顯示已保存總分對應的品第，勾選「等級」時按已保存的學校等級換算設定顯示等級。兩項都勾選時同時顯示分數、品第、等級；都未勾選時只顯示分數。未完成等級換算配置時不得輸出臆測的等級。</li>
+        <li>成績概覽右上角及作業批改頁的「預覽報告」入口均標示「僅供原型查看」，兩處共用附件《無愧的選擇》（小鹿1）的原稿及評語，展示四頁 A4 樣例，並演示品第、等級、錯別字分與班級學號欄位；附件沒有班級、學號及等級設定，預覽班級 2A、學號 880001 取自另附資料截圖，等級 4 為展示示例；姓名仍沿用附件中的小鹿1。此入口僅用於查看版式，不導出該樣例。「下載作文報告」仍取當前學生已保存資料，開啟瀏覽器列印視窗，選擇「儲存為 PDF」保存。建議檔案名稱包含學生學號、姓名及作文題目。未保存的修改須先確認。</li>
       </ol>
+      <figure class="prd-reference"><img src="./assets/score-display-settings.png" alt="教學設定的成績展示區：學生端可勾選品第及等級"><figcaption>成績展示配置入口：教學設定 → 成績展示。</figcaption></figure>
       <h3>示例與驗收</h3>
-      <p>林雋羲的已保存分數為 22＋14＋10＋6＝52，下載報告顯示 52／100，四項分數及對應滿分均可辨認，評語與教師後台保存結果一致。</p>
-      <div class="prd-table-wrap"><table><thead><tr><th>編號</th><th>操作與預期結果</th><th>狀態</th></tr></thead><tbody><tr><td>DR-03</td><td>在已完成學生的作業批改頁點擊「▤ 下載作文報告」，列印內容只含當前學生；評分頁顯示總分與四個維度分數及滿分。</td><td class="prd-pending">待驗收</td></tr><tr><td>DR-04</td><td>先保存分數修改再下載，報告總分、維度分數及概覽列表得分按同一保存值更新；取消修改則仍取前次保存值。</td><td class="prd-pending">待驗收</td></tr></tbody></table></div>
+      <p>林雋羲的已保存分數為 22＋14＋10＋6＝52，當品第與等級均選中時，下載報告顯示總分 52／100、品第「中中（下）」與等級「4」；疑似錯別字 17 字，錯別字分 0／3 在分項評分卡片內展示。四項分數及對應滿分均可辨認，評語與教師後台保存結果一致。</p>
+      <div class="prd-table-wrap"><table><thead><tr><th>編號</th><th>操作與預期結果</th><th>狀態</th></tr></thead><tbody><tr><td>DR-03</td><td>在已完成學生的作業批改頁點擊「▤ 下載作文報告」，列印內容只含當前學生；評分頁顯示總分與四個維度分數及滿分。</td><td class="prd-pending">待驗收</td></tr><tr><td>DR-04</td><td>先保存分數修改再下載，報告總分、維度分數及概覽列表得分按同一保存值更新；取消修改則仍取前次保存值。</td><td class="prd-pending">待驗收</td></tr><tr><td>DR-05</td><td>分別設定學生端僅顯示分數、分數＋品第、分數＋等級及三者同時顯示，下載學生報告的結果欄與配置一致；未配置有效等級換算時不顯示虛構等級。</td><td class="prd-pending">待驗收</td></tr></tbody></table></div>
     </section>
   </main>
 </body>
