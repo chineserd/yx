@@ -9,31 +9,37 @@
         "page": 0
       },
       {
-        "label": "02 分步作答",
-        "file": "basic-02-guided.png",
-        "page": 1
-      },
-      {
-        "label": "03 作答錄音中",
-        "file": "basic-03-answering.png",
-        "page": 2
-      },
-      {
-        "label": "04 改對用詞（核對文字稿）",
-        "file": "basic-04-compose.png",
-        "page": 3,
+        "label": "02 題目語音播放",
+        "file": "basic-02-audio.png",
+        "page": 1,
         "changed": true
       },
       {
-        "label": "05 朗讀短講（拼音）",
-        "file": "basic-05-reading.png",
+        "label": "03 分步作答",
+        "file": "basic-03-guided.png",
+        "page": 2
+      },
+      {
+        "label": "04 作答錄音中",
+        "file": "basic-04-answering.png",
+        "page": 3
+      },
+      {
+        "label": "05 改對用詞（核對文字稿）",
+        "file": "basic-05-compose.png",
         "page": 4,
         "changed": true
       },
       {
-        "label": "06 短講錄音中",
-        "file": "basic-06-speaking.png",
-        "page": 5
+        "label": "06 朗讀短講（拼音）",
+        "file": "basic-06-reading.png",
+        "page": 5,
+        "changed": true
+      },
+      {
+        "label": "07 短講錄音中",
+        "file": "basic-07-speaking.png",
+        "page": 6
       }
     ]
   },
@@ -47,31 +53,37 @@
         "page": 0
       },
       {
-        "label": "02 分步作答",
-        "file": "intermediate-02-guided.png",
-        "page": 1
-      },
-      {
-        "label": "03 作答錄音中",
-        "file": "intermediate-03-answering.png",
-        "page": 2
-      },
-      {
-        "label": "04 AI 潤色（核對文字稿）",
-        "file": "intermediate-04-compose.png",
-        "page": 3,
+        "label": "02 題目語音播放",
+        "file": "intermediate-02-audio.png",
+        "page": 1,
         "changed": true
       },
       {
-        "label": "05 朗讀短講（拼音）",
-        "file": "intermediate-05-reading.png",
+        "label": "03 分步作答",
+        "file": "intermediate-03-guided.png",
+        "page": 2
+      },
+      {
+        "label": "04 作答錄音中",
+        "file": "intermediate-04-answering.png",
+        "page": 3
+      },
+      {
+        "label": "05 AI 潤色（核對文字稿）",
+        "file": "intermediate-05-compose.png",
         "page": 4,
         "changed": true
       },
       {
-        "label": "06 短講錄音中",
-        "file": "intermediate-06-speaking.png",
-        "page": 5
+        "label": "06 朗讀短講（拼音）",
+        "file": "intermediate-06-reading.png",
+        "page": 5,
+        "changed": true
+      },
+      {
+        "label": "07 短講錄音中",
+        "file": "intermediate-07-speaking.png",
+        "page": 6
       }
     ]
   },
@@ -80,41 +92,48 @@
     "title": "高級（AI 潤色）",
     "pages": [
       {
-        "label": "01 題目語音播放",
-        "file": "advanced-polish-01-audio.png",
-        "page": 0
-      },
-      {
-        "label": "02 準備演講",
-        "file": "advanced-polish-02-ready.png",
-        "page": 1
-      },
-      {
-        "label": "03 演講倒計時",
-        "file": "advanced-polish-03-timer.png",
-        "page": 2
-      },
-      {
-        "label": "04 首次錄音中",
-        "file": "advanced-polish-04-recording.png",
-        "page": 3
-      },
-      {
-        "label": "05 AI 潤色（核對文字稿）",
-        "file": "advanced-polish-05-compose.png",
-        "page": 4,
+        "label": "01 選擇題目",
+        "file": "advanced-polish-01-topics.png",
+        "page": 0,
         "changed": true
       },
       {
-        "label": "06 朗讀短講（拼音）",
-        "file": "advanced-polish-06-reading.png",
+        "label": "02 題目語音播放",
+        "file": "advanced-polish-02-audio.png",
+        "page": 1,
+        "changed": true
+      },
+      {
+        "label": "03 準備演講",
+        "file": "advanced-polish-03-ready.png",
+        "page": 2
+      },
+      {
+        "label": "04 演講倒計時",
+        "file": "advanced-polish-04-timer.png",
+        "page": 3
+      },
+      {
+        "label": "05 首次錄音中",
+        "file": "advanced-polish-05-recording.png",
+        "page": 4
+      },
+      {
+        "label": "06 AI 潤色（核對文字稿）",
+        "file": "advanced-polish-06-compose.png",
         "page": 5,
         "changed": true
       },
       {
-        "label": "07 再次錄音中",
-        "file": "advanced-polish-07-recording.png",
+        "label": "07 朗讀短講（拼音）",
+        "file": "advanced-polish-07-reading.png",
         "page": 6,
+        "changed": true
+      },
+      {
+        "label": "08 再次錄音中",
+        "file": "advanced-polish-08-recording-again.png",
+        "page": 7,
         "changed": true
       }
     ]
@@ -124,24 +143,31 @@
     "title": "高級（直接短講）",
     "pages": [
       {
-        "label": "01 題目語音播放",
-        "file": "advanced-direct-01-audio.png",
-        "page": 0
+        "label": "01 選擇題目",
+        "file": "advanced-direct-01-topics.png",
+        "page": 0,
+        "changed": true
       },
       {
-        "label": "02 準備演講",
-        "file": "advanced-direct-02-ready.png",
-        "page": 1
+        "label": "02 題目語音播放",
+        "file": "advanced-direct-02-audio.png",
+        "page": 1,
+        "changed": true
       },
       {
-        "label": "03 演講倒計時",
-        "file": "advanced-direct-03-timer.png",
+        "label": "03 準備演講",
+        "file": "advanced-direct-03-ready.png",
         "page": 2
       },
       {
-        "label": "04 演講錄音中",
-        "file": "advanced-direct-04-recording.png",
+        "label": "04 演講倒計時",
+        "file": "advanced-direct-04-timer.png",
         "page": 3
+      },
+      {
+        "label": "05 演講錄音中",
+        "file": "advanced-direct-05-recording.png",
+        "page": 4
       }
     ]
   },
@@ -150,9 +176,32 @@
     "title": "評分報告",
     "pages": [
       {
-        "label": "評分報告",
-        "file": "report-rich.png",
-        "target": "report"
+        "label": "評分報告 1／4",
+        "file": "report-01.png",
+        "target": "report",
+        "scrollTop": 0,
+        "changed": true
+      },
+      {
+        "label": "評分報告 2／4",
+        "file": "report-02.png",
+        "target": "report",
+        "scrollTop": 600,
+        "changed": true
+      },
+      {
+        "label": "評分報告 3／4",
+        "file": "report-03.png",
+        "target": "report",
+        "scrollTop": 1200,
+        "changed": true
+      },
+      {
+        "label": "評分報告 4／4",
+        "file": "report-04.png",
+        "target": "report",
+        "scrollTop": 1810,
+        "changed": true
       }
     ]
   }
