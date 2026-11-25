@@ -11,8 +11,7 @@
       {
         "label": "02 題目語音播放",
         "file": "basic-02-audio.png",
-        "page": 1,
-        "changed": true
+        "page": 1
       },
       {
         "label": "03 分步作答",
@@ -55,8 +54,7 @@
       {
         "label": "02 題目語音播放",
         "file": "intermediate-02-audio.png",
-        "page": 1,
-        "changed": true
+        "page": 1
       },
       {
         "label": "03 分步作答",
@@ -94,14 +92,12 @@
       {
         "label": "01 選擇題目",
         "file": "advanced-polish-01-topics.png",
-        "page": 0,
-        "changed": true
+        "page": 0
       },
       {
         "label": "02 題目語音播放",
         "file": "advanced-polish-02-audio.png",
-        "page": 1,
-        "changed": true
+        "page": 1
       },
       {
         "label": "03 準備演講",
@@ -145,14 +141,12 @@
       {
         "label": "01 選擇題目",
         "file": "advanced-direct-01-topics.png",
-        "page": 0,
-        "changed": true
+        "page": 0
       },
       {
         "label": "02 題目語音播放",
         "file": "advanced-direct-02-audio.png",
-        "page": 1,
-        "changed": true
+        "page": 1
       },
       {
         "label": "03 準備演講",
