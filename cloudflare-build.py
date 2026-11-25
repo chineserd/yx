@@ -46,6 +46,18 @@ def build(source: Path, output: Path) -> dict:
     if count > MAX_FILES:
         raise ValueError(f"文件数量超过 Cloudflare Pages 免费版上限：{count}")
 
+    home = site / "index.html"
+    old_gate = "location.hostname === 'chineserd.github.io'"
+    new_gate = (
+        "(location.hostname === 'chineserd.github.io' || "
+        "location.hostname === 'chineserd-prototypes.pages.dev' || "
+        "location.hostname.endsWith('.chineserd-prototypes.pages.dev'))"
+    )
+    html = home.read_text(encoding="utf-8")
+    if html.count(old_gate) != 1:
+        raise ValueError("总览登录提示的域名判断已变化，请检查后再发布")
+    home.write_text(html.replace(old_gate, new_gate), encoding="utf-8")
+
     header_rules = ["/*", "  Cache-Control: no-cache, max-age=0, must-revalidate"]
     fingerprinted = re.compile(r".+-[A-Za-z0-9_-]{8,}\.(?:js|css|svg|png|webp|woff2)$")
     for directory in sorted(site.rglob("assets")):
