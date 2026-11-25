@@ -150,14 +150,9 @@
     "title": "評分報告",
     "pages": [
       {
-        "label": "簡潔版",
-        "file": "report-simple.png",
-        "target": "report-simple"
-      },
-      {
-        "label": "豐富版",
+        "label": "評分報告",
         "file": "report-rich.png",
-        "target": "report-rich"
+        "target": "report"
       }
     ]
   }
