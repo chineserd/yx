@@ -6,6 +6,11 @@
 <meta charset="UTF-8" />
 <title>中文路需求原型汇总</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+if (location.hostname === 'chineserd.github.io' && /^\/yx\/(?:index\.html)?$/.test(location.pathname)) {
+  location.replace('https://chineserd-prototypes.pages.dev/yx/' + location.search + location.hash);
+}
+</script>
 <script>if (location.hostname === 'chineserd.github.io' || new URLSearchParams(location.search).has('gate-preview')) document.documentElement.classList.add('auth-locked');</script>
 <style>
   * { box-sizing: border-box; }

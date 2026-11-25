@@ -47,12 +47,17 @@ def build(source: Path, output: Path) -> dict:
         raise ValueError(f"文件数量超过 Cloudflare Pages 免费版上限：{count}")
 
     home = site / "index.html"
-    old_gate = "location.hostname === 'chineserd.github.io'"
-    new_gate = (
+    hostname_check = "location.hostname === 'chineserd.github.io'"
+    old_gate = (
+        "<script>if (" + hostname_check
+        + " || new URLSearchParams(location.search).has('gate-preview'))"
+    )
+    new_hostname_check = (
         "(location.hostname === 'chineserd.github.io' || "
         "location.hostname === 'chineserd-prototypes.pages.dev' || "
         "location.hostname.endsWith('.chineserd-prototypes.pages.dev'))"
     )
+    new_gate = old_gate.replace(hostname_check, new_hostname_check)
     html = home.read_text(encoding="utf-8")
     if html.count(old_gate) != 1:
         raise ValueError("总览登录提示的域名判断已变化，请检查后再发布")
