@@ -431,6 +431,7 @@ if (location.hostname === 'chineserd.github.io' && /^\/yx\/(?:index\.html)?$/.te
   const username = document.getElementById('home-username');
   const password = document.getElementById('home-password');
   const error = document.getElementById('home-login-error');
+  const normalizedCredential = value => value.replace(/[\s\u3000]/g, '');
   if (!document.documentElement.classList.contains('auth-locked')) return;
   document.getElementById('home-logout').hidden = false;
   const unlock = () => {
@@ -442,13 +443,13 @@ if (location.hostname === 'chineserd.github.io' && /^\/yx\/(?:index\.html)?$/.te
     if (saved && saved.version === credentialHash && saved.expiresAt > Date.now()) unlock();
   } catch (_) { /* Storage may be unavailable; the form still works. */ }
   async function matches() {
-    const value = `${username.value.trim()}\n${password.value}`;
+    const value = `${normalizedCredential(username.value)}\n${normalizedCredential(password.value)}`;
     const bytes = new TextEncoder().encode(value);
     const digest = await crypto.subtle.digest('SHA-256', bytes);
     return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('') === credentialHash;
   }
   async function login(showError) {
-    if (!username.value.trim() || !password.value) return;
+    if (!normalizedCredential(username.value) || !normalizedCredential(password.value)) return;
     if (await matches()) {
       try { localStorage.setItem(storageKey, JSON.stringify({ version: credentialHash, expiresAt: Date.now() + 30 * 86400_000 })); } catch (_) {}
       error.hidden = true;

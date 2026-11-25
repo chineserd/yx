@@ -27,6 +27,7 @@
   `;
   document.head.appendChild(style);
   document.documentElement.classList.add('shared-update-active');
+  if (window.top === window) document.documentElement.dataset.prototypeUpdateCoordinator = '1';
 
   const restoreKey = `prototype-update-restore:${group}`;
   const label = (element) => element?.textContent?.replace(/\s+/g, ' ').trim() || '';
@@ -87,6 +88,13 @@
   else restoreCurrentPage();
 
   let checking = false;
+  let selfOutdated = false;
+  const frameStates = new Map();
+  const topCoordinates = () => {
+    if (window.top === window) return false;
+    try { return window.top.document.documentElement.dataset.prototypeUpdateCoordinator === '1'; }
+    catch (_) { return false; }
+  };
   const showNotice = () => {
     if (document.getElementById('prototype-update-notice')) return;
     const notice = document.createElement('div');
@@ -101,6 +109,24 @@
     notice.append(message, button);
     document.body.appendChild(notice);
   };
+  const updateNotice = () => {
+    if (topCoordinates()) {
+      window.top.postMessage({ type: 'chineserd-prototype-update', outdated: selfOutdated }, location.origin);
+      document.getElementById('prototype-update-notice')?.remove();
+      return;
+    }
+    const currentFrames = new Set([...document.querySelectorAll('iframe')].map(frame => frame.contentWindow));
+    for (const source of frameStates.keys()) if (!currentFrames.has(source)) frameStates.delete(source);
+    const framesOutdated = [...frameStates.values()].some(Boolean);
+    if (selfOutdated || framesOutdated) showNotice();
+    else document.getElementById('prototype-update-notice')?.remove();
+  };
+  if (window.top === window) addEventListener('message', (event) => {
+    if (event.origin !== location.origin || event.data?.type !== 'chineserd-prototype-update' ||
+        ![...document.querySelectorAll('iframe')].some(frame => frame.contentWindow === event.source)) return;
+    frameStates.set(event.source, event.data.outdated === true);
+    updateNotice();
+  });
   const check = async () => {
     if (checking || document.visibilityState === 'hidden') return;
     checking = true;
@@ -110,8 +136,8 @@
       const versions = await response.json();
       if (typeof versions[group] !== 'string') throw new Error('原型版本缺失');
       document.documentElement.classList.add('shared-update-active');
-      if (versions[group] !== loadedVersion) showNotice();
-      else document.getElementById('prototype-update-notice')?.remove();
+      selfOutdated = versions[group] !== loadedVersion;
+      updateNotice();
     } catch (_) {
       document.documentElement.classList.remove('shared-update-active');
     } finally {
