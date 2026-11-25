@@ -21,7 +21,7 @@
     .mode-head{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
     h1{margin:0;font-size:20px;line-height:28px}
     .count{font-size:12px;color:#667b8f}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,190px);gap:14px}
     .page{min-width:0;margin:0}
     .page figcaption{min-height:38px;display:flex;align-items:center;font-size:13px;line-height:18px;font-weight:600}
     .page.changed figcaption{color:#b42318}
@@ -33,7 +33,7 @@
     dialog::backdrop{background:#102a3bb8}
     dialog img{display:block;max-width:100%;max-height:calc(96vh - 58px);margin:auto;object-fit:contain}
     dialog button{display:block;margin:8px 0 0 auto;border:0;border-radius:8px;padding:7px 15px;background:#e7f6fc;color:#007eab;font:600 13px/18px inherit;cursor:pointer}
-    @media(max-width:760px){header{align-items:flex-start;flex-direction:column;padding:10px 14px}nav{width:100%}main{padding:12px 14px 36px}.mode{scroll-margin-top:118px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.page figcaption{font-size:12px}}
+    @media(max-width:760px){header{align-items:flex-start;flex-direction:column;padding:10px 14px}nav{width:100%}main{padding:12px 14px 36px}.mode{scroll-margin-top:118px}.gallery{grid-template-columns:repeat(auto-fill,190px);gap:10px}.page figcaption{font-size:12px}}
     @media(max-width:420px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
   </style>
 <script id="github-pages-prototype-redirect">if(location.hostname==="chineserd.github.io")location.replace("https://chineserd-prototypes.pages.dev"+location.pathname+location.search+location.hash);</script>
