@@ -4,6 +4,13 @@
   <link rel="stylesheet" crossorigin href="./assets/index-IzA74ouV.css">
   <link rel="stylesheet" href="./assets/topic-score-adjacent-2px.css">
   <style>
+    #page-load-recovery[hidden] { display: none !important; }
+    #page-load-recovery { position: fixed; inset: 0; z-index: 99999; display: grid; place-items: center; background: #fff; color: #334155; font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif; }
+    #page-load-recovery .recovery-content { display: grid; justify-items: center; gap: 16px; padding: 24px; text-align: center; }
+    #page-load-recovery p { margin: 0; font-size: 16px; line-height: 1.5; }
+    #page-load-recovery button { min-width: 144px; min-height: 44px; border: 0; border-radius: 8px; background: #2864f0; color: #fff; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; }
+    #page-load-recovery button:hover { background: #1e55db; }
+    #page-load-recovery button:focus-visible { outline: 3px solid #93b4ff; outline-offset: 3px; }
     .essay-print-overlay { top: 104px; right: 0; bottom: 0; left: 0; border-radius: 0; box-shadow: none; }
     #r1-part-1 > strong:first-child::before { content: "2.3.1.1　"; }
     #r1-part-2 > strong:first-child::before { content: "2.3.1.2　"; }
@@ -87,7 +94,24 @@
     }
   </style>
 <script id="github-pages-prototype-redirect">if(location.hostname==="chineserd.github.io")location.replace("https://chineserd-prototypes.pages.dev"+location.pathname+location.search+location.hash);</script>
-</head><body><div id="app"></div><script>
+</head><body><div id="app"></div><div id="page-load-recovery" role="alert" hidden><div class="recovery-content"><p>頁面載入未完成，請重新載入。</p><button type="button" id="page-reload-button">重新載入</button></div></div><script>
+  (() => {
+    const app = document.getElementById('app');
+    const recovery = document.getElementById('page-load-recovery');
+    const reloadButton = document.getElementById('page-reload-button');
+    new MutationObserver(() => {
+      if (app.childElementCount > 0) recovery.hidden = true;
+    }).observe(app, { childList: true });
+    window.setTimeout(() => {
+      if (app.childElementCount === 0) recovery.hidden = false;
+    }, 8000);
+    reloadButton.addEventListener('click', () => {
+      const next = new URL(window.location.href);
+      next.searchParams.set('refresh', String(Date.now()));
+      window.location.replace(next.href);
+    });
+  })();
+</script><script>
   (() => {
     const grades = [
       {label:'1', count:1, range:'0 ≤ 總分 < 40'},
