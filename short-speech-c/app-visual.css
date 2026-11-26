@@ -82,16 +82,15 @@
 #app-panel .practice-section{margin-top:46px}
 #app-panel .practice-section h2{margin-bottom:17px}
 #app-panel .exercise-list{gap:0}
-#app-panel .exercise-item{min-height:86px;display:flex;align-items:center;gap:15px;padding:9px 1px 9px 32px;border:0;border-radius:0;background:transparent;color:#292936}
+#app-panel .exercise-item{min-height:86px;display:grid;grid-template-columns:52px minmax(0,1fr) auto 12px;align-items:center;column-gap:8px;width:100%;padding:9px 0 9px 14px;border:0;border-radius:0;background:transparent;color:#292936;text-align:left}
 #app-panel .exercise-icon{width:52px;height:52px;padding:12px;flex:none;border-radius:50%;background:#b63847;color:#fff}
-#app-panel .exercise-item strong{font-size:16px;line-height:1.45;font-weight:600}
+#app-panel .exercise-name{min-width:0;font-size:16px;line-height:1.35;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #app-panel .app-requirement-badge{display:inline-block;vertical-align:middle;margin-left:8px;padding:0 5px;border:1px solid #e53935;border-radius:4px;background:#e53935;color:#fff;font-size:11px;font-weight:600;line-height:16px;white-space:nowrap}
 #app-panel .bottom-nav .nav-label{white-space:nowrap}
-#app-panel .exercise-item .chevron{font-size:25px;color:#a4a3b4}
-#app-panel .exercise-item.new-entry strong{white-space:nowrap;flex:none}
-#app-panel .speech-done-badge{flex:none;margin-left:auto;padding:3px 6px;border-radius:4px;font-size:11px;line-height:16px;font-weight:700;white-space:nowrap}
-#app-panel .speech-done-badge.pending{background:#fff0e9;color:#bd4b35}
-#app-panel .speech-done-badge.done{background:#e6f6ec;color:#23844a}
+#app-panel .exercise-item .chevron{font-size:25px;color:#a4a3b4;line-height:1}
+#app-panel .exercise-status{align-self:center;padding:3px 6px;border-radius:4px;font-size:11px;line-height:16px;font-weight:700;white-space:nowrap}
+#app-panel .exercise-status.pending{background:#e9e9ef;color:#555663}
+#app-panel .exercise-status.done{background:#e6f6ec;color:#23844a}
 #app-panel .report-page{background:#f2f6ff}
 #app-panel .report-head{position:relative;display:flex;align-items:center;justify-content:center;flex:none;height:64px;padding:0 16px;background:#f2f6ff}
 #app-panel .report-head button{position:absolute;left:14px;top:8px;width:40px;height:46px;border:0;background:transparent;color:#25354c;font-size:34px;line-height:1}

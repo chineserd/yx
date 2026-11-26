@@ -2,7 +2,7 @@
   "meta": {
     "title": "中文路需求原型汇总",
     "subtitle": "Product Prototype Overview · 产品经理维护",
-    "updatedAt": "2026-11-25",
+    "updatedAt": "2026-11-26",
     "owner": "PM",
     "version": "1.0"
   },
@@ -86,11 +86,11 @@
         {
           "id": "LOCAL-f22d65f34152",
           "status": "in-progress",
-          "title": "个人短讲-C 端(中文路 app)",
-          "folderName": "个人短讲-C 端(中文路 app)",
-          "localSource": "01 可开发/中文路/个人短讲-C 端(中文路 app)",
+          "title": "个人短讲-C 端-高级模式(中文路 app)",
+          "folderName": "个人短讲-C 端-高级模式(中文路 app)",
+          "localSource": "01 可开发/中文路/个人短讲-C 端-高级模式(中文路 app)",
           "previewUrl": "./short-speech-c/",
-          "updatedAt": "2026-11-24",
+          "updatedAt": "2026-11-26",
           "createdAt": "2026-11-23",
           "businessCategory": "中文路"
         },
