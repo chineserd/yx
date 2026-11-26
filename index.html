@@ -155,6 +155,14 @@ if (location.hostname === 'chineserd.github.io' && /^\/yx\/(?:index\.html)?$/.te
   .month-group { margin-bottom: 20px; min-width: 0; }
   .month-group summary { cursor: pointer; padding: 8px 0; font-size: 14px; font-weight: 600; color: #526574; }
   .month-group .req-grid { margin-top: 8px; }
+  .history-category-list { display:grid; gap:12px; margin:8px 0 0 8px; }
+  .history-category { min-width:0; padding-left:12px; border-left:2px solid #dbe5f2; }
+  .history-category summary { padding:4px 0; color:#244266; font-size:13px; }
+  .history-project-filter { display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 16px; }
+  .history-project-filter button { min-height:32px; padding:5px 13px; border:1px solid #cfd8e4; border-radius:8px; background:#fff; color:#526574; font:600 13px system-ui; cursor:pointer; }
+  .history-project-filter button:hover { border-color:#8eaae4; color:#2454ad; }
+  .history-project-filter button[aria-pressed="true"] { border-color:#8eaae4; background:#eaf1ff; color:#2454ad; }
+  .history-project-filter button:focus-visible { outline:2px solid #2454ad; outline-offset:2px; }
 
   /* 待评审业务分类：固定卡片宽度，浅底分区，窄屏顺序换行。 */
   .category-grid { display:grid; grid-template-columns:repeat(auto-fill, min(100%, 344px)); gap:12px; align-items:start; }
@@ -492,6 +500,7 @@ const STATUS_LABEL = {
 };
 
 const BUSINESS_CATEGORIES = ['普通话科', '中文科', '中文路', 'DSE'];
+const HISTORY_PROJECTS = ['中文科', '中文路'];
 const CATEGORY_COLORS = ['#7097be', '#7b9d8b', '#b19a72', '#9789b7', '#94a3b8'];
 function businessCategory(item) {
   const pathCategory = (item.localSource || '').split('/')[1];
@@ -508,6 +517,12 @@ function categoryOrder(items) {
 }
 let config = null;
 let searchQuery = "";
+let historyProject = 'all';
+
+function historyProjectFor(item) {
+  const parts = (item.localSource || '').split('/');
+  return parts[0] === '04 迭代记录' && HISTORY_PROJECTS.includes(parts[2]) ? parts[2] : '未分类';
+}
 
 async function load() {
   const res = await fetch("menu-config.json", { cache: "no-cache" });
@@ -566,6 +581,9 @@ function renderGroupItems(group) {
   if (group.id !== 'iteration-history') {
     return `<div class="req-grid">${group.items.map(renderCard).join('')}</div>`;
   }
+  const filters = `<div class="history-project-filter" role="group" aria-label="按项目筛选迭代记录">${[
+    ['all', '全部项目'], ...HISTORY_PROJECTS.map(name => [name, name])
+  ].map(([value, label]) => `<button type="button" data-history-project="${value}" aria-pressed="${historyProject === value}">${label}</button>`).join('')}</div>`;
   const months = new Map();
   for (const item of group.items) {
     const month = (item.localSource || '').split('/')[1];
@@ -573,11 +591,17 @@ function renderGroupItems(group) {
     if (!months.has(key)) months.set(key, []);
     months.get(key).push(item);
   }
-  return [...months.keys()].sort((a, b) => b.localeCompare(a)).map(month => `
+  return filters + ([...months.keys()].sort((a, b) => b.localeCompare(a)).map(month => `
     <details class="month-group" open>
       <summary>${month} · ${months.get(month).length} 项</summary>
-      <div class="req-grid">${months.get(month).sort(newestFirst).map(renderCard).join('')}</div>
-    </details>`).join('');
+      <div class="history-category-list">${[...HISTORY_PROJECTS, '未分类'].map(project => {
+        const items = months.get(month).filter(item => historyProjectFor(item) === project);
+        return items.length ? `<details class="history-category" open>
+          <summary>${project} · ${items.length} 项</summary>
+          <div class="req-grid">${items.sort(newestFirst).map(renderCard).join('')}</div>
+        </details>` : '';
+      }).join('')}</div>
+    </details>`).join('') || '<p class="req-subtitle">该项目暂无迭代记录</p>');
 }
 
 const cardResizeObserver = new ResizeObserver(entries => {
@@ -603,7 +627,8 @@ function renderTimeline() {
   cardResizeObserver.disconnect();
   const wrap = document.getElementById("timeline");
   const matchedGroups = config.groups
-    .map(g => ({ ...g, items: g.items.filter(matchesFilter).sort(
+    .map(g => ({ ...g, items: g.items.filter(item => matchesFilter(item) &&
+      (g.id !== 'iteration-history' || historyProject === 'all' || historyProjectFor(item) === historyProject)).sort(
       ['ready-development', 'pending-review'].includes(g.id) ? folderNameFirst : newestFirst
     ) }))
     .filter(g => !g.hidden && (g.items.length > 0 || (g.showEmpty && !searchQuery)));
@@ -619,7 +644,7 @@ function renderTimeline() {
   wrap.innerHTML = matchedGroups.map(g => {
     const itemsHtml = renderGroupItems(g);
     return `
-      <section class="time-group ${g.expanded ? "expanded" : ""} color-${g.color || "blue"}">
+      <section class="time-group ${g.expanded ? "expanded" : ""} color-${g.color || "blue"}" data-group-id="${g.id}">
         <div class="time-head" onclick="toggleGroup(this.parentElement)">
           <span class="caret">▶</span>
           <span class="time-title">
@@ -635,10 +660,16 @@ function renderTimeline() {
     `;
   }).join("");
   wrap.querySelectorAll(".req-card").forEach(card => cardResizeObserver.observe(card));
+  wrap.querySelectorAll("[data-history-project]").forEach(button => button.addEventListener("click", () => {
+    historyProject = button.dataset.historyProject;
+    renderTimeline();
+  }));
 }
 
 function toggleGroup(group) {
   group.classList.toggle("expanded");
+  const source = config.groups.find(item => item.id === group.dataset.groupId);
+  if (source) source.expanded = group.classList.contains("expanded");
 }
 
 function renderCard(item) {
