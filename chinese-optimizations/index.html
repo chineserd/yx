@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中文科－優化匯總</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./directory.css">
+  <link rel="stylesheet" href="./bank.css">
+  <link rel="stylesheet" href="./word-count.css">
+  <link rel="stylesheet" href="./themes.css">
+  <link rel="stylesheet" href="./export-screen.css">
+  <link rel="stylesheet" href="./backend-shell.css">
+  <link rel="stylesheet" href="./idea-selection.css">
+  <link rel="stylesheet" href="./demand.css">
+<script id="github-pages-prototype-redirect">if(location.hostname==="chineserd.github.io")location.replace("https://chineserd-prototypes.pages.dev"+location.pathname+location.search+location.hash);</script>
+</head>
+<body>
+  <nav class="preview-nav" aria-label="原型導航">
+    <div class="prototype-name"><small>需求名稱</small><strong>中文科－優化匯總</strong></div>
+    <a class="preview-tab current" id="backend-port" href="#report-prompt" aria-current="page">後台</a>
+    <a class="preview-tab" id="student-port" href="#idea-selection">學生端</a>
+    <a class="history-link" href="../">歷史需求彙總頁</a>
+  </nav>
+
+  <div class="app-shell">
+    <aside class="side-nav" aria-label="優化點選單">
+      <div class="side-title">功能優化</div>
+      <nav id="point-menu" aria-label="功能優化點">
+        <ol>
+          <li><a href="#report-prompt" class="point-link active" data-point="report-prompt" aria-current="page"><span class="point-number">01</span><span class="point-label">任務管理－作文報告－導出報告題幹</span></a></li>
+          <li><a href="#topic-year" class="point-link" data-point="topic-year"><span class="point-number">02</span><span class="point-label">作文題庫－題目年份</span></a></li>
+          <li><a href="#exam-library" class="point-link" data-point="exam-library"><span class="point-number">03</span><span class="point-label">作文題庫－公開考試題庫</span></a></li>
+          <li><a href="#topic-entry" class="point-link" data-point="topic-entry"><span class="point-number">04</span><span class="point-label">發佈任務－字數要求</span></a></li>
+          <li><a href="#landscape-import" class="point-link" data-point="landscape-import"><span class="point-number">05</span><span class="point-label">任務管理－批量上傳－橫圖提醒與旋轉</span></a></li>
+          <li><a href="#bulk-export" class="point-link" data-point="bulk-export"><span class="point-number">06</span><span class="point-label">任務管理－導出作文－大量報告導出</span></a></li>
+          <li><a href="#menu-themes" class="point-link" data-point="menu-themes"><span class="point-number">07</span><span class="point-label">後台選單主題</span></a></li>
+          <li><a href="#idea-selection" class="point-link" data-point="idea-selection"><span class="point-number">08</span><span class="point-label">寫作指導－中心思想勾選</span></a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <main id="report-prompt" class="content" data-point-page tabindex="-1">
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 任務管理－作文報告－導出報告題幹</div>
+      <div class="page-heading"><div><h1>導出報告題幹</h1></div><button id="print-report" class="primary-button" type="button">導出報告</button></div>
+
+      <div class="workspace">
+        <section class="source-panel" aria-labelledby="source-heading">
+          <div class="panel-heading"><h2 id="source-heading">作文題目</h2><span>校本庫</span></div>
+          <h3>想想別人</h3>
+          <div class="full-prompt" id="full-prompt">以下段落節錄自詩歌《想想別人》:
+當你與人爭鬥時想想別人，
+別忘了那些想要和平的人。
+當你回家，回你自己的家時，想想別人，
+別忘了那些住在帳篷裏的人。
+當你想到那些遙遠的人們，
+想想你自己，然後說：
+｢我希望自己是黑暗中的蠟燭。｣
+試就你對這首詩歌的體會或聯想，以｢想想別人｣為題，寫作文章一篇。</div>
+        </section>
+
+        <section class="output-panel" aria-labelledby="output-heading">
+          <div class="panel-heading"><h2 id="output-heading">作文報告</h2><span>列印預覽</span></div>
+          <article class="report-page" aria-label="作文報告列印頁">
+            <header class="report-header">
+              <h2>作文原稿與批註</h2>
+              <div class="student-meta"><span>姓名：陳嘉瑩</span><span>班級：1A</span><span>學號：880012</span></div>
+              <div class="topic-title">題目：想想別人</div>
+              <div class="prompt-label">題幹：<button type="button" class="demand-badge demand-card-trigger" aria-label="查看導出報告題幹需求說明">需求</button></div>
+              <div class="report-prompt" id="report-prompt-text" aria-label="報告題幹"></div>
+            </header>
+            <div class="report-body"><div class="manuscript"><h3>作文原稿</h3><p>在日常生活中，我們常常只顧自己的感受，忘記身邊的人也有需要。當我想起一次與同學爭執的經歷，才明白「想想別人」不只是一句提醒，更是一種要付諸行動的態度。</p><p>那天，我們因小組報告的分工起了爭執。我一直認為自己的安排最好，沒有聽完對方的想法。後來我發現，同學也在為整組的表現努力，只是考慮的角度不同。</p></div><aside class="annotations"><h3>旁批</h3><p><b>01</b> 開篇能帶出題目，並以生活經歷說明自己的體會。</p><p><b>02</b> 可再補充雙方如何化解分歧，讓轉變更具體。</p></aside></div>
+            <footer class="report-footer">第 1 頁</footer>
+          </article>
+        </section>
+      </div>
+    </main>
+
+    <main id="topic-year" class="content" data-point-page tabindex="-1" hidden>
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 題目年份</div>
+      <div class="page-heading"><div><h1>題目年份</h1></div></div>
+      <div class="bank-root" data-bank-mode="year"></div>
+    </main>
+
+    <main id="exam-library" class="content" data-point-page tabindex="-1" hidden>
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 公開考試題庫</div>
+      <div class="page-heading"><div><h1>公開考試題庫</h1></div></div>
+      <div class="bank-root" data-bank-mode="library"></div>
+    </main>
+
+    <main id="topic-entry" class="content" data-point-page tabindex="-1" hidden>
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 發佈任務－字數要求</div>
+      <div class="page-heading"><div><h1>發佈任務－字數要求</h1></div></div>
+      <section class="task-create" aria-labelledby="task-create-heading">
+        <div class="task-create-top"><span aria-hidden="true">‹</span><strong>發佈新任務</strong><div class="steps" aria-label="目前在第二步"><i></i><i class="current"></i><i></i><i></i></div></div>
+        <div class="task-create-body"><h2 id="task-create-heading">設定寫作題目和要求</h2><div class="task-create-card">
+          <div class="entry-label-row"><label for="topic-input">寫作題目</label><button id="open-topic-picker" type="button">選擇作文題目</button></div>
+          <textarea id="topic-input" placeholder="請輸入寫作題目" rows="4"></textarea>
+          <p>自主輸入並發佈後，題目將保存至校本庫，後續可在校本庫中選擇。</p>
+          <div class="entry-fields"><div class="word-count-field"><label for="word-count">字數要求（字數不足，將影響評分成績）</label><div class="word-count-combo"><input id="word-count" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="word-count-options" aria-describedby="word-count-suffix word-count-help word-count-error" inputmode="numeric" value="600" autocomplete="off"><span id="word-count-suffix" class="word-count-suffix">字以上</span><button id="word-count-toggle" type="button" aria-label="選擇預設字數" aria-expanded="false" aria-controls="word-count-options"><span class="field-chevron" aria-hidden="true"></span></button><div id="word-count-options" class="word-count-options" role="listbox" aria-label="預設字數" hidden><button type="button" role="option" data-word-count="300">300</button><button type="button" role="option" data-word-count="400">400</button><button type="button" role="option" data-word-count="500">500</button><button type="button" role="option" data-word-count="600">600</button><button type="button" role="option" data-word-count="700">700</button><button type="button" role="option" data-word-count="800">800</button><button type="button" role="option" data-word-count="900">900</button><button type="button" role="option" data-word-count="1000">1000</button></div></div><small id="word-count-help">可輸入數字，或從下拉選擇預設字數。<button type="button" class="demand-badge word-count-demand demand-card-trigger" aria-label="查看字數要求需求說明">需求</button></small><small id="word-count-error" role="alert" hidden>請輸入大於 0 的整數字數，例如 650。</small></div><label class="grade-field">適用年級<span class="grade-select-shell"><select id="grade"><option selected>S1</option><option>S2</option><option>S3</option><option>S4</option><option>S5</option><option>S6</option></select><span class="grade-arrow-holder" aria-hidden="true"><span class="field-chevron"></span></span></span></label></div>
+        </div></div>
+        <div class="task-create-actions"><p id="topic-entry-status" role="status" hidden></p><button id="topic-next" type="button" disabled>下一步</button></div>
+      </section>
+      <div id="topic-picker" class="picker-overlay" role="dialog" aria-modal="true" aria-labelledby="picker-heading" hidden><div class="picker-panel"><div class="picker-header"><h2 id="picker-heading">選擇作文題目</h2><button id="close-topic-picker" type="button" aria-label="關閉">×</button></div><div class="picker-bank"></div><div class="picker-actions"><button id="cancel-topic-picker" type="button">取消</button><button id="confirm-topic-picker" type="button" disabled>選用題目</button></div></div></div>
+    </main>
+
+    <main id="landscape-import" class="content" data-point-page tabindex="-1" hidden>
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 任務管理－批量上傳－橫圖提醒與旋轉</div>
+      <div class="page-heading"><div><h1>批量導入作文</h1></div></div>
+      <section class="import-shell" aria-label="批量導入作文">
+        <div class="import-head"><div><h2>批量導入作文 <button type="button" class="demand-badge demand-card-trigger import-demand-trigger" aria-label="查看橫圖提醒與旋轉需求說明">需求</button></h2><p>導入文件後，系統會自動識別學生並整理文件。</p></div><div class="import-steps"><span class="active">1　導入文件</span><span>→</span><span>2　核查並提交</span></div></div>
+        <div id="import-dropzone" class="import-dropzone" role="button" tabindex="0" aria-label="選擇作文圖片"><span class="upload-icon">↥</span><strong>拖放作文文件到這裏，或點擊選擇</strong><small>支援 JPG、JPEG、PNG；每張圖片可個別調整方向。</small><input id="import-files" type="file" accept="image/jpeg,image/png" multiple hidden></div>
+        <div id="import-warning" class="import-warning" role="alert" hidden><span class="demand-badge">需求</span><span id="import-warning-text"></span></div>
+        <div class="import-summary"><span id="import-count"></span><span id="import-size"></span></div>
+        <div id="import-grid" class="import-grid"></div>
+        <div id="import-review" class="import-review" hidden></div>
+        <div class="import-actions"><span id="import-action-note"></span><button id="import-submit" type="button" disabled>導入並識別</button></div>
+      </section>
+    </main>
+
+    <main id="bulk-export" class="content" data-point-page tabindex="-1" hidden>
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 任務管理－導出作文－大量報告導出</div>
+      <div class="page-heading"><div><h1>大量報告導出</h1></div></div>
+      <section class="export-app" aria-label="我的老師成績概覽與作文報告導出">
+        <header class="export-app-top"><div class="export-app-brand"><span class="export-hamburger" aria-hidden="true">☰</span><span class="export-app-mark">作</span><strong>香港啟文中學</strong></div><div class="export-app-tools"><span>▣ 中文科⌄</span><span>◎ 繁體中文⌄</span><span>♧ 幫助中心⌄</span><span class="export-app-user">作</span><span>香港啟文中學</span></div></header>
+        <div class="export-app-body"><nav class="export-app-side" aria-label="示例業務選單"><div><span aria-hidden="true">▤</span> 徵文比賽</div><div><span aria-hidden="true">♙</span> 學生管理</div><div><span aria-hidden="true">⌁</span> 學情分析</div><div><span aria-hidden="true">▣</span> 發佈任務</div><div class="is-active"><span aria-hidden="true">▦</span> 任務管理</div><div><span aria-hidden="true">▧</span> 閱讀</div><div><span aria-hidden="true">▤</span> 作文題庫</div><div><span aria-hidden="true">⚙</span> 設定</div><div><span aria-hidden="true">♧</span> 通知</div><div><span aria-hidden="true">ⓘ</span> 幫助中心</div></nav>
+          <div class="export-app-main"><div class="export-overview-head"><button class="export-back" type="button" aria-label="返回任務列表">‹</button><div class="export-overview-title"><h2>我的老師 - 成績概覽</h2><div class="export-meta">▣ 2026-11-25 <span>｜</span><select id="export-class" aria-label="選擇班級"><option value="11" selected>1A 班（11 人）</option><option value="10">1B 班（10 人）</option><option value="31">1C 班（31 人）</option><option value="3">1D 班（3 人）</option></select></div></div><div class="export-head-actions"><button type="button" class="export-secondary" id="export-requirements">▤ 寫作要求</button><button type="button" class="export-secondary" id="export-refresh">◌ 刷新</button><div class="export-control"><button id="export-trigger" type="button" aria-expanded="false" aria-controls="export-menu">導出文件</button><button type="button" class="demand-badge export-badge demand-card-trigger" aria-label="查看大量報告導出需求說明">需求</button><div id="export-menu" class="export-menu" role="menu" aria-label="導出文件選項" hidden><button id="export-scores" type="button" role="menuitem">導出成績表</button><button id="export-all" type="button" role="menuitem">導出全部作文報告 <span class="demand-badge">需求</span></button></div></div></div></div>
+            <div id="export-progress" class="export-progress" role="status" hidden><div class="progress-top"><span id="progress-label"></span><span id="long-export-note" hidden><svg class="tea-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 3c-1 1 .9 1.6 0 2.8M10 2.5c-1 1 .9 1.6 0 2.8M5 8h9v4.5A3.5 3.5 0 0 1 10.5 16h-2A3.5 3.5 0 0 1 5 12.5V8Zm9 1h1a2 2 0 0 1 0 4h-1M4 17h12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>報告整理中，請稍候。先飲杯茶，好快完成。</span><button id="cancel-export" type="button">取消下載</button></div><div class="progress-line"><div class="progress-track"><div id="progress-fill"></div></div><span id="progress-percent"></span></div><div id="progress-note" class="progress-note"></div></div>
+            <div id="export-scores-note" class="export-scores-note" role="status" hidden>成績表導出示例已完成。</div>
+            <div class="export-metrics"><div><small>平均分</small><strong>79.5</strong></div><div><small>最高得分</small><strong>94</strong></div><div><small>已提交作文</small><strong id="export-count">11</strong></div><div><small>批改狀態</small><strong>進行中</strong></div></div>
+            <section class="export-students"><h3>學生答題情況</h3><div class="export-table"><div class="export-table-head"><span>學生姓名</span><span>班級</span><span>作文報告</span></div><div><span>陳嘉瑩</span><span id="export-row-class">1A</span><span>已完成</span></div><div><span>林雋羲</span><span id="export-row-class-2">1A</span><span>已完成</span></div><div><span>馮晉熙</span><span id="export-row-class-3">1A</span><span>已完成</span></div></div></section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <main id="menu-themes" class="content theme-page" data-point-page tabindex="-1" hidden>
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 後台選單主題</div>
+      <div class="page-heading"><div><h1>後台選單主題</h1></div></div>
+      <div class="theme-viewport">
+        <section id="theme-demo" class="theme-demo" data-theme="academy" aria-label="中文科教學後台主題示例">
+          <svg class="theme-svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <symbol id="td-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+            <symbol id="td-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></symbol>
+            <symbol id="td-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20v-1.5a5.5 5.5 0 0 1 11 0V20M16 5.5a3 3 0 0 1 0 5.5M17 14a5 5 0 0 1 3.5 5v1"/></symbol>
+            <symbol id="td-chart" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M7 15l4-4 3 2 5-6"/></symbol>
+            <symbol id="td-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 13h6M9 17h6"/></symbol>
+            <symbol id="td-book" viewBox="0 0 24 24"><path d="M12 6c-2-2-5-2-9-1v14c4-1 7-1 9 1 2-2 5-2 9-1V5c-4-1-7-1-9 1zM12 6v14"/></symbol>
+            <symbol id="td-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m10 2-.5 2.3-2 1-2.2-.7-2 3.4 1.7 1.6v2.8L3.3 14l2 3.4 2.2-.7 2 1L10 20h4l.5-2.3 2-1 2.2.7 2-3.4-1.7-1.6V9.6L20.7 8l-2-3.4-2.2.7-2-1L14 2z"/></symbol>
+            <symbol id="td-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+            <symbol id="td-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.5 2.5 0 1 1 4.6 1.3c-.8 1-2.3 1.3-2.3 3.2M12 17h.01"/></symbol>
+            <symbol id="td-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+            <symbol id="td-palette" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18h1a2 2 0 0 0 1.4-3.4 1.5 1.5 0 0 1 1-2.6h1.6A4 4 0 0 0 21 11"/><circle cx="7.5" cy="11" r=".7"/><circle cx="10" cy="7" r=".7"/><circle cx="15" cy="7.5" r=".7"/></symbol>
+            <symbol id="td-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+            <symbol id="td-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+            <symbol id="td-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+          </svg>
+          <header class="theme-topbar">
+            <div class="theme-brand"><button id="theme-sidebar-toggle" class="theme-icon-button" type="button" aria-label="收起左側選單" aria-expanded="true"><svg><use href="#td-menu"/></svg></button><span class="theme-brandmark" aria-hidden="true">作</span><strong>香港啟文中學</strong></div>
+            <div class="theme-top-actions"><span class="theme-top-label">中文科 <svg><use href="#td-chevron"/></svg></span><span class="theme-top-label">繁體中文 <svg><use href="#td-chevron"/></svg></span><span class="theme-top-label"><svg><use href="#td-help"/></svg> 幫助中心</span><span class="theme-top-label"><svg><use href="#td-bell"/></svg><span class="theme-alert-dot"></span></span><span class="theme-user"><span>陳</span>陳老師</span>
+              <div class="theme-switcher"><button id="theme-switch" type="button" aria-expanded="false" aria-controls="theme-options"><svg><use href="#td-palette"/></svg><span>主題：<b id="theme-current-name">書院綠</b></span><svg class="theme-arrow"><use href="#td-chevron"/></svg></button><button type="button" class="demand-badge theme-switch-badge demand-card-trigger" aria-label="查看後台選單主題需求說明">需求</button>
+                <div id="theme-options" class="theme-options" hidden><div class="theme-options-head"><strong>介面主題</strong><small>選擇適合學校的日常工作風格</small></div><div class="theme-choice-list" role="group" aria-label="選擇介面主題">
+                  <button type="button" class="theme-choice" data-theme-option="harbour" aria-pressed="false"><span class="theme-swatch swatch-harbour"><i></i><i></i></span><span><strong>海港藍</strong><small>穩重經典 · 校務通用</small></span><svg class="choice-check"><use href="#td-check"/></svg></button>
+                  <button type="button" class="theme-choice" data-theme-option="academy" aria-pressed="true"><span class="theme-swatch swatch-academy"><i></i><i></i></span><span><strong>書院綠</strong><small>溫潤雅致 · 教學日常</small></span><svg class="choice-check"><use href="#td-check"/></svg></button>
+                  <button type="button" class="theme-choice" data-theme-option="ink" aria-pressed="false"><span class="theme-swatch swatch-ink"><i></i><i></i></span><span><strong>雅墨金</strong><small>深色沉穩 · 正式場景</small></span><svg class="choice-check"><use href="#td-check"/></svg></button>
+                  <button type="button" class="theme-choice" data-theme-option="mist" aria-pressed="false"><span class="theme-swatch swatch-mist"><i></i><i></i></span><span><strong>霧靛紫</strong><small>清爽細緻 · 輕量閱讀</small></span><svg class="choice-check"><use href="#td-check"/></svg></button>
+                </div></div>
+              </div>
+            </div>
+          </header>
+          <div class="theme-app-body">
+            <nav class="theme-sidebar" aria-label="業務選單"><div class="theme-sidebar-caption">教學工作台 <span class="demand-badge">需求</span></div>
+              <button type="button" data-demo-view="competition"><svg><use href="#td-grid"/></svg><span>徵文比賽</span></button>
+              <button type="button" data-demo-view="students"><svg><use href="#td-users"/></svg><span>學生管理</span></button>
+              <button type="button" data-demo-view="analytics"><svg><use href="#td-chart"/></svg><span>學情分析</span></button>
+              <button type="button" data-demo-view="publish"><svg><use href="#td-file"/></svg><span>發佈任務</span></button>
+              <button type="button" data-demo-view="tasks" class="is-active" aria-current="page"><svg><use href="#td-grid"/></svg><span>任務管理</span></button>
+              <button type="button" data-demo-view="reading"><svg><use href="#td-book"/></svg><span>閱讀</span></button>
+              <button type="button" data-demo-view="topics"><svg><use href="#td-file"/></svg><span>作文題庫</span></button>
+              <div class="theme-sidebar-separator"></div>
+              <button type="button" data-demo-view="settings"><svg><use href="#td-settings"/></svg><span>設定</span></button>
+              <button type="button" data-demo-view="notifications"><svg><use href="#td-bell"/></svg><span>通知</span></button>
+              <button type="button" data-demo-view="help"><svg><use href="#td-help"/></svg><span>幫助中心</span></button>
+            </nav>
+            <div class="theme-main-area"><div class="theme-crumb">中文科 <span>/</span> <span id="theme-crumb-current">任務管理</span></div><div class="theme-title-row"><div><h2 id="theme-view-title">任務管理</h2><p id="theme-view-desc">集中查看發佈進度與學生提交情況</p></div><a href="#topic-entry" id="theme-create-task"><svg><use href="#td-plus"/></svg> 發佈新任務</a></div>
+              <div id="theme-tasks-view"><section class="theme-summary" aria-label="任務概覽"><div><small>全部任務</small><strong>28</strong><span>本學期</span></div><div><small>進行中</small><strong>12</strong><span>待學生提交</span></div><div><small>待批改</small><strong>8</strong><span>需要關注</span></div><div><small>已完成</small><strong>16</strong><span>已歸檔</span></div></section>
+                <section class="theme-work-card"><div class="theme-work-head"><div class="theme-tabs" role="group" aria-label="任務類型"><button type="button" class="is-active" data-task-tab="all" aria-pressed="true">全部任務</button><button type="button" data-task-tab="practice" aria-pressed="false">專項練習</button><button type="button" data-task-tab="reading" aria-pressed="false">閱讀理解</button><button type="button" data-task-tab="writing" aria-pressed="false">命題作文</button></div><span id="theme-result-count">共 4 項</span></div>
+                  <div class="theme-filters"><label class="theme-search"><svg><use href="#td-search"/></svg><input id="theme-task-search" type="search" placeholder="搜尋任務名稱" aria-label="搜尋任務名稱"></label><label>班級<select id="theme-class-filter"><option value="all">所有班級</option><option value="A">A 班</option><option value="B">B 班</option></select></label><label>狀態<select id="theme-status-filter"><option value="all">所有狀態</option><option value="進行中">進行中</option><option value="已完成">已完成</option></select></label><button id="theme-reset" type="button">重置</button></div>
+                  <div class="theme-table-wrap"><table class="theme-table"><thead><tr><th scope="col">任務名稱</th><th scope="col">提交進度</th><th scope="col">類型</th><th scope="col">班級</th><th scope="col">開始日期</th><th scope="col">狀態</th></tr></thead><tbody>
+                    <tr data-type="writing" data-class="A" data-status="進行中"><td><strong>我最喜歡的故事人物</strong></td><td><span>18 / 26</span><div class="theme-mini-progress"><i style="width:69%"></i></div></td><td><span class="theme-tag">命題作文</span></td><td>A 班</td><td>2026-11-25</td><td><span class="theme-status status-live">進行中</span></td></tr>
+                    <tr data-type="writing" data-class="A" data-status="進行中"><td><strong>我的老師</strong></td><td><span>21 / 26</span><div class="theme-mini-progress"><i style="width:81%"></i></div></td><td><span class="theme-tag">命題作文</span></td><td>A 班</td><td>2026-11-20</td><td><span class="theme-status status-live">進行中</span></td></tr>
+                    <tr data-type="reading" data-class="B" data-status="已完成"><td><strong>散文閱讀練習</strong></td><td><span>25 / 25</span><div class="theme-mini-progress"><i style="width:100%"></i></div></td><td><span class="theme-tag">閱讀理解</span></td><td>B 班</td><td>2026-11-18</td><td><span class="theme-status status-done">已完成</span></td></tr>
+                    <tr data-type="practice" data-class="B" data-status="已完成"><td><strong>人物描寫專項練習</strong></td><td><span>25 / 25</span><div class="theme-mini-progress"><i style="width:100%"></i></div></td><td><span class="theme-tag">專項練習</span></td><td>B 班</td><td>2026-11-15</td><td><span class="theme-status status-done">已完成</span></td></tr>
+                  </tbody></table><div id="theme-empty" class="theme-empty" hidden>沒有符合條件的任務。請調整搜尋或篩選條件。</div></div>
+                </section>
+              </div>
+              <section id="theme-other-view" class="theme-other-view" hidden><span class="theme-other-icon"><svg><use href="#td-book"/></svg></span><h3 id="theme-other-title"></h3><p>暫無近期更新。可先查看任務管理中的發佈進度與學生提交情況。</p><button id="theme-back-tasks" type="button">返回任務管理</button></section>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <main id="idea-selection" class="content" data-point-page tabindex="-1" hidden>
+      <div class="breadcrumb">中文科 <span>/</span> 功能優化 <span>/</span> 寫作指導－中心思想勾選</div>
+      <div class="page-heading"><div><h1>寫作指導－中心思想勾選</h1></div></div>
+      <section class="idea-screen" aria-label="寫作指導中心思想選擇">
+        <div class="idea-statusbar"><span>09:41　11月27日週五</span><span aria-hidden="true">◉　▰</span></div>
+        <div class="idea-layout">
+          <aside class="idea-left">
+            <div class="idea-return">‹　返回作文任務</div>
+            <div class="idea-topic"><div>作文題目 <span>記敍抒情</span></div><p>三月二十八日（星期六）晴 今天我沒有帶手提電話外出，因而有不一樣的經歷和體會。試從第二段開始，以「沒有手提電話的一天」為題，續寫這篇日記。</p></div>
+            <ol class="idea-steps"><li class="active" data-idea-step="1"><b>1</b><span><strong>審題立意</strong><small>讀懂題目，生成立意</small></span></li><li data-idea-step="2"><b>2</b><span><strong>素材選擇</strong><small>圍繞立意，選取素材</small></span></li><li><b>3</b><span><strong>擬定大綱</strong><small>結合素材，安排段落</small></span></li><li><b>4</b><span><strong>寫作成果</strong><small>整理完整寫作指引</small></span></li></ol>
+          </aside>
+          <section class="idea-center" aria-labelledby="idea-heading">
+            <div id="idea-step-one" class="idea-main-step"><div class="idea-scroll"><div class="idea-heading-row"><h2 id="idea-heading">你想文章帶出甚麼中心思想？</h2><button type="button" id="idea-help" aria-label="查看選擇提示">ⓘ　提示</button></div><p class="idea-instruction" id="idea-instruction">請勾選 1–2 項最能表達你看法的中心思想，才可進入下一步。 <button type="button" class="demand-badge demand-card-trigger" aria-label="查看中心思想勾選需求說明">需求</button></p><p class="idea-count" id="idea-count" aria-live="polite">已選 0 / 2 項</p><div class="idea-options" role="group" aria-labelledby="idea-heading" aria-describedby="idea-instruction">
+              <label class="idea-option"><input type="checkbox" value="抬頭看見生活"><span class="idea-check" aria-hidden="true"></span><span><strong>抬頭看見生活</strong><small>從沒有手機消磨時間寫起，敘述「我」由無聊不安到留意街景與人情，體會專注當下的美好。</small></span></label>
+              <label class="idea-option"><input type="checkbox" value="問路遇見溫暖"><span class="idea-check" aria-hidden="true"></span><span><strong>問路遇見溫暖</strong><small>以無法查閱地圖而迷路為切口，寫「我」向陌生人求助，並在真實交流中感受到善意。</small></span></label>
+              <label class="idea-option"><input type="checkbox" value="靠自己找方法"><span class="idea-check" aria-hidden="true"></span><span><strong>靠自己找方法</strong><small>敘述「我」失去手機導航後憑路牌、記憶和詢問解決困難，體會減少依賴才能鍛鍊應變能力。</small></span></label>
+              <label class="idea-option"><input type="checkbox" value="從焦躁到自在"><span class="idea-check" aria-hidden="true"></span><span><strong>從焦躁到自在</strong><small>聚焦「我」由反覆摸口袋、擔心失聯，到逐漸適應寧靜的一天，領悟不必時刻在線。</small></span></label>
+              <label class="idea-option"><input type="checkbox" value="意外放慢腳步"><span class="idea-check" aria-hidden="true"></span><span><strong>意外放慢腳步</strong><small>從無法使用手機安排交通或娛樂所造成的行程改變寫起，展現慢下來後獲得的意外發現。</small></span></label>
+            </div></div><div class="idea-footer"><button id="idea-next" type="button" data-empty="true" aria-describedby="idea-instruction">生成立意，選取素材　→</button></div></div>
+            <div id="idea-step-two" class="idea-main-step" hidden><div class="idea-scroll"><h2>素材選擇</h2><p class="idea-instruction">根據已選的中心思想，選取最能支持立意的素材。</p><div id="idea-selected-summary" class="idea-selected-summary"></div><div class="idea-material-card"><strong>沒有手提電話的一天</strong><p>回想沒有手提電話時發生的事，選取能呈現人物感受與轉變的細節。</p></div></div><div class="idea-footer"><button id="idea-back" type="button">←　返回中心思想</button></div></div>
+          </section>
+          <aside class="idea-right"><h2>♧　我的構思</h2><div class="idea-side-card"><h3>關鍵詞</h3><div class="idea-keywords"><span>今天</span><span>沒有帶手提電話外出</span><span>因而</span><span>不一樣的經歷和體會</span><span>從第二段開始</span><span>沒有手提電話的一天</span><span>續寫這篇日記</span></div></div><div class="idea-side-card"><h3>中心思想</h3><div id="idea-side-ideas"><p>尚未選擇中心思想</p></div></div></aside>
+        </div>
+        <div id="idea-feedback" class="idea-feedback" role="alert" hidden></div>
+      </section>
+    </main>
+  </div>
+  <script src="./backend-shell.js"></script>
+  <script src="./script.js"></script>
+  <script src="./demand-cards.js"></script>
+  <script src="./bank.js"></script>
+  <script src="./word-count.js"></script>
+  <script src="./import.js"></script>
+  <script src="./export.js"></script>
+  <script src="./themes.js"></script>
+  <script src="./idea-selection.js"></script>
+</body>
+</html>

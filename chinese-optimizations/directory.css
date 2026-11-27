@@ -1,0 +1,88 @@
+[hidden] { display: none !important; }
+
+.app-shell { display: block; padding-top: 48px; }
+.side-nav {
+  position: fixed;
+  top: 60px;
+  bottom: 12px;
+  left: 8px;
+  z-index: 5;
+  display: block;
+  width: 304px;
+  min-height: 0;
+  padding: 8px;
+  overflow-y: auto;
+  background: #fff;
+  color: #526574;
+  border: 1px solid #dce8f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #243b5312;
+}
+.side-title {
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid #3962ff;
+  border-radius: 8px;
+  background: #eff5ff;
+  color: #2855ef;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+.side-nav nav { display: block; }
+.side-nav ol {
+  margin: 8px 0 0 6px;
+  padding: 0 0 0 7px;
+  list-style: none;
+  border-left: 1px solid #dce8f0;
+}
+.side-nav li { margin: 2px 0; }
+.point-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 36px;
+  padding: 6px;
+  color: #526574;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.point-link:hover { background: #eff5ff; }
+.point-link.active {
+  color: #008ecc;
+  background: #dff2ff;
+  border: 0;
+  font-weight: 600;
+}
+.point-number { color: #64748b; font-size: 12px; }
+.point-label { flex: none; white-space: nowrap; }
+.content {
+  display: block;
+  margin-left: 320px;
+  padding: 20px 24px 40px 12px;
+  overflow-x: auto;
+}
+
+@media (max-width: 1150px) {
+  .workspace { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .side-nav { left: 6px; width: 304px; padding: 7px; }
+  .content { margin-left: 320px; padding: 16px 12px 32px 6px; }
+  .side-nav nav { display: block; }
+  .source-panel, .output-panel { min-width: 460px; }
+}
+@media print {
+  .side-nav { display: none !important; }
+  .app-shell { display: block; padding: 0; }
+  .content { margin: 0; padding: 0; overflow: visible; }
+}

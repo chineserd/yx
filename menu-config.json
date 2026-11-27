@@ -2,7 +2,7 @@
   "meta": {
     "title": "中文路需求原型汇总",
     "subtitle": "Product Prototype Overview · 产品经理维护",
-    "updatedAt": "2026-11-26",
+    "updatedAt": "2026-11-27",
     "owner": "PM",
     "version": "1.0"
   },
@@ -168,6 +168,17 @@
           ],
           "localSource": "02 评审中/班级作文报告（班级报告+ 课堂点评）",
           "createdAt": "2026-10-08",
+          "businessCategory": "中文科"
+        },
+        {
+          "id": "REQ-CHINESE-OPTIMIZATIONS",
+          "status": "in-progress",
+          "title": "中文科-优化汇总",
+          "folderName": "中文科-优化汇总",
+          "localSource": "02 评审中/中文科-优化汇总",
+          "previewUrl": "./chinese-optimizations/",
+          "updatedAt": "2026-11-27",
+          "createdAt": "2026-11-26",
           "businessCategory": "中文科"
         }
       ]

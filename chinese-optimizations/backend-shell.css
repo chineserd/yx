@@ -1,0 +1,13 @@
+.shared-backend{min-width:0}
+.shared-backend .shared-backend-main{min-height:686px}
+.shared-backend .bank-panel{min-width:0}
+.shared-backend .breadcrumb{margin-bottom:12px}
+.shared-backend .page-heading{margin-bottom:20px}
+.shared-backend .bank-panel,.shared-backend .task-create,.shared-backend .import-shell{box-shadow:none}
+@media(max-width:1450px){.shared-backend .workspace{grid-template-columns:1fr}}
+@media print{
+  #report-prompt .shared-backend.export-app{display:block!important;min-width:0;min-height:0;border:0;box-shadow:none;background:#fff}
+  #report-prompt .shared-backend .export-app-top,#report-prompt .shared-backend .export-app-side{display:none!important}
+  #report-prompt .shared-backend .export-app-body{display:block;min-height:0}
+  #report-prompt .shared-backend-main{min-height:0;padding:0}
+}
