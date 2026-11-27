@@ -105,14 +105,14 @@
   .preview-tabs button:focus-visible, .history-link:focus-visible { outline:2px solid #3563ff; outline-offset:-3px; }
   .history-link { margin-left:auto; padding-left:16px; color:#65758b; text-decoration:underline; font-size:12px; flex:none; }
   .business-layout { display:flex; height:calc(100vh - 48px); min-height:500px; }
-  .app-preview { height:calc(100vh - 48px); min-height:500px; display:flex; justify-content:center; align-items:flex-start; padding:24px 24px 40px; overflow:auto; background:#eef1f7; }
+  .app-preview { height:calc(100vh - 48px); height:calc(100dvh - 48px); min-height:0; display:flex; justify-content:center; align-items:flex-start; padding:24px; overflow:hidden; background:#eef1f7; }
   .mandarin-preview { height:calc(100vh - 48px); min-height:500px; background:#f2f4f9; }
   .mandarin-preview iframe { display:block; width:100%; height:100%; border:0; }
   .flow-preview { height:calc(100vh - 48px); min-height:500px; background:#f5f7fb; }
   .flow-preview iframe { display:block; width:100%; height:100%; border:0; }
-  .iphone-frame { position:relative; flex:none; width:446px; height:948px; padding:8px; border-radius:48px; background:#171b26; box-shadow:0 18px 48px rgba(35,39,91,.23), inset 0 0 0 2px #555b6b; }
+  .iphone-stage { position:relative; flex:none; width:446px; height:948px; }
+  .iphone-frame { position:absolute; top:0; left:0; width:446px; height:948px; padding:8px; transform-origin:top left; border-radius:48px; background:#171b26; box-shadow:0 18px 48px rgba(35,39,91,.23), inset 0 0 0 2px #555b6b; }
   .iphone-frame iframe { display:block; width:430px; height:932px; border:0; border-radius:40px; background:#f7f7f7; }
-  .iphone-island { position:absolute; z-index:2; top:9px; left:50%; width:104px; height:20px; transform:translateX(-50%); border-radius:20px; background:#090b10; pointer-events:none; }
   .iphone-home { position:absolute; z-index:2; bottom:3px; left:50%; width:104px; height:3px; transform:translateX(-50%); border-radius:3px; background:#8e96a5; pointer-events:none; }
   .doc-surface { min-height:calc(100vh - 48px); background:#f5f7fa; padding:24px; }
   .doc-card { width:min(1080px,100%); margin:0 auto; padding:30px 40px 56px; background:#fff; border:1px solid #e2e8f0; border-radius:8px; color:#334155; font-size:14px; line-height:1.75; }
@@ -130,7 +130,7 @@
   .doc-card code { background:#f6f8fb; padding:1px 4px; border-radius:3px; }
   .doc-card pre code { padding:0; }
   @media(max-width:700px) { .business-layout { min-height:calc(100vh - 48px); } .doc-surface { padding:0; } .doc-card { padding:22px 16px 48px; border-radius:0; } }
-  @media(max-width:430px) { .app-preview { padding:0; } .iphone-frame { width:100%; height:calc(100vh - 48px); padding:0; border-radius:0; background:transparent; box-shadow:none; } .iphone-frame iframe { width:100%; height:100%; border-radius:0; } .iphone-island,.iphone-home { display:none; } }
+  @media(max-width:430px) { .app-preview { padding:0; } .iphone-stage { width:100%; height:100%; } .iphone-frame { width:100%; height:100%; padding:0; transform:none !important; border-radius:0; background:transparent; box-shadow:none; } .iphone-frame iframe { width:100%; height:100%; border-radius:0; } .iphone-island,.iphone-home { display:none; } }
 
   /* ============== 卡片 ============== */
   .card {
@@ -587,10 +587,11 @@
   </div>
 
   <div class="app-preview" v-show="currentSurface === 'app'">
-    <div class="iphone-frame" aria-label="iPhone 竖屏预览">
-      <span class="iphone-island" aria-hidden="true"></span>
-      <iframe title="考点管理学生端" src="./App-学生-考点筛选/index.html"></iframe>
-      <span class="iphone-home" aria-hidden="true"></span>
+    <div class="iphone-stage">
+      <div class="iphone-frame" aria-label="iPhone 竖屏预览">
+        <iframe title="考点管理学生端" src="./App-学生-考点筛选/index.html"></iframe>
+        <span class="iphone-home" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
 
@@ -869,6 +870,7 @@ const app = createApp({
 
     // ==================== 考点管理视图 ====================
     const kaodianList = reactive([
+      { id: 6, name: '零聲母', pinyinHint: 'y、w', tags:['拼音标签 / 声母-零声母 / y','拼音标签 / 声母-零声母 / w'], tagCount: 2, questionCount: 10, creator: '超级管理员', createdAt: '2026-09-20 10:24:38' },
       { id: 1, name: '平翘舌', pinyinHint: 'zh/ch/sh/r 与 z/c/s 的发音辨析', tags:['拼音标签 / 声母-舌尖前音 / z','拼音标签 / 声母-舌尖前音 / c','拼音标签 / 声母-舌尖前音 / s','拼音标签 / 声母-舌尖后音 / zh','拼音标签 / 声母-舌尖后音 / ch','拼音标签 / 声母-舌尖后音 / sh','拼音标签 / 声母-舌尖后音 / r'], tagCount: 7, questionCount: 326, creator: '超级管理员', createdAt: '2026-09-12 10:24:38' },
       { id: 2, name: '前后鼻音', pinyinHint: 'an/en/in/un/ün 与 ang/eng/ing/ong', tags:['拼音标签 / 前鼻音韵母 / an','拼音标签 / 前鼻音韵母 / en','拼音标签 / 前鼻音韵母 / in','拼音标签 / 前鼻音韵母 / un','拼音标签 / 前鼻音韵母 / ün','拼音标签 / 后鼻音韵母 / ang','拼音标签 / 后鼻音韵母 / eng','拼音标签 / 后鼻音韵母 / ing','拼音标签 / 后鼻音韵母 / ong'], tagCount: 9, questionCount: 218, creator: '超级管理员', createdAt: '2026-09-08 14:02:11' },
       { id: 3, name: '人名拼写规则', pinyinHint: '姓名拼写中的大小写、连字符、隔音符号', tags:['拼音标签 / 拼写规则 / 姓氏首字母大写','拼音标签 / 拼写规则 / 姓名连字符','拼音标签 / 拼写规则 / 隔音符号'], tagCount: 3, questionCount: 142, creator: '内容运营-小王', createdAt: '2026-09-05 09:33:50' },
@@ -926,6 +928,7 @@ const app = createApp({
     // ==================== 标签树 ====================
     const tagTreeRaw = [
       { name: '拼音标签', children: [
+        { name: '声母-零声母', children: [{ name: 'y' }, { name: 'w' }] },
         { name: '声母-双唇音', children: [{ name: 'b' }, { name: 'p' }, { name: 'm' }] },
         { name: '声母-唇齿音', children: [{ name: 'f' }] },
         { name: '声母-舌尖前音', children: [{ name: 'z' }, { name: 'c' }, { name: 's' }] },
@@ -1071,6 +1074,30 @@ const app = createApp({
 // UMD 版本直接复用页面的 Vue 全局实例，避免 esm.sh 重复加载 Vue。
 app.use(window.antd);
 app.mount('#app');
+
+// 桌面预览仅等比缩放手机外壳，iframe 保持 430×932 的逻辑画布。
+const appPreview = document.querySelector('.app-preview');
+const iphoneStage = appPreview.querySelector('.iphone-stage');
+const iphoneFrame = appPreview.querySelector('.iphone-frame');
+function fitIphonePreview() {
+  if (window.matchMedia('(max-width: 430px)').matches) {
+    iphoneStage.style.width = '100%';
+    iphoneStage.style.height = '100%';
+    iphoneFrame.style.transform = 'none';
+    return;
+  }
+  if (!appPreview.clientWidth || !appPreview.clientHeight) return;
+  const style = getComputedStyle(appPreview);
+  const width = appPreview.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  const height = appPreview.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+  const scale = Math.min(1, width / 446, height / 948);
+  iphoneStage.style.width = `${446 * scale}px`;
+  iphoneStage.style.height = `${948 * scale}px`;
+  iphoneFrame.style.transform = `scale(${scale})`;
+}
+new ResizeObserver(fitIphonePreview).observe(appPreview);
+window.addEventListener('resize', fitIphonePreview);
+requestAnimationFrame(fitIphonePreview);
 
 // 全局消息工具（Vue 模板里直接用）
 function setupMsg() {

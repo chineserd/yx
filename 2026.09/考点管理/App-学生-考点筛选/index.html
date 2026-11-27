@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-HK">
 <head>
 <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>學習首頁 · 中文路學生端</title>
+  <title>拼音練習 · 中文路學生端</title>
   <style>
     :root {
       font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "PingFang SC", "Microsoft JhengHei", sans-serif;
@@ -19,6 +19,7 @@
     button { cursor: pointer; }
     [hidden] { display: none !important; }
     .app-screen {
+      position: relative;
       width: min(430px, 100%);
       min-height: 100vh;
       margin: 0 auto;
@@ -30,9 +31,9 @@
     .home-status {
       position: fixed; top: 0; left: 50%; z-index: 12; width: min(430px, 100%); height: 52px;
       transform: translateX(-50%); pointer-events: none;
-      background: #d8ecfb url('./assets/home-1.png') center top / 100% auto no-repeat;
+      background: #d8ecfb;
     }
-    .home-status.scrolled { background: #fff url('./assets/home-3.png') center top / 100% auto no-repeat; }
+    .home-status.scrolled { background: #fff; }
     .home-slice { position: relative; width: 100%; overflow: hidden; }
     .home-slice img { display: block; width: 100%; height: auto; max-width: none; user-select: none; pointer-events: none; }
     .home-slice.first { aspect-ratio: 1290 / 2490; }
@@ -53,45 +54,74 @@
     .picture-arrow-cover { background: #fbf3f8; }
     .pinyin-entry { position: absolute; top: 23%; right: 4.2%; width: 44.1%; height: 37%; padding: 0; border: 0; border-radius: 22px; background: transparent; }
     .pinyin-entry:focus-visible { outline: 3px solid #2d80e8; outline-offset: -5px; }
+    .grade-page { position: relative; width: 100%; min-height: 100vh; background: #f6f9ff; }
+    .grade-page::after { content: ''; position: absolute; top: 0; right: 0; left: 0; height: 52px; background: linear-gradient(90deg, #f2faff, #f7f9ff); pointer-events: none; }
+    .grade-image { display: block; width: 100%; height: auto; user-select: none; pointer-events: none; }
+    .grade-back-hit, .grade-hit { position: absolute; padding: 0; border: 0; background: transparent; }
+    .grade-back-hit { left: 2.8%; top: 6%; width: 11%; height: 5%; }
+    .grade-hit { left: var(--x); top: var(--y); width: 23.6%; height: 7.9%; border-radius: 16px; }
+    .grade-back-hit:focus-visible, .grade-hit:focus-visible { outline: 3px solid #2d80e8; outline-offset: -3px; }
+    body.selection-active .bottom-nav, body.practice-active .bottom-nav { display: none; }
+    .practice-page { position: relative; }
+    .point-scrim { position: absolute; inset: 0; z-index: 18; width: 100%; height: 100%; border: 0; background: rgba(21, 37, 69, .1); }
+    .point-popover {
+      position: absolute;
+      z-index: 19;
+      top: calc(100% + 8px);
+      inset-inline: 0;
+      padding: 19px 16px;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(30, 50, 90, .2);
+    }
+    .point-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .point-option { min-height: 44px; padding: 6px 4px; border: 1px solid transparent; border-radius: 24px; background: #f0f1f4; color: #555; font-size: 13px; text-align: center; line-height: 1.3; }
+    .point-option[aria-pressed="true"] { border-color: #b8d3ff; background: #e5eeff; color: #2867e7; font-weight: 700; }
+    .point-option:focus-visible, .point-filter-trigger:focus-visible, .level-select:focus-visible { outline: 3px solid #1c5ee5; outline-offset: 2px; }
     .app-header {
       position: relative;
-      height: 281px;
-      padding: 16px 27px 0;
+      height: 212px;
+      padding: 0 27px;
       color: #fff;
       background: #3774ef;
-      isolation: isolate;
-      overflow: hidden;
     }
-    .app-header::before, .app-header::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
-    .app-header::before { width: 570px; height: 570px; top: -235px; left: 72px; background: rgba(94, 151, 251, .28); }
-    .app-header::after { width: 390px; height: 390px; top: 50px; right: -150px; background: rgba(99, 157, 255, .18); }
-    .status-bar { display: flex; align-items: center; justify-content: space-between; height: 28px; padding: 0 16px; color: #fff; font-size: 19px; font-weight: 650; letter-spacing: -.03em; }
-    .status-left, .status-right { display: flex; align-items: center; gap: 5px; }
-    .moon { width: 13px; height: 13px; margin-left: 2px; border-radius: 50%; box-shadow: -4px 1px 0 0 #fff; transform: rotate(-20deg); }
-    .signal { display: flex; align-items: flex-end; gap: 2px; height: 15px; margin-right: 4px; }
-    .signal i { width: 3px; border-radius: 3px; background: #fff; }
-    .signal i:nth-child(1) { height: 7px; } .signal i:nth-child(2) { height: 10px; } .signal i:nth-child(3) { height: 13px; } .signal i:nth-child(4) { height: 15px; }
-    .battery { position: relative; width: 27px; height: 14px; margin-left: 3px; border-radius: 4px; background: linear-gradient(90deg,#fff 82%,rgba(255,255,255,.45) 82%); }
-    .battery::after { content: ""; position: absolute; right: -3px; top: 4px; width: 2px; height: 6px; border-radius: 0 2px 2px 0; background: rgba(255,255,255,.7); }
-    .header-row { display: flex; align-items: center; height: 34px; margin-top: 22px; }
+    .header-decoration { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .header-decoration::before, .header-decoration::after { content: ""; position: absolute; border-radius: 50%; }
+    .header-decoration::before { width: 570px; height: 570px; top: -235px; left: 72px; background: rgba(94, 151, 251, .28); }
+    .header-decoration::after { width: 390px; height: 390px; top: 50px; right: -150px; background: rgba(99, 157, 255, .18); }
+    .header-row { position: relative; display: flex; align-items: center; height: 38px; }
     .back-button {
-      width: 34px; height: 34px; padding: 0; border: 0; color: #fff; background: transparent;
+      width: 44px; height: 44px; margin-left: -5px; padding: 0; border: 0; color: #fff; background: transparent;
       font-size: 40px; font-weight: 250; line-height: 27px;
     }
-    .title-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 25px; }
-    .header-actions { display: flex; align-items: center; gap: 9px; flex: none; }
-    .level-select, .history-button {
+    .title-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 17px;
+    }
+    .header-actions { display: flex; align-items: center; flex: none; gap: 9px; }
+    .filter-row { position: relative; display: flex; align-items: center; gap: 9px; margin-top: 16px; }
+    .point-filter-trigger, .level-select, .history-button {
       height: 38px; border: 0; border-radius: 25px; color: #2867e7; background: #dbedff;
     }
-    .level-select {
+    .level-select, .history-button {
+      height: 44px; border-block: 3px solid transparent; background-clip: padding-box;
+    }
+    .point-filter-trigger { display: inline-block; max-width: min(270px, calc(100% - 75px)); overflow: hidden; font-size: 16px; white-space: nowrap; text-overflow: ellipsis; }
+    .point-filter-trigger, .level-select {
       padding: 0 30px 0 18px; appearance: none; background-color: #dbedff;
       background-image: linear-gradient(45deg, transparent 50%, #2867e7 50%), linear-gradient(135deg, #2867e7 50%, transparent 50%);
       background-position: calc(100% - 15px) 16px, calc(100% - 10px) 16px;
       background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
     }
-    .history-button { padding: 0 16px; font-size: 16px; }
+    .history-button { padding: 0 16px; font-size: 16px; white-space: nowrap; }
+    .history-button:focus-visible { outline: 2px solid #fff; outline-offset: -2px; border-radius: 6px; }
+    .point-filter-trigger.has-filter { box-shadow: inset 0 0 0 2px #92c5ff; font-weight: 700; }
     .app-title { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: .01em; white-space: nowrap; }
-    .content { position: relative; min-height: calc(100vh - 199px); margin-top: -82px; padding: 0 18px 88px; background: transparent; }
+    .content { position: relative; min-height: calc(100vh - 130px); margin-top: -82px; padding: 0 18px 28px; background: transparent; }
     .practice-card {
       position: relative; margin: 0 0 18px; padding: 26px 18px 22px; border-radius: 19px;
       background: #fff; box-shadow: 0 5px 20px rgba(30, 50, 90, .055);
@@ -99,8 +129,10 @@
     .card-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 32px; }
     .practice-card h2 { margin: 0; font-size: 21px; font-weight: 700; letter-spacing: .01em; }
     .card-divider { height: 1px; margin: 23px 0 21px; background: #efefef; }
-    .syllables { display: flex; align-items: center; gap: 7px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
-    .syllables::-webkit-scrollbar { display: none; }
+    .card-meta { display: flex; flex-direction: column; gap: 10px; }
+    .meta-column { display: flex; align-items: flex-start; gap: 8px; min-width: 0; }
+    .meta-title { flex: none; min-width: 42px; padding-top: 2px; color: #69768b; font-size: 12px; line-height: 23px; }
+    .syllables { display: flex; flex: 1; align-items: center; flex-wrap: wrap; gap: 7px; min-width: 0; }
     .syllable {
       display: inline-flex; align-items: center; flex: none; min-height: 23px; padding: 0 9px; border-radius: 5px;
       color: #2871f0; background: #d9f0ff; font-size: 15px; white-space: nowrap;
@@ -110,13 +142,14 @@
       min-height: 18px; padding: 0 5px; border: 1px solid #e53935; border-radius: 4px;
       color: #fff; background: #e53935; font-size: 11px; font-weight: 600; line-height: 16px; white-space: nowrap;
     }
-    .exam-points { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 15px; font-size: 12px; }
+    .exam-points { display: flex; flex: 1; align-items: center; flex-wrap: wrap; gap: 6px; min-width: 0; font-size: 12px; }
     .exam-point { padding: 3px 8px; border: 1px solid #b6dcff; border-radius: 5px; color: #2871f0; background: #f1f9ff; font-size: 12px; }
     .card-arrow {
       flex: none; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%;
       color: #11a8e7; background: #eaf3ff; font-size: 27px; font-weight: 700; line-height: 20px;
     }
-    .empty-state { padding: 36px 18px; color: #85869b; text-align: center; font-size: 14px; }
+    .empty-state { padding: 36px 18px; border-radius: 19px; color: #526574; background: #fff; box-shadow: 0 5px 20px rgba(30, 50, 90, .055); text-align: center; font-size: 14px; }
+    .empty-clear { min-height: 38px; margin-top: 15px; padding: 0 16px; border: 1px solid #bdd8ff; border-radius: 20px; color: #2867e7; background: #eef6ff; font-size: 13px; font-weight: 700; }
     .bottom-nav {
       position: fixed; right: 0; bottom: 0; left: 0; z-index: 10; display: flex; justify-content: space-around;
       width: min(430px, 100%); height: 70px; margin: 0 auto; padding: 9px 12px calc(9px + env(safe-area-inset-bottom));
@@ -133,7 +166,7 @@
     .toast.show { opacity: 1; transform: translate(50%, 0); }
     @media (max-width: 390px) {
       .app-header { padding-right: 20px; padding-left: 20px; }
-      .app-title { font-size: 27px; }
+      .app-title { font-size: 26px; }
       .history-button { padding: 0 12px; font-size: 14px; }
       .level-select { padding-left: 14px; }
       .content { padding-right: 14px; padding-left: 14px; }
@@ -150,43 +183,72 @@
       <div class="home-slice middle"><img src="./assets/home-2.png" alt="" loading="lazy" /><span class="home-arrow-cover picture-arrow-cover" aria-hidden="true"></span><span class="home-arrow-right picture-arrow-right" aria-hidden="true"></span><button class="pinyin-entry" id="pinyinEntry" aria-label="進入拼音練習" title="拼音練習"></button></div>
       <div class="home-slice last"><img src="./assets/home-3.png" alt="" loading="lazy" /></div>
     </section>
+    <section class="grade-page" id="gradePage" aria-label="選擇年級" hidden>
+      <img class="grade-image" src="./assets/grade-select.png" alt="" />
+      <button class="grade-back-hit" id="gradeBack" type="button" aria-label="返回學習首頁"></button>
+      <button class="grade-hit" style="--x:11.3%;--y:34.6%" type="button" data-grade="P1" aria-label="選擇 P1 年級"></button>
+      <button class="grade-hit" style="--x:38.4%;--y:34.6%" type="button" data-grade="P2" aria-label="選擇 P2 年級"></button>
+      <button class="grade-hit" style="--x:65.3%;--y:34.6%" type="button" data-grade="P3" aria-label="選擇 P3 年級"></button>
+      <button class="grade-hit" style="--x:11.3%;--y:44.0%" type="button" data-grade="P4" aria-label="選擇 P4 年級"></button>
+      <button class="grade-hit" style="--x:38.4%;--y:44.0%" type="button" data-grade="P5" aria-label="選擇 P5 年級"></button>
+      <button class="grade-hit" style="--x:65.3%;--y:44.0%" type="button" data-grade="P6" aria-label="選擇 P6 年級"></button>
+      <button class="grade-hit" style="--x:11.3%;--y:61.8%" type="button" data-grade="S1" aria-label="選擇 S1 年級"></button>
+      <button class="grade-hit" style="--x:38.4%;--y:61.8%" type="button" data-grade="S2" aria-label="選擇 S2 年級"></button>
+      <button class="grade-hit" style="--x:65.3%;--y:61.8%" type="button" data-grade="S3" aria-label="選擇 S3 年級"></button>
+      <button class="grade-hit" style="--x:11.3%;--y:71.2%" type="button" data-grade="S4" aria-label="選擇 S4 年級"></button>
+      <button class="grade-hit" style="--x:38.4%;--y:71.2%" type="button" data-grade="S5" aria-label="選擇 S5 年級"></button>
+      <button class="grade-hit" style="--x:65.3%;--y:71.2%" type="button" data-grade="S6" aria-label="選擇 S6 年級"></button>
+    </section>
     <section class="practice-page" id="practicePage" hidden>
-    <header class="app-header">
-      <div class="status-bar" aria-hidden="true">
-        <span class="status-left">19:02<span class="moon"></span></span>
-        <span class="status-right"><span class="signal"><i></i><i></i><i></i><i></i></span>5G<span class="battery"></span></span>
-      </div>
-      <div class="header-row">
-        <button class="back-button" id="backButton" aria-label="返回">‹</button>
-      </div>
-      <div class="title-row">
-        <h1 class="app-title">拼音練習</h1>
-        <div class="header-actions">
-          <select class="level-select" id="levelSelect" aria-label="選擇年級"><option>P1</option><option>P2</option><option>P3</option></select>
-          <button class="history-button" id="historyButton">歷史記錄</button>
+      <header class="app-header">
+        <div class="header-decoration" aria-hidden="true"></div>
+        <div class="header-row">
+          <button class="back-button" id="backButton" type="button" aria-label="返回">‹</button>
         </div>
-      </div>
-    </header>
-    <section class="content" id="practiceList" aria-live="polite"></section>
+        <div class="title-row">
+          <h1 class="app-title">拼音練習</h1>
+          <div class="header-actions">
+            <button class="level-select" id="levelSelect" type="button" aria-label="選擇年級，目前 P1">P1</button>
+            <button class="history-button" id="historyButton" type="button">歷史記錄</button>
+          </div>
+        </div>
+        <div class="filter-row" hidden>
+          <button class="point-filter-trigger" id="pointFilterTrigger" type="button" aria-label="按考點篩選" aria-haspopup="dialog" aria-expanded="false" aria-controls="pointPopover">考點</button>
+          <div class="point-popover" id="pointPopover" role="dialog" aria-label="考點篩選" hidden>
+            <div class="point-options" id="pointOptions"></div>
+          </div>
+        </div>
+      </header>
+      <section class="content"><div id="practiceList" aria-live="polite"></div></section>
+      <button class="point-scrim" id="pointScrim" type="button" aria-label="關閉考點篩選" hidden></button>
     </section>
     <nav class="bottom-nav" aria-label="學生端主導航">
-      <button class="nav-item active" data-nav="learning"><span class="nav-icon">▣</span>学习</button>
-      <button class="nav-item" data-nav="tasks"><span class="nav-icon">☷</span>任务</button>
+      <button class="nav-item active" data-nav="learning"><span class="nav-icon">▣</span>學習</button>
+      <button class="nav-item" data-nav="tasks"><span class="nav-icon">☷</span>任務</button>
     </nav>
     <div class="toast" id="toast" role="status"></div>
   </main>
   <script>
     const practices = [
-      { title: '普通話拼音練習1', syllables: ['三聲', 'd', 't', 'g', 'h', 'k', '一聲', 'l', '二聲'], points: ['平翹舌', '變調'] },
-      { title: '普通話拼音練習2', syllables: ['三聲', '一聲', '二聲', '四聲'], points: ['前後鼻音'] },
-      { title: '普通話拼音練習3', syllables: ['三聲', 'a', 'e', 'u', 'i', '一聲', 'ü', '二聲', '四聲'], points: ['變調'] },
-      { title: '普通話拼音練習4', syllables: ['三聲', '一聲', '二聲', '四聲'], points: ['變調'] },
+      { title: '普通話拼音練習1', syllables: ['y', 'w'], points: ['零聲母'] },
+      { title: '普通話拼音練習2', syllables: ['z', 'c', 's', 'zh', 'ch', 'sh', 'r'], points: ['平翹舌'] },
+      { title: '普通話拼音練習3', syllables: ['an', 'en', 'in', 'un', 'ün', 'ang', 'eng', 'ing', 'ong'], points: ['前後鼻音'] },
+      { title: '普通話拼音練習4', syllables: ['上聲變調', '一不變調', 'en', 'eng'], points: ['變調', '前後鼻音'] },
     ];
+    const pointNames = ['零聲母', '平翹舌', '前後鼻音', '變調', '人名拼寫規則', '地名拼寫規則'];
     const list = document.querySelector('#practiceList');
     const toast = document.querySelector('#toast');
     const homePage = document.querySelector('#homePage');
     const homeStatus = document.querySelector('#homeStatus');
+    const gradePage = document.querySelector('#gradePage');
     const practicePage = document.querySelector('#practicePage');
+    const levelSelect = document.querySelector('#levelSelect');
+    const pointOptions = document.querySelector('#pointOptions');
+    const pointFilterTrigger = document.querySelector('#pointFilterTrigger');
+    const pointPopover = document.querySelector('#pointPopover');
+    const pointScrim = document.querySelector('#pointScrim');
+    const selectedPoints = new Set();
+    let gradeReturnTarget = 'home';
     let homeScrollY = 0;
     let toastTimer;
     function showToast(message) {
@@ -194,36 +256,125 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
     }
     function renderPractices() {
-      const rows = practices;
+      const selectedNames = pointNames.filter(point => selectedPoints.has(point));
+      pointFilterTrigger.textContent = selectedNames.length ? `考點：${selectedNames.join('、')}` : '考點';
+      pointFilterTrigger.setAttribute('aria-label', selectedNames.length ? `已選考點：${selectedNames.join('、')}，點擊調整` : '按考點篩選');
+      pointFilterTrigger.title = selectedNames.length ? selectedNames.join('、') : '';
+      pointFilterTrigger.classList.toggle('has-filter', selectedNames.length > 0);
+      const rows = selectedPoints.size ? practices.filter(item => item.points.some(point => selectedPoints.has(point))) : practices;
       list.innerHTML = rows.length ? rows.map((item, index) => `
-        <article class="practice-card" data-index="${index}">
+        <article class="practice-card" data-index="${practices.indexOf(item)}">
           <div class="card-heading"><h2>${item.title}</h2><button class="card-arrow" aria-label="開始${item.title}">›</button></div>
           <div class="card-divider"></div>
-          <div class="syllables">${item.syllables.map(value => `<span class="syllable">${value}</span>`).join('')}</div>
-          <div class="exam-points">${index === 0 ? '<span class="need-badge">需求</span>' : ''}${item.points.map(value => `<span class="exam-point">${value}</span>`).join('')}</div>
-        </article>`).join('') : '<div class="empty-state">暫時沒有可用的練習</div>';
+          <div class="card-meta">
+            <div class="meta-column"><div class="meta-title">考點：</div><div class="exam-points">${item.points.map(value => `<span class="exam-point">${value}</span>`).join('')}${practices.indexOf(item) === 0 ? '<span class="need-badge">需求</span>' : ''}</div></div>
+            <div class="meta-column"><div class="meta-title">標籤：</div><div class="syllables">${item.syllables.map(value => `<span class="syllable">${value}</span>`).join('')}</div></div>
+          </div>
+        </article>`).join('') : '<div class="empty-state">此考點暫無練習，請選擇其他考點。<br><button class="empty-clear" type="button">清除篩選</button></div>';
       list.querySelectorAll('.practice-card').forEach(card => card.addEventListener('click', () => showToast(`開始${card.querySelector('h2').textContent}`)));
+      list.querySelector('.empty-clear')?.addEventListener('click', clearPointFilter);
     }
-    function openPractice() {
+    function renderPointOptions() {
+      pointOptions.innerHTML = ['全部', ...pointNames].map(point => `<button class="point-option" type="button" data-point="${point}" aria-pressed="${point === '全部' ? selectedPoints.size === 0 : selectedPoints.has(point)}">${point}</button>`).join('');
+      pointOptions.querySelectorAll('.point-option').forEach(button => button.addEventListener('click', () => {
+        const point = button.dataset.point;
+        if (point === '全部') selectedPoints.clear();
+        else if (selectedPoints.has(point)) selectedPoints.delete(point);
+        else selectedPoints.add(point);
+        renderPointOptions();
+        renderPractices();
+        closePointFilter();
+      }));
+    }
+    function openGradeSelect() {
       homeScrollY = window.scrollY;
+      gradeReturnTarget = 'home';
+      document.querySelector('#gradeBack').setAttribute('aria-label', '返回學習首頁');
       homePage.hidden = true;
-      practicePage.hidden = false;
+      gradePage.hidden = false;
+      document.body.classList.add('selection-active');
       window.scrollTo(0, 0);
     }
-    function closePractice() {
+    function openGradeSelectFromPractice() {
+      closePointFilter(false);
+      gradeReturnTarget = 'practice';
+      document.querySelector('#gradeBack').setAttribute('aria-label', '返回拼音練習');
+      practicePage.hidden = true;
+      gradePage.hidden = false;
+      document.body.classList.add('selection-active');
+      document.body.classList.remove('practice-active');
+      window.scrollTo(0, 0);
+    }
+    function openPractice(grade) {
+      levelSelect.textContent = grade;
+      levelSelect.setAttribute('aria-label', `選擇年級，目前 ${grade}`);
+      gradePage.hidden = true;
+      practicePage.hidden = false;
+      document.body.classList.remove('selection-active');
+      document.body.classList.add('practice-active');
+      window.scrollTo(0, 0);
+    }
+    function returnToGrades() {
+      closePointFilter(false);
+      gradeReturnTarget = 'home';
+      document.querySelector('#gradeBack').setAttribute('aria-label', '返回學習首頁');
+      practicePage.hidden = true;
+      gradePage.hidden = false;
+      document.body.classList.add('selection-active');
+      document.body.classList.remove('practice-active');
+      window.scrollTo(0, 0);
+    }
+    function returnFromGrade() {
+      if (gradeReturnTarget === 'home') returnHome();
+      gradePage.hidden = true;
+      practicePage.hidden = false;
+      document.body.classList.remove('selection-active');
+      document.body.classList.add('practice-active');
+      levelSelect.focus();
+      window.scrollTo(0, 0);
+    }
+    function openPointFilter() {
+      if (!pointPopover.hidden) { closePointFilter(); return; }
+      renderPointOptions();
+      pointScrim.hidden = false;
+      pointPopover.hidden = false;
+      pointFilterTrigger.setAttribute('aria-expanded', 'true');
+      pointOptions.querySelector('.point-option')?.focus();
+    }
+    function closePointFilter(restoreFocus = true) {
+      pointScrim.hidden = true;
+      pointPopover.hidden = true;
+      pointFilterTrigger.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) pointFilterTrigger.focus();
+    }
+    function clearPointFilter() {
+      selectedPoints.clear();
+      renderPointOptions();
+      renderPractices();
+    }
+    function returnHome() {
+      closePointFilter(false);
+      gradePage.hidden = true;
       practicePage.hidden = true;
       homePage.hidden = false;
+      document.body.classList.remove('selection-active');
+      document.body.classList.remove('practice-active');
       requestAnimationFrame(() => window.scrollTo(0, homeScrollY));
     }
     window.addEventListener('scroll', () => homeStatus.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
     homeStatus.classList.toggle('scrolled', window.scrollY > 60);
-    document.querySelector('#pinyinEntry').addEventListener('click', openPractice);
-    document.querySelector('#backButton').addEventListener('click', closePractice);
+    document.querySelector('#pinyinEntry').addEventListener('click', openGradeSelect);
+    document.querySelector('#gradeBack').addEventListener('click', returnFromGrade);
+    document.querySelectorAll('.grade-hit').forEach(button => button.addEventListener('click', () => openPractice(button.dataset.grade)));
+    document.querySelector('#backButton').addEventListener('click', returnToGrades);
+    pointFilterTrigger.addEventListener('click', openPointFilter);
+    pointScrim.addEventListener('click', () => closePointFilter());
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && !pointPopover.hidden) closePointFilter(); });
     document.querySelector('#historyButton').addEventListener('click', () => showToast('查看歷史記錄'));
-    document.querySelector('#levelSelect').addEventListener('change', event => showToast(`已切換至${event.target.value}`));
+    levelSelect.addEventListener('click', openGradeSelectFromPractice);
     document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => {
-      if (item.dataset.nav === 'learning') closePractice();
-      else showToast('任务');
+      if (item.dataset.nav === 'learning') returnHome();
+      else showToast('任務');
     }));
     renderPractices();
   </script>
